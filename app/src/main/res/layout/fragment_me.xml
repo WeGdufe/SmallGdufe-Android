@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/me_person_iem" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txt_cardnum"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/me_card"
+                android:text="饭卡余额" />
+
+            <View
+                android:background="@color/background_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip" />
+            <TextView
+                android:id="@+id/txt_homesetting"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/me_card"
+                android:text="主页设置" />
+            <TextView
+                android:id="@+id/txt_contact"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/me_card"
+                android:text="反馈" />
+            <TextView
+                android:id="@+id/txt_update"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/me_card"
+                android:text="检查更新" />
+            <TextView
+                android:id="@+id/txt_about"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/me_card"
+                android:text="关于" />
+            <TextView
+                android:id="@+id/txt_exit"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/me_card"
+                android:text="退出" />
+        </LinearLayout>
+
+</LinearLayout>

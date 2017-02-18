@@ -1,0 +1,7 @@
+RxJava 1.0 与 Retrofit 
+http://gank.io/post/56e80c2c677659311bed9841
+
+RxJava 1.0和2.0的改变
+http://www.jianshu.com/p/2badfbb3a33b
+https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0#functional-interfaces
+https://zhuanlan.zhihu.com/p/24482660?refer=dreawer

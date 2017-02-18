@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_normal">#ffffff</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--底部tab字的颜色-->
+    <color name="tab_item_text_color_on">#20c2a9</color>
+    <color name="tab_item_text_color">#2c2b2b</color>
+
+
+    <!-- 合格成绩背景颜色 -->
+    <color name="normail_item_passed_text_color">#292929</color>
+    <color name="goal_item_passed_color">#2bff00</color>
+    <!--<color name="goal_item_passed_color">#f1f1f1</color>-->
+    <color name="socre_item_name_default_color">#f1f1f1</color>
+    <!-- 不合格成绩背景颜色 -->
+    <color name="goal_item_failed_color">#fa5050</color>
+</resources>

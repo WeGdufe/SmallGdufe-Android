@@ -1,0 +1,13 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="normal_listview_dividerHeight">3dp</dimen>
+    <dimen name="normal_listview_padding">1dp</dimen>
+    <dimen name="listitem_textSize">15sp</dimen>
+    <dimen name="listitem_padding">4dp</dimen>
+    <dimen name="listitem_title_padding_left">16dp</dimen>
+    <dimen name="listitem_goal_title_padding_right">4dp</dimen>
+
+</resources>
