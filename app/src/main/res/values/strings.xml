@@ -6,7 +6,6 @@
     <string name="tab_settings">我的</string>
 
 
-
     <string name="menu_classtable">课程表</string>
     <string name="menu_goal">查询成绩</string>
     <string name="menu_exam">考试安排/0</string>
@@ -23,29 +22,29 @@
     <string name="menu_busandtelphone">常用电话</string>
     <string name="menu_calendar">校历</string>
     <string name="menu_refresh_classtable">更新课表</string>
-    <string name="menu_notice">校园通知</string>
+    <string name="menu_notice">排课表</string>
     <string name="menu_load_classtable_with_params">智能显示课程</string>
     <string name="menu_load_classtable_with_all">显示全部课程</string>
     <string name="menu_edusys">教务</string>
     <string name="menu_lib">图书馆</string>
     <string name="menu_card">校园卡</string>
-    <string name="menu_other">应用汇</string>
+    <string name="menu_other">小应用</string>
     <string name="menu_about">关于</string>
     <string name="menu_back">返回</string>
     <string name="title_menu">功能</string>
-    <string name="menu_automate_refresh">自动刷新</string>
-    <string name="menu_automate_refresh_close">关闭刷新</string>
+    <!--<string name="menu_automate_refresh">自动刷新</string>-->
+    <!--<string name="menu_automate_refresh_close">关闭刷新</string>-->
     <string name="menu_exit">退出</string>
-    <string name="menu_gettoday">今天记录</string>
-    <string name="menu_gethistory">历史查询</string>
-    <string name="menu_add_class">+</string>
-    <string name="menu_account">账号设置</string>
-    <string name="menu_update">检查更新</string>
-    <string name="menu_configuration">软件设置</string>
-    <string name="menu_home">功能菜单</string>
-    <string name="menu_profile">个人资料</string>
-    <string name="menu_settings">软件设置</string>
-    <string name="menu_course_comments">选课评论</string>
+    <!--<string name="menu_gettoday">今天记录</string>-->
+    <!--<string name="menu_gethistory">历史查询</string>-->
+    <!--<string name="menu_add_class">+</string>-->
+    <!--<string name="menu_account">账号设置</string>-->
+    <!--<string name="menu_update">检查更新</string>-->
+    <!--<string name="menu_configuration">软件设置</string>-->
+    <!--<string name="menu_home">功能菜单</string>-->
+    <!--<string name="menu_profile">个人资料</string>-->
+    <!--<string name="menu_settings">软件设置</string>-->
+    <!--<string name="menu_course_comments">选课评论</string>-->
 
     <!--查成绩-->
     <string name="listitem_lable_goal">成绩：</string>

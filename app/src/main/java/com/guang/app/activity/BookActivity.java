@@ -25,8 +25,8 @@ import io.reactivex.disposables.Disposable;
 public class BookActivity extends QueryActivity {
     private static OpacApiFactory factory = OpacApiFactory.getInstance();
     public static final String doWhat = "what";
-    public static final int DoBorrowedBook = 1;
-    public static final int DoCurrentBook = 0;
+    public static final int doBorrowedBook = 1;
+    public static final int doCurrentBook = 0;
 
     @Bind(R.id.common_recycleView) RecyclerView mRecyclerView;
 
@@ -45,7 +45,7 @@ public class BookActivity extends QueryActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         int from = getIntent().getIntExtra(doWhat,0);
-        if(from == BookActivity.DoBorrowedBook) {
+        if(from == BookActivity.doBorrowedBook) {
             setTitle(R.string.title_borrowedBook);
             factory.getBorrowedBook(new Observer<List<Book>>() {
                 @Override

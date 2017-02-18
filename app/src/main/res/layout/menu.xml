@@ -109,31 +109,31 @@
 
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:visibility="gone">
+                <!--<TableRow-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:visibility="gone">-->
 
-                    <LinearLayout
-                        style="@style/menu_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                    <!--<LinearLayout-->
+                        <!--style="@style/menu_item"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content">-->
 
-                        <ImageButton
-                            android:id="@+id/menu_course_comments"
-                            style="@style/menu_item_icon"
-                            android:src="@drawable/icon_course_comments_selector" />
+                        <!--<ImageButton-->
+                            <!--android:id="@+id/menu_course_comments"-->
+                            <!--style="@style/menu_item_icon"-->
+                            <!--android:src="@drawable/icon_course_comments_selector" />-->
 
-                        <TextView
-                            style="@style/menu_item_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/menu_course_comments" />
+                        <!--<TextView-->
+                            <!--style="@style/menu_item_label"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="@string/menu_course_comments" />-->
 
-                    </LinearLayout>
+                    <!--</LinearLayout>-->
 
-                </TableRow>
+                <!--</TableRow>-->
 
             </TableLayout>
 

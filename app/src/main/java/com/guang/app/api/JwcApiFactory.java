@@ -25,7 +25,7 @@ public class JwcApiFactory extends ApiUtils {
         private static final JwcApiFactory INSTANCE = new JwcApiFactory();
     }
 
-    public void  getXiaoLi(Observer< XiaoLi > sub ) {
+    public void getXiaoLi(Observer< XiaoLi > sub ) {
         service.getXiaoLi()
         .map(new HttpResultFunc<XiaoLi>())
         .observeOn(AndroidSchedulers.mainThread())

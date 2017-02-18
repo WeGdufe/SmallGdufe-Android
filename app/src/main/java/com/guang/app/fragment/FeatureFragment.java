@@ -1,22 +1,19 @@
 package com.guang.app.fragment;
 
 
-import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageView;
 
 import com.apkfuns.logutils.LogUtils;
 import com.guang.app.R;
 import com.guang.app.activity.BookActivity;
 import com.guang.app.activity.FewSztzActivity;
 import com.guang.app.activity.ScoreActivity;
+import com.guang.app.activity.XiaoLiActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -45,12 +42,12 @@ public class FeatureFragment extends Fragment {
 //	}
 	@OnClick(R.id.menu_currentBook) void currentBook() {
 		Intent intent = new Intent(getActivity(), BookActivity.class);
-		intent.putExtra(BookActivity.doWhat,BookActivity.DoCurrentBook);
+		intent.putExtra(BookActivity.doWhat,BookActivity.doCurrentBook);
 		startActivity(intent);
 	}
 	@OnClick(R.id.menu_borrowedBook) void borrowedBook() {
 		Intent intent = new Intent(getActivity(), BookActivity.class);
-		intent.putExtra(BookActivity.doWhat,BookActivity.DoBorrowedBook);
+		intent.putExtra(BookActivity.doWhat,BookActivity.doBorrowedBook);
 		startActivity(intent);
 	}
 
@@ -59,21 +56,14 @@ public class FeatureFragment extends Fragment {
 		startActivity(new Intent(getActivity(), FewSztzActivity.class));
 	}
 	@OnClick(R.id.menu_calendar) void queryXiaoLi() {
-//		startActivity(new Intent(getActivity(), XiaoLiActivity.class));
-		Dialog dia = new Dialog(getActivity(), R.style.edit_AlertDialog_style);
-		dia.setContentView(R.layout.xiaoli);
-		ImageView imageView = (ImageView) dia.findViewById(R.id.img_xiaoli);
-		imageView.setBackgroundResource(R.mipmap.xiaoli);
-		dia.show();
-
-		dia.setCanceledOnTouchOutside(true); // Sets whether this dialog is
-		Window w = dia.getWindow();
-		WindowManager.LayoutParams lp = w.getAttributes();
-		lp.x = 0;
-		lp.y = 40;
-		dia.onWindowAttributesChanged(lp);
-
-//		Dialog dialog = new XiaoLiDialog(getActivity());
-//		dialog.show();
+		Intent intent = new Intent(getActivity(), XiaoLiActivity.class);
+		intent.putExtra(XiaoLiActivity.doWhat,XiaoLiActivity.doXiaoLi);
+		startActivity(intent);
 	}
+	@OnClick(R.id.menu_notice) void queryTimeTable() {
+		Intent intent = new Intent(getActivity(), XiaoLiActivity.class);
+		intent.putExtra(XiaoLiActivity.doWhat,XiaoLiActivity.doTimeTable);
+		startActivity(intent);
+	}
+
 }

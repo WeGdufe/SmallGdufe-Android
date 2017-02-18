@@ -74,22 +74,5 @@
         <item name="android:layout_marginBottom">5dp</item>
     </style>
 
-    <!--图片悬浮dialog-->
-        <style name="PictureDialog" parent="@android:style/Theme.Dialog">
-            <item name="android:windowNoTitle">true</item>
-            <item name="android:background">#00FFFFFF</item>
-            <!--<item name="android:windowBackground">#00FFFFF1</item>-->
-            <item name="android:backgroundDimAmount">0.5</item>
-        </style>
 
-    <style name="edit_AlertDialog_style" parent="@android:style/Theme.Dialog">
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowNoTitle">true</item>
-        <!-- 是否启用标题栏 -->
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:backgroundDimEnabled">true</item>
-        <!-- 是否使用背景半透明 -->
-    </style>
 </resources>
