@@ -65,4 +65,12 @@
     <string name="title_fewsztz">素拓分</string>
     <string name="listitem_lable_minCredit">最低学分：</string>
     <string name="listitem_lable_hasCredit">已修学分：</string>
+
+    <!--图书馆-->
+    <string name="title_currentBook">当前借阅</string>
+    <string name="title_borrowedBook">历史借阅</string>
+    <string name="listitem_lable_borrowedTime">借阅日期：</string>
+    <string name="listitem_lable_barId">条码号：</string>
+    <string name="listitem_lable_returnTime">归还时间：</string>
+    <string name="listitem_lable_location">馆藏位置：</string>
 </resources>

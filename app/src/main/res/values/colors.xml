@@ -12,7 +12,7 @@
 
 
     <!-- 合格成绩背景颜色 -->
-    <color name="normail_item_passed_text_color">#292929</color>
+    <color name="normal_item_passed_text_color">#292929</color>
     <color name="goal_item_passed_color">#2bff00</color>
     <!--<color name="goal_item_passed_color">#f1f1f1</color>-->
     <color name="socre_item_name_default_color">#f1f1f1</color>

@@ -180,7 +180,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:id="@+id/menu_nowBorrowedBook"
+                            android:id="@+id/menu_currentBook"
                             style="@style/menu_item_icon"
                             android:src="@drawable/icon_now_borrow_selector" />
 
@@ -198,7 +198,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:id="@+id/menu_pastBorrowedBook"
+                            android:id="@+id/menu_borrowedBook"
                             style="@style/menu_item_icon"
                             android:src="@drawable/icon_borrow_history_selector" />
 

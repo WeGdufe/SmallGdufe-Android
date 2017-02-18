@@ -23,11 +23,6 @@ public class FewSztzAdapter extends BaseQuickAdapter<FewSztz, BaseViewHolder> {
     public void addData(List<FewSztz> data) {
         super.addData(data);
     }
-//
-//    public FewSztzAdapter(Context context, int layoutResId, List<FewSztz> data) {
-//        super(layoutResId, data);
-//        mContext = context;
-//    }
 
     @Override
     protected void convert(final BaseViewHolder viewHolder, FewSztz item) {

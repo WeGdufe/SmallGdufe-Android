@@ -8,16 +8,14 @@ import com.guang.app.R;
 import com.guang.app.model.Score;
 import com.guang.app.util.CalcUtils;
 
-import java.util.List;
-
 /**
  * 查询绩点
  */
 public class ScoreAdapter extends BaseQuickAdapter<Score, BaseViewHolder> {
     private Context mContext;
 
-    public ScoreAdapter(Context context,int layoutResId, List<Score> data) {
-        super(layoutResId, data);
+    public ScoreAdapter(Context context,int layoutResId) {
+        super(layoutResId);
         mContext = context;
     }
 

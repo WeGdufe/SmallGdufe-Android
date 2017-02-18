@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.RadioGroup;
 
 import com.guang.app.R;
+import com.guang.app.api.InfoApiFactory;
 import com.guang.app.fragment.FeatureFragment;
 import com.guang.app.fragment.HomeFragment;
 import com.guang.app.fragment.MeFragment;
@@ -30,6 +31,17 @@ public class MainActivity extends BaseActivity {
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.bind(this);
         initFragment();
+        test();
+    }
+
+    private void test() {
+          InfoApiFactory factory = InfoApiFactory.getInstance();
+
+//        utils.api.create(InfoApi.class).getFewSztz()
+//                .map(new ApiUtils.HttpResultFunc<List<FewSztz>>())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.io())
+//                .subscribe(sub);
 
     }
 

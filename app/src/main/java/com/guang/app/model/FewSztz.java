@@ -5,7 +5,7 @@ package com.guang.app.model;
  */
 public class FewSztz {
     /**
-     * {"name":"身心素质","requireScore":"1.5","score":"4.4"}
+     * {"name":"身心素质","requireScore":"1.5","common_listview":"4.4"}
      */
     private String name;
     private String requireScore;

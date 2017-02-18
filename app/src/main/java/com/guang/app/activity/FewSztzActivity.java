@@ -28,22 +28,22 @@ import io.reactivex.disposables.Disposable;
 public class FewSztzActivity extends QueryActivity {
     private static InfoApiFactory factory = InfoApiFactory.getInstance();
 
-    @Bind(R.id.score_listView) RecyclerView mRecyclerView;
+    @Bind(R.id.common_recycleView) RecyclerView mRecyclerView;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.addTitleBackBtn();
-        setContentView(R.layout.score);
+        setContentView(R.layout.common_listview);
         setTitle(R.string.title_fewsztz);
         ButterKnife.bind(this);
-        initAdapterAndScoreData();
+        initAdapterAndData();
     }
 
-    private void initAdapterAndScoreData() {
+    private void initAdapterAndData() {
         final FewSztzAdapter mAdapter = new FewSztzAdapter(getApplicationContext(), R.layout.fewsztz_listitem);
         mAdapter.openLoadAnimation();
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(FewSztzActivity.this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         factory.getFewSztz(new Observer<List<FewSztz>>() {
             @Override

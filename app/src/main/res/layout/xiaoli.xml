@@ -4,10 +4,8 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/score_listView"
-        style="@style/noraml_listview"
-
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+    <ImageView
+        android:id="@+id/img_xiaoli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

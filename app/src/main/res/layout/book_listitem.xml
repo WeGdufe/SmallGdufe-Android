@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- 课程名称 -->
+    <TextView
+        android:id="@+id/tv_bookName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/socre_item_name_default_color"
+        android:paddingLeft="@dimen/listitem_title_padding_left"
+        android:text="书名"
+        android:textColor="@color/normal_item_passed_text_color"
+        android:textSize="@dimen/listitem_textSize" />
+    <!---->
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/listitem_padding"
+        android:paddingLeft="@dimen/listitem_title_padding_left"
+        android:paddingRight="@dimen/listitem_title_padding_left"
+        android:paddingTop="@dimen/listitem_padding"
+        android:shrinkColumns="0,2"
+        android:stretchColumns="1,3">
+
+        <TableRow>
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_lable_borrowedTime" />
+
+            <!-- 借阅时间 -->
+            <TextView
+                android:id="@+id/tv_borrowedTime"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_lable_returnTime" />
+            <!-- 归还时间 -->
+            <TextView
+                android:id="@+id/tv_returnTime"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!--<RelativeLayout-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:clickable="true"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--</RelativeLayout>-->
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_lable_barId" />
+            <!-- 书ID -->
+            <TextView
+                android:id="@+id/tv_barId"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_lable_location" />
+            <!-- 馆藏位置 -->
+            <TextView
+                android:id="@+id/tv_location"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

@@ -12,11 +12,9 @@ import io.reactivex.schedulers.Schedulers;
  * Created by xiaoguang on 2017/2/18.
  */
 public class InfoApiFactory extends ApiUtils {
-    private ApiUtils utils;
 
     private InfoApiFactory() {
         super();
-        utils = ApiUtils.getInstance();
     }
 
     public static InfoApiFactory getInstance() {
@@ -27,12 +25,11 @@ public class InfoApiFactory extends ApiUtils {
         private static final InfoApiFactory INSTANCE = new InfoApiFactory();
     }
 
-    public <T> void  getFewSztz(Observer<List<FewSztz>> sub ) {
-        utils.api.create(InfoApi.class).getFewSztz()
+    public void  getFewSztz(Observer<List<FewSztz>> sub ) {
+        ApiUtils.api.create(InfoApi.class).getFewSztz()
                 .map(new HttpResultFunc<List<FewSztz>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
     }
-
 }

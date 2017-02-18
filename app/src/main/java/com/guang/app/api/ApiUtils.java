@@ -1,7 +1,9 @@
 package com.guang.app.api;
 
+import com.apkfuns.logutils.LogUtils;
 import com.guang.app.AppConfig;
 import com.guang.app.model.HttpResult;
+import com.guang.app.util.BasicParamsInterceptor;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -17,17 +19,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApiUtils {
     protected static Retrofit api = null;
-    private final int DEFAULT_TIMEOUT = 5;
+    private static final int DEFAULT_TIMEOUT = 2;
 
-    public static ApiUtils getInstance(){
-        return SingletonHolder.INSTANCE;
-    }
-    private static class SingletonHolder{
-        private static final ApiUtils INSTANCE = new ApiUtils();
-    }
-    protected ApiUtils(){
-        OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
-        httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+    static{
+
+        BasicParamsInterceptor basicParamsInterceptor =
+                new BasicParamsInterceptor.Builder()
+//                        .addHeaderParam("device_id", DeviceUtils.getDeviceId())
+                        .addParam("sno", AppConfig.sno)
+                        .addParam("pwd",AppConfig.idsPwd)
+                        .build();
+        OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder()
+                .addInterceptor(basicParamsInterceptor)
+                .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
         api = new Retrofit.Builder()
                 .baseUrl(AppConfig.BASE_URL)
@@ -45,6 +49,7 @@ public class ApiUtils {
         @Override
         public T apply(HttpResult<T> httpResult) throws Exception {
             if (!httpResult.isSuccess()) {  //业务错误到onError里获取
+                LogUtils.e(httpResult.getMsg());
                 throw new ApiException(httpResult.getCode(),httpResult.getMsg());
             }
             return httpResult.getData();
