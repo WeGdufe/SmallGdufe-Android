@@ -29,6 +29,7 @@ public class FewSztzActivity extends QueryActivity {
     private static InfoApiFactory factory = InfoApiFactory.getInstance();
 
     @Bind(R.id.common_recycleView) RecyclerView mRecyclerView;
+    private FewSztzAdapter mAdapter;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,15 +38,12 @@ public class FewSztzActivity extends QueryActivity {
 
         setContentView(R.layout.common_listview);
         ButterKnife.bind(this);
-        initAdapterAndData();
+        initAdapter();
     }
 
-    private void initAdapterAndData() {
-        final FewSztzAdapter mAdapter = new FewSztzAdapter(getApplicationContext(), R.layout.fewsztz_listitem);
-        mAdapter.openLoadAnimation();
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+    @Override
+    protected void loadData() {
+        startLoadingProgess();
         factory.getFewSztz(new Observer<List<FewSztz>>() {
             @Override
             public void onSubscribe(Disposable d) {
@@ -65,8 +63,16 @@ public class FewSztzActivity extends QueryActivity {
 
             @Override
             public void onComplete() {
+                stopLoadingProgess();
             }
         });
+    }
+
+    private void initAdapter() {
+        mAdapter = new FewSztzAdapter(getApplicationContext(), R.layout.fewsztz_listitem);
+        mAdapter.openLoadAnimation();
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 }

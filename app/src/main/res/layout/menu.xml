@@ -307,7 +307,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:id="@+id/menu_lifeinformation"
+                            android:id="@+id/menu_map"
                             style="@style/menu_item_icon"
                             android:src="@drawable/icon_life_selector" />
 

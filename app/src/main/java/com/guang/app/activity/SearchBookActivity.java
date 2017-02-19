@@ -3,7 +3,8 @@ package com.guang.app.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.SearchView;
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.guang.app.R;
@@ -30,6 +31,7 @@ public class SearchBookActivity extends QueryActivity {
     RecyclerView mRecyclerView;
     @Bind(R.id.book_searchview)
     SearchView searchView;
+    private SearchBookAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,29 +40,25 @@ public class SearchBookActivity extends QueryActivity {
         setTitle(R.string.title_searchBook);
         setContentView(R.layout.search_book);
         ButterKnife.bind(this);
-        initAdapterAndData();
+        initAdapter();
     }
 
-    private void initAdapterAndData() {
-        final SearchBookAdapter mAdapter = new SearchBookAdapter(R.layout.search_book_item);
-        mAdapter.openLoadAnimation();
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        searchView.setIconifiedByDefault(false);//是否自动缩小为图标
+    @Override
+    protected void loadData() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if (query.length() == 0) return false;
+                if (TextUtils.getTrimmedLength(query) == 0) return false;
                 searchView.setIconified(true);  //清空文本，防止操作一次却调用两次onQueryTextSubmit
 
                 factory.searchBook(query, new Observer<List<SearchBook>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+                        startLoadingProgess();
                     }
 
                     @Override
                     public void onNext(List<SearchBook> value) {
-//                        LogUtils.e(value);
                         if (value.size() == 0) {
                             Toast.makeText(SearchBookActivity.this, "没有搜到结果喔", Toast.LENGTH_SHORT).show();
                             return;
@@ -79,6 +77,7 @@ public class SearchBookActivity extends QueryActivity {
 
                     @Override
                     public void onComplete() {
+                        stopLoadingProgess();
                     }
                 });
                 return true;
@@ -89,6 +88,17 @@ public class SearchBookActivity extends QueryActivity {
                 return false;
             }
         });
+    }
+
+    private void initAdapter() {
+        mAdapter = new SearchBookAdapter(R.layout.search_book_item);
+        mAdapter.openLoadAnimation();
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        searchView.setIconifiedByDefault(false);//是否自动缩小为图标
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setQueryHint("书名");
     }
 
 }

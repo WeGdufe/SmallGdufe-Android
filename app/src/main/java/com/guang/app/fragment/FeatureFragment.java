@@ -12,6 +12,7 @@ import com.apkfuns.logutils.LogUtils;
 import com.guang.app.R;
 import com.guang.app.activity.BookActivity;
 import com.guang.app.activity.FewSztzActivity;
+import com.guang.app.activity.MapActivity;
 import com.guang.app.activity.ScoreActivity;
 import com.guang.app.activity.SearchBookActivity;
 import com.guang.app.activity.XiaoLiActivity;
@@ -63,6 +64,11 @@ public class FeatureFragment extends Fragment {
 	@OnClick(R.id.menu_timeTable) void queryTimeTable() {
 		Intent intent = new Intent(getActivity(), XiaoLiActivity.class);
 		intent.putExtra(XiaoLiActivity.doWhat,XiaoLiActivity.doTimeTable);
+		startActivity(intent);
+	}
+	@OnClick(R.id.menu_map) void queryMap() {
+		Intent intent = new Intent(getActivity(), MapActivity.class);
+		intent.putExtra(MapActivity.doWhat, MapActivity.doMapSanShui);
 		startActivity(intent);
 	}
 

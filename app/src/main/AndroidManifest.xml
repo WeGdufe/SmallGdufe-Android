@@ -21,6 +21,8 @@
         <activity android:name=".activity.BookActivity" />
         <activity android:name=".activity.XiaoLiActivity" />
         <activity android:name=".activity.SearchBookActivity" />
+        <activity android:name=".activity.MapActivity" />
+        <activity android:name=".activity.UrgencyPhoneActivity" />
     </application>
 
 </manifest>

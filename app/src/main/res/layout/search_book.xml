@@ -7,7 +7,7 @@
 
     <!--<android.support.v7.widget.SearchView-->
 
-        <SearchView
+        <android.support.v7.widget.SearchView
             android:id="@+id/book_searchview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -24,6 +24,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class BookActivity extends QueryActivity {
     private static OpacApiFactory factory = OpacApiFactory.getInstance();
+    private BookAdapter mAdapter;
     public static final String doWhat = "what";
     public static final int doBorrowedBook = 1;
     public static final int doCurrentBook = 0;
@@ -35,21 +36,20 @@ public class BookActivity extends QueryActivity {
         super.addTitleBackBtn();
         setContentView(R.layout.common_listview);
         ButterKnife.bind(this);
-        initAdapterAndData();
+        initAdapter();
     }
 
-    private void initAdapterAndData() {
-        final BookAdapter mAdapter = new BookAdapter(R.layout.book_listitem);
-        mAdapter.openLoadAnimation();
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+    @Override
+    protected void loadData() {
+        startLoadingProgess();
         int from = getIntent().getIntExtra(doWhat,0);
         if(from == BookActivity.doBorrowedBook) {
             setTitle(R.string.title_borrowedBook);
             factory.getBorrowedBook(new Observer<List<Book>>() {
                 @Override
                 public void onSubscribe(Disposable d) {
+                    startLoadingProgess();
+
                 }
 
                 @Override
@@ -66,6 +66,7 @@ public class BookActivity extends QueryActivity {
 
                 @Override
                 public void onComplete() {
+                    stopLoadingProgess();
                 }
             });
         }else{
@@ -73,6 +74,7 @@ public class BookActivity extends QueryActivity {
             factory.getCurrentBook(new Observer<List<Book>>() {
                 @Override
                 public void onSubscribe(Disposable d) {
+                    startLoadingProgess();
                 }
 
                 @Override
@@ -89,9 +91,17 @@ public class BookActivity extends QueryActivity {
 
                 @Override
                 public void onComplete() {
+                    stopLoadingProgess();
                 }
             });
         }
+    }
+
+    private void initAdapter() {
+        mAdapter = new BookAdapter(R.layout.book_listitem);
+        mAdapter.openLoadAnimation();
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 }

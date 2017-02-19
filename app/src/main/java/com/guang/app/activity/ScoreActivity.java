@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.apkfuns.logutils.LogUtils;
 import com.guang.app.R;
 import com.guang.app.adapter.ScoreAdapter;
 import com.guang.app.api.JwApiFactory;
@@ -28,6 +27,7 @@ public class ScoreActivity extends QueryActivity {
     private static JwApiFactory factory = JwApiFactory.getInstance();
 
     @Bind(R.id.common_recycleView) RecyclerView mRecyclerView;
+    private ScoreAdapter mAdapter;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +35,45 @@ public class ScoreActivity extends QueryActivity {
         setTitle(R.string.title_grade);
         setContentView(R.layout.common_listview);
         ButterKnife.bind(this);
-        initAdapterAndData();
+        initAdapter();
+    }
+
+    @Override
+    protected void loadData() {
+        startLoadingProgess();
+        factory.getScore(new Observer<List<Score>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+            }
+            @Override
+            public void onNext(List<Score> value) {
+                mAdapter.addData(value);
+                mAdapter.notifyDataSetChanged();
+                getSupportActionBar().setSubtitle(getGpaSubTitle(value));
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Toast.makeText(ScoreActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                finish();
+            }
+
+            @Override
+            public void onComplete() {
+                stopLoadingProgess();
+            }
+        });
+    }
+
+    private void initAdapter() {
+        mAdapter = new ScoreAdapter(this,R.layout.score_listitem);
+        mAdapter.openLoadAnimation();
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     // 计算GPA
-    String getGpaSubTitle(List<Score> scores){
+    private String getGpaSubTitle(List<Score> scores){
         double gpa = 0.0,total_credit = 0.0;
         for (Score score:scores) {
             total_credit += score.getCredit();
@@ -51,38 +85,4 @@ public class ScoreActivity extends QueryActivity {
         DecimalFormat df2 = new DecimalFormat("#");
         return "平均绩点："+df1.format(gpa)+"     学分："+df2.format(total_credit);
     }
-
-    private void initAdapterAndData() {
-        final ScoreAdapter mAdapter = new ScoreAdapter(this,R.layout.score_listitem);
-        mAdapter.openLoadAnimation();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mAdapter);
-        LogUtils.e("xxx");
-        factory.getScore(new Observer<List<Score>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-            @Override
-            public void onNext(List<Score> value) {
-
-                LogUtils.e(value);
-                mAdapter.addData(value);
-                getSupportActionBar().setSubtitle(getGpaSubTitle(value));
-                mAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                LogUtils.e(e.getMessage());
-                Toast.makeText(ScoreActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        });
-    }
-
-
 }
