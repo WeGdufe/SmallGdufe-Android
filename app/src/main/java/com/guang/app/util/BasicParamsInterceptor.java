@@ -18,6 +18,7 @@ import okhttp3.Response;
 import okio.Buffer;
 
 /**
+ * 添加公共参数（学号密码）的拦截器
  * Created by xiaoguang on 2017/2/18.
  */
 public class BasicParamsInterceptor implements Interceptor {

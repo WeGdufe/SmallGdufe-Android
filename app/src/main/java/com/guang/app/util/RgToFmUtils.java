@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 import java.util.List;
 
 /**
+ * Fragment管理类
  * Created by xiaoguang on 2017/2/14.
  */
 public class RgToFmUtils {

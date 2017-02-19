@@ -32,8 +32,8 @@ public class ScoreActivity extends QueryActivity {
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.addTitleBackBtn();
-        setContentView(R.layout.common_listview);
         setTitle(R.string.title_grade);
+        setContentView(R.layout.common_listview);
         ButterKnife.bind(this);
         initAdapterAndData();
     }

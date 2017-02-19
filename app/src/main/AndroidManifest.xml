@@ -20,6 +20,7 @@
         <activity android:name=".activity.FewSztzActivity" />
         <activity android:name=".activity.BookActivity" />
         <activity android:name=".activity.XiaoLiActivity" />
+        <activity android:name=".activity.SearchBookActivity" />
     </application>
 
 </manifest>

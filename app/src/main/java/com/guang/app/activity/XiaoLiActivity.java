@@ -22,10 +22,10 @@ public class XiaoLiActivity extends QueryActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.title_likeXiaoli);
+        super.addTitleBackBtn();
         setContentView(R.layout.xiaoli);
         ButterKnife.bind(this);
-        setTitle("可双指操作缩放");
-        super.addTitleBackBtn();
 
         Bitmap bitmap;
         int from = getIntent().getIntExtra(doWhat,0);

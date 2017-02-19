@@ -24,6 +24,7 @@ public class AppConfig {
 
         public static final String currentBook = index + "opac/current-book";
         public static final String borrowedBook = index + "opac/borrowed-book";
+        public static final String searchBook = index + "opac/search-book";
     }
 
 }

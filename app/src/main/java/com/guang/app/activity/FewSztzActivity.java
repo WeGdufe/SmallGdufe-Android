@@ -33,8 +33,9 @@ public class FewSztzActivity extends QueryActivity {
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.addTitleBackBtn();
-        setContentView(R.layout.common_listview);
         setTitle(R.string.title_fewsztz);
+
+        setContentView(R.layout.common_listview);
         ButterKnife.bind(this);
         initAdapterAndData();
     }

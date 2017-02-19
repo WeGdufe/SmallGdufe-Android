@@ -1,13 +1,22 @@
 package com.guang.app.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.guang.app.R;
+import com.guang.app.adapter.SearchBookAdapter;
 import com.guang.app.api.OpacApiFactory;
+import com.guang.app.model.SearchBook;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 
 /**
@@ -17,17 +26,69 @@ import butterknife.ButterKnife;
 public class SearchBookActivity extends QueryActivity {
     private static OpacApiFactory factory = OpacApiFactory.getInstance();
 
-    @Bind(R.id.common_recycleView) RecyclerView mRecyclerView;
+    @Bind(R.id.common_recycleView)
+    RecyclerView mRecyclerView;
+    @Bind(R.id.book_searchview)
+    SearchView searchView;
 
-    @Override public void onCreate(Bundle savedInstanceState) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.addTitleBackBtn();
-        setContentView(R.layout.common_listview);
+        setTitle(R.string.title_searchBook);
+        setContentView(R.layout.search_book);
         ButterKnife.bind(this);
         initAdapterAndData();
     }
 
     private void initAdapterAndData() {
+        final SearchBookAdapter mAdapter = new SearchBookAdapter(R.layout.search_book_item);
+        mAdapter.openLoadAnimation();
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        searchView.setIconifiedByDefault(false);//是否自动缩小为图标
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query.length() == 0) return false;
+                searchView.setIconified(true);  //清空文本，防止操作一次却调用两次onQueryTextSubmit
+
+                factory.searchBook(query, new Observer<List<SearchBook>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(List<SearchBook> value) {
+//                        LogUtils.e(value);
+                        if (value.size() == 0) {
+                            Toast.makeText(SearchBookActivity.this, "没有搜到结果喔", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        Toast.makeText(SearchBookActivity.this, "共搜到" + value.size() + "个结果", Toast.LENGTH_SHORT).show();
+
+                        mAdapter.addData(value);
+                        mAdapter.notifyDataSetChanged();
+                        searchView.setIconified(true);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(SearchBookActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
 }

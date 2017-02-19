@@ -253,7 +253,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:id="@+id/menu_notice"
+                            android:id="@+id/menu_timeTable"
                             style="@style/menu_item_icon"
                             android:src="@drawable/icon_notice_selector" />
 

@@ -13,6 +13,7 @@ import com.guang.app.R;
 import com.guang.app.activity.BookActivity;
 import com.guang.app.activity.FewSztzActivity;
 import com.guang.app.activity.ScoreActivity;
+import com.guang.app.activity.SearchBookActivity;
 import com.guang.app.activity.XiaoLiActivity;
 
 import butterknife.ButterKnife;
@@ -35,11 +36,10 @@ public class FeatureFragment extends Fragment {
 	}
 
 	//第二排
-//	@OnClick(R.id.menu_searchBook) void searchBook() {
-//		Intent intent = new Intent(getActivity(), BookActivity.class);
-//		intent.putExtra("do",BookActivity.DoCurrentBook);
-//		startActivity(intent);
-//	}
+	@OnClick(R.id.menu_searchBook) void searchBook() {
+		Intent intent = new Intent(getActivity(), SearchBookActivity.class);
+		startActivity(intent);
+	}
 	@OnClick(R.id.menu_currentBook) void currentBook() {
 		Intent intent = new Intent(getActivity(), BookActivity.class);
 		intent.putExtra(BookActivity.doWhat,BookActivity.doCurrentBook);
@@ -60,7 +60,7 @@ public class FeatureFragment extends Fragment {
 		intent.putExtra(XiaoLiActivity.doWhat,XiaoLiActivity.doXiaoLi);
 		startActivity(intent);
 	}
-	@OnClick(R.id.menu_notice) void queryTimeTable() {
+	@OnClick(R.id.menu_timeTable) void queryTimeTable() {
 		Intent intent = new Intent(getActivity(), XiaoLiActivity.class);
 		intent.putExtra(XiaoLiActivity.doWhat,XiaoLiActivity.doTimeTable);
 		startActivity(intent);

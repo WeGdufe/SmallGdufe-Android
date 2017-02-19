@@ -36,7 +36,9 @@ public class ApiUtils {
         api = new Retrofit.Builder()
                 .baseUrl(AppConfig.BASE_URL)
                 .client(httpClientBuilder.build())
+//                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
+//                .addConverterFactory(new ToStringConverterFactory())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }

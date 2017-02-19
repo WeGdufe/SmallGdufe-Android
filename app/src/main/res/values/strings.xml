@@ -65,11 +65,22 @@
     <string name="listitem_lable_minCredit">最低学分：</string>
     <string name="listitem_lable_hasCredit">已修学分：</string>
 
-    <!--图书馆-->
+    <!--图书馆借阅-->
     <string name="title_currentBook">当前借阅</string>
     <string name="title_borrowedBook">历史借阅</string>
     <string name="listitem_lable_borrowedTime">借阅日期：</string>
     <string name="listitem_lable_barId">条码号：</string>
     <string name="listitem_lable_returnTime">归还时间：</string>
     <string name="listitem_lable_location">馆藏位置：</string>
+
+    <!--搜索书-->
+    <string name="title_searchBook">馆藏搜索</string>
+    <string name="listitem_lable_serial">索书号：</string>
+    <string name="listitem_lable_numAll">馆藏量：</string>
+    <string name="listitem_lable_numCan">可借：</string>
+    <string name="listitem_lable_publisher">出版社：</string>
+
+    <!--大图页-->
+    <string name="title_likeXiaoli">可双指操作缩放</string>
+
 </resources>
