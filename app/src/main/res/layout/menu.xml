@@ -289,9 +289,9 @@
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:id="@+id/menu_busandtelphone"
+                            android:id="@+id/menu_urgencyPhone"
                             style="@style/menu_item_icon"
-                            android:src="@drawable/icon_bus_selector" />
+                            android:src="@drawable/icon_phone_selector" />
 
                         <TextView
                             style="@style/menu_item_label"

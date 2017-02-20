@@ -1,6 +1,7 @@
 package com.guang.app.activity;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RadioGroup;
 
@@ -9,6 +10,7 @@ import com.guang.app.api.InfoApiFactory;
 import com.guang.app.fragment.FeatureFragment;
 import com.guang.app.fragment.HomeFragment;
 import com.guang.app.fragment.MeFragment;
+import com.guang.app.util.FileUtils;
 import com.guang.app.util.RgToFmUtils;
 
 import java.util.ArrayList;
@@ -27,11 +29,16 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        if(!FileUtils.getStoredAccountAndSetApp(this)){
+            startActivity(new Intent(this, LoginActivity.class));
+            this.finish();
+        }
 //        getSupportActionBar().hide();
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.bind(this);
         initFragment();
-        test();
+//        test();
     }
 
     private void test() {
@@ -52,7 +59,7 @@ public class MainActivity extends BaseActivity {
 //        mFragments.add(new ShareFragment());
         mFragments.add(new MeFragment());
         RgToFmUtils.newInstance(this).showTabToFragment(mFragments, mTabGroup, getFragmentManager(), R.id.main_fragment);
-        RgToFmUtils.newInstance(this).showFragment(1,0);
+//        RgToFmUtils.newInstance(this).showFragment(1,0);
 //        RgToFmUtils.newInstance(this).showTabToFragment(mFragments, mTabGroup, getFragmentManager(), R.id.main_fragment);
     }
 }

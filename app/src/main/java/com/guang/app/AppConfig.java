@@ -6,9 +6,15 @@ public class AppConfig {
 //    public static String idsPwd = "qq5521140";
 //    public static String jwPwd = "qq5521140";
 
-    public static String sno = "13251102217";           // 用户学号
-    public static String idsPwd = "118118";
-    public static String jwPwd = "118118";
+    public static String sno = "";           // 用户学号
+    public static String idsPwd = "";
+    public static String jwPwd = "";
+    public static String localAesSeed = "local";
+    public static String netAesSeed = "netdsad238139dsad";
+
+//    public static String sno = "13251102217";           // 用户学号
+//    public static String idsPwd = "118118";
+//    public static String jwPwd = "118118";
 
     //    public static final String BASE_URL = "http://www.wintercoder.com:82";
 //    public static final String BASE_URL = "http://192.168.1.105/";

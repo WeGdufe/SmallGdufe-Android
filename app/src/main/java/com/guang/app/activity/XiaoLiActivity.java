@@ -48,4 +48,8 @@ public class XiaoLiActivity extends QueryActivity {
         zoomImageView.setImageBitmap(mCurBitmap);
         stopLoadingProgess();
     }
+    @Override
+    protected boolean hideLoadingIcon() {
+        return true;
+    }
 }

@@ -15,6 +15,7 @@ import com.guang.app.activity.FewSztzActivity;
 import com.guang.app.activity.MapActivity;
 import com.guang.app.activity.ScoreActivity;
 import com.guang.app.activity.SearchBookActivity;
+import com.guang.app.activity.UrgencyPhoneActivity;
 import com.guang.app.activity.XiaoLiActivity;
 
 import butterknife.ButterKnife;
@@ -70,6 +71,9 @@ public class FeatureFragment extends Fragment {
 		Intent intent = new Intent(getActivity(), MapActivity.class);
 		intent.putExtra(MapActivity.doWhat, MapActivity.doMapSanShui);
 		startActivity(intent);
+	}
+	@OnClick(R.id.menu_urgencyPhone) void queryUrgencyPhone() {
+		startActivity(new Intent(getActivity(), UrgencyPhoneActivity.class));
 	}
 
 }

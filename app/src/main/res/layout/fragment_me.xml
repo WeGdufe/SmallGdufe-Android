@@ -72,7 +72,7 @@
                 android:drawableLeft="@mipmap/me_card"
                 android:text="关于" />
             <TextView
-                android:id="@+id/txt_exit"
+                android:id="@+id/tv_me_exit"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
                 android:layout_width="fill_parent"

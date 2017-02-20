@@ -3,6 +3,8 @@
     package="com.guang.app">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ScoreActivity" />
         <activity android:name=".activity.FewSztzActivity" />
         <activity android:name=".activity.BookActivity" />

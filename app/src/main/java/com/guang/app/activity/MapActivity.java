@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
  */
 public class MapActivity extends QueryActivity {
     @Bind(R.id.xiaoli_zoom_image_view) ZoomImageView zoomImageView;
+
     public static final String doWhat = "what";
     public static final boolean doMapSanShui = false;
     public static final boolean doMapGuangZhou = true;
@@ -48,18 +49,15 @@ public class MapActivity extends QueryActivity {
     }
 
     /**
-     * 加载图片，且转加载圈
+     * 加载图片
      */
     private void loadMapAccordingMapFlag() {
-        startLoadingProgess();
         int mapId = R.mipmap.map_sanshui;
-//        if(nowMapFlag){   //等效 但改doMapGuangZhou值后需要修改，而且不好理解
         if(nowMapFlag == MapActivity.doMapGuangZhou){
             mapId = R.mipmap.map_guangzhou; 
         }
         mCurBitmap = BitmapFactory.decodeResource(getResources(), mapId);
         zoomImageView.setImageBitmap(mCurBitmap);
-        stopLoadingProgess();
     }
 
     @Override
@@ -72,6 +70,9 @@ public class MapActivity extends QueryActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    @Override
+    protected boolean hideLoadingIcon() {
+        return true;
+    }
  
 }
