@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/picker_layout"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+    <com.guang.app.widget.PickerView
+        android:id="@+id/picker_xuenian"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+    <com.guang.app.widget.PickerView
+        android:id="@+id/picker_xueqi"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="15dp"-->
+        <!--android:layout_below="@id/picker_layout"-->
+        <!--android:orientation="horizontal">-->
+        <!--<Button-->
+            <!--android:id="@+id/xueqi_picker_btn_sure"-->
+            <!--style="@android:style/Theme.Dialog"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@null"-->
+            <!--android:text="确定"-->
+            <!--android:textColor="#45818e" />-->
+        <!--<Button-->
+            <!--android:id="@+id/xueqi_picker_btn_cancel"-->
+            <!--style="@android:style/Theme.Dialog"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_toRightOf="@+id/xueqi_picker_btn_sure"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@null"-->
+            <!--android:text="取消"-->
+            <!--android:textColor="#45818e" />-->
+
+    <!--</LinearLayout>-->
+</RelativeLayout>

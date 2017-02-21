@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_schedule_more"
+        app:showAsAction="always"
+        android:title="">
+        <!--<item-->
+            <!--android:id="@+id/menu_add_class"-->
+            <!--android:title="添加自定义课程"-->
+            <!--app:showAsAction="always" />-->
+        <item
+            android:id="@+id/menu_schedule_more_import"
+            android:title="导入" />
+        <!--<item-->
+            <!--android:id="@+id/menu_schedule_more_split"-->
+            <!--android:title="拆/合 连堂课程" />-->
+    </item>
+</menu>

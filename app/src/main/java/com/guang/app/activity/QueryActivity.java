@@ -45,13 +45,13 @@ public class QueryActivity extends AppCompatActivity implements RefreshActionIte
     protected boolean hideLoadingIcon() {
         return false;
     }
-        /**
-         * 具体业务实现的初始化数据，创建actionBar菜单后就被调用
-         * 需要这个是因为onCreateOptionsMenu()调用在onCreate()之后，
-         * 而我们APP很多功能需要一打开（在onCreate里）就跑数据load图标的，
-         * 这会导致mRefreshActionItem是null报错，
-         * 故加载数据方法放在onCreateOptionsMenu()而非业务的onCreate()
-         */
+    /**
+     * 具体业务实现的初始化数据，创建actionBar菜单后就被调用
+     * 需要这个是因为onCreateOptionsMenu()调用在onCreate()之后，
+     * 而我们APP很多功能需要一打开（在onCreate里）就跑数据load图标的，
+     * 这会导致mRefreshActionItem是null报错，
+     * 故加载数据方法放在onCreateOptionsMenu()而非业务的onCreate()
+     */
     protected void loadData(){}
 
     /**
@@ -71,7 +71,7 @@ public class QueryActivity extends AppCompatActivity implements RefreshActionIte
         mRefreshActionItem.stopProgress();
     }
     /**
-     * 添加标题栏返回按钮 效果
+     * 添加标题栏返回按钮 实际效果代码
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -16,6 +16,7 @@ import com.guang.app.R;
 
 /**
  * actionBar上的加载框
+ * https://github.com/iSCAU/iSCAU-Android
  */
 public class RefreshActionItem extends FrameLayout implements View.OnClickListener {
 

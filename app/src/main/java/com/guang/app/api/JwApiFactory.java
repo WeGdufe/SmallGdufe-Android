@@ -1,5 +1,6 @@
 package com.guang.app.api;
 
+import com.guang.app.model.Schedule;
 import com.guang.app.model.Score;
 
 import java.util.List;
@@ -33,5 +34,14 @@ public class JwApiFactory extends ApiUtils {
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .subscribe(sub);
+    }
+
+    //split为1代表拆开连堂课为多个item，默认为0，合并成一个
+    public void  getSchedule( int split,Observer< List<Schedule> > sub) {
+        service.getSchedule(split)
+                .map(new HttpResultFunc< List<Schedule> >())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
     }
 }
