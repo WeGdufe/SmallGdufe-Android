@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.apkfuns.logutils.LogUtils;
 import com.guang.app.R;
 import com.guang.app.activity.BookActivity;
+import com.guang.app.activity.CetActivity;
 import com.guang.app.activity.FewSztzActivity;
 import com.guang.app.activity.MapActivity;
 import com.guang.app.activity.ScoreActivity;
@@ -29,12 +29,14 @@ public class FeatureFragment extends Fragment {
 //		View view = inflater.inflate(R.layout.menu, container,false);
 		View view = inflater.inflate(R.layout.menu,null,false);
 		ButterKnife.bind(this, view);
-		LogUtils.e("xxx");
-
 		return view;
 	}
+
 	@OnClick(R.id.menu_score) void queryScore() {
 		startActivity(new Intent(getActivity(), ScoreActivity.class));
+	}
+	@OnClick(R.id.menu_cet) void queryCet() {
+		startActivity(new Intent(getActivity(), CetActivity.class));
 	}
 
 	//第二排

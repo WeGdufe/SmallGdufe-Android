@@ -27,5 +27,6 @@
         <activity android:name=".activity.SearchBookActivity" />
         <activity android:name=".activity.MapActivity" />
         <activity android:name=".activity.UrgencyPhoneActivity" />
+        <activity android:name=".activity.CetActivity" />
     </application>
 </manifest>

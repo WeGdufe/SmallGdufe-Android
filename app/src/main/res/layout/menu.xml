@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:id="@+id/menu_pickCourseInfo"
+                            android:id="@+id/menu_cet"
                             style="@style/menu_item_icon"
                             android:src="@drawable/icon_cet_selector" />
 

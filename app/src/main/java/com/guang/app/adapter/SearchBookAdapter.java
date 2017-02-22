@@ -23,4 +23,8 @@ public class SearchBookAdapter extends BaseQuickAdapter<SearchBook, BaseViewHold
                     .setText(R.id.tv_publisher, item.getPublisher())
         ;
     }
+
+    public void cleanData(){
+        super.mData.clear();
+    }
 }

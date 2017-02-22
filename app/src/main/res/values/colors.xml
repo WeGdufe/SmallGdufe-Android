@@ -18,6 +18,7 @@
     <color name="goal_item_failed_color">#fa5050</color>
 
     <!--课程表-->
+    <color name="schedule_background">#F9F9F9</color>
     <color name="view_line">#ffe6e6e6</color>
     <color name="text_color">#333</color>
     <color name="ic_coure_yi">#8AD297</color>
@@ -55,6 +56,8 @@
     <color name="tab_indicator_text_selected">#2DACA1</color>
     <color name="tab_indicator_text_unselected">#000000</color>
 
+    <!--<color name="green">#7CFC00</color>-->
+    <!--<color name="red">#ff0307</color>-->
 
 
 </resources>

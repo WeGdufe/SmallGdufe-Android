@@ -65,6 +65,7 @@ public class SearchBookActivity extends QueryActivity {
                         }
                         Toast.makeText(SearchBookActivity.this, "共搜到" + value.size() + "个结果", Toast.LENGTH_SHORT).show();
 
+                        mAdapter.cleanData();
                         mAdapter.addData(value);
                         mAdapter.notifyDataSetChanged();
                         searchView.setIconified(true);

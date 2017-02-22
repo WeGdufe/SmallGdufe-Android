@@ -10,7 +10,7 @@
     <string name="menu_classtable">课程表</string>
     <string name="menu_goal">查询成绩</string>
     <string name="menu_exam">考试安排/0</string>
-    <string name="menu_cet">查等级考</string>
+    <string name="menu_cet">查四六级</string>
     <string name="menu_emptyClassRoom">空余课室/0</string>
     <string name="menu_searchBook">搜索图书</string>
     <string name="menu_nowBorrowedBook">当前借阅</string>
@@ -84,5 +84,7 @@
     <!--大图页-->
     <string name="title_likeXiaoli">可双指操作缩放</string>
     <string name="title_urgencyPhone">常用电话</string>
+
+    <string name="title_cet">祝你好运</string>
 
 </resources>

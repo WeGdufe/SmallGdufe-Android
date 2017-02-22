@@ -74,5 +74,15 @@
         <item name="android:layout_marginBottom">5dp</item>
     </style>
 
+    <!--四六级文本-->
+    <style name="cet_item_label">
+        <item name="android:textSize">20sp</item>
+        <!--<item name="android:textColor">#06ff76</item>-->
+    </style>
+
+    <style name="cet_item_score">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#0ff475</item>
+    </style>
 
 </resources>

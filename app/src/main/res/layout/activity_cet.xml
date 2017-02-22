@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_normal"
+    android:orientation="vertical"
+
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="准考证号：" />
+
+            <com.guang.app.widget.OneKeyClearEditText
+                android:id="@+id/ed_cet_zkzh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="440100"
+                 />
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="姓名：" />
+
+            <com.guang.app.widget.OneKeyClearEditText
+                android:id="@+id/ed_cet_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                 />
+        </LinearLayout>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btn_cet_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="查询" />
+
+    <TableLayout
+        android:id="@+id/table_cet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:paddingTop="80dp"
+        android:stretchColumns="0,1"
+        android:visibility="visible">
+
+        <TableRow>
+
+            <TextView
+                style="@style/cet_item_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="考试类别" />
+
+            <TextView
+                android:id="@+id/tv_cet_level"
+                style="@style/cet_item_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="英语⑥级" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="20dp">
+
+            <TextView
+                style="@style/cet_item_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="总分" />
+
+            <TextView
+                android:id="@+id/tv_cet_score"
+                style="@style/cet_item_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="666" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="10dp">
+
+            <TextView
+                style="@style/cet_item_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="听力" />
+
+            <TextView
+                android:id="@+id/tv_cet_listen"
+                style="@style/cet_item_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6 / 249" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="10dp">
+
+
+            <TextView
+                style="@style/cet_item_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="阅读" />
+
+            <TextView
+                android:id="@+id/tv_cet_read"
+                style="@style/cet_item_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6 / 249" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="10dp">
+
+            <TextView
+                style="@style/cet_item_label"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="写作" />
+
+            <TextView
+                android:id="@+id/tv_cet_writing"
+                style="@style/cet_item_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6 / 212" />
+        </TableRow>
+
+        <TableRow
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+            <TextView
+                style="@style/cet_item_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_span="1"
+                android:text="排名" />
+            <TextView
+                android:id="@+id/tv_cet_rank"
+                style="@style/cet_item_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/goal_item_failed_color"
+                android:text="前99%~100%" />
+        </TableRow>
+
+
+    </TableLayout>
+</LinearLayout>

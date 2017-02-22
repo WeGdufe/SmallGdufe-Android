@@ -8,6 +8,7 @@ public class AppConfig {
     public static String localAesSeed = "local";
     public static String netAesSeed = "netdsad238139dsad";
 
+
     //    public static final String BASE_URL = "http://www.wintercoder.com:82";
     public static final String BASE_URL = "http://192.168.1.106:82/";
 
@@ -20,6 +21,7 @@ public class AppConfig {
         public static final String fewSztz = index + "info/few-sztz";
 
         public static final String getXiaoLi = index + "jwc/get-xiaoli";
+        public static final String getCet = index + "jwc/get-cet";
 
         public static final String currentBook = index + "opac/current-book";
         public static final String borrowedBook = index + "opac/borrowed-book";

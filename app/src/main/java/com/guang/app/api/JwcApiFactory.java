@@ -1,5 +1,6 @@
 package com.guang.app.api;
 
+import com.guang.app.model.Cet;
 import com.guang.app.model.XiaoLi;
 
 import io.reactivex.Observer;
@@ -28,6 +29,13 @@ public class JwcApiFactory extends ApiUtils {
     public void getXiaoLi(Observer< XiaoLi > sub ) {
         service.getXiaoLi()
         .map(new HttpResultFunc<XiaoLi>())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribeOn(Schedulers.io())
+        .subscribe(sub);
+    }
+    public void getCet(String zkzh,String name, Observer<Cet> sub ) {
+        service.getCet(zkzh,name)
+        .map(new HttpResultFunc<Cet>())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .subscribe(sub);
