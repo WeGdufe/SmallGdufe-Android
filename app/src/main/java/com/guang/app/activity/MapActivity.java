@@ -70,6 +70,7 @@ public class MapActivity extends QueryActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected boolean hideLoadingIcon() {
         return true;

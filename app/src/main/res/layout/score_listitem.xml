@@ -33,7 +33,7 @@
                     style="@style/normal_item_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_year"
+                    android:text="@string/listitem_lable_time"
                     android:id="@+id/textView"/>
 
             <!-- 学年 -->
@@ -41,7 +41,7 @@
                     style="@style/normal_item_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tv_year"/>
+                    android:id="@+id/tv_time"/>
 
             <TextView
                     style="@style/normal_item_sub_title"

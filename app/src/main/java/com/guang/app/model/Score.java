@@ -5,10 +5,18 @@ package com.guang.app.model;
  */
 public class Score {
 
+    private String time;
     private String name;
     private int score;
     private int credit;
 
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
     public int getScore() {
         return score;
     }

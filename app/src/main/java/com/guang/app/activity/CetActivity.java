@@ -76,6 +76,7 @@ public class CetActivity extends QueryActivity {
         factory.getCet(zkzh, name, new Observer<Cet>() {
             @Override
             public void onSubscribe(Disposable d) {
+                startLoadingProgess();
             }
 
             @Override
@@ -113,6 +114,7 @@ public class CetActivity extends QueryActivity {
 
             @Override
             public void onComplete() {
+                stopLoadingProgess();
             }
         });
     }

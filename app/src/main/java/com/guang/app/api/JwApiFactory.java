@@ -28,8 +28,9 @@ public class JwApiFactory extends ApiUtils {
         private static final JwApiFactory INSTANCE = new JwApiFactory();
     }
 
-    public void  getScore(Observer< List<Score> > sub ) {
-        service.getScore()
+    //stu_time格式：2013-2014-1，或者为空字符串表示查询整个大学的成绩
+    public void  getScore(String stu_time,Observer< List<Score> > sub ) {
+        service.getScore(stu_time)
         .map(new HttpResultFunc< List<Score> >())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
@@ -37,8 +38,8 @@ public class JwApiFactory extends ApiUtils {
     }
 
     //split为1代表拆开连堂课为多个item，默认为0，合并成一个
-    public void  getSchedule(String xueqi,int split,Observer< List<Schedule> > sub) {
-        service.getSchedule(xueqi,split)
+    public void  getSchedule(String stu_time,int split,Observer< List<Schedule> > sub) {
+        service.getSchedule(stu_time,split)
                 .map(new HttpResultFunc< List<Schedule> >())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

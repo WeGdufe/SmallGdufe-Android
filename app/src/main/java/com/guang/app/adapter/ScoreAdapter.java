@@ -22,9 +22,10 @@ public class ScoreAdapter extends BaseQuickAdapter<Score, BaseViewHolder> {
     @Override
     protected void convert(final BaseViewHolder viewHolder, Score item) {
         viewHolder.setText(R.id.tv_classname,item.getName())
+                    .setText(R.id.tv_time,item.getTime())
                     .setText(R.id.tv_score,""+item.getScore())
                     .setText(R.id.tv_credit,""+item.getCredit())
-                    .setText(R.id.tv_grade_point, CalcUtils.calcScore(item.getScore()))
+                    .setText(R.id.tv_grade_point, CalcUtils.calcScore2Gpa(item.getScore()))
                     .setVisible(R.id.expandable, false);
         //  .setVisible(R.id.expandable, viewHolder.getView(R.id.expandable_toggle_button).is())
         //重修判断 60分为通过？
@@ -34,4 +35,8 @@ public class ScoreAdapter extends BaseQuickAdapter<Score, BaseViewHolder> {
                     mContext.getResources().getColor(R.color.goal_item_failed_color));
         }
     }
+    public void cleanData(){
+        super.mData.clear();
+    }
+
 }

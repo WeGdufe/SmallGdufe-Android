@@ -51,25 +51,6 @@
                             android:text="@string/menu_goal" />
 
                     </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/menu_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageButton
-                            android:id="@+id/menu_emptyClassRoom"
-                            style="@style/menu_item_icon"
-                            android:src="@drawable/icon_emptyclassroom_selector" />
-
-                        <TextView
-                            style="@style/menu_item_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/menu_emptyClassRoom" />
-
-                    </LinearLayout>
-
                     <LinearLayout
                         style="@style/menu_item"
                         android:layout_width="wrap_content"
@@ -88,9 +69,30 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:visibility="invisible"
+                        style="@style/menu_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:id="@+id/menu_emptyClassRoom"
+                            style="@style/menu_item_icon"
+                            android:src="@drawable/icon_emptyclassroom_selector" />
+
+                        <TextView
+                            style="@style/menu_item_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/menu_emptyClassRoom" />
+
+                    </LinearLayout>
+
+
 
                     <LinearLayout
                         style="@style/menu_item"
+                        android:visibility="invisible"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 

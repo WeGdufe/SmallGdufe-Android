@@ -75,8 +75,8 @@ public class HomeFragment extends Fragment {
         ArrayList<String> xuenianArr = new ArrayList<>();
         ArrayList<String> xueqiArr = new ArrayList<>();
         int firstYear = Integer.parseInt(AppConfig.sno.substring(0, 2));
-        String level = "一二三四五";
-        for (int i = 0; i < 5; i++) {
+        String level = "一二三四";
+        for (int i = 0; i < 4; i++) {
             xuenianArr.add("20" + (firstYear + i) + "-20" + (firstYear + i + 1) + "(大" + level.charAt(i) + ")");
         }
         pickerViewXuenian.setData(xuenianArr);
@@ -102,43 +102,49 @@ public class HomeFragment extends Fragment {
                 selectedXueqi = text.substring(1, 2);
             }
         });
-
+        pickerBuilder.setNeutralButton("当前学期", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                realQuerySchedule("");
+            }
+        });
         //对话框的确定按钮
         pickerBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String studyTime = selectedXuenian + "-" + selectedXueqi;
-                factory.getSchedule(studyTime,MERGE_SCHEDULE, new Observer<List<Schedule>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-
-                    @Override
-                    public void onNext(List<Schedule> value) {
-                        LogUtils.e(value);
-                        mScheduleView.cleanScheduleData();
-                        mScheduleView.setScheduleData(value);
-                        DataSupport.deleteAll(Schedule.class);
-                        DataSupport.saveAll(value);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        LogUtils.e(e.getMessage());
-                        Toast.makeText(act, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onComplete() {
-                    }
-                });
+                realQuerySchedule(studyTime);
             }
         });
         pickerBuilder.setNegativeButton("取消", null);
         pickerBuilder.show();
     }
 
+    private void realQuerySchedule(String studyTime){
+        factory.getSchedule(studyTime,MERGE_SCHEDULE, new Observer<List<Schedule>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+            }
 
+            @Override
+            public void onNext(List<Schedule> value) {
+                mScheduleView.cleanScheduleData();
+                mScheduleView.setScheduleData(value);
+                DataSupport.deleteAll(Schedule.class);
+                DataSupport.saveAll(value);
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                LogUtils.e(e.getMessage());
+                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onComplete() {
+            }
+        });
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

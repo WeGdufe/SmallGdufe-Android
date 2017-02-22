@@ -268,7 +268,7 @@ public class ScheduleView extends LinearLayout {
         mScheduleView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), model.getName() + "\n" + model.getLocation(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), model.getName() + "\n" + model.getLocation()+"\n" + model.getTeacher(), Toast.LENGTH_SHORT).show();
             }
         });
         return mScheduleView;
