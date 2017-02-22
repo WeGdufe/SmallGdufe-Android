@@ -1,20 +1,13 @@
 package com.guang.app.model;
 
+
+import org.litepal.crud.DataSupport;
+
 /**
  * 课程表
  * Created by xiaoguang on 2017/2/21.
  */
-public class Schedule {
-
-    public Schedule(String name, String teacher, String period, String location, int dayInWeek, int startSec, int endSec) {
-        this.name = name;
-        this.teacher = teacher;
-        this.period = period;
-        this.location = location;
-        this.dayInWeek = dayInWeek;
-        this.startSec = startSec;
-        this.endSec = endSec;
-    }
+public class Schedule  extends DataSupport {
 
     /**
      * name : 计算机系统结构
@@ -25,15 +18,44 @@ public class Schedule {
      * startSec : 1
      * endSec : 2
      */
+//     private Long sId; //自增id，只为存本地数据库用，与业务无关
+     private String name;
+     private String teacher;
+     private String period;       //周情况
+     private String location;
+     private int dayInWeek;      //星期几
+     private int startSec;
+     private int endSec;         //终止小节
 
-    private String name;
-    private String teacher;
-    private String period;       //周情况
-    private String location;
-    private int dayInWeek;      //星期几
-    private int startSec;
-    private int endSec;         //终止小节
+    public Schedule( String name, String teacher, String period, String location, int dayInWeek, int startSec, int endSec) {
+        this.name = name;
+        this.teacher = teacher;
+        this.period = period;
+        this.location = location;
+        this.dayInWeek = dayInWeek;
+        this.startSec = startSec;
+        this.endSec = endSec;
+    }
 
+//    public Schedule(int id,String name, String teacher, String period, String location, int dayInWeek, int startSec, int endSec) {
+//        this.id = id;
+//        this.name = name;
+//        this.teacher = teacher;
+//        this.period = period;
+//        this.location = location;
+//        this.dayInWeek = dayInWeek;
+//        this.startSec = startSec;
+//        this.endSec = endSec;
+//    }
+//    public Schedule(String name, String teacher, String period, String location, int dayInWeek, int startSec, int endSec) {
+//        this.name = name;
+//        this.teacher = teacher;
+//        this.period = period;
+//        this.location = location;
+//        this.dayInWeek = dayInWeek;
+//        this.startSec = startSec;
+//        this.endSec = endSec;
+//    }
     public String getName() {
         return name;
     }
@@ -89,4 +111,6 @@ public class Schedule {
     public void setEndSec(int endSec) {
         this.endSec = endSec;
     }
+
+
 }

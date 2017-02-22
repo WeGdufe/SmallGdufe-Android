@@ -20,9 +20,7 @@ public interface JwApi {
     Observable<HttpResult< List<Score> >> getScore();
 
     @POST(AppConfig.Url.getSchedule)
-    Observable<HttpResult< List<Schedule> >> getSchedule(@Query("split") int split);
+    Observable<HttpResult< List<Schedule> >> getSchedule(@Query("stu_time") String stu_time,@Query("split") int split);
     //split为1代表拆开连堂课为多个item，默认为0，合并成一个
-
-//    Call<WrapperEntity<Score>> getScore(@Path("sno") String sno, @Path("pwd") String pwd);
 
 }

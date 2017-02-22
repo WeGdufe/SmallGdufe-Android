@@ -22,6 +22,8 @@ import com.guang.app.model.Schedule;
 import com.guang.app.widget.PickerView;
 import com.guang.app.widget.ScheduleView;
 
+import org.litepal.crud.DataSupport;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,17 +42,18 @@ public class HomeFragment extends Fragment {
 
     @Bind(R.id.scheduleView)
     ScheduleView mScheduleView;
-//    @Bind(R.id.menu_schedule_more_split) MenuItem splitItem;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         ButterKnife.bind(this, view);
-        getActivity().setTitle("好好学习不逃课");
-        addDataList();
+        getActivity().setTitle("APP");
 
+        List<Schedule> list= DataSupport.findAll(Schedule.class);
+        if(list.size() != 0) {
+            mScheduleView.setScheduleData(list);
+        }
         return view;
     }
 
@@ -78,7 +81,6 @@ public class HomeFragment extends Fragment {
         }
         pickerViewXuenian.setData(xuenianArr);
 
-//        xueqiArr.add("全部学期");
         xueqiArr.add("第1学期");
         xueqiArr.add("第2学期");
         pickerViewXueqi.setData(xueqiArr);
@@ -105,17 +107,19 @@ public class HomeFragment extends Fragment {
         pickerBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String resTime = selectedXuenian + "-" + selectedXueqi;
-                LogUtils.e(resTime);
-
-                factory.getSchedule(MERGE_SCHEDULE, new Observer<List<Schedule>>() {
+                String studyTime = selectedXuenian + "-" + selectedXueqi;
+                factory.getSchedule(studyTime,MERGE_SCHEDULE, new Observer<List<Schedule>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                     }
 
                     @Override
                     public void onNext(List<Schedule> value) {
+                        LogUtils.e(value);
+                        mScheduleView.cleanScheduleData();
                         mScheduleView.setScheduleData(value);
+                        DataSupport.deleteAll(Schedule.class);
+                        DataSupport.saveAll(value);
                     }
 
                     @Override
@@ -134,14 +138,6 @@ public class HomeFragment extends Fragment {
         pickerBuilder.show();
     }
 
-    @Override
-    public void onDestroy() {
-        //关掉选择时间的窗口
-        if (pickerBuilder != null && pickerBuilder.create().isShowing()) {
-            pickerBuilder.create().dismiss();
-        }
-        super.onDestroy();
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -156,59 +152,23 @@ public class HomeFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    private void addDataList() {
-
-//        mList.add(new  Schedule("数据结构课程设计","罗勇副教授","9-16(周)","拓新楼(SS1)332",5,5,8));
-        factory.getSchedule(MERGE_SCHEDULE, new Observer<List<Schedule>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-            }
-
-            @Override
-            public void onNext(List<Schedule> value) {
-                mScheduleView.setScheduleData(value);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                LogUtils.e(e.getMessage());
-            }
-
-            @Override
-            public void onComplete() {
-            }
-        });
-
-    }
-
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
             case R.id.menu_schedule_more_import:
-                LogUtils.e("x");
-//                showXueQiPickerDialog(getActivity());
-                factory.getSchedule(SPLIT_SCHEDULE, new Observer<List<Schedule>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                    }
-
-                    @Override
-                    public void onNext(List<Schedule> value) {
-                        mScheduleView.cleanScheduleData();
-                        mScheduleView.setScheduleData(value);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        LogUtils.e(e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-                    }
-                });
+                showXueQiPickerDialog(getActivity());
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onDestroy() {
+        //关掉选择时间的窗口
+        if (pickerBuilder != null && pickerBuilder.create().isShowing()) {
+            pickerBuilder.create().dismiss();
+        }
+        super.onDestroy();
+    }
+
 }

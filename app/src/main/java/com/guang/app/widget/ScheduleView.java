@@ -48,7 +48,8 @@ public class ScheduleView extends LinearLayout {
     private LinearLayout mHorizontalWeekLayout;//第一行的星期显示
     private LinearLayout mVerticalWeekLaout;//课程格子
     private String[] weekname = {"一", "二", "三", "四", "五", "六", "七"};
-    public static String[] colorStr = new String[20];
+    private final static int maxDifferentSchedule = 42;//最多7天*6大节 种不同名课程，颜色最多colors.length种[取mod]
+    public static String[] colorStr = new String[maxDifferentSchedule];
     int colornum = 0;
     //数据源
     private List<Schedule> mListTimeTable = new ArrayList<Schedule>();
@@ -293,19 +294,23 @@ public class ScheduleView extends LinearLayout {
         invalidate();
     }
     public void cleanScheduleData() {
-        mHorizontalWeekLayout.removeAllViews();
-        mVerticalWeekLaout.removeAllViews();
-        this.mListTimeTable = new ArrayList<Schedule>();
-        invalidate();
+        if(mHorizontalWeekLayout != null){
+            mHorizontalWeekLayout.removeAllViews();
+            mVerticalWeekLaout.removeAllViews();
+            this.mListTimeTable = new ArrayList<Schedule>();
+            colorStr = new String[maxDifferentSchedule];
+            colornum = 0;
+            invalidate();
+        }
     }
     /**
-     * 输入课表名循环判断是否数组存在该课表 如果存在输出true并退出循环 如果不存在则存入colorSt[20]数组
+     * 输入课表名循环判断是否数组存在该课表 如果存在输出true并退出循环 如果不存在则存入colorSt[]数组
      *
      * @param name
      */
     private void addTimeName(String name) {
         boolean isRepeat = true;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < maxDifferentSchedule; i++) {
             if (name.equals(colorStr[i])) {
                 isRepeat = true;
                 break;
@@ -327,11 +332,11 @@ public class ScheduleView extends LinearLayout {
      */
     public static int getColorNum(String name) {
         int num = 0;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < maxDifferentSchedule; i++) {
             if (name.equals(colorStr[i])) {
                 num = i;
             }
         }
-        return num;
+        return num % colors.length;
     }
 }

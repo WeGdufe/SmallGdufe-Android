@@ -51,7 +51,7 @@ public class ApiUtils {
         @Override
         public T apply(HttpResult<T> httpResult) throws Exception {
             if (!httpResult.isSuccess()) {  //业务错误到onError里获取
-                LogUtils.e(httpResult.getMsg());
+                LogUtils.e("httpres "+httpResult.getMsg());
                 throw new ApiException(httpResult.getCode(),httpResult.getMsg());
             }
             return httpResult.getData();

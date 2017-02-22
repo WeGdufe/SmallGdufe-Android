@@ -37,8 +37,8 @@ public class JwApiFactory extends ApiUtils {
     }
 
     //split为1代表拆开连堂课为多个item，默认为0，合并成一个
-    public void  getSchedule( int split,Observer< List<Schedule> > sub) {
-        service.getSchedule(split)
+    public void  getSchedule(String xueqi,int split,Observer< List<Schedule> > sub) {
+        service.getSchedule(xueqi,split)
                 .map(new HttpResultFunc< List<Schedule> >())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
