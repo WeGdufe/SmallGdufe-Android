@@ -27,7 +27,7 @@ public class QueryActivity extends AppCompatActivity implements RefreshActionIte
 
         getMenuInflater().inflate(R.menu.menu_query_actionbar, menu);
         MenuItem item = menu.findItem(R.id.menu_loading);
-        if(hideLoadingIcon()){
+        if(shouldHideLoadingIcon()){
             item.setVisible(false);
             item.setEnabled(false);
         }
@@ -42,7 +42,7 @@ public class QueryActivity extends AppCompatActivity implements RefreshActionIte
      * 若具体业务需要隐藏loading图标，覆盖该方法返回true即可
      * @return true:隐藏 false[默认]:不隐藏
      */
-    protected boolean hideLoadingIcon() {
+    protected boolean shouldHideLoadingIcon() {
         return false;
     }
     /**
@@ -86,4 +86,11 @@ public class QueryActivity extends AppCompatActivity implements RefreshActionIte
     @Override
     public void onRefresh(RefreshActionItem refreshActionItem) {
     }
+
+//    public void hideLoadingProgress() {
+//        mRefreshActionItem.setVisibility(View.GONE);
+//    }
+//    public void showLoadingProgress() {
+//        mRefreshActionItem.setVisibility(View.VISIBLE);
+//    }
 }

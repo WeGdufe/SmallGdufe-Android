@@ -12,7 +12,7 @@
         android:id="@+id/picker_xuenian"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         />
     <com.guang.app.widget.PickerView
         android:id="@+id/picker_xueqi"

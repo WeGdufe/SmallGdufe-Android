@@ -12,7 +12,10 @@ import android.widget.TextView;
 import com.guang.app.AppConfig;
 import com.guang.app.R;
 import com.guang.app.activity.LoginActivity;
+import com.guang.app.model.Schedule;
 import com.guang.app.util.FileUtils;
+
+import org.litepal.crud.DataSupport;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,6 +42,7 @@ public class MeFragment extends Fragment {
     @OnClick(R.id.tv_me_exit) void logout() {
         startActivity(new Intent(getActivity(), LoginActivity.class));
         FileUtils.expireStoredAccount(getActivity());//防止点退出后重新打开APP会进入旧帐号
+        DataSupport.deleteAll(Schedule.class);  //清空课程表
         getActivity().finish();
     }
 

@@ -128,6 +128,10 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onNext(List<Schedule> value) {
+                if(value.size()==0){
+                    Toast.makeText(getActivity(), "没有课程喔", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 mScheduleView.cleanScheduleData();
                 mScheduleView.setScheduleData(value);
                 DataSupport.deleteAll(Schedule.class);

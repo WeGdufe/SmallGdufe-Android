@@ -30,4 +30,7 @@ public class FewSztzAdapter extends BaseQuickAdapter<FewSztz, BaseViewHolder> {
                     .setText(R.id.tv_fewsztz_min_credit,""+item.getRequireScore())
                     .setText(R.id.tv_fewsztz_has_credit,""+item.getScore());
     }
+    public void cleanData(){
+        super.mData.clear();
+    }
 }

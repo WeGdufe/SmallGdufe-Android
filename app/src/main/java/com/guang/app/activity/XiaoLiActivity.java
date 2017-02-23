@@ -49,7 +49,7 @@ public class XiaoLiActivity extends QueryActivity {
         stopLoadingProgess();
     }
     @Override
-    protected boolean hideLoadingIcon() {
+    protected boolean shouldHideLoadingIcon() {
         return true;
     }
 }

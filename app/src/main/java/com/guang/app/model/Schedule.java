@@ -37,25 +37,6 @@ public class Schedule  extends DataSupport {
         this.endSec = endSec;
     }
 
-//    public Schedule(int id,String name, String teacher, String period, String location, int dayInWeek, int startSec, int endSec) {
-//        this.id = id;
-//        this.name = name;
-//        this.teacher = teacher;
-//        this.period = period;
-//        this.location = location;
-//        this.dayInWeek = dayInWeek;
-//        this.startSec = startSec;
-//        this.endSec = endSec;
-//    }
-//    public Schedule(String name, String teacher, String period, String location, int dayInWeek, int startSec, int endSec) {
-//        this.name = name;
-//        this.teacher = teacher;
-//        this.period = period;
-//        this.location = location;
-//        this.dayInWeek = dayInWeek;
-//        this.startSec = startSec;
-//        this.endSec = endSec;
-//    }
     public String getName() {
         return name;
     }

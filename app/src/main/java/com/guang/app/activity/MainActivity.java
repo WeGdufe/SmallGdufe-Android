@@ -58,8 +58,7 @@ public class MainActivity extends BaseActivity {
         mFragments.add(new FeatureFragment());
 //        mFragments.add(new ShareFragment());
         mFragments.add(new MeFragment());
-        RgToFmUtils.newInstance(this).showTabToFragment(mFragments, mTabGroup, getFragmentManager(), R.id.main_fragment);
+        RgToFmUtils.newInstance(this).showTabToFragment(mFragments, mTabGroup, getFragmentManager(), R.id.main_fragment,0);
 //        RgToFmUtils.newInstance(this).showFragment(1,0);
-//        RgToFmUtils.newInstance(this).showTabToFragment(mFragments, mTabGroup, getFragmentManager(), R.id.main_fragment);
     }
 }

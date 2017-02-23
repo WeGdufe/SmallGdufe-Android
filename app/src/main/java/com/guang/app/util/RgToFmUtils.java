@@ -14,11 +14,11 @@ import java.util.List;
  * Created by xiaoguang on 2017/2/14.
  */
 public class RgToFmUtils {
-    private int showindex;
-    private int hideindex;
+    private int showindex = 0;
+    private int hideindex = 0;
     private List<Fragment> fragmentList;
     private FragmentManager supportFragmentManager;
-    private int id;
+    private int id; //容器ID
     private RadioGroup radioGroup;
     private Context context;
 
@@ -43,13 +43,14 @@ public class RgToFmUtils {
         return mInstance;
     }
 
-    public void showTabToFragment(List<Fragment> fragmentList, RadioGroup radioGroup, FragmentManager supportFragmentManager, int id) {
+    public void showTabToFragment(List<Fragment> fragmentList, RadioGroup radioGroup, FragmentManager supportFragmentManager, int frameLayoutId,int initIndex) {
         this.radioGroup = radioGroup;
-        this.id = id;
         this.fragmentList = fragmentList;
+        this.id = frameLayoutId;
         this.supportFragmentManager = supportFragmentManager;
-        ((RadioButton) radioGroup.getChildAt(showindex)).setChecked(true);//初始化选中第一个
+        this.showindex = this.hideindex = initIndex;
         showFragment(showindex, hideindex);//初始化碎片
+        ((RadioButton) radioGroup.getChildAt(showindex)).setChecked(true);//初始化选中
 
         initsetOnClickListener();
     }
@@ -66,6 +67,7 @@ public class RgToFmUtils {
                 RadioButton radioButton = (RadioButton) group.findViewById(checkedId);
                 radioButton.setChecked(true);
                 int i = group.indexOfChild(radioButton);
+//                LogUtils.e(i+" "+hideindex+" ");
                 showFragment(i, hideindex);
                 hideindex = i;
             }

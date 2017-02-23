@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.guang.app.R;
@@ -79,6 +80,7 @@ public class SearchBookActivity extends QueryActivity {
                     @Override
                     public void onComplete() {
                         stopLoadingProgess();
+                        mAdapter.isUseEmpty(true);
                     }
                 });
                 return true;
@@ -94,6 +96,8 @@ public class SearchBookActivity extends QueryActivity {
     private void initAdapter() {
         mAdapter = new SearchBookAdapter(R.layout.search_book_item);
         mAdapter.openLoadAnimation();
+        mAdapter.setEmptyView(R.layout.layout_empty_data, (ViewGroup) mRecyclerView.getParent());
+        mAdapter.isUseEmpty(false); //避免一开始就出现空页面
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

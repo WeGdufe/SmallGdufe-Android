@@ -57,7 +57,7 @@
     <color name="tab_indicator_text_unselected">#000000</color>
 
     <!--<color name="green">#7CFC00</color>-->
-    <!--<color name="red">#ff0307</color>-->
+    <color name="red">#ff0307</color>
 
 
 </resources>

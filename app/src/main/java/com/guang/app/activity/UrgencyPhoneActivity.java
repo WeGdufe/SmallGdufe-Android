@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 
-import com.apkfuns.logutils.LogUtils;
 import com.guang.app.R;
 import com.guang.app.util.FileUtils;
 
@@ -37,7 +36,7 @@ public class UrgencyPhoneActivity extends QueryActivity {
     }
 
     @Override
-    protected boolean hideLoadingIcon() {
+    protected boolean shouldHideLoadingIcon() {
         return true;
     }
 }

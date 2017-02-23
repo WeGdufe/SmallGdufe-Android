@@ -202,7 +202,7 @@ public class ScheduleView extends LinearLayout {
             mTime.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(), "星期" + week + "第" + (start + num) + "节", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "星期" + week + "第" + (start + num) + "节", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -268,7 +268,7 @@ public class ScheduleView extends LinearLayout {
         mScheduleView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), model.getName() + "\n" + model.getLocation()+"\n" + model.getTeacher(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), model.getName() + "\n" + model.getLocation()+"\n" + model.getTeacher()+"\n"+model.getPeriod(), Toast.LENGTH_SHORT).show();
             }
         });
         return mScheduleView;

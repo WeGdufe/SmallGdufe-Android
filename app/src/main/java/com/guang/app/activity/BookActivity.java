@@ -3,12 +3,14 @@ package com.guang.app.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.guang.app.R;
 import com.guang.app.adapter.BookAdapter;
 import com.guang.app.api.OpacApiFactory;
 import com.guang.app.model.Book;
+import com.guang.app.widget.RefreshActionItem;
 
 import java.util.List;
 
@@ -49,11 +51,11 @@ public class BookActivity extends QueryActivity {
                 @Override
                 public void onSubscribe(Disposable d) {
                     startLoadingProgess();
-
                 }
 
                 @Override
                 public void onNext(List<Book> value) {
+                    mAdapter.cleanData();
                     mAdapter.addData(value);
                     mAdapter.notifyDataSetChanged();
                 }
@@ -66,6 +68,7 @@ public class BookActivity extends QueryActivity {
 
                 @Override
                 public void onComplete() {
+                    mAdapter.isUseEmpty(true);
                     stopLoadingProgess();
                 }
             });
@@ -79,6 +82,7 @@ public class BookActivity extends QueryActivity {
 
                 @Override
                 public void onNext(List<Book> value) {
+                    mAdapter.cleanData();
                     mAdapter.addData(value);
                     mAdapter.notifyDataSetChanged();
                 }
@@ -91,6 +95,7 @@ public class BookActivity extends QueryActivity {
 
                 @Override
                 public void onComplete() {
+                    mAdapter.isUseEmpty(true);
                     stopLoadingProgess();
                 }
             });
@@ -99,9 +104,16 @@ public class BookActivity extends QueryActivity {
 
     private void initAdapter() {
         mAdapter = new BookAdapter(R.layout.book_listitem);
+        mAdapter.setEmptyView(R.layout.layout_empty_data, (ViewGroup) mRecyclerView.getParent());
+        mAdapter.isUseEmpty(false); //避免一开始就出现空页面
         mAdapter.openLoadAnimation();
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    @Override
+    public void onRefresh(RefreshActionItem refreshActionItem) {
+        loadData();
+        super.onRefresh(refreshActionItem);
+    }
 }

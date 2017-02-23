@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.apkfuns.logutils.LogUtils;
@@ -58,6 +59,8 @@ public class ScoreActivity extends QueryActivity {
     private void initAdapter() {
         mAdapter = new ScoreAdapter(this,R.layout.score_listitem);
         mAdapter.openLoadAnimation();
+        mAdapter.setEmptyView(R.layout.layout_empty_data, (ViewGroup) mRecyclerView.getParent());
+        mAdapter.isUseEmpty(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
     }
@@ -90,7 +93,7 @@ public class ScoreActivity extends QueryActivity {
         gpa/=total_credit;
         DecimalFormat df1 = new DecimalFormat("#.00");
         DecimalFormat df2 = new DecimalFormat("#");
-        return "平均绩点："+df1.format(gpa)+"     学分："+df2.format(total_credit);
+        return "平均："+df1.format(gpa)+"  学分："+df2.format(total_credit);
     }
 
     //对话框
@@ -168,6 +171,10 @@ public class ScoreActivity extends QueryActivity {
             }
             @Override
             public void onNext(List<Score> value) {
+                if(value.size() == 0){
+                    Toast.makeText(ScoreActivity.this, "别闹", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 LogUtils.e(value);
                 mAdapter.cleanData();
                 mAdapter.addData(value);
@@ -177,12 +184,14 @@ public class ScoreActivity extends QueryActivity {
 
             @Override
             public void onError(Throwable e) {
+                LogUtils.e(e.getMessage());
                 Toast.makeText(ScoreActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 finish();
             }
 
             @Override
             public void onComplete() {
+                mAdapter.isUseEmpty(true);
                 stopLoadingProgess();
             }
         });
