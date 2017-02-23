@@ -31,12 +31,14 @@
         android:orientation="vertical">
 
         <EditText
+            android:hint="学号"
             android:id="@+id/ed_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress" />
 
         <EditText
+            android:hint="信息门户密码"
             android:id="@+id/ed_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Login" />
+            android:text="前往新世界" />
 
     </LinearLayout>
 

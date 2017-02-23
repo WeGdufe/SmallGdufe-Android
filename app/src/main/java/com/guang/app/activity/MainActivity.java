@@ -11,7 +11,7 @@ import com.guang.app.fragment.FeatureFragment;
 import com.guang.app.fragment.HomeFragment;
 import com.guang.app.fragment.MeFragment;
 import com.guang.app.util.FileUtils;
-import com.guang.app.util.RgToFmUtils;
+import com.guang.app.util.FragmentUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity {
 //    FrameLayout mFramLayout;
     private List<Fragment> mFragments;
     @Bind(R.id.tab_radioGroup) RadioGroup mTabGroup;
-
+    private FragmentUtil fUtil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +58,23 @@ public class MainActivity extends BaseActivity {
         mFragments.add(new FeatureFragment());
 //        mFragments.add(new ShareFragment());
         mFragments.add(new MeFragment());
-        RgToFmUtils.newInstance(this).showTabToFragment(mFragments, mTabGroup, getFragmentManager(), R.id.main_fragment,0);
-//        RgToFmUtils.newInstance(this).showFragment(1,0);
+
+        fUtil = FragmentUtil.init(this);
+        fUtil.addAll(R.id.main_fragment,mFragments);
+        fUtil.show(mFragments.get(0));
+        mTabGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkID) {
+                switch (checkID){
+                    case R.id.rd_home:
+                        fUtil.show(mFragments.get(0));break;
+                    case R.id.rd_features:
+                        fUtil.show(mFragments.get(1));break;
+                    case R.id.rd_me:
+                        fUtil.show(mFragments.get(2));break;
+                }
+            }
+        });
     }
+
 }

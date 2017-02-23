@@ -2,6 +2,7 @@ package com.guang.app.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 import com.guang.app.AppConfig;
 import com.guang.app.model.UserAccount;
@@ -26,7 +27,7 @@ public class FileUtils {
         AppConfig.sno = userAccount.getSno();
         AppConfig.idsPwd = userAccount.getIdsPwd();
         AppConfig.jwPwd = userAccount.getJwPwd();
-        return AppConfig.sno != null && AppConfig.idsPwd != null;
+        return !TextUtils.isEmpty(AppConfig.sno) && !TextUtils.isEmpty(AppConfig.idsPwd);
     }
 
     /**
@@ -34,7 +35,7 @@ public class FileUtils {
      * @param context
      */
     public static void expireStoredAccount(Context context){
-        UserAccount userAccount = new UserAccount(null,null,null);
+        UserAccount userAccount = new UserAccount("","","");
         setStoredAccount(context,userAccount);
     }
     private static UserAccount getStoredAccount(Context context){

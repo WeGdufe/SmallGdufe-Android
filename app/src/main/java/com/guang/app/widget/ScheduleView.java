@@ -35,6 +35,10 @@ public class ScheduleView extends LinearLayout {
             R.drawable.sehedule_label_sy, R.drawable.sehedule_label_yiwu,
             R.drawable.sehedule_label_yi, R.drawable.sehedule_label_wuw};
     private final static int START = 0;
+    private final int CourseTextSize = 13;       //课程信息
+    private final int leftNumTextSize = 14;     //第几节
+    private final int weekNameTextSize = 16;    //星期几
+
     //最大节数
     public final static int MAXNUM = 12;
     //显示到星期几
@@ -122,7 +126,7 @@ public class ScheduleView extends LinearLayout {
                         mNum.setTextColor(getResources().getColor(R.color.text_color));
                         mNum.setHeight(dip2px(TimeTableHeight));
                         mNum.setWidth(dip2px(TimeTableNumWidth));
-                        mNum.setTextSize(14);
+                        mNum.setTextSize(leftNumTextSize);
                         mNum.setText(j + "");
                         mMonday.addView(mNum);
                         mMonday.addView(getWeekTransverseLine());
@@ -144,7 +148,7 @@ public class ScheduleView extends LinearLayout {
                     mWeekName.setWidth(((getViewWidth() - dip2px(TimeTableNumWidth))) / WEEKNUM);
                     mWeekName.setHeight(dip2px(TimeTableWeekNameHeight));
                     mWeekName.setGravity(Gravity.CENTER);
-                    mWeekName.setTextSize(16);
+                    mWeekName.setTextSize(weekNameTextSize);
                     mWeekName.setText(weekname[i - 1]);
                     mHoriView.addView(mWeekName);
                     mHorizontalWeekLayout.addView(mHoriView);
@@ -258,7 +262,7 @@ public class ScheduleView extends LinearLayout {
         mTimeTableNameView.setTextColor(getContext().getResources().getColor(
                 android.R.color.white));
         mTimeTableNameView.setWidth(dip2px(50));
-        mTimeTableNameView.setTextSize(16);
+        mTimeTableNameView.setTextSize(CourseTextSize);
         mTimeTableNameView.setGravity(Gravity.CENTER);
         mTimeTableNameView.setText(model.getName() + "\n" + model.getLocation());
         mScheduleView.addView(mTimeTableNameView);
@@ -268,7 +272,7 @@ public class ScheduleView extends LinearLayout {
         mScheduleView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), model.getName() + "\n" + model.getLocation()+"\n" + model.getTeacher()+"\n"+model.getPeriod(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), model.getName() + "\n" + model.getLocation()+"\n" +model.getPeriod()+"\n"+ model.getTeacher(), Toast.LENGTH_SHORT).show();
             }
         });
         return mScheduleView;

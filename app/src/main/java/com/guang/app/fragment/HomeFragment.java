@@ -32,7 +32,6 @@ import butterknife.ButterKnife;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-//import android.support.v7.app.AlertDialog;
 
 
 public class HomeFragment extends Fragment {
@@ -129,7 +128,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onNext(List<Schedule> value) {
                 if(value.size()==0){
-                    Toast.makeText(getActivity(), "没有课程喔", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "没有喔", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 mScheduleView.cleanScheduleData();

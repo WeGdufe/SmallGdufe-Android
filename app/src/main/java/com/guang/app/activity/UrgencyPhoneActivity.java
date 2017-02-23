@@ -28,10 +28,6 @@ public class UrgencyPhoneActivity extends QueryActivity {
     @Override
     protected void loadData() {
         String phoneContent = FileUtils.getStrFromAssets(this,"urgency_phone.html");
-//        phoneContent = phoneContent.replace("\\n",System.getProperty("line.separator"));
-//        phoneContent = phoneContent.replace("\\t",String.format("%-5s"," "));
-//        phoneContent = Html.fromHtml(phoneContent);
-//        LogUtils.e(phoneContent);
         tv_phone.setText(Html.fromHtml(phoneContent));
     }
 

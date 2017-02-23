@@ -64,6 +64,7 @@ public class FewSztzActivity extends QueryActivity {
 
             @Override
             public void onComplete() {
+                mAdapter.isUseEmpty(true);
                 stopLoadingProgess();
             }
         });
@@ -72,6 +73,7 @@ public class FewSztzActivity extends QueryActivity {
     private void initAdapter() {
         mAdapter = new FewSztzAdapter(getApplicationContext(), R.layout.fewsztz_listitem);
         mAdapter.setEmptyView(R.layout.layout_empty_data, (ViewGroup) mRecyclerView.getParent());
+        mAdapter.isUseEmpty(false);
         mAdapter.openLoadAnimation();
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

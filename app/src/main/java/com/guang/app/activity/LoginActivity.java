@@ -29,8 +29,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     @OnClick(R.id.btn_login) void login() {
-        String sno =  edSno.getText().toString().trim();
-        String pwd =  edpwd.getText().toString().trim();
+        String sno = edSno.getText().toString().trim();
+        String pwd = edpwd.getText().toString().trim();
 
         AppConfig.sno = sno;
         AppConfig.idsPwd = AppConfig.jwPwd = pwd;
