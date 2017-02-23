@@ -7,7 +7,7 @@ import org.litepal.crud.DataSupport;
  * 课程表
  * Created by xiaoguang on 2017/2/21.
  */
-public class Schedule  extends DataSupport {
+public class Schedule extends DataSupport {
 
     /**
      * name : 计算机系统结构
@@ -19,13 +19,13 @@ public class Schedule  extends DataSupport {
      * endSec : 2
      */
 //     private Long sId; //自增id，只为存本地数据库用，与业务无关
-     private String name;
-     private String teacher;
-     private String period;       //周情况
-     private String location;
-     private int dayInWeek;      //星期几
-     private int startSec;
-     private int endSec;         //终止小节
+    private String name;
+    private String teacher;
+    private String period;       //周情况
+    private String location;
+    private int dayInWeek;      //星期几
+    private int startSec;
+    private int endSec;         //终止小节
 
     public Schedule( String name, String teacher, String period, String location, int dayInWeek, int startSec, int endSec) {
         this.name = name;

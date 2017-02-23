@@ -58,6 +58,8 @@
 
     <!--<color name="green">#7CFC00</color>-->
     <color name="red">#ff0307</color>
+    <color name="pink">#ffb6c1</color>
+    <color name="blue">#0056f5</color>
 
 
 </resources>

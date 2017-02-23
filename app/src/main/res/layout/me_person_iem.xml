@@ -8,15 +8,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp">
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
 
         <ImageView
+
             android:id="@+id/tv_me_icon"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="16dp"
-            android:background="#00bcffee"
-            android:src="@mipmap/default_avatar" />
+            android:src="@mipmap/avatar_h"
+             />
+        <!--android:src="@mipmap/default_avatar"-->
+        <!--android:background="#00bcffee"-->
+
         <TextView
             android:id="@+id/tv_me_sno"
             android:layout_width="wrap_content"
@@ -27,6 +34,7 @@
             android:textSize="16sp" />
         
         <TextView
+            android:textColor="@color/blue"
             android:id="@+id/tv_me_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +44,7 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tv_me_phone"
+            android:id="@+id/tv_me_class"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_me_name"

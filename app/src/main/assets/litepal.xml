@@ -33,6 +33,7 @@
     -->
     <list>
             <mapping class="com.guang.app.model.Schedule"></mapping>
+            <mapping class="com.guang.app.model.BasicInfo"></mapping>
     </list>
 
     <!--

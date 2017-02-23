@@ -1,5 +1,6 @@
 package com.guang.app.api;
 
+import com.guang.app.model.BasicInfo;
 import com.guang.app.model.Schedule;
 import com.guang.app.model.Score;
 
@@ -41,6 +42,15 @@ public class JwApiFactory extends ApiUtils {
     public void  getSchedule(String stu_time,int split,Observer< List<Schedule> > sub) {
         service.getSchedule(stu_time,split)
                 .map(new HttpResultFunc< List<Schedule> >())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
+
+    //获取个人基本信息
+    public void  getBasicInfo(Observer<BasicInfo> sub) {
+        service.getBasicInfo()
+                .map(new HttpResultFunc< BasicInfo >())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);

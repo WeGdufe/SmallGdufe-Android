@@ -1,6 +1,7 @@
 package com.guang.app.api;
 
 import com.guang.app.AppConfig;
+import com.guang.app.model.BasicInfo;
 import com.guang.app.model.HttpResult;
 import com.guang.app.model.Schedule;
 import com.guang.app.model.Score;
@@ -23,5 +24,8 @@ public interface JwApi {
     @POST(AppConfig.Url.getSchedule)
     Observable<HttpResult< List<Schedule> >> getSchedule(@Query("stu_time") String stu_time,@Query("split") int split);
     //stu_time为空表示当前学期，split为1代表拆开连堂课为多个item，默认为0，合并成一个
+
+    @POST(AppConfig.Url.getBasicInfo)
+    Observable<HttpResult< BasicInfo >> getBasicInfo();
 
 }

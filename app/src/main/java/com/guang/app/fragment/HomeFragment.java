@@ -50,7 +50,11 @@ public class HomeFragment extends Fragment {
         getActivity().setTitle("APP");
 
         List<Schedule> list= DataSupport.findAll(Schedule.class);
-        if(list.size() != 0) {
+        if(list.size() == 0) {
+            //空数据，有界面
+            mScheduleView.setScheduleData(new ArrayList<Schedule>());
+            Toast.makeText(getActivity(), "右上角导入试试", Toast.LENGTH_SHORT).show();
+        }else{
             mScheduleView.setScheduleData(list);
         }
         return view;
@@ -60,7 +64,7 @@ public class HomeFragment extends Fragment {
     String selectedXuenian;
     String selectedXueqi;
     AlertDialog.Builder pickerBuilder = null;
-
+    //弹出时间选择窗并查课表
     public void showXueQiPickerDialog(final Activity act) {
         pickerBuilder = new AlertDialog.Builder(act);
         LayoutInflater layoutInflater = act.getLayoutInflater();
