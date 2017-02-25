@@ -10,7 +10,7 @@ public class AppConfig {
 
     //千万记得这个URL要/结尾！！！否则报各种错
     public static final String BASE_URL = "http://www.wintercoder.com:82/";
-//    public static final String BASE_URL = "http://192.168.1.106:82/";
+//    public static final String BASE_URL = "http://172.25.155.14:82/";
     public static final String Avator_URL = "https://www.94cb.com/Material-Design-Avatars/avatar.php?char=";
 
     public static class Url {
@@ -27,6 +27,9 @@ public class AppConfig {
         public static final String currentBook = index + "opac/current-book";
         public static final String borrowedBook = index + "opac/borrowed-book";
         public static final String searchBook = index + "opac/search-book";
+
+        public static final String feedback = index + "work/feedback";
+
 //        public static String yesterdayBalance = index + "info/info-tips";
     }
 

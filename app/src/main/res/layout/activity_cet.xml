@@ -23,7 +23,7 @@
                 android:gravity="center"
                 android:text="准考证号：" />
 
-            <com.guang.app.widget.OneKeyClearEditText
+            <com.guang.app.widget.EditTextWithDel
                 android:id="@+id/ed_cet_zkzh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 android:gravity="center"
                 android:text="姓名：" />
 
-            <com.guang.app.widget.OneKeyClearEditText
+            <com.guang.app.widget.EditTextWithDel
                 android:id="@+id/ed_cet_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

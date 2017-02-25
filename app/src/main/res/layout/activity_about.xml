@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_normal"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@mipmap/app_icon"
+        android:layout_marginTop="92dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="广财小工具 v1.0.0"
+        android:id="@+id/textView2"
+        android:textColor="@color/red"
+
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Author：13计2小光"
+        android:id="@+id/tv_author"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="官方微博：还没有23333"
+        android:id="@+id/tv_weibo"
+        android:layout_below="@+id/tv_author"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thanks：https://github.com/iSCAU/iSCAU-Android"
+        android:autoLink="all"
+        android:id="@+id/textView3"
+        android:paddingTop="10dp"
+        android:layout_below="@+id/tv_weibo"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="无薪招聘：帮忙完善该应用的PHPer、Android/iOSer\n                      792875586@qq.com"
+        android:autoLink="all"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

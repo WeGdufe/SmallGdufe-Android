@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_normal"
+    android:paddingLeft="20dp"
+    android:orientation="vertical"
+    android:paddingRight="20dp">
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="联系方式（可选）："/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ed_feedback_contact" />
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="建议Or意见："/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        android:minLines="2"
+        android:ems="10"
+        android:id="@+id/ed_feedback_content"/>
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:layout_gravity="center"
+        android:id="@+id/btn_feedback_submit"
+        />
+
+</LinearLayout>

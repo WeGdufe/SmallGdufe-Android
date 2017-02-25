@@ -28,5 +28,7 @@
         <activity android:name=".activity.MapActivity" />
         <activity android:name=".activity.UrgencyPhoneActivity" />
         <activity android:name=".activity.CetActivity" />
+        <activity android:name=".activity.FeedbackActivity" />
+        <activity android:name=".activity.AboutActivity" />
     </application>
 </manifest>

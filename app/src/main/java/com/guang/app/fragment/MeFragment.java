@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.apkfuns.logutils.LogUtils;
 import com.guang.app.AppConfig;
 import com.guang.app.R;
+import com.guang.app.activity.AboutActivity;
+import com.guang.app.activity.FeedbackActivity;
 import com.guang.app.activity.LoginActivity;
 import com.guang.app.api.JwApiFactory;
 import com.guang.app.model.BasicInfo;
@@ -95,6 +97,13 @@ public class MeFragment extends Fragment {
 //        tvMeIcon.setImageDrawable(Drawable.c(R.mipmap.avatar_H));
 
 //        tvMeIcon
+    }
+
+    @OnClick(R.id.tv_me_about) void clickAbout(){
+        startActivity(new Intent(getActivity(), AboutActivity.class));
+    }
+    @OnClick(R.id.tv_me_feedback) void feedback(){
+        startActivity(new Intent(getActivity(), FeedbackActivity.class));
     }
 
     @OnClick(R.id.tv_me_exit) void logout() {
