@@ -18,31 +18,45 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by xiaoguang on 2017/2/14.
  */
 public class ApiUtils {
-    protected static Retrofit api = null;
+    protected static Retrofit.Builder apiBuilder = null;
+//    protected static Retrofit.Builder apiBuilder = null;
     private static final int DEFAULT_TIMEOUT = 2;
 
     static{
 
+//        BasicParamsInterceptor basicParamsInterceptor =
+//                new BasicParamsInterceptor.Builder()
+////                        .addHeaderParam("device_id", DeviceUtils.getDeviceId())
+//                        .addParam("sno", AppConfig.sno)
+//                        .addParam("pwd",AppConfig.idsPwd)
+//                        .build();
+//        OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder()
+//                .addInterceptor(basicParamsInterceptor)
+//                .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+
+        apiBuilder = new Retrofit.Builder()
+                .baseUrl(AppConfig.BASE_URL)
+//                .client(httpClientBuilder.build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
+//                .build();
+    }
+    public static Retrofit getApi(){
+
         BasicParamsInterceptor basicParamsInterceptor =
                 new BasicParamsInterceptor.Builder()
-//                        .addHeaderParam("device_id", DeviceUtils.getDeviceId())
                         .addParam("sno", AppConfig.sno)
                         .addParam("pwd",AppConfig.idsPwd)
                         .build();
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder()
                 .addInterceptor(basicParamsInterceptor)
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
-
-        api = new Retrofit.Builder()
-                .baseUrl(AppConfig.BASE_URL)
+LogUtils.e(AppConfig.sno);
+        Retrofit api = apiBuilder
                 .client(httpClientBuilder.build())
-//                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-//                .addConverterFactory(new ToStringConverterFactory())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+        return  api;
     }
-
     /**
      * 用来统一处理返回的code,并将HttpResult的Data部分剥离出来返回给subscriber
      * @param <T> Subscriber真正需要的数据类型，也就是Data部分的数据类型

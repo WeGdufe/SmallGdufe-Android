@@ -26,14 +26,14 @@ public class OpacApiFactory extends ApiUtils {
         private static final OpacApiFactory INSTANCE = new OpacApiFactory();
     }
     public void  searchBook(String bookName,Observer<List<SearchBook>> sub) {
-        ApiUtils.api.create(OpacApi.class).searchBook(bookName)
+        ApiUtils.getApi().create(OpacApi.class).searchBook(bookName)
                 .map(new HttpResultFunc<List<SearchBook>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
     }
     public void  getCurrentBook(Observer<List<Book>> sub ) {
-        ApiUtils.api.create(OpacApi.class).getCurrentBook()
+        ApiUtils.getApi().create(OpacApi.class).getCurrentBook()
                 .map(new HttpResultFunc<List<Book>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -41,7 +41,7 @@ public class OpacApiFactory extends ApiUtils {
     }
 
     public void  getBorrowedBook(Observer<List<Book>> sub ) {
-        ApiUtils.api.create(OpacApi.class).getBorrowedBook()
+        ApiUtils.getApi().create(OpacApi.class).getBorrowedBook()
                 .map(new HttpResultFunc<List<Book>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

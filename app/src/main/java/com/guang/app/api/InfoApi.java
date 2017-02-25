@@ -7,7 +7,7 @@ import com.guang.app.model.HttpResult;
 import java.util.List;
 
 import io.reactivex.Observable;
-import retrofit2.http.POST;
+import retrofit2.http.GET;
 
 /**
  * Created by xiaoguang on 2017/2/14.
@@ -17,7 +17,7 @@ public interface InfoApi {
 //    @GET("index.php?r=jw/get-grade?sno={sno}&pwd={pwd}")
 //    @POST("sutuo.php")
 //    @POST("index.php?r=info/test.php")
-    @POST(AppConfig.Url.fewSztz)
+    @GET(AppConfig.Url.fewSztz)
     Observable<HttpResult< List<FewSztz> >> getFewSztz();
 
 //    Call<HttpResult<List<FewSztz>>> getFewSztz();

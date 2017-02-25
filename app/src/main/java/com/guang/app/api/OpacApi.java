@@ -8,7 +8,7 @@ import com.guang.app.model.SearchBook;
 import java.util.List;
 
 import io.reactivex.Observable;
-import retrofit2.http.POST;
+import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
@@ -16,11 +16,11 @@ import retrofit2.http.Query;
  * 注意导入 import io.reactivex.Observable;
  */
 public interface OpacApi {
-    @POST(AppConfig.Url.currentBook)
+    @GET(AppConfig.Url.currentBook)
     Observable<HttpResult< List<Book> >> getCurrentBook();
-    @POST(AppConfig.Url.borrowedBook)
+    @GET(AppConfig.Url.borrowedBook)
     Observable<HttpResult< List<Book> >> getBorrowedBook();
-    @POST(AppConfig.Url.searchBook)
+    @GET(AppConfig.Url.searchBook)
 //    @GET(AppConfig.Url.searchBook+"bookName={bookName}")
     Observable<HttpResult< List<SearchBook> >> searchBook(@Query("bookName") String bookName);
 //    Observable<HttpResult< List<SearchBook> >> searchBook(@Body SearchBookQueryModel queryBookModel);

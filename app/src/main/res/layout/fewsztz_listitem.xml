@@ -1,78 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <!-- 课程名称 -->
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="素拓类型"
-            android:id="@+id/tv_fewsztz_name"
-            android:textSize="@dimen/listitem_textSize"
-            android:background="@color/socre_item_name_default_color"
-            android:textColor="@color/normal_item_passed_text_color"
-            android:paddingLeft="@dimen/listitem_title_padding_left"/>
+        android:id="@+id/tv_fewsztz_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/socre_item_name_default_color"
+        android:paddingLeft="@dimen/listitem_title_padding_left"
+        android:text="素拓类型"
+        android:textColor="@color/normal_item_passed_text_color"
+        android:textSize="@dimen/listitem_textSize" />
 
     <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/listitem_padding"
-            android:paddingBottom="@dimen/listitem_padding"
-            android:paddingLeft="@dimen/listitem_title_padding_left"
-            android:paddingRight="@dimen/listitem_title_padding_left"
-       >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/listitem_padding"
+        android:paddingLeft="@dimen/listitem_title_padding_left"
+        android:paddingRight="@dimen/listitem_title_padding_left"
+        android:paddingTop="@dimen/listitem_padding">
         <!--android:shrinkColumns="0,2"-->
         <!--android:stretchColumns="0,2"-->
         <TableRow>
 
             <TextView
-                android:layout_weight="1"
-                    style="@style/normal_item_sub_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_minCredit"
-                    />
-
-            <TextView
-                android:layout_weight="1"
-
-                android:text="思想品德素质"
-                android:layout_gravity="left"
-                android:gravity="left"
-                    style="@style/normal_item_sub_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_fewsztz_min_credit"/>
-
-            <TextView
-                android:layout_weight="1"
-
-                style="@style/normal_item_sub_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_hasCredit"
-                    />
-            <TextView
-                android:layout_weight="1"
-android:text="4.0"
                 style="@style/normal_item_sub_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_fewsztz_has_credit"/>
+                android:layout_weight="1"
+                android:text="@string/listitem_lable_minCredit" />
+
+            <TextView
+                android:id="@+id/tv_fewsztz_min_credit"
+                style="@style/normal_item_sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3.6" />
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/listitem_lable_hasCredit" />
+
+            <TextView
+                android:id="@+id/tv_fewsztz_has_credit"
+                style="@style/normal_item_sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4.0" />
         </TableRow>
 
 
     </TableLayout>
 
     <ImageView
-            style="@style/listitem_separator"
-            android:layout_marginTop="2dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription=""/>
+        style="@style/listitem_separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:contentDescription="" />
 
 
 </LinearLayout>

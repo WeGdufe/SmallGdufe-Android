@@ -26,7 +26,7 @@ public class InfoApiFactory extends ApiUtils {
     }
 
     public void  getFewSztz(Observer<List<FewSztz>> sub ) {
-        ApiUtils.api.create(InfoApi.class).getFewSztz()
+        ApiUtils.getApi().create(InfoApi.class).getFewSztz()
                 .map(new HttpResultFunc<List<FewSztz>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

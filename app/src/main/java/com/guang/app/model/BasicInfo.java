@@ -20,8 +20,8 @@ public class BasicInfo extends DataSupport {
      * nation : 汉族
      * education : 普通本科
      */
-
-    private long localId;   //存数据库用
+    private long id;
+//    private long localId;   //存数据库用
     private String department;
     private String major;
     private String classroom;   //跟getClass重名了
@@ -114,11 +114,19 @@ public class BasicInfo extends DataSupport {
         this.classroom = classroom;
     }
 
-    public long getLocalId() {
-        return localId;
+//    public long getLocalId() {
+//        return localId;
+//    }
+//
+//    public void setLocalId(long localId) {
+//        this.localId = localId;
+//    }
+
+    public long getId() {
+        return id;
     }
 
-    public void setLocalId(long localId) {
-        this.localId = localId;
+    public void setId(long id) {
+        this.id = id;
     }
 }

@@ -49,11 +49,10 @@ public class HomeFragment extends Fragment {
         ButterKnife.bind(this, view);
         getActivity().setTitle("APP");
 
-        List<Schedule> list= DataSupport.findAll(Schedule.class);
+        List<Schedule> list = DataSupport.findAll(Schedule.class);
         if(list.size() == 0) {
             //空数据，有界面
             mScheduleView.setScheduleData(new ArrayList<Schedule>());
-            Toast.makeText(getActivity(), "右上角导入试试", Toast.LENGTH_SHORT).show();
         }else{
             mScheduleView.setScheduleData(list);
         }

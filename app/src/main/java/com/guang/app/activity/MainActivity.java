@@ -3,8 +3,11 @@ package com.guang.app.activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.RadioGroup;
 
+import com.apkfuns.logutils.LogUtils;
+import com.guang.app.AppConfig;
 import com.guang.app.R;
 import com.guang.app.api.InfoApiFactory;
 import com.guang.app.fragment.FeatureFragment;
@@ -30,10 +33,12 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        if(!FileUtils.getStoredAccountAndSetApp(this)){
+        if(!FileUtils.getStoredAccountAndSetApp(this) || TextUtils.isEmpty(AppConfig.sno) || TextUtils.isEmpty(AppConfig.idsPwd)){
             startActivity(new Intent(this, LoginActivity.class));
             this.finish();
+            return; //没这个居然会往下跑！
         }
+        LogUtils.e("已登陆main");
 //        getSupportActionBar().hide();
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.bind(this);

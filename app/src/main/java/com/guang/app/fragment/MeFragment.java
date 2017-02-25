@@ -28,8 +28,8 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class MeFragment extends Fragment {
-    private static JwApiFactory factory = JwApiFactory.getInstance();
-    private final long localId = 1; //用户基本信息存在数据库的id
+    public static JwApiFactory factory = JwApiFactory.getInstance();
+    public static final long localId = 1; //用户基本信息存在数据库的id
 
     @Bind(R.id.tv_me_icon)
     ImageView tvMeIcon;
@@ -46,16 +46,14 @@ public class MeFragment extends Fragment {
         ButterKnife.bind(this, view);
         tvMeSno.setText(AppConfig.sno);
 
-
         BasicInfo basicInfo = DataSupport.find(BasicInfo.class,localId);
         if(null != basicInfo) {
             setBasicInfo4View(basicInfo);
         }else{
+//            LogUtils.e("网络查询基本信息");
             queryBasicInfo();
         }
-
         return view;
-
     }
 
     private void queryBasicInfo(){
@@ -66,15 +64,14 @@ public class MeFragment extends Fragment {
 
             @Override
             public void onNext(BasicInfo value) {
-                LogUtils.e(value);
-                value.setLocalId(localId);
+                value.setId(localId);
                 value.save();
                 setBasicInfo4View(value);
             }
 
             @Override
             public void onError(Throwable e) {
-                LogUtils.e(e.getMessage());
+                LogUtils.e(e.toString());
                 Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 

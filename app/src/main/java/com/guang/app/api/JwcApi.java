@@ -6,7 +6,7 @@ import com.guang.app.model.HttpResult;
 import com.guang.app.model.XiaoLi;
 
 import io.reactivex.Observable;
-import retrofit2.http.POST;
+import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
@@ -14,10 +14,10 @@ import retrofit2.http.Query;
  */
 public interface JwcApi {
 
-    @POST(AppConfig.Url.getXiaoLi)
+    @GET(AppConfig.Url.getXiaoLi)
     Observable<HttpResult<XiaoLi>> getXiaoLi();
 
-    @POST(AppConfig.Url.getCet)
+    @GET(AppConfig.Url.getCet)
     Observable<HttpResult<Cet>> getCet(@Query("zkzh") String zkzh, @Query("xm") String name);
 
 }

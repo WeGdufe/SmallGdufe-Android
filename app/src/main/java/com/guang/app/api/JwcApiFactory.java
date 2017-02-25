@@ -11,11 +11,11 @@ import io.reactivex.schedulers.Schedulers;
  * Created by xiaoguang on 2017/2/18.
  */
 public class JwcApiFactory extends ApiUtils {
-    private JwcApi service;
+//    private JwcApi service;
 
     private JwcApiFactory() {
         super();
-        service = ApiUtils.api.create(JwcApi.class);
+//        service = ApiUtils.api.create(JwcApi.class);
     }
 
     public static JwcApiFactory getInstance() {
@@ -27,14 +27,14 @@ public class JwcApiFactory extends ApiUtils {
     }
 
     public void getXiaoLi(Observer< XiaoLi > sub ) {
-        service.getXiaoLi()
+        ApiUtils.getApi().create(JwcApi.class).getXiaoLi()
         .map(new HttpResultFunc<XiaoLi>())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
         .subscribe(sub);
     }
     public void getCet(String zkzh,String name, Observer<Cet> sub ) {
-        service.getCet(zkzh,name)
+        ApiUtils.getApi().create(JwcApi.class).getCet(zkzh,name)
         .map(new HttpResultFunc<Cet>())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())

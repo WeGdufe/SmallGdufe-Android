@@ -14,11 +14,11 @@ import io.reactivex.schedulers.Schedulers;
  * Created by xiaoguang on 2017/2/18.
  */
 public class JwApiFactory extends ApiUtils {
-    private JwApi service;
+//    private JwApi service;
 
     private JwApiFactory() {
         super();
-        service = ApiUtils.api.create(JwApi.class);
+//        service = ApiUtils.getApi().create(JwApi.class);
     }
 
     public static JwApiFactory getInstance() {
@@ -31,7 +31,7 @@ public class JwApiFactory extends ApiUtils {
 
     //stu_time格式：2013-2014-1，或者为空字符串表示查询整个大学的成绩
     public void  getScore(String stu_time,Observer< List<Score> > sub ) {
-        service.getScore(stu_time)
+        ApiUtils.getApi().create(JwApi.class).getScore(stu_time)
         .map(new HttpResultFunc< List<Score> >())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())
@@ -40,7 +40,7 @@ public class JwApiFactory extends ApiUtils {
 
     //split为1代表拆开连堂课为多个item，默认为0，合并成一个
     public void  getSchedule(String stu_time,int split,Observer< List<Schedule> > sub) {
-        service.getSchedule(stu_time,split)
+        ApiUtils.getApi().create(JwApi.class).getSchedule(stu_time,split)
                 .map(new HttpResultFunc< List<Schedule> >())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -49,7 +49,7 @@ public class JwApiFactory extends ApiUtils {
 
     //获取个人基本信息
     public void  getBasicInfo(Observer<BasicInfo> sub) {
-        service.getBasicInfo()
+        ApiUtils.getApi().create(JwApi.class).getBasicInfo()
                 .map(new HttpResultFunc< BasicInfo >())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
