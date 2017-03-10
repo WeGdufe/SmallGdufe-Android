@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content">
         <!--android:layout_width="40dp"-->
         <!--android:layout_height="40dp"-->
 
@@ -28,7 +28,7 @@
             android:id="@+id/tv_me_sno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
+            android:layout_marginLeft="150dp"
             android:layout_marginTop="12dp"
             android:text="学号"
             android:textSize="16sp" />

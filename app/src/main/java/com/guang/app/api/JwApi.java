@@ -13,6 +13,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 /**
+ * 教务API
  * Created by xiaoguang on 2017/2/14.
  */
 public interface JwApi {

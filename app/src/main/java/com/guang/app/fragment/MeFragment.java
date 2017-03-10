@@ -3,6 +3,7 @@ package com.guang.app.fragment;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,13 @@ import com.apkfuns.logutils.LogUtils;
 import com.guang.app.AppConfig;
 import com.guang.app.R;
 import com.guang.app.activity.AboutActivity;
+import com.guang.app.activity.CardHistoryActivity;
 import com.guang.app.activity.FeedbackActivity;
 import com.guang.app.activity.LoginActivity;
+import com.guang.app.api.CardApiFactory;
 import com.guang.app.api.JwApiFactory;
 import com.guang.app.model.BasicInfo;
+import com.guang.app.model.CardBasic;
 import com.guang.app.model.Schedule;
 import com.guang.app.util.FileUtils;
 
@@ -30,7 +34,9 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class MeFragment extends Fragment {
-    public static JwApiFactory factory = JwApiFactory.getInstance();
+    public static JwApiFactory factory = JwApiFactory.getInstance();    //LoginActivity里用到
+    private CardApiFactory cardFactory = CardApiFactory.getInstance();
+    private static String mCardNum;         //校园卡卡号，获取校园卡余额时赋值
     public static final long localId = 1; //用户基本信息存在数据库的id
 
     @Bind(R.id.tv_me_icon)
@@ -41,6 +47,9 @@ public class MeFragment extends Fragment {
     TextView tvMeName;
     @Bind(R.id.tv_me_class)
     TextView tvMeClass;
+    @Bind(R.id.tv_me_cardnum)
+    TextView tvMeCardNum;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,12 +61,13 @@ public class MeFragment extends Fragment {
         if(null != basicInfo) {
             setBasicInfo4View(basicInfo);
         }else{
-//            LogUtils.e("网络查询基本信息");
             queryBasicInfo();
         }
+        queryCurrentCash();
         return view;
     }
 
+    //获取用户基本信息，姓名班级等
     private void queryBasicInfo(){
         factory.getBasicInfo(new Observer<BasicInfo>() {
             @Override
@@ -70,13 +80,35 @@ public class MeFragment extends Fragment {
                 value.save();
                 setBasicInfo4View(value);
             }
-
             @Override
             public void onError(Throwable e) {
                 LogUtils.e(e.toString());
                 Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
+            @Override
+            public void onComplete() {
 
+            }
+        });
+    }
+
+    //校园卡余额
+    private void queryCurrentCash(){
+        cardFactory.getCurrentCash(new Observer<CardBasic>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+            }
+
+            @Override
+            public void onNext(CardBasic value) {
+                tvMeCardNum.setText("￥"+value.getCash());
+                mCardNum = value.getCardNum();
+            }
+            @Override
+            public void onError(Throwable e) {
+                LogUtils.e(e.toString());
+                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
             @Override
             public void onComplete() {
 
@@ -97,6 +129,15 @@ public class MeFragment extends Fragment {
 //        tvMeIcon.setImageDrawable(Drawable.c(R.mipmap.avatar_H));
 
 //        tvMeIcon
+    }
+    @OnClick(R.id.layout_me_cashhistory) void showConsumeToday(){
+        if(TextUtils.isEmpty(mCardNum)){
+            Toast.makeText(getActivity(), "交易记录获取异常", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(getActivity(), CardHistoryActivity.class);
+        intent.putExtra(CardHistoryActivity.intentCardNum,mCardNum);
+        startActivity(intent);
     }
 
     @OnClick(R.id.tv_me_about) void clickAbout(){

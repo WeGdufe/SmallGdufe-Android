@@ -7,7 +7,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/common_recycleView"
         style="@style/normal_listview"
-
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 </LinearLayout>

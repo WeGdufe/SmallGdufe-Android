@@ -30,5 +30,6 @@
         <activity android:name=".activity.CetActivity" />
         <activity android:name=".activity.FeedbackActivity" />
         <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.CardHistoryActivity" />
     </application>
 </manifest>

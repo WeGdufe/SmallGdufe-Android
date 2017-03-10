@@ -8,7 +8,7 @@ public class AppConfig {
     public static String localAesSeed = "local";
     public static String netAesSeed = "netdsad238139dsad";
 
-    //千万记得这个URL要/结尾！！！否则报各种错
+    //千万记得这个URL要/结尾！！！
     public static final String BASE_URL = "http://www.wintercoder.com:82/";
 //    public static final String BASE_URL = "http://172.25.155.14:82/";
     public static final String Avator_URL = "https://www.94cb.com/Material-Design-Avatars/avatar.php?char=";
@@ -29,6 +29,9 @@ public class AppConfig {
         public static final String searchBook = index + "opac/search-book";
 
         public static final String feedback = index + "work/feedback";
+
+        public static final String getCurrentCash = index + "card/current-cash";
+        public static final String cardConsumeToday = index + "card/consume-today";
 
 //        public static String yesterdayBalance = index + "info/info-tips";
     }

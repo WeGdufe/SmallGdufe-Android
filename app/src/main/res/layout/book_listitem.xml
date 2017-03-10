@@ -33,7 +33,7 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_lable_borrowedTime" />
+                android:text="@string/listitem_label_borrowedTime" />
 
             <!-- 借阅时间 -->
             <TextView
@@ -50,7 +50,7 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_lable_returnTime" />
+                android:text="@string/listitem_label_returnTime" />
             <!-- 归还时间 -->
             <TextView
                 android:id="@+id/tv_returnTime"
@@ -71,7 +71,7 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_lable_barId" />
+                android:text="@string/listitem_label_barId" />
             <!-- 书ID -->
             <TextView
                 android:id="@+id/tv_barId"
@@ -86,7 +86,7 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_lable_location" />
+                android:text="@string/listitem_label_location" />
             <!-- 馆藏位置 -->
             <TextView
                 android:id="@+id/tv_location"

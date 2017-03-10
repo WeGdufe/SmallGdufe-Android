@@ -33,7 +33,7 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_lable_serial" />
+                android:text="@string/listitem_label_serial" />
 
             <!-- 借阅时间 -->
             <TextView
@@ -50,7 +50,7 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_lable_numAll" />
+                android:text="@string/listitem_label_numAll" />
 
             <TextView
                 android:id="@+id/tv_numAll"
@@ -65,7 +65,7 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_lable_numCan" />
+                android:text="@string/listitem_label_numCan" />
             <!-- 可借 -->
             <TextView
                 android:id="@+id/tv_numCan"
@@ -79,7 +79,7 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_lable_publisher" />
+                android:text="@string/listitem_label_publisher" />
             <!-- 出版社 -->
             <TextView
                 android:id="@+id/tv_publisher"
@@ -92,7 +92,7 @@
                 <!--style="@style/normal_item_sub_title"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/listitem_lable_location" />-->
+                <!--android:text="@string/listitem_label_location" />-->
             <!--&lt;!&ndash; 馆藏位置 &ndash;&gt;-->
             <!--<TextView-->
                 <!--android:id="@+id/tv_location"-->

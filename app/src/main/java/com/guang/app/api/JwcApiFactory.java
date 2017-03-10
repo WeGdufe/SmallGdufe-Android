@@ -11,11 +11,9 @@ import io.reactivex.schedulers.Schedulers;
  * Created by xiaoguang on 2017/2/18.
  */
 public class JwcApiFactory extends ApiUtils {
-//    private JwcApi service;
 
     private JwcApiFactory() {
         super();
-//        service = ApiUtils.api.create(JwcApi.class);
     }
 
     public static JwcApiFactory getInstance() {

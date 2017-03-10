@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App</string>
+    <string name="app_name">我是毕设</string>
     <string name="tab_home">课表</string>
     <string name="tab_features">功能</string>
     <string name="tab_share">分享</string>    <!--分享-->
@@ -48,43 +48,51 @@
     <!--<string name="menu_course_comments">选课评论</string>-->
 
     <!--查成绩-->
-    <string name="listitem_lable_goal">成绩：</string>
-    <string name="listitem_lable_time">时间：</string>
-    <string name="listitem_lable_team">学期：</string>
-    <string name="listitem_lable_credit">学分：</string>
-    <string name="listitem_lable_grade_point">绩点：</string>
-    <string name="listitem_lable_classcode">课程代码：</string>
-    <string name="listitem_lable_classify">课程性质：</string>
-    <string name="listitem_lable_college_belong">课程类型：</string>
-    <string name="listitem_lable_college_hold">开课学院：</string>
-    <string name="listitem_lable_restudygoal">重修成绩：</string>
+    <string name="listitem_label_goal">成绩：</string>
+    <string name="listitem_label_time">时间：</string>
+    <string name="listitem_label_team">学期：</string>
+    <string name="listitem_label_credit">学分：</string>
+    <string name="listitem_label_grade_point">绩点：</string>
+    <string name="listitem_label_classcode">课程代码：</string>
+    <string name="listitem_label_classify">课程性质：</string>
+    <string name="listitem_label_college_belong">课程类型：</string>
+    <string name="listitem_label_college_hold">开课学院：</string>
+    <string name="listitem_label_restudygoal">重修成绩：</string>
     <string name="tv_gpa">平均绩点：</string>
     <string name="title_grade">查询成绩</string>
 
     <!--素拓-->
     <string name="title_fewsztz">素拓分</string>
-    <string name="listitem_lable_minCredit">最低学分：</string>
-    <string name="listitem_lable_hasCredit">已修学分：</string>
+    <string name="listitem_label_minCredit">最低学分：</string>
+    <string name="listitem_label_hasCredit">已修学分：</string>
 
     <!--图书馆借阅-->
     <string name="title_currentBook">当前借阅</string>
     <string name="title_borrowedBook">历史借阅</string>
-    <string name="listitem_lable_borrowedTime">借阅日期：</string>
-    <string name="listitem_lable_barId">条码号：</string>
-    <string name="listitem_lable_returnTime">归还时间：</string>
-    <string name="listitem_lable_location">馆藏位置：</string>
+    <string name="listitem_label_borrowedTime">借阅日期：</string>
+    <string name="listitem_label_barId">条码号：</string>
+    <string name="listitem_label_returnTime">归还时间：</string>
+    <string name="listitem_label_location">馆藏位置：</string>
 
     <!--搜索书-->
     <string name="title_searchBook">馆藏搜索</string>
-    <string name="listitem_lable_serial">索书号：</string>
-    <string name="listitem_lable_numAll">馆藏量：</string>
-    <string name="listitem_lable_numCan">可借：</string>
-    <string name="listitem_lable_publisher">出版社：</string>
+    <string name="listitem_label_serial">索书号：</string>
+    <string name="listitem_label_numAll">馆藏量：</string>
+    <string name="listitem_label_numCan">可借：</string>
+    <string name="listitem_label_publisher">出版社：</string>
 
     <!--大图页-->
     <string name="title_likeXiaoli">可双指操作缩放</string>
     <string name="title_urgencyPhone">常用电话</string>
 
     <string name="title_cet">祝你好运</string>
+
+
+    <!--校园卡-->
+    <string name="title_card_history">当天消费记录</string>
+    <string name="listitem_label_card_cash">现有余额：</string>
+    <string name="listitem_label_card_pay">交易额：</string>
+    <string name="listitem_label_card_time">交易时间：</string>
+    <string name="listitem_label_card_shop">商户名称：</string>
 
 </resources>

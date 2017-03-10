@@ -2,32 +2,56 @@
 <LinearLayout
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/me_person_iem" />
 
         <LinearLayout
+            android:layout_marginTop="15dp"
             android:orientation="vertical"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/txt_cardnum"
-                android:textSize="16sp"
-                android:gravity="center_vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="10dp"
-                android:layout_marginTop="10dp"
-                android:drawableLeft="@mipmap/me_card"
-                android:text=" 饭卡余额" />
 
+            <LinearLayout
+                android:id="@+id/layout_me_cashhistory"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/txt_me_cardnum"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:drawableLeft="@mipmap/me_card"
+                    android:text=" 饭卡实时余额" />
+                <TextView
+                    android:id="@+id/tv_me_cardnum"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:textColor="@color/red"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="￥100.00" />
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:src="@mipmap/me_arrow_right"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            
             <TextView
                 android:id="@+id/tv_me_feedback"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="10dp"
@@ -38,7 +62,7 @@
                 <!--android:id="@+id/txt_update"-->
                 <!--android:textSize="16sp"-->
                 <!--android:gravity="center_vertical"-->
-                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="50dp"-->
                 <!--android:paddingLeft="16dp"-->
                 <!--android:paddingRight="10dp"-->
@@ -49,7 +73,7 @@
                 android:id="@+id/tv_me_about"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="10dp"
@@ -60,7 +84,7 @@
                 android:id="@+id/tv_me_exit"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="10dp"

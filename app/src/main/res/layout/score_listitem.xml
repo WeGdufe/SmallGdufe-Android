@@ -33,7 +33,7 @@
                     style="@style/normal_item_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_time"
+                    android:text="@string/listitem_label_time"
                     android:id="@+id/textView"/>
 
             <!-- 学年 -->
@@ -47,7 +47,7 @@
                     style="@style/normal_item_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_credit"
+                    android:text="@string/listitem_label_credit"
                     android:id="@+id/textView1"/>
             <TextView
                 style="@style/normal_item_sub_title"
@@ -70,8 +70,8 @@
                     style="@style/normal_item_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_goal"
-                    android:id="@+id/tv_lable_goal"/>
+                    android:text="@string/listitem_label_goal"
+                    android:id="@+id/tv_label_goal"/>
 
             <!-- 所得成绩 -->
             <TextView
@@ -85,7 +85,7 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_lable_grade_point"/>
+                android:text="@string/listitem_label_grade_point"/>
 
             <TextView
                 style="@style/normal_item_sub_title"
@@ -138,7 +138,7 @@
                     <!--style="@style/normal_item_sub_title"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
-                    <!--android:text="@string/listitem_lable_credit"/>-->
+                    <!--android:text="@string/listitem_label_credit"/>-->
 
 
 
@@ -146,7 +146,7 @@
                     <!--style="@style/normal_item_sub_title"-->
                     <!--android:layout_width="wrap_content"-->
                     <!--android:layout_height="wrap_content"-->
-                    <!--android:text="@string/listitem_lable_grade_point"/>-->
+                    <!--android:text="@string/listitem_label_grade_point"/>-->
 
             <!--<TextView-->
                     <!--style="@style/normal_item_sub_title"-->
@@ -162,7 +162,7 @@
                     style="@style/normal_item_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_classcode"/>
+                    android:text="@string/listitem_label_classcode"/>
 
             <TextView
                     style="@style/normal_item_sub_title"
@@ -174,7 +174,7 @@
                     style="@style/normal_item_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_classify"/>
+                    android:text="@string/listitem_label_classify"/>
 
             <TextView
                     style="@style/normal_item_sub_title"
@@ -191,7 +191,7 @@
                     style="@style/normal_item_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_college_belong"/>
+                    android:text="@string/listitem_label_college_belong"/>
 
             <TextView
                     style="@style/normal_item_sub_title"
@@ -203,7 +203,7 @@
                     style="@style/normal_item_sub_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/listitem_lable_college_hold"/>
+                    android:text="@string/listitem_label_college_hold"/>
 
             <TextView
                     style="@style/normal_item_sub_title"

@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.RadioGroup;
 
-import com.apkfuns.logutils.LogUtils;
 import com.guang.app.AppConfig;
 import com.guang.app.R;
-import com.guang.app.api.InfoApiFactory;
 import com.guang.app.fragment.FeatureFragment;
 import com.guang.app.fragment.HomeFragment;
 import com.guang.app.fragment.MeFragment;
@@ -38,23 +36,9 @@ public class MainActivity extends BaseActivity {
             this.finish();
             return; //没这个居然会往下跑！
         }
-        LogUtils.e("已登陆main");
-//        getSupportActionBar().hide();
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setTitle(R.string.app_name);
         ButterKnife.bind(this);
         initFragment();
-//        test();
-    }
-
-    private void test() {
-          InfoApiFactory factory = InfoApiFactory.getInstance();
-
-//        utils.api.create(InfoApi.class).getFewSztz()
-//                .map(new ApiUtils.HttpResultFunc<List<FewSztz>>())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeOn(Schedulers.io())
-//                .subscribe(sub);
-
     }
 
     private void initFragment() {
