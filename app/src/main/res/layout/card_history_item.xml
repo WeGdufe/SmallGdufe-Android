@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/socre_item_name_default_color"
+        android:paddingLeft="@dimen/listitem_title_padding_left"
+        android:text="@string/listitem_label_card_shop"
+        android:textColor="@color/normal_item_passed_text_color"
+        android:textSize="@dimen/listitem_textSize"
+        android:id="@+id/tv_item_card_shop" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/listitem_padding"
+        android:paddingLeft="@dimen/listitem_title_padding_left"
+        android:paddingRight="@dimen/listitem_title_padding_left"
+        android:paddingTop="@dimen/listitem_padding"
+        android:shrinkColumns="0,2"
+        android:stretchColumns="1,3">
+
+
+        <TableRow>
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_label_card_pay" />
+
+            <TextView
+                android:id="@+id/tv_item_card_amount"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_label_card_cash" />
+            <!-- 可借 -->
+            <TextView
+                android:id="@+id/tv_item_card_cash"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_label_card_time" />
+
+            <TextView
+                android:id="@+id/tv_item_card_time"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>
