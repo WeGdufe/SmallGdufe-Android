@@ -1,5 +1,9 @@
 package com.guang.app.util;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import java.text.DecimalFormat;
 
 /**
@@ -16,4 +20,16 @@ public class CalcUtils {
         DecimalFormat df = new DecimalFormat("#.0");
         return df.format(1.0 + (score - 60) * 0.1);
     }
+    public static Bitmap base64String2Bitmap(String str) {
+        Bitmap bitmap=null;
+        try {
+            byte[]bitmapArray;
+            bitmapArray= Base64.decode(str, Base64.DEFAULT);
+            bitmap= BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+
 }

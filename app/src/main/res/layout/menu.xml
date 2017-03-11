@@ -5,7 +5,8 @@
     android:background="@color/background_normal"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
+        android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -389,6 +390,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

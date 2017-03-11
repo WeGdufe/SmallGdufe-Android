@@ -16,13 +16,14 @@ public class BookAdapter extends BaseQuickAdapter<Book, BaseViewHolder> {
 
     @Override
     protected void convert(final BaseViewHolder viewHolder, Book item) {
-        viewHolder.setText(R.id.tv_bookName,item.getName()+" / "+item.getAuthor())
-                    .setText(R.id.tv_barId,""+item.getBarId())
-                    .setText(R.id.tv_borrowedTime,""+item.getBorrowedTime())
-                    .setText(R.id.tv_returnTime, item.getReturnTime())
-                    .setText(R.id.tv_location, item.getLocation())
+        viewHolder.setText(R.id.tv_book_bookName,item.getName()+" / "+item.getAuthor())
+                    .setText(R.id.tv_book_barId,""+item.getBarId())
+                    .setText(R.id.tv_book_borrowedTime,""+item.getBorrowedTime())
+                    .setText(R.id.tv_book_returnTime, item.getReturnTime())
+                    .setText(R.id.tv_book_location, item.getLocation())
+                    .addOnClickListener(R.id.tv_book_renew)
         ;
-
+        viewHolder.setVisible(R.id.tv_book_renew,item.getRenewTimes() == 0);
     }
     public void cleanData(){
         super.mData.clear();

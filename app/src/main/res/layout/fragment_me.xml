@@ -38,7 +38,7 @@
                     android:textColor="@color/red"
                     android:layout_marginRight="20dp"
                     android:layout_gravity="center_vertical"
-                    android:text="￥100.00" />
+                    android:text="获取失败" />
                 <ImageView
                     android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"

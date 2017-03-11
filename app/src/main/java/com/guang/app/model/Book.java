@@ -12,6 +12,8 @@ public class Book {
      * borrowedTime : 2016-10-12
      * returnTime : 2016-12-10
      * location : 广州校区自然科学图书区(N-Z类)
+     * checkId : 52203F01
+     * renewTimes : 1
      */
 
     private String barId;
@@ -20,6 +22,8 @@ public class Book {
     private String borrowedTime;
     private String returnTime;
     private String location;
+    private String checkId;     //续借用的
+    private int renewTimes;    //借阅次数
 
     public String getBarId() {
         return barId;
@@ -67,5 +71,21 @@ public class Book {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public int getRenewTimes() {
+        return renewTimes;
+    }
+
+    public void setRenewTimes(int renewTimes) {
+        this.renewTimes = renewTimes;
+    }
+
+    public String getCheckId() {
+        return checkId;
+    }
+
+    public void setCheckId(String checkId) {
+        this.checkId = checkId;
     }
 }

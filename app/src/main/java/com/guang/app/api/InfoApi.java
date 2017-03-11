@@ -10,19 +10,14 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 
 /**
+ * 信息门户API
  * Created by xiaoguang on 2017/2/14.
  * 注意导入 import io.reactivex.Observable;
  */
 public interface InfoApi {
-//    @GET("index.php?r=jw/get-grade?sno={sno}&pwd={pwd}")
-//    @POST("sutuo.php")
-//    @POST("index.php?r=info/test.php")
+    //获取信息门户处的素拓信息
     @GET(AppConfig.Url.fewSztz)
     Observable<HttpResult< List<FewSztz> >> getFewSztz();
 
-//    Call<HttpResult<List<FewSztz>>> getFewSztz();
-//    Call<HttpResult<Score>> getScore(@Path("sno") String sno, @Path("pwd") String pwd);
-//    @POST("echo.php")
-//    Observable<String> testEcho();
 
 }

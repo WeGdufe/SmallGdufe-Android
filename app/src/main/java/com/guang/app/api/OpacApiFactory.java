@@ -2,6 +2,7 @@ package com.guang.app.api;
 
 import com.guang.app.model.Book;
 import com.guang.app.model.SearchBook;
+import com.guang.app.model.StrObjectResponse;
 
 import java.util.List;
 
@@ -43,6 +44,20 @@ public class OpacApiFactory extends ApiUtils {
     public void  getBorrowedBook(Observer<List<Book>> sub ) {
         ApiUtils.getApi().create(OpacApi.class).getBorrowedBook()
                 .map(new HttpResultFunc<List<Book>>())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
+    public void  getRenewBookVerifyCode(Observer<StrObjectResponse> sub ) {
+        ApiUtils.getApi().create(OpacApi.class).getRenewBookVerifyCode()
+                .map(new HttpResultFunc<StrObjectResponse>())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
+    public void  renewBook(String barId,String checkId,String verify,Observer<StrObjectResponse> sub ) {
+        ApiUtils.getApi().create(OpacApi.class).renewBook(barId,checkId,verify)
+                .map(new HttpResultFunc<StrObjectResponse>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
