@@ -61,5 +61,8 @@
     <color name="pink">#ffb6c1</color>
     <color name="blue">#0056f5</color>
 
+    <!--登陆界面的文本框-->
+    <color name="bg_login_edittext">#ff0ebf</color>
+
 
 </resources>

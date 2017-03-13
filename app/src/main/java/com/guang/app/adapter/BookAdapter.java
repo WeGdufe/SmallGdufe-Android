@@ -28,4 +28,5 @@ public class BookAdapter extends BaseQuickAdapter<Book, BaseViewHolder> {
     public void cleanData(){
         super.mData.clear();
     }
+
 }

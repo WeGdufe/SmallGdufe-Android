@@ -2,9 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e3e3e3"
+    android:background="@mipmap/bg_login2"
     android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin">
+    <!--android:background="#e3e3e3"-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,22 +36,71 @@
             android:id="@+id/ed_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColorHint="@android:color/white"
+            android:textColor="@color/bg_login_edittext" />
+        <!--android:textColor="@android:color/white"-->
 
         <EditText
+            android:textColorHint="@android:color/white"
             android:hint="信息门户密码"
             android:id="@+id/ed_password"
             android:layout_width="match_parent"
+            android:textColor="@color/bg_login_edittext"
             android:layout_height="wrap_content"
             android:inputType="textPassword" />
 
-        <Button
-            android:id="@+id/btn_login"
+        <EditText
+            android:textColorHint="@android:color/white"
+            android:hint="教务系统密码"
+            android:visibility="visible"
+            android:id="@+id/ed_jw_password"
             android:layout_width="match_parent"
+            android:textColor="@color/bg_login_edittext"
             android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+        <!--<ImageButton-->
+            <!--android:id="@+id/btn_login"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="4dp"-->
+            <!--android:src="@mipmap/login_btn_go"-->
+            <!--android:text="前往新世界" />-->
+        <ImageView
+            android:id="@+id/btn_login"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="4dp"
+            android:src="@mipmap/login_btn_go"
             android:text="前往新世界" />
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:text="默认教务系统和信息门户密码一样，不一样戳我"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/login_tv_pwd_same" />
 
+        <CheckBox
+            android:id="@+id/cb_login_license"
+            android:layout_width="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:text="账号安全协议"
+            android:layout_height="wrap_content"
+            android:checked="false" />
     </LinearLayout>
+    <!--<TextView-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:text="账号安全协议"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="30dp" />-->
 
+    <!--android:text="账号安全协议"-->
 </LinearLayout>

@@ -34,7 +34,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class MeFragment extends Fragment {
-    public static JwApiFactory factory = JwApiFactory.getInstance();    //LoginActivity里用到
+    private JwApiFactory factory = JwApiFactory.getInstance();
     private CardApiFactory cardFactory = CardApiFactory.getInstance();
     private static String mCardNum;         //校园卡卡号，获取校园卡余额时赋值
     public static final long localId = 1; //用户基本信息存在数据库的id

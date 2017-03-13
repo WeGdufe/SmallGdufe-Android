@@ -4,6 +4,7 @@ import com.guang.app.AppConfig;
 import com.guang.app.model.Book;
 import com.guang.app.model.HttpResult;
 import com.guang.app.model.SearchBook;
+import com.guang.app.model.SearchBookStoreItem;
 import com.guang.app.model.StrObjectResponse;
 
 import java.util.List;
@@ -35,6 +36,10 @@ public interface OpacApi {
     Observable<HttpResult< StrObjectResponse >> renewBook(@Query("barId") String barId,
                                                             @Query("checkId") String checkId,
                                                             @Query("verify") String verify);
+    //获取库存借阅情况
+    @GET(AppConfig.Url.getBookStoreDetail)
+    Observable<HttpResult< List<SearchBookStoreItem> >> getBookStoreDetail(@Query("macno") String macno);
+
 
 //    Observable<HttpResult< List<SearchBook> >> searchBook(@Body RequestBody bookName);
 //    Observable<HttpResult< List<SearchBook> >> searchBook(@Field(value="bookName") String bookName);

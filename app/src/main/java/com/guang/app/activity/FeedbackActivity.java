@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.guang.app.R;
 import com.guang.app.api.WorkApiFactory;
+import com.guang.app.model.StrObjectResponse;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,13 +43,13 @@ public class FeedbackActivity extends QueryActivity {
         String content = edFeedbackContent.getText().toString();
 
         WorkApiFactory factory = WorkApiFactory.getInstance();
-        factory.submitFeedback(contact, content,new Observer<Object>() {
+        factory.submitFeedback(contact, content,new Observer<StrObjectResponse>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
 
             @Override
-            public void onNext(Object value) {
+            public void onNext(StrObjectResponse value) {
                 Toast.makeText(FeedbackActivity.this, "非常感谢", Toast.LENGTH_SHORT).show();
             }
 

@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!--书本借阅情况的详情-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/layout_search_book_item"
-    android:clickable="true"
     android:orientation="vertical">
 
-    <!-- 课程名称 -->
     <TextView
         android:clickable="true"
-
-        android:id="@+id/tv_bookName"
-        android:layout_width="fill_parent"
+        android:id="@+id/tv_search_book_store_serial"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/socre_item_name_default_color"
         android:paddingLeft="@dimen/listitem_title_padding_left"
-        android:text="书名"
+        android:text="@string/listitem_label_serial"
         android:textColor="@color/normal_item_passed_text_color"
         android:textSize="@dimen/listitem_textSize" />
-    <!---->
 
     <TableLayout
-        android:clickable="true"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/listitem_padding"
@@ -32,57 +25,15 @@
         android:paddingTop="@dimen/listitem_padding"
         android:shrinkColumns="0,2"
         android:stretchColumns="1,3">
-
         <TableRow>
-
-            <TextView
-                android:clickable="true"
-
-                style="@style/normal_item_sub_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/listitem_label_serial" />
-
-            <!-- 借阅时间 -->
-            <TextView
-                android:clickable="true"
-
-                android:id="@+id/tv_serial"
-                style="@style/normal_item_sub_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:clickable="true"
-
-                style="@style/normal_item_sub_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/listitem_label_numAll" />
-
-            <TextView
-                android:clickable="true"
-
-                android:id="@+id/tv_numAll"
-                style="@style/normal_item_sub_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </TableRow>
-
-        <TableRow>
-
             <TextView
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_label_numCan" />
-            <!-- 可借 -->
+                android:text="@string/listitem_label_state" />
+            <!-- 书刊状态 -->
             <TextView
-                android:id="@+id/tv_numCan"
+                android:id="@+id/tv_search_book_state"
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -93,14 +44,39 @@
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/listitem_label_publisher" />
-            <!-- 出版社 -->
+                android:text="@string/listitem_label_location" />
+            <!-- 馆藏位置 -->
             <TextView
-                android:id="@+id/tv_publisher"
+                android:id="@+id/tv_search_book_location"
                 style="@style/normal_item_sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </TableRow>
 
+        <TableRow>
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_label_barId" />
+            <!-- 条码号 -->
+            <TextView
+                android:id="@+id/tv_search_book_store_barId"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_label_volume" />
+            <TextView
+                android:id="@+id/tv_search_book_volume"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
     </TableLayout>
 </LinearLayout>

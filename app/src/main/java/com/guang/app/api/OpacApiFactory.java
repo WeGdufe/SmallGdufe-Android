@@ -1,7 +1,9 @@
 package com.guang.app.api;
 
+import com.guang.app.AppConfig;
 import com.guang.app.model.Book;
 import com.guang.app.model.SearchBook;
+import com.guang.app.model.SearchBookStoreItem;
 import com.guang.app.model.StrObjectResponse;
 
 import java.util.List;
@@ -27,14 +29,14 @@ public class OpacApiFactory extends ApiUtils {
         private static final OpacApiFactory INSTANCE = new OpacApiFactory();
     }
     public void  searchBook(String bookName,Observer<List<SearchBook>> sub) {
-        ApiUtils.getApi().create(OpacApi.class).searchBook(bookName)
+        ApiUtils.getApi(AppConfig.idsPwd).create(OpacApi.class).searchBook(bookName)
                 .map(new HttpResultFunc<List<SearchBook>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
     }
     public void  getCurrentBook(Observer<List<Book>> sub ) {
-        ApiUtils.getApi().create(OpacApi.class).getCurrentBook()
+        ApiUtils.getApi(AppConfig.idsPwd).create(OpacApi.class).getCurrentBook()
                 .map(new HttpResultFunc<List<Book>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -42,25 +44,33 @@ public class OpacApiFactory extends ApiUtils {
     }
 
     public void  getBorrowedBook(Observer<List<Book>> sub ) {
-        ApiUtils.getApi().create(OpacApi.class).getBorrowedBook()
+        ApiUtils.getApi(AppConfig.idsPwd).create(OpacApi.class).getBorrowedBook()
                 .map(new HttpResultFunc<List<Book>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
     }
     public void  getRenewBookVerifyCode(Observer<StrObjectResponse> sub ) {
-        ApiUtils.getApi().create(OpacApi.class).getRenewBookVerifyCode()
+        ApiUtils.getApi(AppConfig.idsPwd).create(OpacApi.class).getRenewBookVerifyCode()
                 .map(new HttpResultFunc<StrObjectResponse>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
     }
     public void  renewBook(String barId,String checkId,String verify,Observer<StrObjectResponse> sub ) {
-        ApiUtils.getApi().create(OpacApi.class).renewBook(barId,checkId,verify)
+        ApiUtils.getApi(AppConfig.idsPwd).create(OpacApi.class).renewBook(barId,checkId,verify)
                 .map(new HttpResultFunc<StrObjectResponse>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
     }
+    public void  getBookStoreDetail(String macno,Observer< List<SearchBookStoreItem> > sub ) {
+        ApiUtils.getApi(AppConfig.idsPwd).create(OpacApi.class).getBookStoreDetail(macno)
+                .map(new HttpResultFunc< List<SearchBookStoreItem> >())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
+
 
 }

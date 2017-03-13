@@ -9,8 +9,8 @@
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="classname"
-            android:id="@+id/tv_classname"
+            android:text="课程名"
+            android:id="@+id/tv_course_name"
             android:textSize="@dimen/listitem_textSize"
             android:background="@color/socre_item_name_default_color"
             android:textColor="@color/normal_item_passed_text_color"

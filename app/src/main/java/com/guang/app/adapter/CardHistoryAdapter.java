@@ -24,13 +24,13 @@ public class CardHistoryAdapter extends BaseQuickAdapter<CardConsumeItem, BaseVi
                     .setText(R.id.tv_item_card_time,item.getTime())
                     .setText(R.id.tv_item_card_cash,""+item.getCash())
                     .setText(R.id.tv_item_card_amount,""+item.getChange());
-//        if(item.getCash().charAt(0) != '-'){
-//            viewHolder.getView(R.id.tv_classname).setBackgroundColor(
-//                    mContext.getResources().getColor(R.color.goal_item_passed_color));
-//        }
-//        viewHolder.getView(R.id.tv_classname).setBackgroundColor(
-//                mContext.getResources().getColor(R.color.goal_item_failed_color));
+        if(item.getChange().charAt(0) != '-'){
+            viewHolder.setTextColor(R.id.tv_item_card_amount, mContext.getResources().getColor(R.color.goal_item_passed_color));
+        }else{
+            viewHolder.setTextColor(R.id.tv_item_card_amount, mContext.getResources().getColor(R.color.goal_item_failed_color));
+        }
     }
+
     public void cleanData(){
         super.mData.clear();
     }

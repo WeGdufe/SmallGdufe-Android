@@ -5,8 +5,8 @@
 
     <item
         android:id="@+id/menu_change_socre_time"
-        app:showAsAction="always"
         android:title="更换学期"
+        android:showAsAction="ifRoom"
         />
     <!--其他学期-->
 </menu>

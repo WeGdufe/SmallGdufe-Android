@@ -28,9 +28,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="440100"
+                android:hint="[440100]学校[16]年第[2]次\n[1/2]四六级[006]考场[01]座位"
                  />
         </TableRow>
+        <!--android:text="[440100]学校[16]年第[2]次\n[1/2]四六级[006]考场[01]座位"-->
+        <!--android:hint="[440100]6位学校号[16]年第[2]次考试[1/2]四六级[006]考场号[01]座位号"-->
 
         <LinearLayout
             android:layout_width="match_parent"

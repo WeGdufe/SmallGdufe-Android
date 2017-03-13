@@ -18,9 +18,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by xiaoguang on 2017/2/14.
  */
 public class ApiUtils {
+
     protected static Retrofit.Builder apiBuilder = null;
 //    protected static Retrofit.Builder apiBuilder = null;
     private static final int DEFAULT_TIMEOUT = 2;
+//    protected String password = AppConfig.idsPwd;
 
     static{
 
@@ -41,17 +43,17 @@ public class ApiUtils {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
 //                .build();
     }
-    public static Retrofit getApi(){
+    public static Retrofit getApi(String password){
 
         BasicParamsInterceptor basicParamsInterceptor =
                 new BasicParamsInterceptor.Builder()
                         .addParam("sno", AppConfig.sno)
-                        .addParam("pwd",AppConfig.idsPwd)
+                        .addParam("pwd",password)
                         .build();
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder()
                 .addInterceptor(basicParamsInterceptor)
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
-        LogUtils.e(AppConfig.sno);
+        LogUtils.e(AppConfig.sno +" "+password);
         Retrofit api = apiBuilder
                 .client(httpClientBuilder.build())
                 .build();
@@ -83,6 +85,12 @@ public class ApiUtils {
         @Override
         public String getMessage() {
             return message;
+        }
+
+        //返回APi的code，因getCode()没法在回调里被调用，故随便找了个父类的方法重写
+        @Override
+        public String getLocalizedMessage() {
+            return getCode()+"";
         }
 
         public int getCode() {

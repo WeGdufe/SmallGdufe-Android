@@ -29,6 +29,7 @@ public class AppConfig {
         public static final String searchBook = index + "opac/search-book";
         public static final String getRenewBookVerify = index + "opac/get-renew-book-verify";
         public static final String renewBook = index + "opac/renew-book";
+        public static final String getBookStoreDetail = index + "opac/get-book-store-detail";
 
         public static final String feedback = index + "work/feedback";
 

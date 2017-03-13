@@ -36,8 +36,7 @@ import io.reactivex.disposables.Disposable;
 
 public class HomeFragment extends Fragment {
     private static JwApiFactory factory = JwApiFactory.getInstance();
-    private static final int MERGE_SCHEDULE = 0;
-    private static final int SPLIT_SCHEDULE = 1;
+
 
     @Bind(R.id.scheduleView)
     ScheduleView mScheduleView;
@@ -123,7 +122,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void realQuerySchedule(String studyTime){
-        factory.getSchedule(studyTime,MERGE_SCHEDULE, new Observer<List<Schedule>>() {
+        factory.getSchedule(studyTime,JwApiFactory.MERGE_SCHEDULE, new Observer<List<Schedule>>() {
             @Override
             public void onSubscribe(Disposable d) {
             }

@@ -1,5 +1,8 @@
 package com.guang.app.api;
 
+import com.guang.app.AppConfig;
+import com.guang.app.model.StrObjectResponse;
+
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -11,6 +14,7 @@ public class WorkApiFactory extends ApiUtils {
 
     private WorkApiFactory() {
         super();
+//        password = "";
     }
 
     public static WorkApiFactory getInstance() {
@@ -21,9 +25,9 @@ public class WorkApiFactory extends ApiUtils {
         private static final WorkApiFactory INSTANCE = new WorkApiFactory();
     }
 
-    public void  submitFeedback(String contact,String content,Observer<Object> sub ) {
-        ApiUtils.getApi().create(WorkApi.class).submitFeedback(contact,content)
-                .map(new HttpResultFunc<Object>())
+    public void  submitFeedback(String contact,String content,Observer<StrObjectResponse> sub ) {
+        ApiUtils.getApi(AppConfig.idsPwd).create(WorkApi.class).submitFeedback(contact,content)
+                .map(new HttpResultFunc<StrObjectResponse>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);

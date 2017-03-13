@@ -1,13 +1,17 @@
 package com.guang.app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.guang.app.R;
 import com.guang.app.adapter.SearchBookAdapter;
 import com.guang.app.api.OpacApiFactory;
@@ -104,6 +108,24 @@ public class SearchBookActivity extends QueryActivity {
         searchView.setIconifiedByDefault(false);//是否自动缩小为图标
         searchView.setSubmitButtonEnabled(true);
         searchView.setQueryHint("书名");
+
+        mRecyclerView.addOnItemTouchListener(new OnItemClickListener( ){
+
+            @Override
+            public void onSimpleItemClick(BaseQuickAdapter adapter, final View view, final int position) {
+
+                SearchBook bean = mAdapter.getItem(position);
+                if(bean.getNumAll().equals("0")){
+                    Toast.makeText(SearchBookActivity.this, "此书刊可能正在订购中或者处理中", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Intent intent = new Intent(SearchBookActivity.this,SearchBookStoreActivity.class);
+                intent.putExtra(SearchBookStoreActivity.intentBookName,bean.getName());
+                intent.putExtra(SearchBookStoreActivity.intentBookMacNo,bean.getMacno());
+                startActivity(intent);
+            }
+        });
     }
+
 
 }

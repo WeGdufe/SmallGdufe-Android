@@ -12,6 +12,7 @@ public class SearchBook {
      * numCan : 0
      * author : (日) 东野圭吾著
      * publisher : 南海出版公司 2014
+     * macno :  0000595649 [例子而已，值不对应]
      */
 
     private String name;
@@ -20,6 +21,7 @@ public class SearchBook {
     private String numCan;  //可借书量
     private String author;
     private String publisher;
+    private String macno;
 
     public String getName() {
         return name;
@@ -67,5 +69,13 @@ public class SearchBook {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public String getMacno() {
+        return macno;
+    }
+
+    public void setMacno(String macno) {
+        this.macno = macno;
     }
 }

@@ -31,5 +31,6 @@
         <activity android:name=".activity.FeedbackActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.CardHistoryActivity" />
+        <activity android:name=".activity.SearchBookStoreActivity" />
     </application>
 </manifest>

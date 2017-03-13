@@ -21,7 +21,7 @@ public class ScoreAdapter extends BaseQuickAdapter<Score, BaseViewHolder> {
 
     @Override
     protected void convert(final BaseViewHolder viewHolder, Score item) {
-        viewHolder.setText(R.id.tv_classname,item.getName())
+        viewHolder.setText(R.id.tv_course_name,item.getName())
                     .setText(R.id.tv_time,item.getTime())
                     .setText(R.id.tv_score,""+item.getScore())
                     .setText(R.id.tv_credit,""+item.getCredit())
@@ -31,9 +31,11 @@ public class ScoreAdapter extends BaseQuickAdapter<Score, BaseViewHolder> {
         //重修判断 60分为通过？
         int score = item.getScore();
         if( score < 60) {
-            viewHolder.getView(R.id.tv_classname).setBackgroundColor(
-                    mContext.getResources().getColor(R.color.goal_item_failed_color));
+            viewHolder.setTextColor(R.id.tv_course_name, mContext.getResources().getColor(R.color.goal_item_failed_color));
+        }else{
+            viewHolder.setTextColor(R.id.tv_score, mContext.getResources().getColor(R.color.goal_item_passed_color));
         }
+
     }
     public void cleanData(){
         super.mData.clear();

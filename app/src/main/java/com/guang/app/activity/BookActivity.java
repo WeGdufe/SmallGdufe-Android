@@ -69,8 +69,10 @@ public class BookActivity extends QueryActivity {
 
                 @Override
                 public void onNext(List<Book> value) {
+                    Toast.makeText(BookActivity.this, "共借阅过" + value.size() + "本书", Toast.LENGTH_SHORT).show();
                     mAdapter.cleanData();
                     mAdapter.addData(value);
+                    mRecyclerView.setAdapter(mAdapter);
                     mAdapter.notifyDataSetChanged();
                 }
 
@@ -98,7 +100,7 @@ public class BookActivity extends QueryActivity {
                 public void onNext(List<Book> value) {
                     mAdapter.cleanData();
                     mAdapter.addData(value);
-                    //刷新续借按钮
+                    //刷新续借按钮需要mRecyclerView.setAdapter
                     mRecyclerView.setAdapter(mAdapter);
                     mAdapter.notifyDataSetChanged();
                 }
