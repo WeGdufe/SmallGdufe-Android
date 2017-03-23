@@ -79,7 +79,8 @@
                         <ImageButton
                             android:id="@+id/menu_emptyClassRoom"
                             style="@style/menu_item_icon"
-                            android:src="@drawable/icon_emptyclassroom_selector" />
+                            />
+                        <!--android:src="@drawable/icon_emptyclassroom_selector"-->
 
                         <TextView
                             style="@style/menu_item_label"
@@ -250,24 +251,24 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
+
                     <LinearLayout
                         style="@style/menu_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:id="@+id/menu_timeTable"
+                            android:id="@+id/menu_urgencyPhone"
                             style="@style/menu_item_icon"
-                            android:src="@drawable/icon_notice_selector" />
+                            android:src="@drawable/icon_phone_selector" />
 
                         <TextView
                             style="@style/menu_item_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/menu_notice" />
+                            android:text="@string/menu_busandtelphone" />
 
                     </LinearLayout>
-
                     <LinearLayout
                         style="@style/menu_item"
                         android:layout_width="wrap_content"
@@ -292,15 +293,15 @@
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:id="@+id/menu_urgencyPhone"
+                            android:id="@+id/menu_timeTable"
                             style="@style/menu_item_icon"
-                            android:src="@drawable/icon_phone_selector" />
+                            android:src="@drawable/icon_arrange_class_selector" />
 
                         <TextView
                             style="@style/menu_item_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/menu_busandtelphone" />
+                            android:text="@string/menu_notice" />
 
                     </LinearLayout>
 
@@ -312,7 +313,7 @@
                         <ImageButton
                             android:id="@+id/menu_map"
                             style="@style/menu_item_icon"
-                            android:src="@drawable/icon_life_selector" />
+                            android:src="@drawable/icon_map_selector" />
 
                         <TextView
                             style="@style/menu_item_label"

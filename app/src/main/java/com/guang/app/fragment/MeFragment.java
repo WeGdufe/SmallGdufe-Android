@@ -23,7 +23,9 @@ import com.guang.app.api.JwApiFactory;
 import com.guang.app.model.BasicInfo;
 import com.guang.app.model.CardBasic;
 import com.guang.app.model.Schedule;
+import com.guang.app.util.CalcUtils;
 import com.guang.app.util.FileUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import org.litepal.crud.DataSupport;
 
@@ -49,6 +51,9 @@ public class MeFragment extends Fragment {
     TextView tvMeClass;
     @Bind(R.id.tv_me_cardnum)
     TextView tvMeCardNum;
+//    @Bind(R.id.tv_me_update)
+//    TextView tvMeUpdate;
+//
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -139,7 +144,10 @@ public class MeFragment extends Fragment {
         intent.putExtra(CardHistoryActivity.intentCardNum,mCardNum);
         startActivity(intent);
     }
-
+    @OnClick(R.id.tv_me_update) void checkUpdate(){
+        int appVer = CalcUtils.getVersionCode(getActivity());
+        Toast.makeText(getActivity(), "还没实现", Toast.LENGTH_SHORT).show();
+    }
     @OnClick(R.id.tv_me_about) void clickAbout(){
         startActivity(new Intent(getActivity(), AboutActivity.class));
     }
@@ -152,6 +160,7 @@ public class MeFragment extends Fragment {
         FileUtils.expireStoredAccount(getActivity());//防止点退出后重新打开APP会进入旧帐号
         DataSupport.deleteAll(Schedule.class);  //清空课程表
         DataSupport.deleteAll(BasicInfo.class);
+        MobclickAgent.onProfileSignOff();//友盟统计用户退出
         getActivity().finish();
     }
 

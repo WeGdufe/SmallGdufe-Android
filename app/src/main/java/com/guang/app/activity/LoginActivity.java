@@ -20,6 +20,7 @@ import com.guang.app.model.FewSztz;
 import com.guang.app.model.Schedule;
 import com.guang.app.model.UserAccount;
 import com.guang.app.util.FileUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import org.litepal.crud.DataSupport;
 
@@ -59,12 +60,12 @@ public class LoginActivity extends BaseActivity {
         final String sno = edSno.getText().toString().trim();
         final String pwd = edpwd.getText().toString().trim();
         final String jwPwd = edJwPwd.getText().toString().trim();
-        if(TextUtils.isEmpty(sno) || TextUtils.isEmpty(pwd)
-                || (edJwPwd.getVisibility() == View.VISIBLE && TextUtils.isEmpty(jwPwd)) ){
+        if (TextUtils.isEmpty(sno) || TextUtils.isEmpty(pwd)
+                || (edJwPwd.getVisibility() == View.VISIBLE && TextUtils.isEmpty(jwPwd))) {
             Toast.makeText(this, "还没输入完呢", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(!cbLicense.isChecked()){
+        if (!cbLicense.isChecked()) {
             Toast.makeText(this, "请先勾选下方协议", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -77,31 +78,34 @@ public class LoginActivity extends BaseActivity {
 //        LogUtils.e(AppConfig.sno);
         AppConfig.sno = sno;
         AppConfig.idsPwd = AppConfig.jwPwd = pwd;   //默认两系统一样
-        if(edJwPwd.getVisibility() == View.VISIBLE){
+        if (edJwPwd.getVisibility() == View.VISIBLE) {
             AppConfig.jwPwd = jwPwd;
         }
-        LogUtils.e(AppConfig.sno+" "+AppConfig.jwPwd+" "+AppConfig.idsPwd);
+        LogUtils.e(AppConfig.sno + " " + AppConfig.jwPwd + " " + AppConfig.idsPwd);
         mJwOk = mJwValueInit;
         //检测教务系统密码对错
         JwApiFactory jwApiFactory = JwApiFactory.getInstance();
-        jwApiFactory.getSchedule("",JwApiFactory.MERGE_SCHEDULE, new Observer<List<Schedule>>() {
+        jwApiFactory.getSchedule("", JwApiFactory.MERGE_SCHEDULE, new Observer<List<Schedule>>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
+
             @Override
             public void onNext(List<Schedule> value) {
-                if(value.size()==0){//账号对，但没课表（如没课）
+                if (value.size() == 0) {//账号对，但没课表（如没课）
                     return;
                 }
                 mJwOk = mJwValueOk;
                 //教务通
                 DataSupport.deleteAll(Schedule.class);
                 DataSupport.saveAll(value);
-                FileUtils.setStoredAccount(LoginActivity.this,new UserAccount(sno,pwd,pwd));
+                FileUtils.setStoredAccount(LoginActivity.this, new UserAccount(sno, pwd, pwd));
+                MobclickAgent.onProfileSignIn(sno);//友盟统计用户信息
             }
+
             @Override
             public void onError(Throwable e) {
-                if(e.getLocalizedMessage().equals(ErrorCode.pwdError+"")){
+                if (e.getLocalizedMessage().equals(ErrorCode.pwdError + "")) {
                     LogUtils.e("教务密码错误-根据code判断出");
                     Toast.makeText(LoginActivity.this, "教务系统密码错误，请手动输入", Toast.LENGTH_SHORT).show();
                     mJwOk = mJwValueError;
@@ -109,7 +113,7 @@ public class LoginActivity extends BaseActivity {
                     return;
                 }
                 LogUtils.e(e.getMessage());
-                Toast.makeText(LoginActivity.this, "教务系统"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "教务系统" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -125,75 +129,25 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onNext(List<FewSztz> value) {
-                if (mJwOk == mJwValueError){ //教务密码错，因为两个请求网络顺序问题不一定错的时候能判断出，但出现这情况肯定教务密码错
+                if (mJwOk == mJwValueError) { //教务密码错，因为两个请求网络顺序问题不一定错的时候能判断出，但出现这情况肯定教务密码错
                     LogUtils.e("教务密码错，信息门户对");
                     return;
                 }
-                FileUtils.setStoredAccount(LoginActivity.this,new UserAccount(sno, AppConfig.idsPwd, AppConfig.jwPwd));
+                FileUtils.setStoredAccount(LoginActivity.this, new UserAccount(sno, AppConfig.idsPwd, AppConfig.jwPwd));
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 LoginActivity.this.finish();
             }
+
             @Override
             public void onError(Throwable e) {
                 LogUtils.e(e.getMessage());
-                Toast.makeText(LoginActivity.this, "信息门户"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "信息门户" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onComplete() {
             }
         });
-
-//        用于检测信息门户密码对错
-//        CardApiFactory infoFactory = CardApiFactory.getInstance();
-//        infoFactory.getCurrentCash(new Observer<CardBasic>() {
-//            @Override
-//            public void onSubscribe(Disposable d) {
-//            }
-//
-//            @Override
-//            public void onNext(CardBasic value) {
-//                if (mJwOk == mJwValueError){ //教务密码错，因为两个请求网络顺序问题不一定错的时候能判断出，但出现这情况肯定教务密码错
-//                    return;
-//                }
-//                FileUtils.setStoredAccount(LoginActivity.this,new UserAccount(sno, AppConfig.idsPwd, AppConfig.jwPwd));
-//                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//                LoginActivity.this.finish();
-//            }
-//            @Override
-//            public void onError(Throwable e) {
-//                LogUtils.e(e.getMessage());
-//                Toast.makeText(LoginActivity.this, "信息门户"+e.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//            @Override
-//            public void onComplete() {
-//            }
-//        });
-
-//        //获取个人基本信息
-//        MeFragment.factory.getBasicInfo(new Observer<BasicInfo>() {
-//            @Override
-//            public void onSubscribe(Disposable d) {
-//            }
-//            @Override
-//            public void onNext(BasicInfo value) {
-//                value.setId(MeFragment.localId);
-//                value.save();
-//                if (mJwOk == mJwValueError){ //教务密码错，因为两个请求网络顺序问题不一定错的时候能判断出，但出现这情况肯定教务密码错
-//                    return;
-//                }
-//                FileUtils.setStoredAccount(LoginActivity.this,new UserAccount(sno,pwd,pwd));
-//                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//                LoginActivity.this.finish();
-//            }
-//            @Override
-//            public void onError(Throwable e) {
-//                LogUtils.e(e.getMessage());
-//                Toast.makeText(LoginActivity.this, "信息门户"+e.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//            @Override
-//            public void onComplete() {
-//            }
-//        });
     }
 
     @OnCheckedChanged(R.id.cb_login_license) void checkLicense(boolean checked){

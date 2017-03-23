@@ -87,3 +87,17 @@ public static final int *;
 -keep class * implements android.os.Parcelable {                                # 保持 Parcelable 不被混淆
   public static final android.os.Parcelable$Creator *;
 }
+
+
+###############   友盟Begin  ###############
+-keepclassmembers class * {
+   public <init> (org.json.JSONObject);
+}
+-keep public class com.guang.app.R$*{
+    public static final int *;
+}
+-keepclassmembers enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+###############   友盟End  ###############

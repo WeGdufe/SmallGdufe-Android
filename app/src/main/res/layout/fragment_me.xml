@@ -38,7 +38,7 @@
                     android:textColor="@color/red"
                     android:layout_marginRight="20dp"
                     android:layout_gravity="center_vertical"
-                    android:text="获取失败" />
+                    android:text="获取中..." />
                 <ImageView
                     android:layout_gravity="center_vertical"
                     android:layout_width="wrap_content"
@@ -69,6 +69,19 @@
                 <!--android:layout_marginTop="10dp"-->
                 <!--android:drawableLeft="@mipmap/me_card"-->
                 <!--android:text="检查更新" />-->
+
+            <TextView
+                android:id="@+id/tv_me_update"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/me_update"
+                android:text=" 检查更新" />
+
             <TextView
                 android:id="@+id/tv_me_about"
                 android:textSize="16sp"
@@ -90,7 +103,7 @@
                 android:paddingRight="10dp"
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@mipmap/me_exit"
-                android:text=" 退出" />
+                android:text=" 注销" />
         </LinearLayout>
 
 </LinearLayout>

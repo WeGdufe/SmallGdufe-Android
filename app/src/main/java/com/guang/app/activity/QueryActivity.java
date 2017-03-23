@@ -3,7 +3,6 @@ package com.guang.app.activity;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -15,7 +14,7 @@ import com.guang.app.widget.RefreshActionItem;
  * 提供增加标题栏返回按钮功能
  * Created by xiaoguang on 2017/2/15.
  */
-public class QueryActivity extends AppCompatActivity implements RefreshActionItem.RefreshButtonListener {
+public class QueryActivity extends BaseActivity implements RefreshActionItem.RefreshButtonListener {
     protected RefreshActionItem mRefreshActionItem;
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {

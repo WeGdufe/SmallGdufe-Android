@@ -1,5 +1,8 @@
 package com.guang.app.util;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -31,5 +34,19 @@ public class CalcUtils {
         }
         return bitmap;
     }
-
+    /**
+     * 获取版本号
+     *
+     * @return 当前应用的版本号
+     */
+    public static int getVersionCode(Context context) {
+        try {
+            PackageManager manager = context.getApplicationContext().getPackageManager();
+            PackageInfo info = manager.getPackageInfo(context.getApplicationContext().getPackageName(), 0);
+            return info.versionCode;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }

@@ -10,7 +10,6 @@ public class AppConfig {
 
     //千万记得这个URL要/结尾！！！
     public static final String BASE_URL = "http://www.wintercoder.com:82/";
-//    public static final String BASE_URL = "http://172.25.155.14:82/";
     public static final String Avator_URL = "https://www.94cb.com/Material-Design-Avatars/avatar.php?char=";
 
     public static class Url {

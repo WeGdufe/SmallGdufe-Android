@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <!--友盟需要-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
@@ -32,5 +37,10 @@
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.CardHistoryActivity" />
         <activity android:name=".activity.SearchBookStoreActivity" />
+
+        <!--友盟-->
+        <meta-data android:value="58d3834caed1797dae00058f" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="official" android:name="UMENG_CHANNEL"/>
+        <!-- 多渠道打包 http://bbs.umeng.com/thread-9119-1-1.html-->
     </application>
 </manifest>
