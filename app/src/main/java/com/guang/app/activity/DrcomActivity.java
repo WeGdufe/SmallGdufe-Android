@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.guang.app.AppConfig;
 import com.guang.app.R;
+import com.guang.app.util.FileUtils;
 import com.guang.app.util.drcom.DrcomConfig;
 import com.guang.app.util.drcom.DrcomFileUtils;
 import com.guang.app.util.drcom.DrcomService;
@@ -19,6 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DrcomActivity extends QueryActivity {
+    public static String INTENT_DRCOM_TO_MAIN = "drcom2main";   // 标记是从drcom返回main的，否则main根据默认页又会继续跳回来
 
     @Bind(R.id.ed_drcom_username)  EditText edUsername;
     @Bind(R.id.ed_drcom_password)  EditText edPassword;
@@ -37,6 +41,10 @@ public class DrcomActivity extends QueryActivity {
         if(null != info){
             edUsername.setText(info.getUsername());
             edPassword.setText(info.getPassword());
+            //第一次打开的时候没有存储学号，此时显示APP的学号信息
+            if(TextUtils.isEmpty(edUsername.getText())){
+                edUsername.setText(AppConfig.sno);
+            }
         }
     }
 
@@ -92,6 +100,24 @@ public class DrcomActivity extends QueryActivity {
 
     @Override
     protected boolean shouldHideLoadingIcon() {
+        return true;
+    }
+
+    //重写返回按钮，如果是默认页面为drcom则按返回 返回到主activity（因为main->drcom已经finish了main，所以得new）
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                AppConfig.defaultPage = FileUtils.getStoredDefaultPage(this);
+                if(AppConfig.defaultPage == AppConfig.DefaultPage.DRCOM){
+                    Intent intent = new Intent(this, MainActivity.class);
+                    intent.putExtra(INTENT_DRCOM_TO_MAIN, true);
+                    startActivity(intent);
+                    this.finish();
+                    return true;
+                }
+                return super.onOptionsItemSelected(item);
+        }
         return true;
     }
 }

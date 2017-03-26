@@ -134,6 +134,7 @@ public class LoginActivity extends BaseActivity {
                     return;
                 }
                 FileUtils.setStoredAccount(LoginActivity.this, new UserAccount(sno, AppConfig.idsPwd, AppConfig.jwPwd));
+                AppConfig.defaultPage = AppConfig.DefaultPage.HOME; //默认首页为课表
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 LoginActivity.this.finish();
             }

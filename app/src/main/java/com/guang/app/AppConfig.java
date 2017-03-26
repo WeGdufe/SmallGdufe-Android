@@ -5,6 +5,7 @@ public class AppConfig {
     public static String sno = "";           // 用户学号
     public static String idsPwd = "";
     public static String jwPwd = "";
+    public static int defaultPage = 0;
     public static String localAesSeed = "local";
     public static String netAesSeed = "netdsad238139dsad";
 
@@ -13,6 +14,18 @@ public class AppConfig {
 //    public static final String BASE_URL = "http://192.168.137.1:82/";
     public static final String BASE_URL = "http://www.wintercoder.com:82/";
     public static final String Avator_URL = "https://www.94cb.com/Material-Design-Avatars/avatar.php?char=";
+
+    public static class DefaultPage {
+        public static final int HOME = 0;
+        public static final int FEATURE = 1;
+        public static final int ME = 2;
+        //预留3给新fragment
+        public static final int DRCOM = 10;
+//        public static final String HOME = "homeFragment";
+//        public static final String FEATURE = "featureFragment";
+//        public static final String ME = "meFragment";
+//        public static final String DRCOM = "drcomActivity";
+    }
 
     public static class Url {
         public static final String index = "index.php?r=";

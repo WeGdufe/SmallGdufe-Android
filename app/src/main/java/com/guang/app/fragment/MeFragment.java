@@ -1,8 +1,11 @@
 package com.guang.app.fragment;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +27,7 @@ import com.guang.app.model.BasicInfo;
 import com.guang.app.model.CardBasic;
 import com.guang.app.model.Schedule;
 import com.guang.app.util.FileUtils;
+import com.guang.app.util.drcom.DrcomFileUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import org.litepal.crud.DataSupport;
@@ -105,8 +109,10 @@ public class MeFragment extends Fragment {
 
             @Override
             public void onNext(CardBasic value) {
-                tvMeCardNum.setText("￥"+value.getCash());
-                mCardNum = value.getCardNum();
+                if(null != value) {
+                    tvMeCardNum.setText("￥" + value.getCash());
+                    mCardNum = value.getCardNum();
+                }
             }
             @Override
             public void onError(Throwable e) {
@@ -143,6 +149,44 @@ public class MeFragment extends Fragment {
         intent.putExtra(CardHistoryActivity.intentCardNum,mCardNum);
         startActivity(intent);
     }
+
+    private int mSelectedPage = AppConfig.DefaultPage.HOME; //选择默认页的对话框的当前选择项
+    @OnClick(R.id.tv_me_default_page) void clickDefaultPage(){
+        final Context context = getActivity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setIcon(R.mipmap.me_default_page);
+        builder.setTitle("打开APP后直达该页面");
+
+        final String[] pages = {
+                context.getString(R.string.tab_home), context.getString(R.string.tab_features),
+                context.getString(R.string.tab_settings),context.getString(R.string.menu_drcom) };
+
+        int pageIndex = AppConfig.defaultPage;   //默认选择哪个
+        if(pageIndex == AppConfig.DefaultPage.DRCOM){
+            pageIndex = 3;
+        }
+        mSelectedPage = pageIndex;  //当前选择
+        //点击item选择时的事件
+        builder.setSingleChoiceItems(pages, pageIndex, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mSelectedPage = which;
+            }
+        });
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(mSelectedPage == 3){
+                    mSelectedPage = AppConfig.DefaultPage.DRCOM;
+                }
+                AppConfig.defaultPage = mSelectedPage;
+                FileUtils.setStoredDefaultPage(context,AppConfig.defaultPage);
+            }
+        });
+        builder.setNegativeButton("取消", null);
+        builder.show();
+    }
+
     @OnClick(R.id.tv_me_about) void clickAbout(){
         startActivity(new Intent(getActivity(), AboutActivity.class));
     }
@@ -153,6 +197,7 @@ public class MeFragment extends Fragment {
     @OnClick(R.id.tv_me_exit) void logout() {
         startActivity(new Intent(getActivity(), LoginActivity.class));
         FileUtils.expireStoredAccount(getActivity());//防止点退出后重新打开APP会进入旧帐号
+        DrcomFileUtils.expireStoredAccount(getActivity());  //drcom信息
         DataSupport.deleteAll(Schedule.class);  //清空课程表
         DataSupport.deleteAll(BasicInfo.class);
         MobclickAgent.onProfileSignOff();//友盟统计用户退出
