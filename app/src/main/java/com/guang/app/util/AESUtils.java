@@ -1,4 +1,8 @@
 package com.guang.app.util;
+
+import android.text.TextUtils;
+import android.util.Base64;
+
 import com.guang.app.AppConfig;
 
 import java.security.SecureRandom;
@@ -9,28 +13,40 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 /**
+ * 加解密前加上base64编码防止编码不同导致的 IllegalBlockSizeException: last block incomplete in decryption
  * Created by xiaoguang on 2017/2/20.
  */
 public class AESUtils {
     public static String encryptLocal(String cleartext)  {
+        if(TextUtils.isEmpty(cleartext)){
+            return "";
+        }
         try {
-            return encrypt(AppConfig.localAesSeed,cleartext);
+            String encrypted = encrypt(AppConfig.localAesSeed,cleartext);
+            return Base64.encodeToString(encrypted.getBytes(), Base64.DEFAULT);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
+
+    public static String decryptLocal(String cleartext)  {
+        if(TextUtils.isEmpty(cleartext)){
+            return "";
+        }
+        try {
+            String decoded = new String(Base64.decode(cleartext, Base64.DEFAULT));
+            String decrypted = decrypt(AppConfig.localAesSeed,decoded);
+            return decrypted;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static String encryptNet(String cleartext)  {
         try {
             return encrypt(AppConfig.netAesSeed,cleartext);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    public static String decryptLocal(String cleartext)  {
-        try {
-            return decrypt(AppConfig.localAesSeed,cleartext);
         } catch (Exception e) {
             e.printStackTrace();
         }

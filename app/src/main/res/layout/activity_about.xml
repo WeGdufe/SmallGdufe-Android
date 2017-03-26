@@ -6,60 +6,69 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@mipmap/app_icon"
-        android:layout_marginTop="92dp"
-        android:layout_centerHorizontal="true" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="92dp"
+            android:src="@mipmap/app_icon" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="广财小工具 v1.0.0"
-        android:id="@+id/textView2"
-        android:textColor="@color/red"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            android:text="广财小工具 v1.0.0"
 
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/red" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Author：13计2小光"
-        android:id="@+id/tv_author"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="官方微博：还没有23333"
-        android:id="@+id/tv_weibo"
-        android:layout_below="@+id/tv_author"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="38dp"
+            android:text="Author：13计2小光" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thanks：https://github.com/iSCAU/iSCAU-Android"
-        android:autoLink="all"
-        android:id="@+id/textView3"
-        android:paddingTop="10dp"
-        android:layout_below="@+id/tv_weibo"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/tv_weibo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_author"
+            android:layout_centerHorizontal="true"
+            android:autoLink="all"
+            android:paddingTop="10dp"
+            android:text="官方邮箱：movinggdufe@163.com" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="无薪招聘：帮忙完善该应用的PHPer、Android/iOSer\n                      792875586@qq.com"
-        android:autoLink="all"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_weibo"
+            android:layout_centerHorizontal="true"
+            android:autoLink="all"
+            android:paddingTop="10dp"
+            android:text="Thanks：\nhttps://github.com/iSCAU/iSCAU-Android\nhttps://github.com/wintercoder/Gdufe-Drcom-Android" />
 
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:autoLink="all"
+            android:paddingTop="10dp"
+            android:text="无薪招聘：\n帮忙完善该应用的PHPer、Android/iOSer，联系 792875586@qq.com" />
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

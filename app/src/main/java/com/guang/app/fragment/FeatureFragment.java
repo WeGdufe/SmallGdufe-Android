@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.guang.app.R;
 import com.guang.app.activity.BookActivity;
 import com.guang.app.activity.CetActivity;
+import com.guang.app.activity.DrcomActivity;
 import com.guang.app.activity.FewSztzActivity;
 import com.guang.app.activity.MapActivity;
 import com.guang.app.activity.ScoreActivity;
@@ -32,11 +33,15 @@ public class FeatureFragment extends Fragment {
 		return view;
 	}
 
+	//第一排
 	@OnClick(R.id.menu_score) void queryScore() {
 		startActivity(new Intent(getActivity(), ScoreActivity.class));
 	}
 	@OnClick(R.id.menu_cet) void queryCet() {
 		startActivity(new Intent(getActivity(), CetActivity.class));
+	}
+	@OnClick(R.id.menu_few_sztz) void queryFewSztz() {
+		startActivity(new Intent(getActivity(), FewSztzActivity.class));
 	}
 
 	//第二排
@@ -56,9 +61,10 @@ public class FeatureFragment extends Fragment {
 	}
 
 	//第三排
-	@OnClick(R.id.menu_few_sztz) void queryFewSztz() {
-		startActivity(new Intent(getActivity(), FewSztzActivity.class));
+	@OnClick(R.id.menu_drcom) void drcomNet() {
+		startActivity(new Intent(getActivity(), DrcomActivity.class));
 	}
+
 	@OnClick(R.id.menu_calendar) void queryXiaoLi() {
 		Intent intent = new Intent(getActivity(), XiaoLiActivity.class);
 		intent.putExtra(XiaoLiActivity.doWhat,XiaoLiActivity.doXiaoLi);

@@ -71,26 +71,41 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:visibility="invisible"
                         style="@style/menu_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-
                         <ImageButton
-                            android:id="@+id/menu_emptyClassRoom"
+                            android:id="@+id/menu_few_sztz"
                             style="@style/menu_item_icon"
-                            />
-                        <!--android:src="@drawable/icon_emptyclassroom_selector"-->
+                            android:src="@drawable/icon_sutuo_selector" />
 
                         <TextView
                             style="@style/menu_item_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/menu_emptyClassRoom" />
+                            android:text="@string/menu_sutuo" />
 
                     </LinearLayout>
+                    <!---->
+                    <!--<LinearLayout-->
+                        <!--android:visibility="invisible"-->
+                        <!--style="@style/menu_item"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content">-->
 
+                        <!--<ImageButton-->
+                            <!--android:id="@+id/menu_emptyClassRoom"-->
+                            <!--style="@style/menu_item_icon"-->
+                            <!--/>-->
+                        <!--&lt;!&ndash;android:src="@drawable/icon_emptyclassroom_selector"&ndash;&gt;-->
 
+                        <!--<TextView-->
+                            <!--style="@style/menu_item_label"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="@string/menu_emptyClassRoom" />-->
+
+                    <!--</LinearLayout>-->
 
                     <LinearLayout
                         style="@style/menu_item"
@@ -251,23 +266,21 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-
                     <LinearLayout
                         style="@style/menu_item"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
                         <ImageButton
-                            android:id="@+id/menu_urgencyPhone"
                             style="@style/menu_item_icon"
-                            android:src="@drawable/icon_phone_selector" />
+                            android:id="@+id/menu_drcom"
+                            android:src="@drawable/icon_drcom_selector" />
 
                         <TextView
                             style="@style/menu_item_label"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/menu_busandtelphone" />
-
+                            android:text="@string/menu_drcom" />
                     </LinearLayout>
                     <LinearLayout
                         style="@style/menu_item"
@@ -331,23 +344,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp">
 
-                    <LinearLayout
-                        style="@style/menu_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageButton
-                            android:id="@+id/menu_few_sztz"
-                            style="@style/menu_item_icon"
-                            android:src="@drawable/icon_sutuo_selector" />
-
-                        <TextView
-                            style="@style/menu_item_label"
+                        <LinearLayout
+                            style="@style/menu_item"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/menu_sutuo" />
+                            android:layout_height="wrap_content">
 
-                    </LinearLayout>
+
+                            <ImageButton
+                                android:id="@+id/menu_urgencyPhone"
+                                style="@style/menu_item_icon"
+                                android:src="@drawable/icon_phone_selector" />
+
+                            <TextView
+                                style="@style/menu_item_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/menu_busandtelphone" />
+
+                        </LinearLayout>
+
+
+
 
                     <!--<LinearLayout-->
                         <!--style="@style/menu_item"-->

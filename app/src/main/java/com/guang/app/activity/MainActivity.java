@@ -14,6 +14,8 @@ import com.guang.app.fragment.MeFragment;
 import com.guang.app.util.FileUtils;
 import com.guang.app.util.FragmentUtil;
 
+import org.lzh.framework.updatepluginlib.UpdateBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        ButterKnife.bind(this);
 
         if(!FileUtils.getStoredAccountAndSetApp(this) || TextUtils.isEmpty(AppConfig.sno) || TextUtils.isEmpty(AppConfig.idsPwd)){
             startActivity(new Intent(this, LoginActivity.class));
@@ -37,15 +40,15 @@ public class MainActivity extends BaseActivity {
             return; //没这个居然会往下跑！
         }
         setTitle(R.string.app_name);
-        ButterKnife.bind(this);
         initFragment();
+        UpdateBuilder.create().check();
     }
 
     private void initFragment() {
         mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
         mFragments.add(new FeatureFragment());
-//        mFragments.add(new ShareFragment());
+//        mFragments.add(new ShareFragment());  //备用
         mFragments.add(new MeFragment());
 
         fUtil = FragmentUtil.init(this);

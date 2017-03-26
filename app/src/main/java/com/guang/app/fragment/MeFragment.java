@@ -23,7 +23,6 @@ import com.guang.app.api.JwApiFactory;
 import com.guang.app.model.BasicInfo;
 import com.guang.app.model.CardBasic;
 import com.guang.app.model.Schedule;
-import com.guang.app.util.CalcUtils;
 import com.guang.app.util.FileUtils;
 import com.umeng.analytics.MobclickAgent;
 
@@ -143,10 +142,6 @@ public class MeFragment extends Fragment {
         Intent intent = new Intent(getActivity(), CardHistoryActivity.class);
         intent.putExtra(CardHistoryActivity.intentCardNum,mCardNum);
         startActivity(intent);
-    }
-    @OnClick(R.id.tv_me_update) void checkUpdate(){
-        int appVer = CalcUtils.getVersionCode(getActivity());
-        Toast.makeText(getActivity(), "还没实现", Toast.LENGTH_SHORT).show();
     }
     @OnClick(R.id.tv_me_about) void clickAbout(){
         startActivity(new Intent(getActivity(), AboutActivity.class));

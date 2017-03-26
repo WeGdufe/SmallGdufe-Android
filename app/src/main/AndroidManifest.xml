@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <!--drcom-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
     <!--友盟需要-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -37,6 +40,12 @@
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.CardHistoryActivity" />
         <activity android:name=".activity.SearchBookStoreActivity" />
+        <activity android:name=".activity.DrcomActivity" android:launchMode="singleInstance"/>
+        <service
+            android:name=".util.drcom.DrcomService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":white" />
 
         <!--友盟-->
         <meta-data android:value="58d3834caed1797dae00058f" android:name="UMENG_APPKEY"/>
