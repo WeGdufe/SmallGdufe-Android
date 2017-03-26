@@ -8,7 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.guang.app.R;
-import com.guang.app.widget.ZoomImageView;
+import com.guang.app.widget.PinchImageView;
 
 import butterknife.Bind;
 
@@ -17,7 +17,8 @@ import butterknife.Bind;
  * Created by xiaoguang on 2017/2/19.
  */
 public class MapActivity extends QueryActivity {
-    @Bind(R.id.xiaoli_zoom_image_view) ZoomImageView zoomImageView;
+    @Bind(R.id.xiaoli_zoom_image_view)
+    PinchImageView zoomImageView;
 
     public static final String doWhat = "what";
     public static final boolean doMapSanShui = false;

@@ -5,17 +5,17 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.guang.app.R;
-import com.guang.app.widget.ZoomImageView;
+import com.guang.app.widget.PinchImageView;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * 校历、排课表
  * Created by xiaoguang on 2017/2/18.
  */
 public class XiaoLiActivity extends QueryActivity {
-    @Bind(R.id.xiaoli_zoom_image_view) ZoomImageView zoomImageView;
+    @Bind(R.id.xiaoli_zoom_image_view)
+    PinchImageView zoomImageView;
 
     public static final String doWhat = "what";
     public static final int doTimeTable = 0;

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.guang.app.widget.ZoomImageView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.guang.app.widget.PinchImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/xiaoli_zoom_image_view"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-    android:layout_height="match_parent"
-    android:background="#000000"
-    />
+    android:background="#000000" />
