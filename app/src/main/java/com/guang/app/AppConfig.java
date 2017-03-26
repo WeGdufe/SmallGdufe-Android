@@ -13,7 +13,10 @@ public class AppConfig {
 //    public static final String BASE_URL = "http://172.25.155.14:82/";
 //    public static final String BASE_URL = "http://192.168.137.1:82/";
     public static final String BASE_URL = "http://www.wintercoder.com:82/";
-    public static final String Avator_URL = "https://www.94cb.com/Material-Design-Avatars/avatar.php?char=";
+    public static final String Avator_URL_BASE = "https://www.94cb.com/";
+    public static final String Avatar_URL = Avator_URL_BASE + "Material-Design-Avatars/avatar.php";
+
+//    public static final String Avator_URL = "https://www.94cb.com/Material-Design-Avatars/avatar.php?cache=86400&size=36&char=";
 
     public static class DefaultPage {
         public static final int HOME = 0;
@@ -46,6 +49,7 @@ public class AppConfig {
         public static final String getBookStoreDetail = index + "opac/get-book-store-detail";
 
         public static final String feedback = index + "work/feedback";
+//        public static final String getAvatarIcon = index + "work/get-avatar-icon";
 
         public static final String getCurrentCash = index + "card/current-cash";
         public static final String cardConsumeToday = index + "card/consume-today";

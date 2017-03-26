@@ -4,6 +4,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
@@ -23,6 +25,7 @@ import com.guang.app.activity.FeedbackActivity;
 import com.guang.app.activity.LoginActivity;
 import com.guang.app.api.CardApiFactory;
 import com.guang.app.api.JwApiFactory;
+import com.guang.app.api.WorkApiFactory;
 import com.guang.app.model.BasicInfo;
 import com.guang.app.model.CardBasic;
 import com.guang.app.model.Schedule;
@@ -37,6 +40,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import okhttp3.ResponseBody;
 
 public class MeFragment extends Fragment {
     private JwApiFactory factory = JwApiFactory.getInstance();
@@ -132,14 +136,33 @@ public class MeFragment extends Fragment {
         }
         tvMeName.setText(value.getName());
         tvMeClass.setText(value.getClassroom());
-        String iconUrl = AppConfig.Avator_URL+value.getNamePy().charAt(0);
-//        String iconUrl = AppConfig.Avator_URL+value.getNamePy().charAt(0);
-//        tvMeIcon.setImageDrawable(Drawable.createFromResourceStream(getResources().getDrawable(R.mipmap.avatar_H)));
-        tvMeIcon.setBackgroundResource(R.mipmap.avatar_h);
-//        tvMeIcon.setImageDrawable(Drawable.c(R.mipmap.avatar_H));
 
-//        tvMeIcon
+        Bitmap bitmap = FileUtils.loadAvatarBitmap(getActivity());
+        if(bitmap != null){ //读取本地图片头像
+            tvMeIcon.setImageBitmap(bitmap);
+        }else{              //网络加载头像
+            WorkApiFactory workApiFactory = WorkApiFactory.getInstance();
+            workApiFactory.getAvatarIcon(""+value.getName().charAt(0), new Observer<ResponseBody>() {
+                @Override
+                public void onSubscribe(Disposable d) {
+                }
+                @Override
+                public void onNext(ResponseBody value) {
+                    Bitmap bitmap = BitmapFactory.decodeStream(value.byteStream());
+                    FileUtils.saveImage(getActivity(),bitmap);
+                    tvMeIcon.setImageBitmap(bitmap);
+                }
+                @Override
+                public void onError(Throwable e) {
+                    tvMeIcon.setBackgroundResource(R.mipmap.avatar_h);
+                }
+                @Override
+                public void onComplete() {
+                }
+            });
+        }
     }
+
     @OnClick(R.id.layout_me_cashhistory) void showConsumeToday(){
         if(TextUtils.isEmpty(mCardNum)){
             Toast.makeText(getActivity(), "交易记录获取异常", Toast.LENGTH_SHORT).show();

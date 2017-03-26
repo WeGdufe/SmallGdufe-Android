@@ -53,7 +53,6 @@ public class ApiUtils {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder()
                 .addInterceptor(basicParamsInterceptor)
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
-        LogUtils.e(AppConfig.sno +" "+password);
         Retrofit api = apiBuilder
                 .client(httpClientBuilder.build())
                 .build();

@@ -5,6 +5,7 @@ import com.guang.app.model.HttpResult;
 import com.guang.app.model.StrObjectResponse;
 
 import io.reactivex.Observable;
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -16,5 +17,10 @@ public interface WorkApi {
     //反馈
     @GET(AppConfig.Url.feedback)
     Observable<HttpResult<StrObjectResponse>> submitFeedback(@Query("contact") String contact, @Query("content") String content);
+
+    //获取头像（根据名字的第一个字符生成）
+    @GET(AppConfig.Avatar_URL)
+    Observable<ResponseBody> getAvatarIcon(@Query("char") String nickname, @Query("size") int size, @Query("cache") int cache);
+
 
 }

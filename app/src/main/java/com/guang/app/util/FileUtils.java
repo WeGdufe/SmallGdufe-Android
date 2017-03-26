@@ -2,12 +2,19 @@ package com.guang.app.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.text.TextUtils;
 
 import com.guang.app.AppConfig;
 import com.guang.app.model.UserAccount;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -15,8 +22,10 @@ import java.io.InputStreamReader;
  * Created by xiaoguang on 2017/2/20.
  */
 public class FileUtils {
-    private static final String SP_FILE = "account_data";
+    private static final String DATA_FILE_DIR = "gdufe";
+    private static final String AVATAR_FILE_NAME = "avatar.png";
 
+    private static final String SP_FILE = "account_data";
     private static final String SP_SNO = "sno";
     private static final String SP_IDS_PSSWORD = "idsPwd";
     private static final String SP_JW_PSSWORD = "jwPwd";
@@ -79,6 +88,59 @@ public class FileUtils {
         SharedPreferences sp = context.getSharedPreferences(SP_FILE,0);
         return sp.getInt(SP_DEFAULT_PAGE, AppConfig.DefaultPage.HOME);
     }
+
+    /**
+     * 获取硬盘的缓存目录，用来放图片
+     * http://blog.csdn.net/u011494050/article/details/39671159
+     * @param context context
+     * @return 路径
+     */
+    private static String getDiskCacheDir(Context context) {
+        String cachePath = null;
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+                || !Environment.isExternalStorageRemovable()) {
+            cachePath = context.getExternalCacheDir().getPath();//SDCard/Android/data/应用包名/cache/目录
+        } else {
+            cachePath = context.getCacheDir().getPath();    //data/data/<application package>/cache
+        }
+        return cachePath;
+    }
+    /**
+     * 加载头像文件
+     * @return Bitmap
+     */
+    public static Bitmap loadAvatarBitmap(Context context) {
+        File appDir = new File(getDiskCacheDir(context));
+        File file = new File(appDir, AVATAR_FILE_NAME);
+        if(!file.exists()){
+            return null;
+        }
+        return BitmapFactory.decodeFile(file.getPath());
+    }
+
+    /**
+     * 保存图片文件（头像）
+     * @param bmp Bitmap
+     */
+    public static void saveImage(Context context,Bitmap bmp) {
+        File appDir = new File(getDiskCacheDir(context));
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
+        String fileName = AVATAR_FILE_NAME;
+        File file = new File(appDir, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 读取main/assets目录文件
      * @param context

@@ -64,6 +64,7 @@ public class MainActivity extends BaseActivity {
 
         fUtil = FragmentUtil.init(this);
         fUtil.addAll(R.id.main_fragment,mFragments);
+        fUtil.show(mFragments.get(0));
 
         mTabGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
