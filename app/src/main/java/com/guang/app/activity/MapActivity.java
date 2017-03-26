@@ -11,7 +11,6 @@ import com.guang.app.R;
 import com.guang.app.widget.ZoomImageView;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * 显示地图，含两校区地图
@@ -32,7 +31,6 @@ public class MapActivity extends QueryActivity {
         setTitle(R.string.title_likeXiaoli);
         super.addTitleBackBtn();
         setContentView(R.layout.xiaoli);
-        ButterKnife.bind(this);
         nowMapFlag = getIntent().getBooleanExtra(doWhat,false);
     }
     

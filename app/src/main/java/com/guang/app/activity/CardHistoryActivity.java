@@ -15,7 +15,6 @@ import com.guang.app.model.CardConsumeItem;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -36,7 +35,7 @@ public class CardHistoryActivity extends QueryActivity {
         super.addTitleBackBtn();
         setTitle(R.string.title_card_history);
         setContentView(R.layout.common_listview);
-        ButterKnife.bind(this);
+
         initAdapter();
         mCardNum = getIntent().getStringExtra(intentCardNum);
     }

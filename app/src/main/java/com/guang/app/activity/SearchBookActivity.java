@@ -20,7 +20,6 @@ import com.guang.app.model.SearchBook;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -44,7 +43,7 @@ public class SearchBookActivity extends QueryActivity {
         super.addTitleBackBtn();
         setTitle(R.string.title_searchBook);
         setContentView(R.layout.search_book);
-        ButterKnife.bind(this);
+
         initAdapter();
     }
 

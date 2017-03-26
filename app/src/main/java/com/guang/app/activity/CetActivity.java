@@ -3,6 +3,7 @@ package com.guang.app.activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -13,7 +14,6 @@ import com.guang.app.api.JwcApiFactory;
 import com.guang.app.model.Cet;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -60,8 +60,11 @@ public class CetActivity extends QueryActivity {
         super.addTitleBackBtn();
         setTitle(R.string.title_cet);
         setContentView(R.layout.activity_cet);
-        ButterKnife.bind(this);
+
+        //防止自动弹出键盘
         edCetName.clearFocus();
+        tvCetLevel.requestFocus();
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
 

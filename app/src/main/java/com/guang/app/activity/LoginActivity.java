@@ -27,7 +27,6 @@ import org.litepal.crud.DataSupport;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import io.reactivex.Observer;
@@ -47,7 +46,6 @@ public class LoginActivity extends BaseActivity {
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
         edJwPwd.setVisibility(View.GONE);
     }
 

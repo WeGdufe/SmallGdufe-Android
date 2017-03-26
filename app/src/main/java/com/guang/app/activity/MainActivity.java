@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
 //    @Bind(R.id.main_fragment)
@@ -37,7 +36,6 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        ButterKnife.bind(this);
 
         //未登录跳转登陆页
         if(!FileUtils.getStoredAccountAndSetApp(this) || TextUtils.isEmpty(AppConfig.sno) || TextUtils.isEmpty(AppConfig.idsPwd)){

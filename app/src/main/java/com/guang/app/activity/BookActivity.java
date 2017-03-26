@@ -27,7 +27,6 @@ import com.guang.app.widget.RefreshActionItem;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -50,7 +49,7 @@ public class BookActivity extends QueryActivity {
         super.onCreate(savedInstanceState);
         super.addTitleBackBtn();
         setContentView(R.layout.common_listview);
-        ButterKnife.bind(this);
+
         initAdapter();
         initEvent();
     }

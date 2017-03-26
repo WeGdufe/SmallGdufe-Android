@@ -42,7 +42,7 @@ public class SearchBookStoreActivity  extends QueryActivity {
         String bookName = getIntent().getStringExtra(intentBookName);
         setTitle(bookName);
         setContentView(R.layout.common_listview);
-        ButterKnife.bind(this);
+
         initAdapter();
     }
 

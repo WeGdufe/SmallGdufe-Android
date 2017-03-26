@@ -8,7 +8,7 @@
     <!-- 课程名称 -->
     <TextView
         android:id="@+id/tv_book_bookName"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/socre_item_name_default_color"
         android:paddingLeft="@dimen/listitem_title_padding_left"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content" />
 
             <!--<RelativeLayout-->
-            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_width="match_parent"-->
             <!--android:clickable="true"-->
             <!--android:layout_height="wrap_content">-->
             <!--</RelativeLayout>-->

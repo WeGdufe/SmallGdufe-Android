@@ -11,7 +11,7 @@ import com.guang.app.widget.RefreshActionItem;
 
 /**
  * 各功能Activity的基类
- * 提供增加标题栏返回按钮功能
+ * 提供增加标题栏返回按钮、右上角加载框功能（可隐藏）
  * Created by xiaoguang on 2017/2/15.
  */
 public class QueryActivity extends BaseActivity implements RefreshActionItem.RefreshButtonListener {

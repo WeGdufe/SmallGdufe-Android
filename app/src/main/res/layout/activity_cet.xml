@@ -3,11 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_normal"
-    android:orientation="vertical"
+    android:orientation="vertical">
 
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -160,6 +167,7 @@
         <TableRow
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center">
             <TextView
                 style="@style/cet_item_label"
@@ -176,7 +184,7 @@
                 android:textColor="@color/goal_item_failed_color"
                 android:text="前99%~100%" />
         </TableRow>
-
-
     </TableLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

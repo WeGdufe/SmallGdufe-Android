@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_normal"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    >
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical">
         <RelativeLayout
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <ImageView
@@ -65,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView3"
+            android:layout_marginBottom="30dp"
             android:layout_centerHorizontal="true"
             android:autoLink="all"
             android:paddingTop="10dp"

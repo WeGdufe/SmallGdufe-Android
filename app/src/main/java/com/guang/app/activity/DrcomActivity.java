@@ -18,7 +18,6 @@ import com.guang.app.util.drcom.HostInfo;
 import com.guang.app.util.drcom.WifiUtils;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DrcomActivity extends QueryActivity {
@@ -33,7 +32,7 @@ public class DrcomActivity extends QueryActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drcom);
-        ButterKnife.bind(this);
+
         addTitleBackBtn();
 
         //获取本地存储的账号，填到文本框里

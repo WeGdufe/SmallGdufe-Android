@@ -9,7 +9,6 @@ import com.guang.app.api.WorkApiFactory;
 import com.guang.app.model.StrObjectResponse;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -28,7 +27,6 @@ public class FeedbackActivity extends QueryActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_feedback);
-        ButterKnife.bind(this);
         addTitleBackBtn();
         super.onCreate(savedInstanceState);
     }

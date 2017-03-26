@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -47,7 +46,7 @@ public class ScoreActivity extends QueryActivity {
         super.addTitleBackBtn();
         setTitle(R.string.title_grade);
         setContentView(R.layout.common_listview);
-        ButterKnife.bind(this);
+
         initAdapter();
     }
 

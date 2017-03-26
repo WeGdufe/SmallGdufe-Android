@@ -14,7 +14,6 @@ import com.guang.app.model.FewSztz;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -36,9 +35,8 @@ public class FewSztzActivity extends QueryActivity {
         super.onCreate(savedInstanceState);
         super.addTitleBackBtn();
         setTitle(R.string.title_fewsztz);
-
         setContentView(R.layout.common_listview);
-        ButterKnife.bind(this);
+
         initAdapter();
     }
 

@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/socre_item_name_default_color"
         android:paddingLeft="@dimen/listitem_title_padding_left"
@@ -16,7 +16,7 @@
         android:id="@+id/tv_item_card_shop" />
 
     <TableLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/listitem_padding"
         android:paddingLeft="@dimen/listitem_title_padding_left"

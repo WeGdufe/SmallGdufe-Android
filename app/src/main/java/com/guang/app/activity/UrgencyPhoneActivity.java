@@ -22,7 +22,7 @@ public class UrgencyPhoneActivity extends QueryActivity {
         super.addTitleBackBtn();
         setTitle(R.string.title_urgencyPhone);
         setContentView(R.layout.urgency_phone);
-        ButterKnife.bind(this);
+
     }
 
     @Override

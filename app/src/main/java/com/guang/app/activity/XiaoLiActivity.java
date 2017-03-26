@@ -29,7 +29,7 @@ public class XiaoLiActivity extends QueryActivity {
         setTitle(R.string.title_likeXiaoli);
         super.addTitleBackBtn();
         setContentView(R.layout.xiaoli);
-        ButterKnife.bind(this);
+
     }
 
     //显示校历或者排课表

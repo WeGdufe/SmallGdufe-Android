@@ -46,7 +46,19 @@
                     android:src="@mipmap/me_arrow_right"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            
+
+            <TextView
+                android:id="@+id/tv_me_default_page"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/me_default_page"
+                android:text=" 默认首页" />
+
             <TextView
                 android:id="@+id/tv_me_feedback"
                 android:textSize="16sp"
