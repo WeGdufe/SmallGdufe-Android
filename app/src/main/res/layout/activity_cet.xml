@@ -61,12 +61,24 @@
         </LinearLayout>
     </TableLayout>
 
-    <Button
-        android:id="@+id/btn_cet_query"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="查询" />
+        <TextView
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_feedback_button"
+            android:text="查询"
+            android:textSize="17sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:id="@+id/btn_cet_query"
+            />
+
+        <!--<Button-->
+        <!--android:id="@+id/btn_cet_query"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:text="查询" />-->
 
     <TableLayout
         android:id="@+id/table_cet"

@@ -35,9 +35,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * Created by xiaoguang on 2017/2/13.
  */
-//@ContentView(R.layout.login)
-public class LoginActivity extends BaseActivity {
-//    @Bind(R.id.btn_login) Button btn_login;
+public class LoginActivity extends QueryActivity {
     @Bind(R.id.ed_username) EditText edSno;
     @Bind(R.id.ed_password) EditText edpwd;
     @Bind(R.id.ed_jw_password) EditText edJwPwd;
@@ -47,13 +45,14 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         edJwPwd.setVisibility(View.GONE);
+        oldClickLoginTimes = System.currentTimeMillis();
     }
 
     int mJwOk = 0; //教务系统密码是否对
     private final int mJwValueInit = 0;
     private final int mJwValueError = -1;
     private final int mJwValueOk = 1;
-    String sno,pwd;
+    private long oldClickLoginTimes;
     @OnClick(R.id.btn_login) void login() {
         final String sno = edSno.getText().toString().trim();
         final String pwd = edpwd.getText().toString().trim();
@@ -67,6 +66,12 @@ public class LoginActivity extends BaseActivity {
             Toast.makeText(this, "请先勾选下方协议", Toast.LENGTH_SHORT).show();
             return;
         }
+        long curTimes = System.currentTimeMillis();
+        if( (curTimes - oldClickLoginTimes)/1000 <= 2){
+            Toast.makeText(this, "稍等，不要频繁登陆", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        oldClickLoginTimes = curTimes;
 
 //        final String sno = edSno.getText().toString().trim();
 //        final String pwd = edpwd.getText().toString().trim();
@@ -79,9 +84,9 @@ public class LoginActivity extends BaseActivity {
         if (edJwPwd.getVisibility() == View.VISIBLE) {
             AppConfig.jwPwd = jwPwd;
         }
-        LogUtils.e(AppConfig.sno + " " + AppConfig.jwPwd + " " + AppConfig.idsPwd);
         mJwOk = mJwValueInit;
         //检测教务系统密码对错
+        startLoadingProgess();
         JwApiFactory jwApiFactory = JwApiFactory.getInstance();
         jwApiFactory.getSchedule("", JwApiFactory.MERGE_SCHEDULE, new Observer<List<Schedule>>() {
             @Override
@@ -145,6 +150,7 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onComplete() {
+                stopLoadingProgess();
             }
         });
     }

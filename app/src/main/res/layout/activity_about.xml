@@ -23,13 +23,12 @@
             android:src="@mipmap/app_icon" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_about_version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
             android:text="广财小工具 v1.0.0"
-
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/red" />
 
@@ -37,7 +36,7 @@
             android:id="@+id/tv_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/tv_about_version"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="38dp"
             android:text="Author：13计2小光" />

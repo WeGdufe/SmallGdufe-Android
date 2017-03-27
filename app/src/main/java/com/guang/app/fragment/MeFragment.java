@@ -218,13 +218,26 @@ public class MeFragment extends Fragment {
     }
 
     @OnClick(R.id.tv_me_exit) void logout() {
-        startActivity(new Intent(getActivity(), LoginActivity.class));
-        FileUtils.expireStoredAccount(getActivity());//防止点退出后重新打开APP会进入旧帐号
-        DrcomFileUtils.expireStoredAccount(getActivity());  //drcom信息
-        DataSupport.deleteAll(Schedule.class);  //清空课程表
-        DataSupport.deleteAll(BasicInfo.class);
-        MobclickAgent.onProfileSignOff();//友盟统计用户退出
-        getActivity().finish();
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("确定退出（切换）账号？");
+        builder.setMessage("通常情况下按返回键就好了");
+        builder.setNegativeButton("取消",null);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+                FileUtils.expireStoredAccount(getActivity());//防止点退出后重新打开APP会进入旧帐号
+                DrcomFileUtils.expireStoredAccount(getActivity());  //drcom信息
+                FileUtils.clearAvatarImage(getActivity());  //清除头像
+                DataSupport.deleteAll(Schedule.class);  //清空课程表
+                DataSupport.deleteAll(BasicInfo.class);
+                MobclickAgent.onProfileSignOff();//友盟统计用户退出
+                getActivity().finish();
+            }
+        });
+        builder.create().show();
+
     }
 
 

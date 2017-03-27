@@ -18,7 +18,7 @@ public class AppContext  extends LitePalApplication {
     public void onCreate() {
         super.onCreate();
         ButterKnife.setDebug(BuildConfig.DEBUG);
-        LogUtils.configAllowLog = true;
+        LogUtils.configAllowLog = BuildConfig.DEBUG;
         LitePal.initialize(this);
         //友盟
         MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);

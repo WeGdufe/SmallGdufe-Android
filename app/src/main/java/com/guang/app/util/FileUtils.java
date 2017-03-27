@@ -117,7 +117,13 @@ public class FileUtils {
         }
         return BitmapFactory.decodeFile(file.getPath());
     }
-
+    public static void clearAvatarImage(Context context) {
+        File appDir = new File(getDiskCacheDir(context));
+        File file = new File(appDir, AVATAR_FILE_NAME);
+        if(file.exists()){
+            file.delete();
+        }
+    }
     /**
      * 保存图片文件（头像）
      * @param bmp Bitmap

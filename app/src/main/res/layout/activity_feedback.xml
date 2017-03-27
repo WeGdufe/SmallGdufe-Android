@@ -29,13 +29,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ed_feedback_contact" />
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="95dp"
-        android:layout_height="wrap_content"
+    <TextView
+        android:layout_marginTop="25dp"
+        android:background="@drawable/shape_feedback_button"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
         android:text="提交"
-        android:layout_gravity="center"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        android:gravity="center"
         android:id="@+id/btn_feedback_submit"
         />
-
+    <!--<Button-->
+        <!--style="?android:attr/buttonStyleSmall"-->
+        <!--android:layout_width="95dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="提交"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:id="@+id/btn_feedback_submit"-->
+        <!--/>-->
 </LinearLayout>
