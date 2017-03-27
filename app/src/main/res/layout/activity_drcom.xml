@@ -24,7 +24,6 @@
             android:text="网络自助平台"
             android:textColor="#4381f1"
             android:textSize="30sp" />
-
     </RelativeLayout>
 
 

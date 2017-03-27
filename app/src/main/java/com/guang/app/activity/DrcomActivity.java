@@ -26,8 +26,6 @@ public class DrcomActivity extends QueryActivity {
     @Bind(R.id.ed_drcom_username)  EditText edUsername;
     @Bind(R.id.ed_drcom_password)  EditText edPassword;
 
-    private final String drcomSSid[] = {"gdufe","gdufe-teacher","Young"}; //能上网的wifi名
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,15 +59,7 @@ public class DrcomActivity extends QueryActivity {
             Toast.makeText(this, "wifi未打开", Toast.LENGTH_SHORT).show();
             return;
         }
-        String wifiName = wifiUtils.getSSID();
-        wifiName = wifiName.replace("\"","");   //4.0以上的getSSID返回 "gdufe" 带了引号
-        boolean isSchoolWifi = false;
-        for (String ssidName: drcomSSid ) {
-            if (ssidName.equalsIgnoreCase(wifiName)) {
-                isSchoolWifi = true;
-                break;
-            }
-        }
+        boolean isSchoolWifi = currentIsSchoolWifi(wifiUtils);
         if(!isSchoolWifi){
             Toast.makeText(this, "未连接学校wifi", Toast.LENGTH_SHORT).show();
             return;
@@ -85,6 +75,7 @@ public class DrcomActivity extends QueryActivity {
         //存储信息（不含mac）
         DrcomFileUtils.setStoredAccount(this,info);
     }
+
 
     @OnClick(R.id.btn_drcom_logout) void drcomLogut() {
         stopService(new Intent(this, DrcomService.class));
@@ -118,6 +109,26 @@ public class DrcomActivity extends QueryActivity {
                 return super.onOptionsItemSelected(item);
         }
         return true;
+    }
+
+
+    /**
+     * 判断当前wifi是不是学校wifi
+     * @param wifiUtils
+     * @return
+     */
+    public static boolean currentIsSchoolWifi(WifiUtils wifiUtils) {
+        final String drcomSSid[] = {"gdufe","gdufe-teacher","Young"}; //能上网的wifi名
+        String wifiName = wifiUtils.getSSID();
+        wifiName = wifiName.replace("\"","");   //4.0以上的getSSID返回 "gdufe" 带了引号
+        boolean isSchoolWifi = false;
+        for (String ssidName: drcomSSid ) {
+            if (ssidName.equalsIgnoreCase(wifiName)) {
+                isSchoolWifi = true;
+                break;
+            }
+        }
+        return isSchoolWifi;
     }
 }
 
