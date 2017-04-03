@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="12dp"
-            android:text="韩小光"
+            android:text="网络异常"
             android:textSize="16sp" />
 
         <TextView

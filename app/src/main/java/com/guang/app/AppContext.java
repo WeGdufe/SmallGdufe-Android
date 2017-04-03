@@ -34,7 +34,6 @@ public class AppContext  extends LitePalApplication {
                     public Update parse(String response) {
                         // 此处根据上面url接口返回的数据response进行update类组装。框架内部会使用此
                         // 组装的update实例判断是否需要更新以做进一步工作
-                        LogUtils.e(response);
                         Update update = new Gson().fromJson(response,Update.class);
                         return update;
                     }

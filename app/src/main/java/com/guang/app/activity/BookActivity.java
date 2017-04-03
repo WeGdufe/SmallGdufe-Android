@@ -57,7 +57,7 @@ public class BookActivity extends QueryActivity {
     @Override
     protected void loadData() {
         startLoadingProgess();
-        int from = getIntent().getIntExtra(doWhat,0);
+        int from = getIntent().getIntExtra(doWhat,BookActivity.doCurrentBook);
         if(from == BookActivity.doBorrowedBook) {
             setTitle(R.string.title_borrowedBook);
             factory.getBorrowedBook(new Observer<List<Book>>() {
@@ -120,7 +120,8 @@ public class BookActivity extends QueryActivity {
     }
 
     private void initAdapter() {
-        mAdapter = new BookAdapter(R.layout.book_listitem);
+        int from = getIntent().getIntExtra(doWhat,BookActivity.doCurrentBook);
+        mAdapter = new BookAdapter(R.layout.book_listitem,from);
         mAdapter.setEmptyView(R.layout.layout_empty_data, (ViewGroup) mRecyclerView.getParent());
         mAdapter.isUseEmpty(false); //避免一开始就出现空页面
         mAdapter.openLoadAnimation();

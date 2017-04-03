@@ -56,7 +56,7 @@
         </style>
         <style name="normal_item_sub_title" parent="android:Widget">
             <item name="android:textSize">14sp</item>
-            <item name="android:textColor">#a09d9d</item>
+            <item name="android:textColor">@color/normal_item_text_color</item>
         </style>
         <style name="expand_button" parent="android:Widget">
             <item name="android:background">@drawable/expand_button_selector</item>

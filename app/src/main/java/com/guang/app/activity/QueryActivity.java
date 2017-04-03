@@ -5,6 +5,7 @@ import android.os.PersistableBundle;
 import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.guang.app.R;
 import com.guang.app.widget.RefreshActionItem;
@@ -27,12 +28,15 @@ public class QueryActivity extends BaseActivity implements RefreshActionItem.Ref
         getMenuInflater().inflate(R.menu.menu_query_actionbar, menu);
         MenuItem item = menu.findItem(R.id.menu_loading);
         if(shouldHideLoadingIcon()){
+            //彻底隐藏
             item.setVisible(false);
             item.setEnabled(false);
         }
         mRefreshActionItem = (RefreshActionItem) item.getActionView();
         mRefreshActionItem.setMenuItem(item);
         mRefreshActionItem.setRefreshButtonListener(this);
+
+        hideLoadingProgress();  //loadData()里直接就发数据调用startLoadingProgess()的话 是不起什么作用的，不过查成绩那里我也不知道为啥这个不起作用，暂时保留这个语句
         loadData();
         return true;
     }
@@ -64,10 +68,12 @@ public class QueryActivity extends BaseActivity implements RefreshActionItem.Ref
         }
     }
     public void startLoadingProgess(){
+        showLoadingProgress();
         mRefreshActionItem.startProgress();
     }
     public void stopLoadingProgess(){
         mRefreshActionItem.stopProgress();
+        hideLoadingProgress();
     }
     /**
      * 添加标题栏返回按钮 实际效果代码
@@ -86,10 +92,16 @@ public class QueryActivity extends BaseActivity implements RefreshActionItem.Ref
     public void onRefresh(RefreshActionItem refreshActionItem) {
     }
 
-//    public void hideLoadingProgress() {
-//        mRefreshActionItem.setVisibility(View.GONE);
-//    }
-//    public void showLoadingProgress() {
-//        mRefreshActionItem.setVisibility(View.VISIBLE);
-//    }
+    /**
+     * 临时隐藏loading条
+     */
+    private void hideLoadingProgress() {
+        mRefreshActionItem.setVisibility(View.GONE);
+    }
+    /**
+     * 临时显示loading条
+     */
+    private void showLoadingProgress() {
+        mRefreshActionItem.setVisibility(View.VISIBLE);
+    }
 }

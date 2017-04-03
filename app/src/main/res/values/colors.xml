@@ -10,6 +10,7 @@
     <color name="tab_item_text_color">#2c2b2b</color>
 
     <!-- 合格成绩背景颜色 -->
+    <color name="normal_item_text_color">#a09d9d</color>
     <color name="normal_item_passed_text_color">#292929</color>
     <color name="goal_item_passed_color">#2bff00</color>
     <!--<color name="goal_item_passed_color">#f1f1f1</color>-->
