@@ -32,6 +32,7 @@ public class ScoreAdapter extends BaseQuickAdapter<Score, BaseViewHolder> {
         int score = item.getScore();
         if( score < 60) {
             viewHolder.setTextColor(R.id.tv_course_name, mContext.getResources().getColor(R.color.goal_item_failed_color));
+            viewHolder.setTextColor(R.id.tv_score, mContext.getResources().getColor(R.color.goal_item_failed_color));
         }else{
             viewHolder.setTextColor(R.id.tv_score, mContext.getResources().getColor(R.color.goal_item_passed_color));
         }

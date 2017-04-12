@@ -18,9 +18,10 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="92dp"
-            android:src="@mipmap/app_icon" />
+            android:layout_marginTop="87dp"
+            android:src="@mipmap/app_icon"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/tv_about_version"
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
-            android:text="广财小工具 v1.0.0"
+            android:text="移动广财 v1.0.0"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/red" />
 
@@ -36,40 +37,53 @@
             android:id="@+id/tv_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="29dp"
+            android:text="Author：13计2小光"
             android:layout_below="@+id/tv_about_version"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="38dp"
-            android:text="Author：13计2小光" />
+            android:layout_centerHorizontal="true" />
 
         <TextView
-            android:id="@+id/tv_weibo"
+            android:id="@+id/tv_official_web"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_author"
             android:layout_centerHorizontal="true"
             android:autoLink="all"
             android:paddingTop="10dp"
-            android:text="官方邮箱：movinggdufe@163.com" />
+            android:text="官网：http://www.wintercoder.com:81\n商务邮箱：movinggdufe@163.com" />
+
+            <TextView
+                android:id="@+id/tv_qgroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_official_web"
+                android:layout_centerHorizontal="true"
+                android:autoLink="none"
+                android:textColor="@color/blue"
+                android:paddingTop="10dp"
+                android:text="加入Q群： 631036490" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_thanks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_weibo"
+            android:layout_below="@+id/tv_job"
             android:layout_centerHorizontal="true"
             android:autoLink="all"
             android:paddingTop="10dp"
             android:text="Thanks：\nhttps://github.com/iSCAU/iSCAU-Android\nhttps://github.com/wintercoder/Gdufe-Drcom-Android" />
 
         <TextView
+            android:id="@+id/tv_job"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView3"
-            android:layout_marginBottom="30dp"
-            android:layout_centerHorizontal="true"
             android:autoLink="all"
+            android:layout_centerHorizontal="true"
             android:paddingTop="10dp"
-            android:text="无薪招聘：\n帮忙完善该应用的PHPer、Android/iOSer，联系 792875586@qq.com" />
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:text="无薪招聘帮忙完善该应用的学生开发者"
+            android:layout_below="@+id/tv_qgroup" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

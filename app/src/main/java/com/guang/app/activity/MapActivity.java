@@ -23,8 +23,8 @@ public class MapActivity extends QueryActivity {
     public static final String doWhat = "what";
     public static final boolean doMapSanShui = false;
     public static final boolean doMapGuangZhou = true;
-    Bitmap mCurBitmap;
-    boolean nowMapFlag; //当前显示哪个校区的图片
+    private Bitmap mCurBitmap;
+    private boolean nowMapFlag; //当前显示哪个校区的图片
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {

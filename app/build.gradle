@@ -23,9 +23,16 @@ android {
         versionName "1.0.0"
     }
     buildTypes {
-        release {
-            minifyEnabled false
+//        proguard测试时可以开注释，可以看到报错
+//        debug{
+//            minifyEnabled true   //是否混淆，目前一混淆就反编译后的都是空文件，安装后打不开，加上是开源的就干脆不混淆了
+//            shrinkResources false //是否去除无效的资源文件
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+        release {
+            minifyEnabled true   //是否混淆，目前一混淆就反编译后的都是空文件，安装后打不开，加上是开源的就干脆不混淆了
+            shrinkResources false //是否去除无效的资源文件，貌似开了会运行就崩
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
