@@ -13,6 +13,7 @@ android {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
         }
+
     }
 
     defaultConfig {
@@ -24,13 +25,13 @@ android {
     }
     buildTypes {
 //        proguard测试时可以开注释，可以看到报错
-//        debug{
-//            minifyEnabled true   //是否混淆，目前一混淆就反编译后的都是空文件，安装后打不开，加上是开源的就干脆不混淆了
-//            shrinkResources false //是否去除无效的资源文件
+        debug{
+//            minifyEnabled true
+//            shrinkResources false
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//        }
+        }
         release {
-            minifyEnabled true   //是否混淆，目前一混淆就反编译后的都是空文件，安装后打不开，加上是开源的就干脆不混淆了
+//            minifyEnabled true   //是否混淆，目前一混淆就rxjava2.0的null报错，加上是开源的就干脆不混淆了
             shrinkResources false //是否去除无效的资源文件，貌似开了会运行就崩
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -47,10 +48,11 @@ dependencies {
     //rxjava+retrofit2
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
     //    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
-    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+//    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
 
     //日志库 http://www.open-open.com/lib/view/open1437834466490.html
     compile 'com.apkfuns.logutils:library:1.0.4'

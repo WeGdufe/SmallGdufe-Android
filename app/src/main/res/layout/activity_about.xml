@@ -50,7 +50,7 @@
             android:layout_centerHorizontal="true"
             android:autoLink="all"
             android:paddingTop="10dp"
-            android:text="官网：http://www.wintercoder.com:81\n商务邮箱：movinggdufe@163.com" />
+            android:text="官网：http://www.wintercoder.com:8080\n商务邮箱：movinggdufe@163.com" />
 
             <TextView
                 android:id="@+id/tv_qgroup"

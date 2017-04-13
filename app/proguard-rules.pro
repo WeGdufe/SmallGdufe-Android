@@ -24,6 +24,7 @@
 }
 
 
+-keep class com.guang.app.widget.** {  *; }
 ###############   友盟 Begin  ###############
 -keepclassmembers class * {
    public <init> (org.json.JSONObject);
@@ -39,14 +40,29 @@
 
 
 ###############   butterknife Begin ###############
--keep public class * implements butterknife.Unbinder { public <init>(**, android.view.View); }
--keep class butterknife.*
--keepclasseswithmembernames class * { @butterknife.* <methods>; }
--keepclasseswithmembernames class * { @butterknife.* <fields>; }
--dontwarn butterknife.internal.**
--keep class **$$ViewInjector { *; }
--keepnames class * { @butterknife.InjectView *;}
+#-keep public class * implements butterknife.Unbinder { public <init>(**, android.view.View); }
+#-keep class butterknife.*
+#-keepclasseswithmembernames class * { @butterknife.* <methods>; }
+#-keepclasseswithmembernames class * { @butterknife.* <fields>; }
+#-dontwarn butterknife.internal.**
+#-keep class **$$ViewInjector { *; }
+#-keepnames class * { @butterknife.InjectView *;}
 ###############   butterknife End ###############
+
+# ButterKnife 7
+-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewBinder { *; }
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
+###############   butterknife End ###############
+
 
 ###############   litepal Begin ###############
 -keep class org.litepal.** {
@@ -58,9 +74,9 @@
 ###############   litepal End ###############
 
 ###############   logutils Begin  ###############
--keep public class com.apkfuns.logutils.R$*{
-    public static final int *;
-}
+#-keep public class com.apkfuns.logutils.R$*{
+#    public static final int *;
+#}
 ###############   logutils End  ###############
 
 
@@ -77,7 +93,32 @@
 -keepattributes Signature
 -keepattributes Exceptions
 -dontwarn okio.**
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
+-keep class io.reactivex.** { *; }
 ###############   Retrofit End  ###############
 -keep class org.lzh.framework.updatepluginlib.** {
    *;
 }
+
+##gson
+-keep class com.google.gson.** {*;}
+#-keep class com.google.**{*;}
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.examples.android.model.** { *; }
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+-dontwarn com.google.gson.**
+##gson
+
+

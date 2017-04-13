@@ -4,13 +4,13 @@ import com.apkfuns.logutils.LogUtils;
 import com.guang.app.AppConfig;
 import com.guang.app.model.HttpResult;
 import com.guang.app.util.BasicParamsInterceptor;
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.functions.Function;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
