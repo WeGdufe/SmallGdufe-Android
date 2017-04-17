@@ -1,6 +1,7 @@
 package com.guang.app.api;
 
 import com.guang.app.AppConfig;
+import com.guang.app.model.AppTips;
 import com.guang.app.model.StrObjectResponse;
 
 import io.reactivex.Observer;
@@ -47,4 +48,13 @@ public class WorkApiFactory extends ApiUtils {
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
     }
+
+    public void getAppTips(Observer<AppTips> sub ) {
+        ApiUtils.getApi(AppConfig.idsPwd).create(WorkApi.class).getAppTips()
+                .map(new HttpResultFunc<AppTips>())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
+
 }

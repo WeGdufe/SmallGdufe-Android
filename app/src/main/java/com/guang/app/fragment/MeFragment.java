@@ -30,6 +30,7 @@ import com.guang.app.model.BasicInfo;
 import com.guang.app.model.CardBasic;
 import com.guang.app.model.Schedule;
 import com.guang.app.util.FileUtils;
+import com.guang.app.util.TimeUtils;
 import com.guang.app.util.drcom.DrcomFileUtils;
 import com.umeng.analytics.MobclickAgent;
 
@@ -163,6 +164,22 @@ public class MeFragment extends Fragment {
                 }
             });
         }
+
+        //如果是公历生日那天打开，会弹窗表示生日祝福
+        if( !TextUtils.isEmpty(value.getBirthday())
+                && value.getBirthday().length() == 8
+                && value.getBirthday().substring(4, 8) .equals( TimeUtils.getDateStringWithFormat("MMdd"))){
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage( " 生日快乐 (๑•̀ㅂ•́)و✧");
+            builder.setTitle(value.getName());
+            builder.setPositiveButton("哈哈",new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface, int which) {
+                }
+            });
+            builder.create().show();;
+        }
+
     }
 
     @OnClick(R.id.layout_me_cashhistory) void showConsumeToday(){
@@ -239,7 +256,6 @@ public class MeFragment extends Fragment {
             }
         });
         builder.create().show();
-
     }
 
 

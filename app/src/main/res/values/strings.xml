@@ -100,4 +100,10 @@
     <string name="listitem_label_card_time">交易时间：</string>
     <string name="listitem_label_card_shop">商户名称：</string>
 
+    <!--反馈页面-->
+    <string name="feedback_tv_content">建议Or意见：</string>
+    <string name="feedback_contact_hint">建议QQ或者微信</string>
+    <string name="feedback_tv_contact">联系方式（可选）：</string>
+    <string name="feedback_tv_submit">提交</string>
+
 </resources>

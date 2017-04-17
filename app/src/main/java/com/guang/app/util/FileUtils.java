@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.text.TextUtils;
 
 import com.guang.app.AppConfig;
+import com.guang.app.model.AppTips;
 import com.guang.app.model.UserAccount;
 
 import java.io.BufferedReader;
@@ -30,6 +31,10 @@ public class FileUtils {
     private static final String SP_IDS_PSSWORD = "idsPwd";
     private static final String SP_JW_PSSWORD = "jwPwd";
     private static final String SP_DEFAULT_PAGE = "defaultPage";
+
+    //启动时的温馨提示
+    private static final String SP_TIPS_FILE = "app_tips";
+    private static final String SP_TIPS_VERSION = "tipsVersion";
 
     /**
      * 获取存储在本地的账号信息，返回是否有存储(有登陆过)
@@ -179,5 +184,25 @@ public class FileUtils {
         userAccount.setJwPwd(AESUtils.decryptLocal(sp.getString(SP_JW_PSSWORD,"")));
         userAccount.setDefaultPage(sp.getInt(SP_DEFAULT_PAGE, AppConfig.DefaultPage.HOME));
         return userAccount;
+    }
+
+
+    /**
+     * 存文件里表示这个版本的tips不再提示
+     * @param context
+     * @param tips AppTips
+     */
+    public static void setTipsNeverShowAgain(Context context,AppTips tips){
+        SharedPreferences.Editor edit = context.getSharedPreferences(SP_TIPS_FILE,0).edit();
+        edit.putLong(SP_TIPS_VERSION,tips.getVersion());
+        edit.apply();
+    }
+    /**
+     * 返回存文件中的不再提示的tips的版本号，如果没有设置 不再提示 则返回 -1
+     * @param context
+     */
+    public static long getTipsNeverShowAgainVersion(Context context,AppTips tips){
+        SharedPreferences sp = context.getSharedPreferences(SP_TIPS_FILE,0);
+        return sp.getLong(SP_TIPS_VERSION,-1);
     }
 }

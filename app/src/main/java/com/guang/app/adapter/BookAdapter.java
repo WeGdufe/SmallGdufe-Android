@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.guang.app.R;
 import com.guang.app.activity.BookActivity;
 import com.guang.app.model.Book;
-import com.guang.app.util.CalcUtils;
+import com.guang.app.util.TimeUtils;
 
 /**
  * 当前借阅、历史借阅
@@ -31,7 +31,7 @@ public class BookAdapter extends BaseQuickAdapter<Book, BaseViewHolder> {
         ;
         //当前借阅的情况下考虑显示续借按钮和过期书籍的红色字体显示
         if(doWhat == BookActivity.doCurrentBook){
-            if(curTime > CalcUtils.timeString2TimeStamp(item.getReturnTime()) ){  //过期书籍
+            if(curTime > TimeUtils.timeString2TimeStamp(item.getReturnTime()) ){  //过期书籍
                 viewHolder.setTextColor(R.id.tv_book_returnTime, mContext.getResources().getColor(R.color.goal_item_failed_color));
             }else{
                 viewHolder.setVisible(R.id.tv_book_renew,item.getRenewTimes() == 0);    //当前借阅且是未到期情况下 续借按钮可见

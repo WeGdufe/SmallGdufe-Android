@@ -1,6 +1,7 @@
 package com.guang.app.activity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -39,7 +40,10 @@ public class FeedbackActivity extends QueryActivity {
     @OnClick(R.id.btn_feedback_submit) void submitFeedback() {
         String contact = edFeedbackContact.getText().toString();
         String content = edFeedbackContent.getText().toString();
-
+        if(TextUtils.isEmpty(content)){
+            Toast.makeText(this, "内容还没填呢", Toast.LENGTH_SHORT).show();
+            return;
+        }
         WorkApiFactory factory = WorkApiFactory.getInstance();
         factory.submitFeedback(contact, content,new Observer<StrObjectResponse>() {
             @Override

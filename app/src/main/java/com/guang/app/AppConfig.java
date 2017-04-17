@@ -50,6 +50,7 @@ public class AppConfig {
 
         public static final String feedback = index + "work/feedback";
         public static final String updateURL = index + "work/check-app-update";
+        public static final String appTips = index + "work/get-app-tips";
 
     }
 

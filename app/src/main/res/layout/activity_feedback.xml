@@ -11,7 +11,7 @@
         android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="建议Or意见："/>
+        android:text="@string/feedback_tv_content"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,8 +24,9 @@
         android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="联系方式（可选）："/>
+        android:text="@string/feedback_tv_contact"/>
     <EditText
+        android:hint="@string/feedback_contact_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ed_feedback_contact" />
@@ -34,7 +35,7 @@
         android:background="@drawable/shape_feedback_button"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:text="提交"
+        android:text="@string/feedback_tv_submit"
         android:textSize="17sp"
         android:textColor="@android:color/white"
         android:gravity="center"

@@ -47,8 +47,6 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         ButterKnife.bind(this, view);
         getActivity().setTitle("APP");
-//        TODO 删
-        realQuerySchedule("2014-2015-1");
 
         List<Schedule> list = DataSupport.findAll(Schedule.class);
         if(list.size() == 0) {

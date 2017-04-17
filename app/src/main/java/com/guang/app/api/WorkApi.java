@@ -1,6 +1,7 @@
 package com.guang.app.api;
 
 import com.guang.app.AppConfig;
+import com.guang.app.model.AppTips;
 import com.guang.app.model.HttpResult;
 import com.guang.app.model.StrObjectResponse;
 
@@ -21,6 +22,10 @@ public interface WorkApi {
     //获取头像（根据名字的第一个字符生成）
     @GET(AppConfig.Avatar_URL)
     Observable<ResponseBody> getAvatarIcon(@Query("char") String nickname, @Query("size") int size, @Query("cache") int cache);
+
+    //获取每日提醒
+    @GET(AppConfig.Url.appTips)
+    Observable<HttpResult<AppTips>> getAppTips();
 
 
 }

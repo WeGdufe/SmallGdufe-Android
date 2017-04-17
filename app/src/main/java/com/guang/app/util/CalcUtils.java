@@ -8,8 +8,6 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 
 import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 /**
  * Created by xiaoguang on 2017/2/15.
@@ -26,20 +24,7 @@ public class CalcUtils {
         return df.format(1.0 + (score - 60) * 0.1);
     }
 
-    /**
-     * yyyy-mm-dd 格式字符串转时间戳，秒级别
-     * @param timeString
-     * @return
-     */
-    public static long timeString2TimeStamp(String timeString){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            return dateFormat.parse(timeString).getTime()/1000;
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
+
 
     /**
      * 将base64编码后的图片进行解码回Bitmap
