@@ -36,7 +36,7 @@ public class QueryActivity extends BaseActivity implements RefreshActionItem.Ref
         mRefreshActionItem.setMenuItem(item);
         mRefreshActionItem.setRefreshButtonListener(this);
 
-        hideLoadingProgress();  //loadData()里直接就发数据调用startLoadingProgess()的话 是不起什么作用的，不过查成绩那里我也不知道为啥这个不起作用，暂时保留这个语句
+        hideLoadingProgress();  //loadData()里直接就发数据调用startLoadingProgess()的话 是不起什么作用的，暂时保留这个语句
         loadData();
         return true;
     }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/desktop_widget"
+    android:minHeight="180dp"
+    android:minWidth="250dp"
+    android:updatePeriodMillis="3600000"
+    android:previewImage="@mipmap/app_icon"
+    android:resizeMode="horizontal|vertical" >
+    <!-- 3600000 为1小时对应的毫秒数 -->
+    <!--updatePeriodMillis为自动更新频率，太频率耗电，我们一天只更新一次，但为了防止卡59分安装然后等1天才更新就设置为1小时更新一次-->
+    <!--android:widgetCategory="home_screen|keyguard"-->
+</appwidget-provider>

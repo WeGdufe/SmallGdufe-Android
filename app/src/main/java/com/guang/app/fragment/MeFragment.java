@@ -113,15 +113,17 @@ public class MeFragment extends Fragment {
 
             @Override
             public void onNext(CardBasic value) {
-                if(null != value) {
+                if(null != value && !TextUtils.isEmpty(value.getCash())) {
                     tvMeCardNum.setText("￥" + value.getCash());
                     mCardNum = value.getCardNum();
                 }
             }
             @Override
             public void onError(Throwable e) {
-                LogUtils.e(e.toString());
-                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                if(e != null && !TextUtils.isEmpty(e.getMessage())) {
+                    LogUtils.e(e.toString());
+                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
             @Override
             public void onComplete() {

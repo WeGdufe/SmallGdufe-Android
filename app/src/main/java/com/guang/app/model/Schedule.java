@@ -93,5 +93,16 @@ public class Schedule extends DataSupport {
         this.endSec = endSec;
     }
 
-
+    @Override
+    public String toString() {
+        return "Schedule{" +
+                "name='" + name + '\'' +
+                ", teacher='" + teacher + '\'' +
+                ", period='" + period + '\'' +
+                ", location='" + location + '\'' +
+                ", dayInWeek=" + dayInWeek +
+                ", startSec=" + startSec +
+                ", endSec=" + endSec +
+                '}';
+    }
 }

@@ -106,7 +106,7 @@ public class LoginActivity extends QueryActivity {
 
             @Override
             public void onError(Throwable e) {
-                if (e.getLocalizedMessage().equals(ErrorCode.pwdError + "")) {
+                if ( (ErrorCode.pwdError + "").equals(e.getLocalizedMessage())) {
                     LogUtils.e("教务密码错误-根据code判断出");
                     Toast.makeText(LoginActivity.this, "教务系统密码错误，请手动输入", Toast.LENGTH_SHORT).show();
                     mJwOk = mJwValueError;
@@ -145,6 +145,7 @@ public class LoginActivity extends QueryActivity {
             public void onError(Throwable e) {
                 LogUtils.e(e.getMessage());
                 Toast.makeText(LoginActivity.this, "信息门户" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                stopLoadingProgess();
             }
 
             @Override

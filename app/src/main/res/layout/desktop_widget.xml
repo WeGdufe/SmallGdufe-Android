@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/layout_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#20000000"
+        android:orientation="horizontal"
+        android:paddingTop="6dp">
+
+        <TextView
+            android:id="@+id/widget_tv_department"
+            style="@style/desktop_widget_tab_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="信息学院2333"/>
+
+        <ImageView
+            android:id="@+id/widget_btn_nextday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@mipmap/widget_arrow_right"/>
+
+        <TextView
+            android:id="@+id/widget_tv_weekday"
+            style="@style/desktop_widget_tab_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/widget_btn_nextday"
+            android:layout_toStartOf="@id/widget_btn_nextday"
+            android:paddingLeft="20dp"
+
+            android:paddingRight="20dp"
+            android:text="星期天"/>
+        <!--android:textColor="@color/blue"-->
+
+        <ImageView
+            android:id="@+id/widget_btn_preday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/widget_tv_weekday"
+            android:src="@mipmap/widget_arrow_left"
+            />
+
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    <!--<FrameLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="190dp">-->
+
+
+        <!--android:layout_height="match_parent">-->
+        <ListView
+            android:scrollbars="vertical"
+            android:scrollbarSize="10dp"
+            android:id="@+id/desktop_widget_list"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            tools:listitem="@layout/desktop_widget_item"/>
+
+        <TextView
+            android:id="@+id/desktop_widget_empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:gravity="center"
+            android:text="今天没课"/>
+    </FrameLayout>
+
+</LinearLayout>
+
+    <!--android:visibility="gone"-->
+

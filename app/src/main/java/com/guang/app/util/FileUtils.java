@@ -99,7 +99,11 @@ public class FileUtils {
         String cachePath = null;
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
                 || !Environment.isExternalStorageRemovable()) {
-            cachePath = context.getExternalCacheDir().getPath();//SDCard/Android/data/应用包名/cache/目录
+            try{
+                cachePath = context.getExternalCacheDir().getPath();//SDCard/Android/data/应用包名/cache/目录
+            }catch (NullPointerException e){
+                cachePath = context.getCacheDir().getPath();    //data/data/<application package>/cache
+            }
         } else {
             cachePath = context.getCacheDir().getPath();    //data/data/<application package>/cache
         }

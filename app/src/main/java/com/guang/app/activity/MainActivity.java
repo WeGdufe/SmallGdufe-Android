@@ -11,6 +11,7 @@ import com.guang.app.R;
 import com.guang.app.fragment.FeatureFragment;
 import com.guang.app.fragment.HomeFragment;
 import com.guang.app.fragment.MeFragment;
+import com.guang.app.model.UserAccount;
 import com.guang.app.util.FileUtils;
 import com.guang.app.util.FragmentUtil;
 
@@ -36,6 +37,10 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+//        TODO 删
+        FileUtils.setStoredAccount(MainActivity.this, new UserAccount("13251102210", "123456","123456"));
+        AppConfig.defaultPage = AppConfig.DefaultPage.HOME; //默认首页为课表
 
         //未登录跳转登陆页
         if(!FileUtils.getStoredAccountAndSetApp(this) || TextUtils.isEmpty(AppConfig.sno) || TextUtils.isEmpty(AppConfig.idsPwd)){
