@@ -13,7 +13,6 @@ import android.widget.RemoteViews;
 import com.apkfuns.logutils.LogUtils;
 import com.guang.app.R;
 import com.guang.app.activity.MainActivity;
-import com.guang.app.fragment.MeFragment;
 import com.guang.app.model.BasicInfo;
 
 import org.litepal.crud.DataSupport;
@@ -76,7 +75,7 @@ public class CourseAppWidgetProvider  extends AppWidgetProvider {
         remoteViews.setEmptyView(R.id.desktop_widget_list,R.id.desktop_widget_empty_view);
 
         //设置学院文本
-        BasicInfo basicInfo = DataSupport.find(BasicInfo.class, MeFragment.localId);
+        BasicInfo basicInfo = DataSupport.findFirst(BasicInfo.class);
         if(basicInfo != null && !TextUtils.isEmpty(basicInfo.getDepartment() )){
             remoteViews.setTextViewText(R.id.widget_tv_department,basicInfo.getDepartment());
         }else{

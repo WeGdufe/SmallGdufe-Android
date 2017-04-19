@@ -11,18 +11,7 @@
         <!--android:layout_width="40dp"-->
         <!--android:layout_height="40dp"-->
 
-        <ImageView
-            android:id="@+id/tv_me_icon"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginLeft="16dp"
-            android:src="@mipmap/avatar_h"
-            android:layout_alignTop="@+id/tv_me_name"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="16dp" />
-        <!--android:src="@mipmap/default_avatar"-->
-        <!--android:background="#00bcffee"-->
+
 
         <TextView
             android:id="@+id/tv_me_sno"
@@ -32,7 +21,9 @@
             android:layout_marginTop="12dp"
             android:text="学号"
             android:textSize="16sp" />
-        
+
+        <!--android:src="@mipmap/default_avatar"-->
+        <!--android:background="#00bcffee"-->
         <TextView
             android:textColor="@color/blue"
             android:id="@+id/tv_me_name"
@@ -42,7 +33,16 @@
             android:layout_marginTop="12dp"
             android:text="网络异常"
             android:textSize="16sp" />
-
+        <ImageView
+            android:id="@+id/tv_me_icon"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginLeft="16dp"
+            android:src="@mipmap/avatar_h"
+            android:layout_alignTop="@id/tv_me_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp" />
         <TextView
             android:id="@+id/tv_me_class"
             android:layout_width="wrap_content"

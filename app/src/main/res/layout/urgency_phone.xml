@@ -7,6 +7,6 @@
         android:id="@+id/tv_urgency_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autoLink="all"
+        android:autoLink="phone"
         />
 </LinearLayout>

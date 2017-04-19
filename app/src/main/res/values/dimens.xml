@@ -10,4 +10,8 @@
     <dimen name="listitem_title_padding_left">12dp</dimen>
     <dimen name="listitem_goal_title_padding_right">4dp</dimen>
 
+    <!--桌面小部件-->
+    <dimen name="widget_item_text_size">18sp</dimen>
+    <dimen name="widget_title_text_size">18sp</dimen>
+
 </resources>

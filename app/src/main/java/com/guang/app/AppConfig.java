@@ -12,7 +12,7 @@ public class AppConfig {
     //千万记得这个URL要/结尾！！！
 //    public static final String BASE_URL = "http://172.25.155.14:82/";
 //    public static final String BASE_URL = "http://192.168.137.1:82/";
-    public static final String BASE_URL = "http://www.wintercoder.com:82/";
+    public static final String BASE_URL = "http://app.wintercoder.com:82/";
 
     //在线头像获取
     public static final String Avator_URL_BASE = "https://www.94cb.com/";
@@ -51,6 +51,7 @@ public class AppConfig {
         public static final String feedback = index + "work/feedback";
         public static final String updateURL = index + "work/check-app-update";
         public static final String appTips = index + "work/get-app-tips";
+        public static final String allLogout = index + "work/all-logout";
 
     }
 

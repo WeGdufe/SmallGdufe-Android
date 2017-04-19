@@ -21,9 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="网络自助平台"
+            android:text="自助平台戳我"
             android:textColor="#4381f1"
             android:textSize="30sp" />
+
     </RelativeLayout>
 
 
@@ -88,6 +89,14 @@
                 android:gravity="center_horizontal"
                 android:text="注销登陆" />
         </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="不能和电脑同时登陆\n建议开启通知栏权限"
+            android:textColor="#4381f1"
+            android:gravity="center"
+            android:layout_marginTop="20dp"/>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -57,4 +57,11 @@ public class WorkApiFactory extends ApiUtils {
                 .subscribe(sub);
     }
 
+    public void allLogout(Observer<StrObjectResponse> sub ) {
+        ApiUtils.getApi(AppConfig.idsPwd).create(WorkApi.class).allLgout()
+                .map(new HttpResultFunc<StrObjectResponse>())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
 }

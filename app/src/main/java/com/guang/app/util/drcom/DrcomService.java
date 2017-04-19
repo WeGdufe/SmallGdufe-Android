@@ -55,21 +55,17 @@ public class DrcomService extends Service{
     public IBinder onBind(Intent intent) {
         return null;
     }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mHostInfo = (HostInfo)intent.getSerializableExtra(INTENT_INFO);
         username = mHostInfo.getUsername();
         password = mHostInfo.getPassword();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                // 开始执行后台任务
-                mainRun();
-            }
-        }).start();
+        startThread();
+
         return super.onStartCommand(intent, flags, startId);
     }
-    //打日志，封装一下，方便修改
+    //打日志，封装一下，方便修改，虽然没有行数显示了
     private void performLogCall(String msg){
         LogUtils.i(msg);
     }
@@ -79,17 +75,39 @@ public class DrcomService extends Service{
         Handler handler=new Handler(Looper.getMainLooper());
         handler.post(new Runnable(){
             public void run(){
-                Toast.makeText(getApplicationContext(), "Drcom:"+msg, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Drcom:"+msg, Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    //停止Thread : http://stackoverflow.com/questions/680180/where-to-stop-destroy-threads-in-android-service-class
+    private  volatile Thread runner;
+    private synchronized void startThread(){
+        if(runner == null){
+            runner = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    mainRun();
+                }
+            });
+            runner.start();
+        }
+    }
+    private synchronized void stopThread(){
+        if(runner != null){
+            Thread moribund = runner;
+            runner = null;
+            moribund.interrupt();
+        }
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         if(!isNotificationEnabled(this)){
-            performMsgCall("没有通知栏权限，记得去设置里开启喔");
+            performMsgCall("未开启通知栏权限，不影响使用，但看不到运行状态");
         }
-        
+
         //注册网络改变监听器
         mNetWorkReceiver = new NetWorkChangeReceiver();
         IntentFilter filter = new IntentFilter();
@@ -101,6 +119,8 @@ public class DrcomService extends Service{
     @Override
     public void onDestroy() {
         super.onDestroy();
+        performLogCall("onDestroy()");
+        stopThread();
         cancelNotification();
         if(mNetWorkReceiver != null) {
             this.unregisterReceiver(mNetWorkReceiver);
@@ -222,13 +242,14 @@ public class DrcomService extends Service{
             showNotification();
             /**********************  KeepAlive ***************************/
             count = 0;
-//            boolean wtf = true;
             int reconnectTimes = 0;
 
             long oldTimes = System.currentTimeMillis();//上一次重连/正常运行 开始的时间
             while (reconnectTimes <= DrcomConfig.ReconnectTIMES){
                 try {
-                    while (!notifyLogout && alive()) {//收到注销通知则停止
+                    while (!notifyLogout
+                            && !Thread.currentThread().isInterrupted()
+                            && alive()) {   //收到注销通知或者调用了onDestory停止了线程则停止
                         Thread.sleep(20000);//每 20s 一次
                     }
                 } catch (SocketTimeoutException e) {
@@ -258,6 +279,10 @@ public class DrcomService extends Service{
                         reconnectTimes = 0;
                     }
                     oldTimes = curTimes;
+                }catch (InterruptedException e) {
+                    performLogCall("因退出登陆而合理关闭线程，这里进行注销");
+                    notifyLogout();
+                    break;
                 }
             }
         } catch (SocketTimeoutException e) {
@@ -266,9 +291,6 @@ public class DrcomService extends Service{
             exception = true;
         } catch (IOException e) {
             performMsgCall("IO 异常"+e.getMessage());
-            exception = true;
-        } catch (InterruptedException e) {
-            performMsgCall("线程异常"+e.getMessage());
             exception = true;
         } catch (Exception e) {
             exception = true;
@@ -636,19 +658,19 @@ public class DrcomService extends Service{
         return data;
     }
 
-    public void notifyLogout() {
+    public  void notifyLogout() {
         notifyLogout = true;//终止 keep 线程
-        //logout
         performLogCall("收到注销指令");
         if (isLogin) {//已登录才注销
             boolean succ = true;
             try {
                 challenge(challengeTimes++);
-                logout();
-
+                succ = logout();
             } catch (Throwable t) {
+                t.printStackTrace();
                 succ = false;
-                performMsgCall("注销异常"+t.getMessage());
+                t.printStackTrace();
+                performMsgCall("注销异常");
             } finally {
                 if (succ) {
                     performMsgCall("注销成功");
@@ -674,11 +696,9 @@ public class DrcomService extends Service{
         client.receive(new DatagramPacket(recv, recv.length));
         performLogCall("recv logout packet response."+ByteUtil.toHexString(recv));
         if (recv[0] == 0x04) {
-            performMsgCall("注销成功");
-        } else {
-            performMsgCall("注销...失败?");
+            return true;
         }
-        return true;
+        return false;
     }
 
     private byte[] makeLogoutPacket() {

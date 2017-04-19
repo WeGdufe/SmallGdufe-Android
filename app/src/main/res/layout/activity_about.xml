@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="29dp"
-            android:text="Author：13计2小光"
+            android:text="Author：13计2小光/韩裕光"
             android:layout_below="@+id/tv_about_version"
             android:layout_centerHorizontal="true" />
 
@@ -82,7 +82,7 @@
             android:paddingTop="10dp"
             android:textAlignment="center"
             android:gravity="center_horizontal"
-            android:text="无薪招聘帮忙完善该应用的学生开发者"
+            android:text="无薪招聘帮忙学生开发者，造福广财人"
             android:layout_below="@+id/tv_qgroup" />
         </RelativeLayout>
     </ScrollView>

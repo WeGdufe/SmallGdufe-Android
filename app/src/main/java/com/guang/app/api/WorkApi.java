@@ -27,5 +27,10 @@ public interface WorkApi {
     @GET(AppConfig.Url.appTips)
     Observable<HttpResult<AppTips>> getAppTips();
 
+    //获取每日提醒
+    @GET(AppConfig.Url.allLogout)
+    Observable<HttpResult<StrObjectResponse>> allLgout();
+
+
 
 }

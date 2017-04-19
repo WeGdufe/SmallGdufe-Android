@@ -205,4 +205,8 @@ public class FileUtils {
         SharedPreferences sp = context.getSharedPreferences(SP_TIPS_FILE,0);
         return sp.getLong(SP_TIPS_VERSION,-1);
     }
+    public static void expireTipsNeverShowAgain(Context context){
+        SharedPreferences.Editor edit = context.getSharedPreferences(SP_TIPS_FILE,0).edit();
+        edit.clear();edit.apply();
+    }
 }

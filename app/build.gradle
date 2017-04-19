@@ -13,7 +13,6 @@ android {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
         }
-
     }
 
     defaultConfig {
@@ -25,15 +24,15 @@ android {
     }
     buildTypes {
 //        proguard测试时可以开注释，可以看到报错
-        debug{
+//        debug{
 //            minifyEnabled true
 //            shrinkResources false
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+//        }
         release {
 //            minifyEnabled true   //是否混淆，目前一混淆就rxjava2.0的null报错，加上是开源的就干脆不混淆了
-            shrinkResources false //是否去除无效的资源文件，貌似开了会运行就崩
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            shrinkResources false //是否去除无效的资源文件，貌似开了会运行就崩
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -60,7 +59,7 @@ dependencies {
     //db库
     compile 'org.litepal.android:core:1.4.1'
     //友盟
-    compile 'com.umeng.analytics:analytics:latest.integration'
-//    compile 'com.github.czy1121:update:1.0.5'
+    compile 'com.umeng.analytics:analytics:6.1.0'
+
     compile "org.lzh.nonview.updateplugin:UpdatePlugin:2.0"
 }

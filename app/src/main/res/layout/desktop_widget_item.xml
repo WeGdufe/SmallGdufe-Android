@@ -4,7 +4,7 @@
     android:id="@+id/desktop_widget_layout_item"
     android:layout_width="match_parent"
     android:background="#00000000"
-    android:layout_height="60dp"
+    android:layout_height="55dp"
     >
     <!--android:layout_height="wrap_content"-->
 
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:textColor="#c9c8c8"
-            android:textSize="20sp"
+            android:textSize="@dimen/widget_item_text_size"
             android:layout_marginLeft="5dp"
             android:text="9-10"/>
         <!--android:layout_below="@id/widget_item_name"-->
@@ -31,7 +31,7 @@
             android:layout_toRightOf="@id/widget_item_time"
             android:layout_toEndOf="@id/widget_item_time"
             android:id="@+id/widget_item_name"
-            android:textSize="20sp"
+            android:textSize="@dimen/widget_item_text_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="课程名，太长会变省略号" />
@@ -42,7 +42,7 @@
             android:layout_below="@id/widget_item_name"
             android:id="@+id/widget_item_location"
             android:textColor="#5d95fd"
-            android:textSize="20sp"
+            android:textSize="@dimen/widget_item_text_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="地点"/>

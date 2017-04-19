@@ -34,6 +34,8 @@ public class ScheduleView extends LinearLayout {
             R.drawable.sehedule_label_se, R.drawable.sehedule_label_yiw,
             R.drawable.sehedule_label_sy, R.drawable.sehedule_label_yiwu,
             R.drawable.sehedule_label_yi, R.drawable.sehedule_label_wuw};
+//    public static int notGocolors =  R.drawable.sehedule_label_yi;
+
     private final static int START = 0;
     private final int CourseTextSize = 13;       //课程信息
     private final int leftNumTextSize = 14;     //第几节
@@ -206,7 +208,7 @@ public class ScheduleView extends LinearLayout {
             mTime.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Toast.makeText(getContext(), "星期" + week + "第" + (start + num) + "节", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "星期" + week + "第" + (start + num) + "节", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -247,7 +249,7 @@ public class ScheduleView extends LinearLayout {
     }
 
     /**
-     * 获取单个课表View 也可以自定义我这个
+     * 获取单个课表View
      *
      * @param model 数据类型
      * @return
@@ -264,6 +266,7 @@ public class ScheduleView extends LinearLayout {
         mTimeTableNameView.setWidth(dip2px(50));
         mTimeTableNameView.setTextSize(CourseTextSize);
         mTimeTableNameView.setGravity(Gravity.CENTER);
+//        mTimeTableNameView.setAlpha((float)0.3);
         mTimeTableNameView.setText(model.getName() + "\n" + model.getLocation());
         mScheduleView.addView(mTimeTableNameView);
         mScheduleView.addView(getWeekTransverseLine());
@@ -290,9 +293,13 @@ public class ScheduleView extends LinearLayout {
     }
 
     public void setScheduleData(List<Schedule> mlist) {
-        this.mListTimeTable = mlist;
-        for (Schedule Schedule : mlist) {
-            addTimeName(Schedule.getName());
+//        this.mListTimeTable = mlist;
+        for (Schedule schedule : mlist) {
+//            if(schedule.getName().length() > 12) {    //长课程缩减
+//                schedule.setName(schedule.getName().substring(0, 12)+".");
+//            }
+            this.mListTimeTable.add(schedule);
+            addTimeName(schedule.getName());
         }
         initView();
         invalidate();

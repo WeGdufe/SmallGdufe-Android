@@ -30,7 +30,7 @@
                     android:drawableLeft="@mipmap/me_card"
                     android:text=" 饭卡实时余额" />
                 <TextView
-                    android:id="@+id/tv_me_cardnum"
+                    android:id="@+id/tv_me_cash"
                     android:textSize="16sp"
                     android:gravity="center_vertical"
                     android:layout_width="wrap_content"

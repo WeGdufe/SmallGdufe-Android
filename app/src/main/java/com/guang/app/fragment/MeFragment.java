@@ -29,6 +29,7 @@ import com.guang.app.api.WorkApiFactory;
 import com.guang.app.model.BasicInfo;
 import com.guang.app.model.CardBasic;
 import com.guang.app.model.Schedule;
+import com.guang.app.model.StrObjectResponse;
 import com.guang.app.util.FileUtils;
 import com.guang.app.util.TimeUtils;
 import com.guang.app.util.drcom.DrcomFileUtils;
@@ -44,10 +45,11 @@ import io.reactivex.disposables.Disposable;
 import okhttp3.ResponseBody;
 
 public class MeFragment extends Fragment {
-    private JwApiFactory factory = JwApiFactory.getInstance();
-    private CardApiFactory cardFactory = CardApiFactory.getInstance();
+    private static JwApiFactory factory = JwApiFactory.getInstance();
+    private static CardApiFactory cardFactory = CardApiFactory.getInstance();
+    private static WorkApiFactory workApiFactory = WorkApiFactory.getInstance();
+
     private static String mCardNum;         //校园卡卡号，获取校园卡余额时赋值
-    public static final long localId = 1; //用户基本信息存在数据库的id
 
     @Bind(R.id.tv_me_icon)
     ImageView tvMeIcon;
@@ -57,11 +59,11 @@ public class MeFragment extends Fragment {
     TextView tvMeName;
     @Bind(R.id.tv_me_class)
     TextView tvMeClass;
-    @Bind(R.id.tv_me_cardnum)
-    TextView tvMeCardNum;
+    @Bind(R.id.tv_me_cash)
+    TextView tvMeCash;
 //    @Bind(R.id.tv_me_update)
 //    TextView tvMeUpdate;
-//
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,7 +72,7 @@ public class MeFragment extends Fragment {
         ButterKnife.bind(this, view);
         tvMeSno.setText(AppConfig.sno);
 
-        BasicInfo basicInfo = DataSupport.find(BasicInfo.class,localId);
+        BasicInfo basicInfo = DataSupport.findFirst(BasicInfo.class);
         if(null != basicInfo) {
             setBasicInfo4View(basicInfo);
         }else{
@@ -89,14 +91,16 @@ public class MeFragment extends Fragment {
 
             @Override
             public void onNext(BasicInfo value) {
-                value.setId(localId);
+                DataSupport.deleteAll(BasicInfo.class);
                 value.save();
                 setBasicInfo4View(value);
             }
             @Override
             public void onError(Throwable e) {
-                LogUtils.e(e.toString());
-                Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                if(e != null && !TextUtils.isEmpty(e.getMessage())) {
+                    LogUtils.e(e.toString());
+                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
             @Override
             public void onComplete() {
@@ -115,8 +119,10 @@ public class MeFragment extends Fragment {
             @Override
             public void onNext(CardBasic value) {
                 if(null != value && !TextUtils.isEmpty(value.getCash())) {
-                    tvMeCardNum.setText("￥" + value.getCash());
+                    tvMeCash.setText("￥" + value.getCash());
                     mCardNum = value.getCardNum();
+                }else{
+                    tvMeCash.setText("获取失败");
                 }
             }
             @Override
@@ -125,10 +131,10 @@ public class MeFragment extends Fragment {
                     LogUtils.e(e.toString());
                     Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                tvMeCash.setText("获取失败");
             }
             @Override
             public void onComplete() {
-
             }
         });
     }
@@ -144,7 +150,6 @@ public class MeFragment extends Fragment {
         if(bitmap != null){ //读取本地图片头像
             tvMeIcon.setImageBitmap(bitmap);
         }else{              //网络加载头像
-            WorkApiFactory workApiFactory = WorkApiFactory.getInstance();
             workApiFactory.getAvatarIcon(""+value.getName().charAt(0), new Observer<ResponseBody>() {
                 @Override
                 public void onSubscribe(Disposable d) {
@@ -247,11 +252,32 @@ public class MeFragment extends Fragment {
 
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 FileUtils.expireStoredAccount(getActivity());//防止点退出后重新打开APP会进入旧帐号
+//                FileUtils.expireTipsNeverShowAgain(getActivity());/// 重新登陆/切换用户后登陆提示不给看到
                 DrcomFileUtils.expireStoredAccount(getActivity());  //drcom信息
                 FileUtils.clearAvatarImage(getActivity());  //清除头像
                 DataSupport.deleteAll(Schedule.class);  //清空课程表
                 DataSupport.deleteAll(BasicInfo.class);
                 MobclickAgent.onProfileSignOff();//友盟统计用户退出
+                //服务器端的退出登陆，这个成功与否不影响上面操作
+                workApiFactory.allLogout(new Observer<StrObjectResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+                    @Override
+                    public void onNext(StrObjectResponse value) {
+                        //不需要做处理
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        if(null != e.getMessage()){
+                            LogUtils.e(e.getMessage());
+                        }
+                    }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+
                 getActivity().finish();
             }
         });

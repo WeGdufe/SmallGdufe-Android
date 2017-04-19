@@ -22,8 +22,9 @@
             style="@style/desktop_widget_tab_text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/widget_title_text_size"
             android:layout_centerVertical="true"
-            android:text="信息学院2333"/>
+            android:text="你还没导入课表呢"/>
 
         <ImageView
             android:id="@+id/widget_btn_nextday"
@@ -32,6 +33,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
+            android:textSize="@dimen/widget_title_text_size"
             android:src="@mipmap/widget_arrow_right"/>
 
         <TextView
@@ -45,7 +47,7 @@
             android:paddingLeft="20dp"
 
             android:paddingRight="20dp"
-            android:text="星期天"/>
+            android:text="六六六"/>
         <!--android:textColor="@color/blue"-->
 
         <ImageView
@@ -74,13 +76,13 @@
             android:scrollbarSize="10dp"
             android:id="@+id/desktop_widget_list"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="200dp"
             tools:listitem="@layout/desktop_widget_item"/>
 
         <TextView
             android:id="@+id/desktop_widget_empty_view"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="200dp"
             android:gravity="center"
             android:text="今天没课"/>
     </FrameLayout>

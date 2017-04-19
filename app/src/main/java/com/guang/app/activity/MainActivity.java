@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.guang.app.AppConfig;
 import com.guang.app.R;
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity {
 //    @Bind(R.id.main_fragment)
 //    FrameLayout mFramLayout;
     private List<Fragment> mFragments;
-//    @Bind(R.id.tab_radioGroup) RadioGroup mTabGroup;
+    @Bind(R.id.tab_radioGroup) RadioGroup mTabGroup;
     @Bind(R.id.rd_home) RadioButton radioHome;
     @Bind(R.id.rd_features) RadioButton radioFeature;   //用于默认首页时的radiobutton选择情况（颜色高亮）
     @Bind(R.id.rd_me) RadioButton radioMe;
@@ -78,6 +79,20 @@ public class MainActivity extends BaseActivity {
         fUtil.addAll(R.id.main_fragment,mFragments);
         fUtil.show(mFragments.get(0));
 
+
+        mTabGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkID) {
+                switch (checkID){
+                    case R.id.rd_home:
+                        fUtil.show(mFragments.get(0));break;
+                    case R.id.rd_features:
+                        fUtil.show(mFragments.get(1));break;
+                    case R.id.rd_me:
+                        fUtil.show(mFragments.get(2));break;
+                }
+            }
+        });
         //启动默认首页，注意跟上面监听器的顺序问题
         AppConfig.defaultPage = FileUtils.getStoredDefaultPage(this);
         switch (AppConfig.defaultPage){
