@@ -36,6 +36,12 @@ public class FileUtils {
     private static final String SP_TIPS_FILE = "app_tips";
     private static final String SP_TIPS_VERSION = "tipsVersion";
 
+
+    private static final String SP_WEEK_FILE = "course_week";
+    private static final String SP_CURRENT_WEEK = "currentWeek";
+    private static final String SP_CURRENT_DAY = "currentDay";
+    public static final int SP_WEEK_NOT_SET = -1;
+
     /**
      * 获取存储在本地的账号信息，返回是否有存储(有登陆过)
      * @param context
@@ -208,5 +214,42 @@ public class FileUtils {
     public static void expireTipsNeverShowAgain(Context context){
         SharedPreferences.Editor edit = context.getSharedPreferences(SP_TIPS_FILE,0).edit();
         edit.clear();edit.apply();
+    }
+
+    public static void saveCurrentWeek(Context context,String week){
+        String today = TimeUtils.getDateStringWithFormat("yyyy-MM-dd");
+        SharedPreferences.Editor edit = context.getSharedPreferences(SP_WEEK_FILE,0).edit();
+        edit.putString(SP_CURRENT_WEEK,week);
+        edit.putString(SP_CURRENT_DAY,today);
+        edit.apply();
+    }
+    public static void expireCurrentWeek(Context context){
+        SharedPreferences.Editor edit = context.getSharedPreferences(SP_WEEK_FILE,0).edit();
+        edit.clear();
+        edit.apply();
+    }
+    public static String getCurrentWeek(Context context){
+        String savedWeek = getSavedWeek(context);
+        if(savedWeek.equals(""+SP_WEEK_NOT_SET)){
+            return ""+SP_WEEK_NOT_SET;
+        }
+        String today = TimeUtils.getDateStringWithFormat("yyyy-MM-dd");
+        String savedDay = getSavedCurrentDay(context);
+        long weekDiff = TimeUtils.weekBetweenTwoDateString(savedDay,today,"yyyy-MM-dd");
+        long current = Long.parseLong(savedWeek) + weekDiff;
+        if(current <= 0 || current > 16){
+            current = 1;
+        }
+        return current+"";
+    }
+
+    private static String getSavedWeek(Context context){
+        SharedPreferences sp = context.getSharedPreferences(SP_WEEK_FILE,0);
+        return sp.getString(SP_CURRENT_WEEK,""+SP_WEEK_NOT_SET);
+    }
+    private static String getSavedCurrentDay(Context context){
+        SharedPreferences sp = context.getSharedPreferences(SP_WEEK_FILE,0);
+        String today = TimeUtils.getDateStringWithFormat("yyyy-MM-dd");
+        return sp.getString(SP_CURRENT_DAY,today);
     }
 }

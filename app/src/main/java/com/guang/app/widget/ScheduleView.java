@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.guang.app.R;
 import com.guang.app.model.Schedule;
+import com.guang.app.util.CalcUtils;
+import com.guang.app.util.FileUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +36,11 @@ public class ScheduleView extends LinearLayout {
             R.drawable.sehedule_label_se, R.drawable.sehedule_label_yiw,
             R.drawable.sehedule_label_sy, R.drawable.sehedule_label_yiwu,
             R.drawable.sehedule_label_yi, R.drawable.sehedule_label_wuw};
-//    public static int notGocolors =  R.drawable.sehedule_label_yi;
+    private static int notGocolors =  R.drawable.sehedule_label_notgo;
+    private static int mCurrentWeek =  -1;
 
     private final static int START = 0;
+    private final int currentWeekTextSize = 11;       //课程信息
     private final int CourseTextSize = 13;       //课程信息
     private final int leftNumTextSize = 14;     //第几节
     private final int weekNameTextSize = 16;    //星期几
@@ -115,6 +119,11 @@ public class ScheduleView extends LinearLayout {
                     TextView mTime = new TextView(getContext());
                     mTime.setHeight(dip2px(TimeTableWeekNameHeight));
                     mTime.setWidth((dip2px(TimeTableNumWidth)));
+                    mTime.setGravity(Gravity.CENTER);
+                    if(mCurrentWeek != FileUtils.SP_WEEK_NOT_SET){
+                        mTime.setText(mCurrentWeek+"周");
+                        mTime.setTextSize(currentWeekTextSize);
+                    }
                     mHorizontalWeekLayout.addView(mTime);
 
                     //绘制1~MAXNUM
@@ -208,7 +217,7 @@ public class ScheduleView extends LinearLayout {
             mTime.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getContext(), "星期" + week + "第" + (start + num) + "节", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "星期" + week + "第" + (start + num) + "节", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -266,12 +275,19 @@ public class ScheduleView extends LinearLayout {
         mTimeTableNameView.setWidth(dip2px(50));
         mTimeTableNameView.setTextSize(CourseTextSize);
         mTimeTableNameView.setGravity(Gravity.CENTER);
-//        mTimeTableNameView.setAlpha((float)0.3);
         mTimeTableNameView.setText(model.getName() + "\n" + model.getLocation());
         mScheduleView.addView(mTimeTableNameView);
         mScheduleView.addView(getWeekTransverseLine());
         mScheduleView.setBackgroundDrawable(getContext().getResources()
                 .getDrawable(colors[getColorNum(model.getName())]));
+
+        if(mCurrentWeek != FileUtils.SP_WEEK_NOT_SET && !CalcUtils.isCurrentWeek(model.getPeriod(), mCurrentWeek)){
+            mScheduleView.setBackgroundDrawable(getContext().getResources()
+                    .getDrawable(notGocolors));
+//            mTimeTableNameView.setTextColor(getContext().getResources().getColor(
+//                    android.R.color.darker_gray));
+        }
+
         mScheduleView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -292,9 +308,10 @@ public class ScheduleView extends LinearLayout {
         return (int) (dpValue * scale + 0.5f);
     }
 
-    public void setScheduleData(List<Schedule> mlist) {
-//        this.mListTimeTable = mlist;
-        for (Schedule schedule : mlist) {
+    public void setScheduleData(List<Schedule> list ) {
+        this.mListTimeTable.clear();
+        mCurrentWeek = FileUtils.SP_WEEK_NOT_SET;
+        for (Schedule schedule : list) {
 //            if(schedule.getName().length() > 12) {    //长课程缩减
 //                schedule.setName(schedule.getName().substring(0, 12)+".");
 //            }
@@ -304,6 +321,42 @@ public class ScheduleView extends LinearLayout {
         initView();
         invalidate();
     }
+
+    public void setScheduleData(List<Schedule> list,int currentWeek) {
+        mListTimeTable.clear();
+        mCurrentWeek = currentWeek;
+        int size = list.size();
+        //去时间、地点不同 但其他同的重 （去掉 不是当前周的那个 ）虽然代码允许老师不同 如
+        //{"name":"电子商务及Web开发","teacher":"张婧炜讲师（高校）","period":"3,5,7,9,11,13,14,15,16(周)","location":"拓新楼(SS1)203","dayInWeek":1,"startSec":1,"endSec":2},
+        //{"name":"电子商务及Web开发","teacher":"张婧炜讲师（高校）","period":"1,2,4,6,8,10,12(周)","location":"拓新楼(SS1)320","dayInWeek":1,"startSec":1,"endSec":2},
+        for(int i = 0; i <size; i++){
+            Schedule item = list.get(i);
+            boolean hasSame = false;
+            for(int j = 0; j <size; j++){
+                if(i == j) continue;
+                Schedule sc = list.get(j);
+                if(item.getDayInWeek() == sc.getDayInWeek()
+                        && item.getEndSec() ==  sc.getEndSec()
+                        && item.getStartSec() ==  sc.getStartSec()
+                        && item.getName().equals(sc.getName())){
+                    hasSame = true;
+                }
+            }
+            if(hasSame && !CalcUtils.isCurrentWeek(item.getPeriod(),currentWeek)){//有重且当前这个不是当周的，则不加
+            }else{
+                mListTimeTable.add(item);
+            }
+            addTimeName(item.getName());
+        }
+
+//            如果只显示当周有的，不显示灰色则 扫一遍 符合下面这个就添加就行
+//            if(CalcUtils.isCurrentWeek(schedule.getPeriod(),currentWeek)){
+//            }
+        initView();
+        invalidate();
+    }
+
+
     public void cleanScheduleData() {
         if(mHorizontalWeekLayout != null){
             mHorizontalWeekLayout.removeAllViews();
@@ -350,4 +403,8 @@ public class ScheduleView extends LinearLayout {
         }
         return num % colors.length;
     }
+
+
+
+
 }

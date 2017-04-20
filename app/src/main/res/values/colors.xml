@@ -54,6 +54,9 @@
     <color name="ic_coure_yiliu_pr">#DDB97B</color>
     <color name="ic_coure_wuw">#7B7B7B</color>
     <color name="ic_coure_wuw_pr">#ADADAD</color>
+    <color name="ic_coure_nogo">#bbececec</color>
+    <color name="ic_coure_nogo_pr">#ceececec</color>
+
     <color name="tab_indicator_text_selected">#2DACA1</color>
     <color name="tab_indicator_text_unselected">#000000</color>
 

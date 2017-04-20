@@ -19,6 +19,7 @@ import com.guang.app.AppConfig;
 import com.guang.app.R;
 import com.guang.app.api.JwApiFactory;
 import com.guang.app.model.Schedule;
+import com.guang.app.util.FileUtils;
 import com.guang.app.widget.PickerView;
 import com.guang.app.widget.ScheduleView;
 
@@ -37,6 +38,7 @@ import io.reactivex.disposables.Disposable;
 public class HomeFragment extends Fragment {
     private static JwApiFactory factory = JwApiFactory.getInstance();
 
+    private String selectedWeek = "9";
 
     @Bind(R.id.scheduleView)
     ScheduleView mScheduleView;
@@ -48,12 +50,18 @@ public class HomeFragment extends Fragment {
         ButterKnife.bind(this, view);
         getActivity().setTitle("APP");
 
+        int currentWeek = Integer.parseInt(FileUtils.getCurrentWeek(getActivity()));
         List<Schedule> list = DataSupport.findAll(Schedule.class);
         if(list.size() == 0) {
             //空数据，有界面
             mScheduleView.setScheduleData(new ArrayList<Schedule>());
         }else{
-            mScheduleView.setScheduleData(list);
+            //无设置按周看则显示全部，否则显示特定周数
+            if(currentWeek == FileUtils.SP_WEEK_NOT_SET) {
+                mScheduleView.setScheduleData(list);
+            }else{
+                mScheduleView.setScheduleData(list, currentWeek);
+            }
         }
         return view;
     }
@@ -169,6 +177,9 @@ public class HomeFragment extends Fragment {
             case R.id.menu_schedule_more_import:
                 showXueQiPickerDialog(getActivity());
                 break;
+            case R.id.menu_schedule_more_current_week:  //按周查看
+                showSelectWeekDialog(getActivity());
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -180,6 +191,56 @@ public class HomeFragment extends Fragment {
             pickerBuilder.create().dismiss();
         }
         super.onDestroy();
+    }
+
+    //周数选择
+    private void showSelectWeekDialog(final Activity context){
+        AlertDialog.Builder pickerBuilder = new AlertDialog.Builder(context);
+        LayoutInflater layoutInflater = context.getLayoutInflater();
+        View customLayout = layoutInflater.inflate(R.layout.week_picker, null);
+        pickerBuilder.setView(customLayout);
+        ArrayList<String> weekArr = new ArrayList<>();
+        for (int i = 1; i <= 16; i++) {
+            weekArr.add(i+"");
+        }
+        PickerView WeekPicker = (PickerView) customLayout.findViewById(R.id.selected_week);
+        WeekPicker.setData(weekArr);
+        WeekPicker.setSelected(8);
+
+        WeekPicker.setOnSelectListener(new PickerView.onSelectListener() {
+            @Override
+            public void onSelect(String text) {
+                selectedWeek = text;
+            }
+        });
+        pickerBuilder.setNeutralButton("查看全周表",new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                FileUtils.expireCurrentWeek(context);
+                List<Schedule> list = DataSupport.findAll(Schedule.class);
+                if(list.size() == 0) {
+                    Toast.makeText(context, "请先导入课表", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                mScheduleView.cleanScheduleData();
+                mScheduleView.setScheduleData(list);
+            }
+        });
+        pickerBuilder.setNegativeButton("取消",null);
+        pickerBuilder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                FileUtils.saveCurrentWeek(context,selectedWeek);
+                List<Schedule> list = DataSupport.findAll(Schedule.class);
+                if(list.size() == 0) {
+                    Toast.makeText(context, "请先导入课表", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                mScheduleView.cleanScheduleData();
+                mScheduleView.setScheduleData(list,Integer.parseInt(selectedWeek));
+            }
+        });
+        pickerBuilder.show();
     }
 
 }

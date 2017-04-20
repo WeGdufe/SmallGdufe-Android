@@ -14,8 +14,8 @@
         <item
             android:id="@+id/menu_schedule_more_import"
             android:title="导入" />
-        <!--<item-->
-            <!--android:id="@+id/menu_schedule_more_split"-->
-            <!--android:title="拆/合 连堂课程" />-->
+        <item
+            android:id="@+id/menu_schedule_more_current_week"
+            android:title="按周查看" />
     </item>
 </menu>

@@ -8,6 +8,8 @@ import android.widget.RemoteViewsService;
 import com.guang.app.R;
 import com.guang.app.activity.MainActivity;
 import com.guang.app.model.Schedule;
+import com.guang.app.util.CalcUtils;
+import com.guang.app.util.FileUtils;
 
 import org.litepal.crud.DataSupport;
 
@@ -20,7 +22,8 @@ import java.util.List;
  */
 public class WidgetListProviderFactory implements RemoteViewsService.RemoteViewsFactory {
     private static List<Schedule> mData = new ArrayList<Schedule>();
-    private Context mContext = null;
+    private static Context mContext = null;
+//    private static int mCurrentWeek = 1;
 
     public WidgetListProviderFactory(Context context, Intent intent){
         this.mContext = context;
@@ -30,15 +33,27 @@ public class WidgetListProviderFactory implements RemoteViewsService.RemoteViews
     private static void initData(int dayInWeek){
         mData =  DataSupport.where("dayInWeek = ?", ""+dayInWeek).order("startSec").find(Schedule.class);
     }
-
+    private static void initData(int dayInWeek,String week){
+        if(week.equals(""+FileUtils.SP_WEEK_NOT_SET)) {
+            initData(dayInWeek);
+            return;
+        }
+        mData.clear();
+        List<Schedule> temp =  DataSupport.where("dayInWeek = ?", ""+dayInWeek).order("startSec").find(Schedule.class);
+        for (Schedule item:temp) {
+            if(CalcUtils.isCurrentWeek(item.getPeriod(),Integer.parseInt(week))){
+                mData.add(item);
+            }
+        }
+    }
     /**
      * 对外的更新数据为指定星期的方法
      * @param dayInWeek 星期几，数字，星期一:1，星期天：7
      */
-    public static void refreshData(int dayInWeek){
-        initData(dayInWeek);
-
+    public static void refreshData(int dayInWeek,String currentWeek){
+        initData(dayInWeek,currentWeek);
     }
+
 
     @Override
     public RemoteViews getViewAt(int position) {

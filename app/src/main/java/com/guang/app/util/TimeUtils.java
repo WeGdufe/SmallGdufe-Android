@@ -1,6 +1,8 @@
 package com.guang.app.util;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -26,6 +28,49 @@ public class TimeUtils {
         SimpleDateFormat formatter = new SimpleDateFormat(format);
         return formatter.format(date);
     }
+    /**
+     * 两个日期所在周中间差了几周（上周五所在周 和 下周一所在周 差一周）
+     * @param  weekOld String
+     * @param  weekNew String
+     * @return long
+     */
+    public static long weekBetweenTwoDateString(String weekOld, String weekNew,
+                                                String format) {
+        SimpleDateFormat formatter = new SimpleDateFormat(format);
+        try {
+            Date date1 = formatter.parse(weekOld);
+            Date date2 = formatter.parse(weekNew);
+            long mondayDiff = convertToMonday(date2) - convertToMonday(date1);
+            long weeks = mondayDiff / (7 * 24 * 60 * 60 * 1000);
+            return weeks;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    /**
+     * 将日期转为当周的星期一，返回getTime()的long值
+     * @param time Date
+     * @return long
+     * @throws ParseException
+     */
+    private static long convertToMonday(Date time) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 设置时间格式
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(time);
+        // 判断要计算的日期是否是周日，如果是则减一天计算周六的，否则会出问题，计算到下一周去了
+        int dayWeek = cal.get(Calendar.DAY_OF_WEEK);// 获得当前日期是一个星期的第几天
+        if (1 == dayWeek) {
+            cal.add(Calendar.DAY_OF_MONTH, -1);
+        }
+        cal.setFirstDayOfWeek(Calendar.MONDAY);// 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
+        int day = cal.get(Calendar.DAY_OF_WEEK);// 获得当前日期是一个星期的第几天
+        cal.add(Calendar.DATE, cal.getFirstDayOfWeek() - day);// 根据日历的规则，给当前日期减去星期几与一个星期第一天的差值
+        String imptimeBegin = sdf.format(cal.getTime());	//所在周星期一的日期
+        return sdf.parse(imptimeBegin).getTime();
+    }
+
     /**
      * 比较两个 yyyy-MM-dd HH:mm:ss 格式的时间字符串，如果第一个时间早就返回小于0的数，等则为0，晚则返回大于0的数
      * @param date1 String

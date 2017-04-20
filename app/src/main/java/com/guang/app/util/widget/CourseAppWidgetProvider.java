@@ -14,6 +14,7 @@ import com.apkfuns.logutils.LogUtils;
 import com.guang.app.R;
 import com.guang.app.activity.MainActivity;
 import com.guang.app.model.BasicInfo;
+import com.guang.app.util.FileUtils;
 
 import org.litepal.crud.DataSupport;
 
@@ -71,18 +72,10 @@ public class CourseAppWidgetProvider  extends AppWidgetProvider {
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));      //固定的
         remoteViews.setRemoteAdapter(R.id.desktop_widget_list,intent);
 
-
         remoteViews.setEmptyView(R.id.desktop_widget_list,R.id.desktop_widget_empty_view);
 
-        //设置学院文本
-        BasicInfo basicInfo = DataSupport.findFirst(BasicInfo.class);
-        if(basicInfo != null && !TextUtils.isEmpty(basicInfo.getDepartment() )){
-            remoteViews.setTextViewText(R.id.widget_tv_department,basicInfo.getDepartment());
-        }else{
-            remoteViews.setTextViewText(R.id.widget_tv_department,"学院获取失败");
-        }
+        setDepartmentOrWeek(context);
         notifyUpdateUI(context);
-
     }
 
     /**
@@ -94,23 +87,40 @@ public class CourseAppWidgetProvider  extends AppWidgetProvider {
             remoteViews = new RemoteViews(context.getPackageName(), R.layout.desktop_widget); //获取listview对应视图
         }
     }
-
+    //如果没设置周数则显示学院，有则显示周数
+    private void setDepartmentOrWeek(Context context){
+        String week = FileUtils.getCurrentWeek(context);
+        setRemoteView(context);
+        if(!TextUtils.isEmpty(week) && week.equals(""+FileUtils.SP_WEEK_NOT_SET)){
+            //设置学院文本
+            BasicInfo basicInfo = DataSupport.findFirst(BasicInfo.class);
+            if(basicInfo != null && !TextUtils.isEmpty(basicInfo.getDepartment() )){
+                remoteViews.setTextViewText(R.id.widget_tv_department,basicInfo.getDepartment());
+            }else{
+                remoteViews.setTextViewText(R.id.widget_tv_department,"学院获取失败");
+            }
+        }else {
+            remoteViews.setTextViewText(R.id.widget_tv_department, "第" + week + "周");
+        }
+    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
         LogUtils.i(intent.getAction());
+        String currentWeek = FileUtils.getCurrentWeek(context);
 
         //更换日期且更新对应数据
         if (intent.getAction().equals(WidgetCommonUtil.WidgetConstant.INTENT_NEXTDAY)){
             currentDay = WidgetCommonUtil.getNextDay(currentDay);
-            WidgetListProviderFactory.refreshData(currentDay);
+            WidgetListProviderFactory.refreshData(currentDay,currentWeek);
+            setDepartmentOrWeek(context);
         }else if (intent.getAction().equals(WidgetCommonUtil.WidgetConstant.INTENT_PREDAY)) {
             currentDay = WidgetCommonUtil.getPreDay(currentDay);
-            WidgetListProviderFactory.refreshData(currentDay);
+            WidgetListProviderFactory.refreshData(currentDay,currentWeek);
+            setDepartmentOrWeek(context);
         }else{ //其他广播不需要处理
         }
-
         LogUtils.i("after change currentDay:"+currentDay + " "+ "星期" + weekName[currentDay]);
 
         //更新 星期几 的文字说明
