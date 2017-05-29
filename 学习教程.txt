@@ -1,7 +1,11 @@
-RxJava 1.0 Óë Retrofit 
+RxJava 1.0 ä¸ Retrofit 
 http://gank.io/post/56e80c2c677659311bed9841
 
-RxJava 1.0ºÍ2.0µÄ¸Ä±ä
+RxJava 1.0å’Œ2.0çš„æ”¹å˜
 http://www.jianshu.com/p/2badfbb3a33b
 https://github.com/ReactiveX/RxJava/wiki/What's-different-in-2.0#functional-interfaces
 https://zhuanlan.zhihu.com/p/24482660?refer=dreawer
+
+Litepal æ•™ç¨‹
+https://github.com/LitePalFramework/LitePal
+http://blog.csdn.net/guolin_blog/article/details/38556989
