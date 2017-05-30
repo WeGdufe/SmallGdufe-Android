@@ -8,6 +8,12 @@ import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Base64;
 
+import com.apkfuns.logutils.LogUtils;
+import com.guang.app.AppConfig;
+import com.guang.app.model.BasicInfo;
+
+import org.litepal.crud.DataSupport;
+
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,7 +33,23 @@ public class CalcUtils {
         return df.format(1.0 + (score - 60) * 0.1);
     }
 
-
+    /**
+     * 获取当前登陆学号的大一那年的年份，如2013级则返回13（即使现在是2017年），从而构造2013-2014（大一） 这种选择框
+     * @return int 13
+     */
+    public static int getFirstYear(){
+        int firstYear = 13; //校友则学年根据个人信息的班级获取，正常账号直接截学号
+        if(AppConfig.schoolmateSno.equals(AppConfig.sno)) {
+            BasicInfo basicInfo = DataSupport.findFirst(BasicInfo.class);
+            if(basicInfo == null){
+                LogUtils.e("校友学年获取失败");
+            }
+            firstYear = Integer.parseInt(basicInfo != null ? basicInfo.getClassroom().substring(2, 4) : "13");
+        }else {
+            firstYear = Integer.parseInt(AppConfig.sno.substring(0, 2));
+        }
+        return firstYear;
+    }
 
     /**
      * 将base64编码后的图片进行解码回Bitmap

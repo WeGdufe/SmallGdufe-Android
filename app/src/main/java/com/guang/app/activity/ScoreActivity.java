@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.apkfuns.logutils.LogUtils;
-import com.guang.app.AppConfig;
 import com.guang.app.R;
 import com.guang.app.adapter.ScoreAdapter;
 import com.guang.app.api.JwApiFactory;
@@ -111,8 +110,8 @@ public class ScoreActivity extends QueryActivity {
         //定义滚动选择器的数据项
         final ArrayList<String> xuenianArr = new ArrayList<>();
         ArrayList<String> xueqiArr = new ArrayList<>();
-        int firstYear = Integer.parseInt(AppConfig.sno.substring(0, 2));
 
+        int firstYear = CalcUtils.getFirstYear();
         String level = "一二三四"; //大五就不要了233
         for (int i = 0; i < 4; i++) {
             xuenianArr.add("20" + (firstYear + i) + "-20" + (firstYear + i + 1) + "(大" + level.charAt(i) + ")");

@@ -32,6 +32,8 @@ import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
+import static com.guang.app.AppConfig.sno;
+
 /**
  * Created by xiaoguang on 2017/2/13.
  */
@@ -184,5 +186,23 @@ public class LoginActivity extends QueryActivity {
         }
     }
 
+    //校友登陆，不要求签许可，默认假定后台的账号密码都是对的，不做密码判断处理了
+    @OnClick(R.id.login_tv_schoolmate) void schoolmateLogin() {
+        long curTimes = System.currentTimeMillis();
+        if( (curTimes - oldClickLoginTimes)/1000 <= 2){
+            Toast.makeText(this, "稍等，不要频繁登陆", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        oldClickLoginTimes = curTimes;
+
+        AppConfig.sno = AppConfig.schoolmateSno;
+        AppConfig.idsPwd = AppConfig.jwPwd = AppConfig.schoolmatePwd;
+
+        FileUtils.setStoredAccount(LoginActivity.this, new UserAccount(AppConfig.sno, AppConfig.idsPwd, AppConfig.jwPwd));
+        AppConfig.defaultPage = AppConfig.DefaultPage.HOME; //默认首页为课表
+        MobclickAgent.onProfileSignIn(sno);//友盟统计用户信息
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        LoginActivity.this.finish();
+    }
 
 }

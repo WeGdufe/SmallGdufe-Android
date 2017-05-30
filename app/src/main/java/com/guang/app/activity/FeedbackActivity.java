@@ -37,7 +37,15 @@ public class FeedbackActivity extends QueryActivity {
         return true;
     }
 
+    private long oldClickSubmitTimes;
     @OnClick(R.id.btn_feedback_submit) void submitFeedback() {
+        long curTimes = System.currentTimeMillis();
+        if( (curTimes - oldClickSubmitTimes)/1000 <= 1){
+            Toast.makeText(this, "请不要频繁提交", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        oldClickSubmitTimes = curTimes;
+
         String contact = edFeedbackContact.getText().toString();
         String content = edFeedbackContent.getText().toString();
         if(TextUtils.isEmpty(content)){

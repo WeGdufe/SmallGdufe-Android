@@ -5,6 +5,8 @@ public class AppConfig {
     public static String sno = "";                                  //用户学号
     public static String idsPwd = "";                               //信息门户密码
     public static String jwPwd = "";                                //教务系统密码
+    public static final String schoolmateSno = "iAmSchoolMate";          //校友/外校体验账号
+    public static final String schoolmatePwd = "areU";
     public static int defaultPage = 0;                              //app启动后的默认页面
     public static String localAesSeed = "local";                   //本地存密码的加密key
     public static String netAesSeed = "netdsad238139dsad";       //网络密约，未用到

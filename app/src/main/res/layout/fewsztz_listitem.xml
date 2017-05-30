@@ -27,20 +27,6 @@
         <!--android:stretchColumns="0,2"-->
         <TableRow>
 
-            <TextView
-                style="@style/normal_item_sub_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/listitem_label_minCredit" />
-
-            <TextView
-                android:id="@+id/tv_fewsztz_min_credit"
-                style="@style/normal_item_sub_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="3.6" />
 
             <TextView
                 style="@style/normal_item_sub_title"
@@ -56,6 +42,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="4.0" />
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/normal_item_sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/listitem_label_minCredit"/>
+
+            <TextView
+                android:id="@+id/tv_fewsztz_min_credit"
+                style="@style/normal_item_sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3.6" />
+
         </TableRow>
 
 

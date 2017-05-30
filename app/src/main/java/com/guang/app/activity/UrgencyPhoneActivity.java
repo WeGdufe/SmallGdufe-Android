@@ -23,7 +23,7 @@ public class UrgencyPhoneActivity extends QueryActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.addTitleBackBtn();
-        setTitle(R.string.title_urgencyPhone);
+        setTitle(R.string.title_chargeTime);
         setContentView(R.layout.urgency_phone);
         nowShowWhat = true;
     }
@@ -36,7 +36,7 @@ public class UrgencyPhoneActivity extends QueryActivity {
     //显示号码或者工作时间表
     private void loadHtmlData(boolean nowShowWhat){
         String content = "";
-        if(nowShowWhat){    //默认显示号码
+        if(!nowShowWhat){    //默认显示号码
             content = FileUtils.getStrFromAssets(this,"urgency_phone.html");
         }else{
             content = FileUtils.getStrFromAssets(this,"work_time.html");

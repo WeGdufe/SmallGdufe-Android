@@ -15,10 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.apkfuns.logutils.LogUtils;
-import com.guang.app.AppConfig;
 import com.guang.app.R;
 import com.guang.app.api.JwApiFactory;
 import com.guang.app.model.Schedule;
+import com.guang.app.util.CalcUtils;
 import com.guang.app.util.FileUtils;
 import com.guang.app.widget.PickerView;
 import com.guang.app.widget.ScheduleView;
@@ -83,7 +83,8 @@ public class HomeFragment extends Fragment {
         //定义滚动选择器的数据项
         ArrayList<String> xuenianArr = new ArrayList<>();
         ArrayList<String> xueqiArr = new ArrayList<>();
-        int firstYear = Integer.parseInt(AppConfig.sno.substring(0, 2));
+
+        int firstYear = CalcUtils.getFirstYear();
         String level = "一二三四";
         for (int i = 0; i < 4; i++) {
             xuenianArr.add("20" + (firstYear + i) + "-20" + (firstYear + i + 1) + "(大" + level.charAt(i) + ")");

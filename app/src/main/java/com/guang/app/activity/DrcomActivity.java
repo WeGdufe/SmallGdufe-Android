@@ -41,11 +41,18 @@ public class DrcomActivity extends QueryActivity {
             //第一次打开的时候没有存储学号，此时显示APP的学号信息
             if(TextUtils.isEmpty(edUsername.getText())){
                 edUsername.setText(AppConfig.sno);
+                if(AppConfig.schoolmateSno.equals(AppConfig.sno)) {
+                    edUsername.setText("为不影响体验账号，校友禁用该功能");
+                }
             }
         }
     }
 
     @OnClick(R.id.btn_drcom_login) void drcomLogin() {
+        if(AppConfig.schoolmateSno.equals(AppConfig.sno)){
+            Toast.makeText(this, "校友/外校生禁用该功能", Toast.LENGTH_SHORT).show();
+            return;
+        }
         String username = edUsername.getText().toString();
         String password = edPassword.getText().toString();
         if(TextUtils.isEmpty(username)||TextUtils.isEmpty(password)){
@@ -78,6 +85,10 @@ public class DrcomActivity extends QueryActivity {
 
 
     @OnClick(R.id.btn_drcom_logout) void drcomLogut() {
+        if(AppConfig.schoolmateSno.equals(AppConfig.sno)){
+            Toast.makeText(this, "校友/外校生禁用该功能", Toast.LENGTH_SHORT).show();
+            return;
+        }
         stopService(new Intent(this, DrcomService.class));
     }
 

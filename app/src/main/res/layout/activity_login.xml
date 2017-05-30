@@ -66,7 +66,11 @@
             <!--android:layout_marginTop="4dp"-->
             <!--android:src="@mipmap/login_btn_go"-->
             <!--android:text="前往新世界" />-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
         <ImageView
+            android:layout_centerHorizontal="true"
             android:id="@+id/btn_login"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -74,6 +78,17 @@
             android:layout_marginTop="4dp"
             android:src="@mipmap/login_btn_go"
             android:text="前往新世界" />
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/login_tv_schoolmate"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:gravity="center_vertical"
+            android:text="校友/外校生体验"
+            android:textColor="@android:color/white"/>
+        </RelativeLayout>
         <TextView
             android:layout_gravity="center"
             android:gravity="center_vertical"

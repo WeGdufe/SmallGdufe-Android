@@ -5,6 +5,7 @@ import android.util.Base64;
 
 import com.guang.app.AppConfig;
 
+import java.security.Provider;
 import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
@@ -80,7 +81,7 @@ public class AESUtils {
 
     private static byte[] getRawKey(byte[] seed) throws Exception {
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
-        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", "Crypto");
+        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", new CryptoProvider());   //原第二个参数为 "Crypto"，现兼容7.0而new个类
         sr.setSeed(seed);
         kgen.init(128, sr);
         SecretKey skey = kgen.generateKey();
@@ -138,5 +139,14 @@ public class AESUtils {
 
     private static void appendHex(StringBuffer sb, byte b) {
         sb.append(HEX.charAt((b >> 4) & 0x0f)).append(HEX.charAt(b & 0x0f));
+    }
+
+    //为兼容7.0而设
+    static class CryptoProvider extends Provider {
+        public CryptoProvider() {
+            super("Crypto", 1.0, "HARMONY (SHA1 digest; SecureRandom; SHA1withDSA signature)");
+            put("SecureRandom.SHA1PRNG","org.apache.harmony.security.provider.crypto.SHA1PRNG_SecureRandomImpl");
+            put("SecureRandom.SHA1PRNG ImplementedIn", "Software");
+        }
     }
 }

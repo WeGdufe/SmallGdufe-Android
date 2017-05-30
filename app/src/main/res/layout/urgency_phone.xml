@@ -3,10 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="@color/background_normal"
     android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:fadingEdge="vertical">
     <TextView
         android:id="@+id/tv_urgency_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autoLink="phone"
         />
+    </ScrollView>
 </LinearLayout>

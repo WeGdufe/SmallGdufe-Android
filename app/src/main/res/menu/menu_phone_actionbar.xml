@@ -6,7 +6,7 @@
     <item
         android:id="@+id/menu_change_charge_time"
         app:showAsAction="always"
-        android:title="常用电话 ⇋ 充值时间"
+        android:title="充值时间 ⇋ 常用电话"
         />
 
 </menu>

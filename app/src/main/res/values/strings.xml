@@ -20,7 +20,7 @@
     <!--<string name="menu_communityinformation">社区资讯</string>-->
     <string name="menu_guardianserves">充值时间</string>
     <string name="menu_sutuo">素拓信息</string>
-    <string name="menu_busandtelphone">常用电话</string>
+    <string name="menu_busandtelphone">充值时间</string>
     <string name="menu_calendar">校历</string>
     <string name="menu_refresh_classtable">更新课表</string>
     <string name="menu_notice">排课表</string>
@@ -89,6 +89,7 @@
     <!--大图页-->
     <string name="title_likeXiaoli">可双指操作缩放</string>
     <string name="title_urgencyPhone">常用电话</string>
+    <string name="title_chargeTime">充值时间</string>
 
     <string name="title_cet">祝你好运</string>
 
@@ -102,7 +103,7 @@
 
     <!--反馈页面-->
     <string name="feedback_tv_content">建议Or意见：</string>
-    <string name="feedback_contact_hint">建议QQ或者微信</string>
+    <string name="feedback_contact_hint">建议QQ、微信、邮箱，方便联系重现Bug</string>
     <string name="feedback_tv_contact">联系方式（可选）：</string>
     <string name="feedback_tv_submit">提交</string>
 

@@ -140,9 +140,11 @@ public class MeFragment extends Fragment {
     }
 
     private void setBasicInfo4View(BasicInfo value) {
+
         if (value.getSex().equals("女")){
             tvMeName.setTextColor(getResources().getColor(R.color.pink));
         }
+
         tvMeName.setText(value.getName());
         tvMeClass.setText(value.getClassroom());
 
@@ -183,6 +185,12 @@ public class MeFragment extends Fragment {
                 }
             });
             builder.create().show();;
+        }
+
+        if(AppConfig.schoolmateSno.equals(AppConfig.sno)) {
+            tvMeSno.setText("88888888888");
+            tvMeName.setText("校友");
+            tvMeClass.setText("广东财经大学毕业生班");
         }
 
     }
