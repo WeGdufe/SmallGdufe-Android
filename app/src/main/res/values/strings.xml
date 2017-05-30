@@ -49,15 +49,15 @@
     <!--<string name="menu_course_comments">选课评论</string>-->
 
     <!--查成绩-->
-    <string name="listitem_label_goal">成绩：</string>
+    <string name="listitem_label_goal">总评：</string>
     <string name="listitem_label_time">时间：</string>
     <string name="listitem_label_team">学期：</string>
     <string name="listitem_label_credit">学分：</string>
     <string name="listitem_label_grade_point">绩点：</string>
-    <string name="listitem_label_classcode">课程代码：</string>
-    <string name="listitem_label_classify">课程性质：</string>
-    <string name="listitem_label_college_belong">课程类型：</string>
-    <string name="listitem_label_college_hold">开课学院：</string>
+    <string name="listitem_label_classcode">课程编号：</string>
+    <string name="listitem_label_score_daily">平时成绩：</string>
+    <string name="listitem_label_score_paper">期末成绩：</string>
+    <string name="listitem_label_score_experimental">实验成绩：</string>
     <string name="listitem_label_restudygoal">重修成绩：</string>
     <string name="tv_gpa">平均绩点：</string>
     <string name="title_grade">查询成绩</string>

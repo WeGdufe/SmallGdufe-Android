@@ -8,7 +8,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <RelativeLayout
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -38,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="29dp"
-            android:text="Author：13计2小光/韩裕光"
+            android:text="Author：13信院小光/韩裕光"
             android:layout_below="@+id/tv_about_version"
             android:layout_centerHorizontal="true" />
 
@@ -50,8 +53,8 @@
             android:layout_centerHorizontal="true"
             android:autoLink="all"
             android:paddingTop="10dp"
-            android:text="官网：http://www.wintercoder.com:8080\n商务邮箱：movinggdufe@163.com" />
-
+            android:text="官网：http://www.wintercoder.com:8080" />
+            <!--\n商务邮箱：movinggdufe@163.com-->
             <TextView
                 android:id="@+id/tv_qgroup"
                 android:layout_width="wrap_content"
