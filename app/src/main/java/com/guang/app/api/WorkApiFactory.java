@@ -27,9 +27,12 @@ public class WorkApiFactory extends ApiUtils {
     private static class SingletonHolder {
         private static final WorkApiFactory INSTANCE = new WorkApiFactory();
     }
-
-    public void submitFeedback(String contact,String content,Observer<StrObjectResponse> sub ) {
-        ApiUtils.getApi(AppConfig.idsPwd).create(WorkApi.class).submitFeedback(contact,content)
+    public void submitFeedback(String contact, String content,
+                               String deviceBrand, String deviceModel,
+                               String osVersion,
+                               Observer<StrObjectResponse> sub ) {
+        ApiUtils.getApi(AppConfig.idsPwd).create(WorkApi.class).submitFeedback(contact,content,
+                deviceBrand,deviceModel,osVersion)
                 .map(new HttpResultFunc<StrObjectResponse>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

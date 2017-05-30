@@ -17,7 +17,11 @@ import retrofit2.http.Query;
 public interface WorkApi {
     //反馈
     @GET(AppConfig.Url.feedback)
-    Observable<HttpResult<StrObjectResponse>> submitFeedback(@Query("contact") String contact, @Query("content") String content);
+    Observable<HttpResult<StrObjectResponse>> submitFeedback(
+            @Query("contact") String contact, @Query("content") String content,
+            @Query("devBrand") String deviceBrand, @Query("devModel") String deviceModel,
+            @Query("osVersion") String osVersion
+    );
 
     //获取头像（根据名字的第一个字符生成）
     @GET(AppConfig.Avatar_URL)

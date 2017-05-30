@@ -21,10 +21,11 @@ public class MapActivity extends QueryActivity {
     PinchImageView zoomImageView;
 
     public static final String doWhat = "what";
-    public static final boolean doMapSanShui = false;
-    public static final boolean doMapGuangZhou = true;
+    public static final int doMapSanShui = 0;
+    public static final int doMapGuangZhou = 1;
+    public static final int doMapSubway = 2;
     private Bitmap mCurBitmap;
-    private boolean nowMapFlag; //当前显示哪个校区的图片
+    private int nowMapFlag; //当前显示哪个校区的图片
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class MapActivity extends QueryActivity {
         setTitle(R.string.title_likeXiaoli);
         super.addTitleBackBtn();
         setContentView(R.layout.xiaoli);
-        nowMapFlag = getIntent().getBooleanExtra(doWhat,false);
+        nowMapFlag = getIntent().getIntExtra(doWhat,doMapSanShui);
     }
     
     @Override
@@ -54,8 +55,11 @@ public class MapActivity extends QueryActivity {
         int mapId = R.mipmap.map_sanshui;
         if(nowMapFlag == MapActivity.doMapGuangZhou){
             mapId = R.mipmap.map_guangzhou; 
+        }else if(nowMapFlag == MapActivity.doMapSubway){
+            mapId = R.mipmap.map_subway;
         }
         mCurBitmap = BitmapFactory.decodeResource(getResources(), mapId);
+        zoomImageView.reset();
         zoomImageView.setImageBitmap(mCurBitmap);
     }
 
@@ -63,12 +67,17 @@ public class MapActivity extends QueryActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_change_Xiaoqu:
-                nowMapFlag = !nowMapFlag;
+                nowMapFlag = Math.abs(1 - nowMapFlag);  //一行代码切换 0->1 1->0 2->1
+                loadMapAccordingMapFlag();
+                return true;
+            case R.id.menu_subway_guangzhou:
+                nowMapFlag = doMapSubway;
                 loadMapAccordingMapFlag();
                 return true;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);   //返回按钮靠这个
     }
+
     @Override
     protected boolean shouldHideLoadingIcon() {
         return true;

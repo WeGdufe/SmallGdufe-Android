@@ -92,7 +92,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="不能和电脑同时登陆\n建议开启通知栏权限"
+            android:text="不能和电脑同时登陆\n建议开启通知栏权限\n华为荣耀6P可能频繁断线"
             android:textColor="#4381f1"
             android:gravity="center"
             android:layout_marginTop="20dp"/>

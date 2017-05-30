@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.guang.app.R;
 import com.guang.app.api.WorkApiFactory;
 import com.guang.app.model.StrObjectResponse;
+import com.guang.app.util.SystemUtil;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -53,7 +54,9 @@ public class FeedbackActivity extends QueryActivity {
             return;
         }
         WorkApiFactory factory = WorkApiFactory.getInstance();
-        factory.submitFeedback(contact, content,new Observer<StrObjectResponse>() {
+
+        factory.submitFeedback(contact, content,SystemUtil.getDeviceBrand(),SystemUtil.getSystemModel(),
+                SystemUtil.getSystemVersion(),new Observer<StrObjectResponse>() {
             @Override
             public void onSubscribe(Disposable d) {
             }

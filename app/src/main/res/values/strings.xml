@@ -15,7 +15,7 @@
     <string name="menu_searchBook">搜索图书</string>
     <string name="menu_nowBorrowedBook">当前借阅</string>
     <string name="menu_pastBorrowedBook">过去借阅</string>
-    <string name="menu_lifeinformation">学校地图</string>
+    <string name="menu_lifeinformation">地图地铁</string>
     <!--<string name="menu_bus">校巴实时查询</string>-->
     <!--<string name="menu_communityinformation">社区资讯</string>-->
     <string name="menu_guardianserves">充值时间</string>
@@ -87,7 +87,7 @@
     <string name="listitem_label_state">书刊状态：</string>
 
     <!--大图页-->
-    <string name="title_likeXiaoli">可双指操作缩放</string>
+    <string name="title_likeXiaoli">双指缩放</string>
     <string name="title_urgencyPhone">常用电话</string>
     <string name="title_chargeTime">充值时间</string>
 
