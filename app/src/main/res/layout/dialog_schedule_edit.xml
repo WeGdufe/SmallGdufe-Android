@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <!--android:layout_alignParentTop="true"-->
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:padding="@dimen/dialog_schedule_tv_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="课程" />
+
+        <EditText
+            android:textSize="14sp"
+            android:hint=""
+            android:id="@+id/ed_schedule_edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+    </LinearLayout>
+    <View style="@style/edit_divider" />
+
+
+    <LinearLayout
+        android:padding="@dimen/dialog_schedule_tv_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="地点" />
+
+        <EditText
+            android:hint=""
+            android:textSize="14sp"
+            android:id="@+id/ed_schedule_edit_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+    </LinearLayout>
+    <View style="@style/edit_divider" />
+
+
+    <LinearLayout
+        android:padding="@dimen/dialog_schedule_tv_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="老师" />
+
+        <EditText
+            android:hint=""
+            android:textSize="14sp"
+            android:id="@+id/ed_schedule_edit_teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+    </LinearLayout>
+    <View style="@style/edit_divider" />
+
+    <LinearLayout
+        android:padding="@dimen/dialog_schedule_tv_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="周几" />
+
+        <EditText
+            android:textSize="14sp"
+            android:hint="数字1到7"
+            android:id="@+id/ed_schedule_edit_dayinweek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+    </LinearLayout>
+    <View style="@style/edit_divider" />
+
+    <LinearLayout
+        android:padding="@dimen/dialog_schedule_tv_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="节数" />
+
+        <EditText
+            android:hint="格式: 3-4 6-6"
+            android:textSize="14sp"
+            android:id="@+id/ed_schedule_edit_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+    </LinearLayout>
+    <View style="@style/edit_divider" />
+
+    <LinearLayout
+        android:padding="@dimen/dialog_schedule_tv_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="周数" />
+
+        <EditText
+            android:hint="格式：1-16 1-8(周)  1,6(周)  1-16(单周)"
+            android:textSize="14sp"
+            android:id="@+id/ed_schedule_edit_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+    </LinearLayout>
+    <View style="@style/edit_divider" />
+
+</LinearLayout>

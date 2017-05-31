@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.guang.app.R;
 import com.guang.app.model.Schedule;
@@ -63,9 +62,10 @@ public class ScheduleView extends LinearLayout {
     int colornum = 0;
     //数据源
     private List<Schedule> mListTimeTable = new ArrayList<Schedule>();
-
+    private  Context mContext;
     public ScheduleView(Context context) {
         super(context);
+        this.mContext = context;
     }
 
     public ScheduleView(Context context, AttributeSet attributeSet) {
@@ -212,12 +212,15 @@ public class ScheduleView extends LinearLayout {
             mTime.setWidth(dip2px(TimeTableHeight));
             mStartView.addView(mTime);
             mStartView.addView(getWeekTransverseLine());
-            final int num = i;
+
             //这里可以处理空白处点击添加课表
+            final int finalI = i;
             mTime.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
 //                    Toast.makeText(getContext(), "星期" + week + "第" + (start + num) + "节", Toast.LENGTH_SHORT).show();
+                    //TODO 添加课程
+                    mClickListener.onClickScheduleAdd(week,start+ finalI);
                 }
             });
 
@@ -291,7 +294,9 @@ public class ScheduleView extends LinearLayout {
         mScheduleView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), model.getName() + "\n" + model.getLocation()+"\n" +model.getPeriod()+"\n"+ model.getTeacher(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), model.getName() + "\n" + model.getLocation()+"\n" +model.getPeriod()+"\n"+ model.getTeacher(), Toast.LENGTH_SHORT).show();
+                //TODO 编辑课程
+                mClickListener.onClickScheduleEdit(model);
             }
         });
         return mScheduleView;
@@ -356,7 +361,9 @@ public class ScheduleView extends LinearLayout {
         invalidate();
     }
 
-
+    /**
+     * 清除界面和内存中的课表数据，用于清空界面，不清除数据库
+     */
     public void cleanScheduleData() {
         if(mHorizontalWeekLayout != null){
             mHorizontalWeekLayout.removeAllViews();
@@ -404,7 +411,13 @@ public class ScheduleView extends LinearLayout {
         return num % colors.length;
     }
 
-
-
+    private onClickScheduleListener mClickListener;
+    public void setOnClickScheduleListener(onClickScheduleListener listener){
+        this.mClickListener = listener;
+    }
+    public interface onClickScheduleListener{     //修改和编辑课程的监听器
+        void onClickScheduleEdit(Schedule model);
+        void onClickScheduleAdd(int dayInWeek,int startSec);
+    };
 
 }

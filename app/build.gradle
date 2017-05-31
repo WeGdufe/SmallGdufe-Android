@@ -20,8 +20,11 @@ android {
         applicationId "com.guang.app"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 3
-        versionName "1.2.0"
+        versionCode 999
+        versionName "999.999.999"
+//      测试时用999版本号 避开被友盟报错统计混淆了真实用户的报错
+//        versionCode 3
+//        versionName "1.2.0"
     }
     buildTypes {
 //        proguard测试时可以开注释，可以看到报错
@@ -58,7 +61,7 @@ dependencies {
     compile 'com.apkfuns.logutils:library:1.0.4'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.0'
     //db库
-    compile 'org.litepal.android:core:1.4.1'
+    compile 'org.litepal.android:core:1.5.1'
     //友盟
     compile 'com.umeng.analytics:analytics:6.1.0'
 

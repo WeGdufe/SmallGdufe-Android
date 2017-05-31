@@ -14,4 +14,8 @@
     <dimen name="widget_item_text_size">18sp</dimen>
     <dimen name="widget_title_text_size">18sp</dimen>
 
+
+    <!--课程表编辑对话框 之间的距离-->
+    <dimen name="dialog_schedule_tv_padding">10dp</dimen>
+
 </resources>

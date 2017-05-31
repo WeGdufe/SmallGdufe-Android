@@ -42,6 +42,8 @@ public class SearchBookActivity extends QueryActivity {
         super.onCreate(savedInstanceState);
         super.addTitleBackBtn();
         setTitle(R.string.title_searchBook);
+        getSupportActionBar().setSubtitle("最多显示20条结果");
+
         setContentView(R.layout.search_book);
 
         initAdapter();

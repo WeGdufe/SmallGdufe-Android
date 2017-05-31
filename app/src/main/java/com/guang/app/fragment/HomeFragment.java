@@ -20,6 +20,7 @@ import com.guang.app.api.JwApiFactory;
 import com.guang.app.model.Schedule;
 import com.guang.app.util.CalcUtils;
 import com.guang.app.util.FileUtils;
+import com.guang.app.widget.EditScheduleDialog;
 import com.guang.app.widget.PickerView;
 import com.guang.app.widget.ScheduleView;
 
@@ -49,9 +50,40 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         ButterKnife.bind(this, view);
         getActivity().setTitle("APP");
+        initViewByDb();
 
+        mScheduleView.setOnClickScheduleListener(new ScheduleView.onClickScheduleListener() {
+            @Override
+            public void onClickScheduleEdit(Schedule model) {           //编辑课程
+                //因ScheduleView.java的点击事件的model获取比较蛋疼，又没法获取getFragmentManager故选择这种回调传参方法，以后考虑换掉ScheduleView控件类
+                EditScheduleDialog dialog = EditScheduleDialog.newInstance(model);
+                dialog.setOnConfirmListener(new EditScheduleDialog.OnConfirmListener() {
+                    @Override
+                    public void onConfirmListener() {
+                        initViewByDb();
+                    }
+                });
+                dialog.show( getFragmentManager(), "Bad Code,Wait for refactoring");
+            }
+            @Override
+            public void onClickScheduleAdd(int dayInWeek,int startSec){ //新增课程
+                EditScheduleDialog dialog = EditScheduleDialog.newInstance(dayInWeek,startSec);
+                dialog.setOnConfirmListener(new EditScheduleDialog.OnConfirmListener() {
+                    @Override
+                    public void onConfirmListener() {
+                        initViewByDb();
+                    }
+                });
+                dialog.show( getFragmentManager(), "ScheduleView.java is not good");
+            }
+        });
+        return view;
+    }
+
+    private void initViewByDb() {
         int currentWeek = Integer.parseInt(FileUtils.getCurrentWeek(getActivity()));
         List<Schedule> list = DataSupport.findAll(Schedule.class);
+        mScheduleView.cleanScheduleData();
         if(list.size() == 0) {
             //空数据，有界面
             mScheduleView.setScheduleData(new ArrayList<Schedule>());
@@ -63,7 +95,6 @@ public class HomeFragment extends Fragment {
                 mScheduleView.setScheduleData(list, currentWeek);
             }
         }
-        return view;
     }
 
     //对话框

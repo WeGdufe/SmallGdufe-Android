@@ -26,7 +26,7 @@ public class Schedule extends DataSupport {
     private int dayInWeek;      //星期几
     private int startSec;
     private int endSec;         //终止小节
-
+    public Schedule(){}
     public Schedule( String name, String teacher, String period, String location, int dayInWeek, int startSec, int endSec) {
         this.name = name;
         this.teacher = teacher;

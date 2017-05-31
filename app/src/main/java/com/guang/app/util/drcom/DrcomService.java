@@ -296,7 +296,6 @@ public class DrcomService extends Service{
             exception = true;
         } finally {
             if (exception) {//若发生了异常：密码错误等。 则应允许重新登录
-                //TODO 重新登录
                 cancelNotification();
                 stopSelf(); //停止service的运行
                 isLogin = false;
