@@ -97,13 +97,19 @@ public class EditScheduleDialog extends DialogFragment {
                 mSchedule.setLocation(edLocation.getText().toString());
                 mSchedule.setName(edName.getText().toString());
                 try {
-                    mSchedule.setDayInWeek(Integer.parseInt(edDayInWeek.getText().toString()));
-                    mSchedule.setStartSec(Integer.parseInt(edSection.getText().toString().split("-")[0]));
-                    mSchedule.setEndSec(Integer.parseInt(edSection.getText().toString().split("-")[1]));
+                    int dayInWeek = Integer.parseInt(edDayInWeek.getText().toString());
+                    int startSec = Integer.parseInt(edSection.getText().toString().split("-")[0]);
+                    int endSec = Integer.parseInt(edSection.getText().toString().split("-")[1]);
                     if(mSchedule.getStartSec() > mSchedule.getEndSec()){
                         Toast.makeText(getActivity(), "节数不对，别闹", Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    if(startSec < 1) startSec = 1;
+                    if(endSec > 12) endSec = 12;
+                    if(dayInWeek < 1 || dayInWeek > 7) dayInWeek = 7;
+                    mSchedule.setStartSec(startSec);
+                    mSchedule.setEndSec(endSec);
+                    mSchedule.setDayInWeek(dayInWeek);
                 }catch (Exception e){
                     //防止乱输入格式不对
                     Toast.makeText(getActivity(), "请严格参照格式，不然App炸了你就用不了，出问题重新导入课表可恢复", Toast.LENGTH_SHORT).show();

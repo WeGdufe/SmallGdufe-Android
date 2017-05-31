@@ -13,7 +13,7 @@ import com.guang.app.widget.PinchImageView;
 import butterknife.Bind;
 
 /**
- * 显示地图，含两校区地图
+ * 显示地图，含两校区地图、广州地铁图
  * Created by xiaoguang on 2017/2/19.
  */
 public class MapActivity extends QueryActivity {

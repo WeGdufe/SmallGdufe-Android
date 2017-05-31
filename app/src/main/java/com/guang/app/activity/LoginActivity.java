@@ -48,13 +48,16 @@ public class LoginActivity extends QueryActivity {
         setContentView(R.layout.activity_login);
         edJwPwd.setVisibility(View.GONE);
         oldClickLoginTimes = System.currentTimeMillis();
+//        stopLoadingProgess();   //空指针异常，加了空判断后这个代码又无效，所以暂时不能一开始隐藏登陆界面的加载框
     }
+
 
     int mJwOk = 0; //教务系统密码是否对
     private final int mJwValueInit = 0;
     private final int mJwValueError = -1;
     private final int mJwValueOk = 1;
     private long oldClickLoginTimes;
+
     @OnClick(R.id.btn_login) void login() {
         final String sno = edSno.getText().toString().trim();
         final String pwd = edpwd.getText().toString().trim();
@@ -75,12 +78,9 @@ public class LoginActivity extends QueryActivity {
         }
         oldClickLoginTimes = curTimes;
 
-//        final String sno = edSno.getText().toString().trim();
-//        final String pwd = edpwd.getText().toString().trim();
+
         //拦截的请求会带AppConfig的账号密码，但没登陆的时候又不会去设置这个值
-//        AppConfig.sno = sno;AppConfig.idsPwd = AppConfig.jwPwd = pwd;
-        //故设置之，Activity检测则也加上本地文件判断，不能只根据这个属性
-//        LogUtils.e(AppConfig.sno);
+        //故有下面两行代码，然后Activity检测登陆也需要判断本地文件，不能只根据这个属性
         AppConfig.sno = sno;
         AppConfig.idsPwd = AppConfig.jwPwd = pwd;   //默认两系统一样
         if (edJwPwd.getVisibility() == View.VISIBLE) {
@@ -160,7 +160,7 @@ public class LoginActivity extends QueryActivity {
     @OnCheckedChanged(R.id.cb_login_license) void checkLicense(boolean checked){
         if(checked){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("该APP为广财学生作品，非官方产品，但不会盗取和利用你的账号密码等信息，但若账号被盗，该产品不因此负任何责任。");
+            builder.setMessage("该APP为广财学生作品，非官方产品，但除测试外，作者不会盗取你的个人信息。But 若账号被盗，该产品不因此负任何责任。");
             builder.setTitle("使用需知");
             builder.setNeutralButton("不同意",new DialogInterface.OnClickListener(){
                 @Override

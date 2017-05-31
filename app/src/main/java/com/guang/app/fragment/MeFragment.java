@@ -164,7 +164,9 @@ public class MeFragment extends Fragment {
                 }
                 @Override
                 public void onError(Throwable e) {
-                    tvMeIcon.setBackgroundResource(R.mipmap.avatar_h);
+                    if(tvMeIcon != null) {  //模拟器测试时的不知名原因 低概率出现
+                        tvMeIcon.setBackgroundResource(R.mipmap.avatar_h);
+                    }
                 }
                 @Override
                 public void onComplete() {

@@ -70,7 +70,7 @@ public class CardHistoryActivity extends QueryActivity {
                     Toast.makeText(CardHistoryActivity.this, "你今天没有校园卡交易喔", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                LogUtils.e(value);
+                LogUtils.w(value);
                 mAdapter.cleanData();
                 mAdapter.addData(value);
                 mAdapter.notifyDataSetChanged();

@@ -62,10 +62,8 @@ public class ScheduleView extends LinearLayout {
     int colornum = 0;
     //数据源
     private List<Schedule> mListTimeTable = new ArrayList<Schedule>();
-    private  Context mContext;
     public ScheduleView(Context context) {
         super(context);
-        this.mContext = context;
     }
 
     public ScheduleView(Context context, AttributeSet attributeSet) {
@@ -368,6 +366,7 @@ public class ScheduleView extends LinearLayout {
         if(mHorizontalWeekLayout != null){
             mHorizontalWeekLayout.removeAllViews();
             mVerticalWeekLaout.removeAllViews();
+            this.removeAllViews();  //解决界面最上面每次导入都新增空白的问题
             this.mListTimeTable = new ArrayList<Schedule>();
             colorStr = new String[maxDifferentSchedule];
             colornum = 0;

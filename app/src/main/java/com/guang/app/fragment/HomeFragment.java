@@ -3,6 +3,7 @@ package com.guang.app.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.apkfuns.logutils.LogUtils;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.guang.app.R;
 import com.guang.app.api.JwApiFactory;
 import com.guang.app.model.Schedule;
@@ -33,7 +36,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-
 
 
 public class HomeFragment extends Fragment {
@@ -80,6 +82,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    //查数据库的课表 并显示
     private void initViewByDb() {
         int currentWeek = Integer.parseInt(FileUtils.getCurrentWeek(getActivity()));
         List<Schedule> list = DataSupport.findAll(Schedule.class);
@@ -206,12 +209,16 @@ public class HomeFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.menu_schedule_more_import:
+            case R.id.menu_schedule_more_import:         //导入课程
                 showXueQiPickerDialog(getActivity());
                 break;
             case R.id.menu_schedule_more_current_week:  //按周查看
                 showSelectWeekDialog(getActivity());
                 break;
+            case R.id.menu_schedule_more_timetable:     //排课表
+                showAddTimeTableDialog(getActivity());
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -275,4 +282,49 @@ public class HomeFragment extends Fragment {
         pickerBuilder.show();
     }
 
+
+    /**
+     * 添加排课表到周日里，适合非双学位使用
+     * @param context
+     */
+    private void showAddTimeTableDialog (final Context context) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("将排课表放入周日空白处")
+                .setMessage("在周日无课程的情况下使用，请选择校区")
+                .setPositiveButton("佛山校区", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        readTimeTableFile(context,"timetable_foshan.json");
+                    }
+                })
+                .setNegativeButton("广州校区", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        readTimeTableFile(context,"timetable_guangzhou.json");
+                    }
+                })
+                .setNeutralButton("删除排课表", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DataSupport.deleteAll(Schedule.class,"dayInWeek = ?","7");
+                        initViewByDb();
+                    }
+                })
+        ;
+        builder.show();
+    }
+
+    /**
+     *  读json格式时间表文件并写到数据库
+     */
+    private void readTimeTableFile(Context context,String filename) {
+        String timetableStr = FileUtils.getStrFromAssets(context,filename);
+        List<Schedule> timetableList = new Gson().fromJson(timetableStr, new TypeToken<List<Schedule>>() {}.getType());
+        if(timetableList == null || timetableList.size() == 0){
+            return;
+        }
+        DataSupport.deleteAll(Schedule.class,"dayInWeek = ?","7");
+        DataSupport.saveAll(timetableList);
+        initViewByDb();
+    }
 }

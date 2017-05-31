@@ -42,7 +42,8 @@ public class QueryActivity extends BaseActivity implements RefreshActionItem.Ref
     }
 
     /**
-     * 若具体业务需要隐藏loading图标，覆盖该方法返回true即可
+     * 若具体业务需要彻底隐藏loading图标，覆盖该方法返回true即可
+     *
      * @return true:隐藏 false[默认]:不隐藏
      */
     protected boolean shouldHideLoadingIcon() {
@@ -67,12 +68,20 @@ public class QueryActivity extends BaseActivity implements RefreshActionItem.Ref
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+
+    /**
+     * 显示并转动加载条，重写shouldHideLoadingIcon()的情况无效
+     */
     public void startLoadingProgess(){
         showLoadingProgress();
-        mRefreshActionItem.startProgress();
+        if(mRefreshActionItem != null) {
+            mRefreshActionItem.startProgress();
+        }
     }
     public void stopLoadingProgess(){
-        mRefreshActionItem.stopProgress();
+        if(mRefreshActionItem != null){
+            mRefreshActionItem.stopProgress();
+        }
         hideLoadingProgress();
     }
     /**
@@ -96,12 +105,16 @@ public class QueryActivity extends BaseActivity implements RefreshActionItem.Ref
      * 临时隐藏loading条
      */
     private void hideLoadingProgress() {
-        mRefreshActionItem.setVisibility(View.GONE);
+        if(mRefreshActionItem != null) {
+            mRefreshActionItem.setVisibility(View.GONE);
+        }
     }
     /**
      * 临时显示loading条
      */
     private void showLoadingProgress() {
-        mRefreshActionItem.setVisibility(View.VISIBLE);
+        if(mRefreshActionItem != null) {
+            mRefreshActionItem.setVisibility(View.VISIBLE);
+        }
     }
 }

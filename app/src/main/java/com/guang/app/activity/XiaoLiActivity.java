@@ -27,6 +27,7 @@ public class XiaoLiActivity extends QueryActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.title_likeXiaoli);
+
         super.addTitleBackBtn();
         setContentView(R.layout.xiaoli);
 
@@ -40,9 +41,13 @@ public class XiaoLiActivity extends QueryActivity {
         int mapId = R.mipmap.xiaoli;
         switch (doFrom){
             case XiaoLiActivity.doXiaoLi:
-                mapId = R.mipmap.xiaoli; break;
+                mapId = R.mipmap.xiaoli;
+                getSupportActionBar().setSubtitle("以后将制作成日历表格式，非图片");
+                break;
             case XiaoLiActivity.doTimeTable:
-                mapId = R.mipmap.time_table; break;
+                mapId = R.mipmap.time_table;
+                getSupportActionBar().setSubtitle("可在课表主页右上角 添加到周日一列");
+                break;
         }
         mCurBitmap = BitmapFactory.decodeResource(getResources(), mapId);
         zoomImageView.setImageBitmap(mCurBitmap);

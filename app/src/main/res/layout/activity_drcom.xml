@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:hint="学号"
             android:inputType="textEmailAddress"
-            android:textColor="@color/bg_login_edittext" />
+            android:textColor="@color/bg_drcom_login_edittext" />
         <!--android:textColor="@android:color/white"-->
 
         <EditText
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:hint="密码（默认身份证后八位）"
             android:inputType="textPassword"
-            android:textColor="@color/bg_login_edittext" />
+            android:textColor="@color/bg_drcom_login_edittext" />
 
         <RelativeLayout
             android:layout_width="match_parent"

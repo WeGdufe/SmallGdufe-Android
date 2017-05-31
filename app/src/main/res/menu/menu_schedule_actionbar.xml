@@ -17,5 +17,8 @@
         <item
             android:id="@+id/menu_schedule_more_current_week"
             android:title="按周查看" />
+        <item
+            android:id="@+id/menu_schedule_more_timetable"
+            android:title="排课表显示" />
     </item>
 </menu>

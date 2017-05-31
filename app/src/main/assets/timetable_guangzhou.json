@@ -1,0 +1,56 @@
+[
+  {
+    "name": "08:00",
+    "teacher": "08:00-08:45 和 08:55-09:40",
+    "period": "1-16(周)",
+    "location": "09:40",
+    "dayInWeek": 7,
+    "startSec": 1,
+    "endSec": 2
+  },
+  {
+    "name": "10:00",
+    "teacher": "10:00-10:45 和 10:55-11:40",
+    "period": "1-16(周)",
+    "location": "11:40",
+    "dayInWeek": 7,
+    "startSec": 3,
+    "endSec": 4
+  },
+  {
+    "name": "14:10",
+    "teacher": "14:10-14:55 和 15:05-15:50",
+    "period": "1-16(周)",
+    "location": "15:50",
+    "dayInWeek": 7,
+    "startSec": 5,
+    "endSec": 6
+  },
+  {
+    "name": "16:10",
+    "teacher": "16:10-16:55 和 17:05-17:50",
+    "period": "1-16(周)",
+    "location": "17:50",
+    "dayInWeek": 7,
+    "startSec": 7,
+    "endSec": 8
+  },
+  {
+    "name": "18:40",
+    "teacher": "18:40-19:25 和 19:35-20:20",
+    "period": "1-16(周)",
+    "location": "20:20",
+    "dayInWeek": 7,
+    "startSec": 9,
+    "endSec": 10
+  },
+  {
+    "name": "20:30",
+    "teacher": "20:30-21:15",
+    "period": "1-16(周)",
+    "location": "21:15",
+    "dayInWeek": 7,
+    "startSec": 11,
+    "endSec": 12
+  }
+]

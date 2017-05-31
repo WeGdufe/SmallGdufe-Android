@@ -19,7 +19,7 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="Welcome"
-            android:textColor="#333333"
+            android:textColor="@android:color/white"
             android:textSize="30sp" />
 
     </RelativeLayout>

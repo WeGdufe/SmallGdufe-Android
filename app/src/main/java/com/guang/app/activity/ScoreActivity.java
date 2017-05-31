@@ -182,6 +182,9 @@ public class ScoreActivity extends QueryActivity {
             @Override
             public void onError(Throwable e) {
                 LogUtils.e(e.getMessage());
+                if("unexpected end of stream".equals(e.getMessage())){  //okhttp的锅
+                    Toast.makeText(ScoreActivity.this, "网络抖动了下，再试一次", Toast.LENGTH_SHORT).show();
+                }
                 Toast.makeText(ScoreActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 finish();
             }
