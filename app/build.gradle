@@ -67,4 +67,6 @@ dependencies {
     compile 'com.umeng.analytics:analytics:6.1.0'
 
     compile "org.lzh.nonview.updateplugin:UpdatePlugin:2.0"
+
+    compile 'com.android.support:design:25.3.1'
 }

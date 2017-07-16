@@ -8,6 +8,8 @@ import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -20,6 +22,7 @@ import com.guang.app.model.SearchBook;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -30,11 +33,18 @@ import io.reactivex.disposables.Disposable;
  */
 public class SearchBookActivity extends QueryActivity {
     private static OpacApiFactory factory = OpacApiFactory.getInstance();
+    private int curSearchPage = 1;  //当前搜索页数
+    private String curSearchWord = "";  //当前搜索词
 
     @Bind(R.id.common_recycleView)
     RecyclerView mRecyclerView;
     @Bind(R.id.book_searchview)
     SearchView searchView;
+    @Bind(R.id.search_book_tv_pagenum)
+    TextView tvPageNum;          //分页的 第X页 文本
+    @Bind(R.id.layout_book_page)
+    LinearLayout layoutPage;    //整个分页控件租
+
     private SearchBookAdapter mAdapter;
 
     @Override
@@ -42,7 +52,7 @@ public class SearchBookActivity extends QueryActivity {
         super.onCreate(savedInstanceState);
         super.addTitleBackBtn();
         setTitle(R.string.title_searchBook);
-        getSupportActionBar().setSubtitle("最多显示20条结果");
+//        getSupportActionBar().setSubtitle("");
 
         setContentView(R.layout.search_book);
 
@@ -56,44 +66,50 @@ public class SearchBookActivity extends QueryActivity {
             public boolean onQueryTextSubmit(String query) {
                 if (TextUtils.getTrimmedLength(query) == 0) return false;
                 searchView.setIconified(true);  //清空文本，防止操作一次却调用两次onQueryTextSubmit
-
-                factory.searchBook(query, new Observer<List<SearchBook>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        startLoadingProgess();
-                    }
-
-                    @Override
-                    public void onNext(List<SearchBook> value) {
-                        if (value.size() == 0) {
-                            Toast.makeText(SearchBookActivity.this, "没有搜到结果喔", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        Toast.makeText(SearchBookActivity.this, "共搜到" + value.size() + "个结果", Toast.LENGTH_SHORT).show();
-
-                        mAdapter.cleanData();
-                        mAdapter.addData(value);
-                        mAdapter.notifyDataSetChanged();
-                        searchView.setIconified(true);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Toast.makeText(SearchBookActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        stopLoadingProgess();
-                        mAdapter.isUseEmpty(true);
-                    }
-                });
+                curSearchWord = query;
+                curSearchPage = 1;
+                realQueryBook(query,curSearchPage);
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
+            }
+        });
+    }
+
+    private void realQueryBook(String query, final int page) {
+        factory.searchBook(query,page, new Observer<List<SearchBook>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                startLoadingProgess();
+            }
+
+            @Override
+            public void onNext(List<SearchBook> value) {
+                tvPageNum.setText("第 "+page+ " 页");
+                layoutPage.setVisibility(View.VISIBLE);
+                if (value.size() == 0) {
+                    Toast.makeText(SearchBookActivity.this, "没有搜到喔", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+//                Toast.makeText(SearchBookActivity.this, "共搜到" + value.size() + "个结果", Toast.LENGTH_SHORT).show();
+                mAdapter.cleanData();
+                mAdapter.addData(value);
+                mAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Toast.makeText(SearchBookActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onComplete() {
+                stopLoadingProgess();
+                mAdapter.isUseEmpty(true);
             }
         });
     }
@@ -127,6 +143,24 @@ public class SearchBookActivity extends QueryActivity {
             }
         });
     }
-
-
+    @OnClick(R.id.btn_book_pre_page) void searchPrePage() {
+        if(TextUtils.isEmpty(curSearchWord)){
+            Toast.makeText(this, "搜索词为空，先搜再翻页", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(curSearchPage <= 1){
+            Toast.makeText(this, "已是第一页", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        curSearchPage --;
+        realQueryBook(curSearchWord,curSearchPage);
+    }
+    @OnClick(R.id.btn_book_next_page) void searchNextPage() {
+        if(TextUtils.isEmpty(curSearchWord)){
+            Toast.makeText(this, "搜索词为空，先搜再翻页", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        curSearchPage ++;
+        realQueryBook(curSearchWord,curSearchPage);
+    }
 }
