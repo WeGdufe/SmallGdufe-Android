@@ -104,6 +104,7 @@ public class SearchBookActivity extends QueryActivity {
             @Override
             public void onError(Throwable e) {
                 Toast.makeText(SearchBookActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                stopLoadingProgess();
             }
 
             @Override

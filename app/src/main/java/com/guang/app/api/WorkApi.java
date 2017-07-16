@@ -35,6 +35,8 @@ public interface WorkApi {
     @GET(AppConfig.Url.allLogout)
     Observable<HttpResult<StrObjectResponse>> allLgout();
 
+    @GET(AppConfig.Url.getDocument)
+    Observable<ResponseBody> getDocumentFile(@Query("fileCode") String fileCode);
 
 
 }

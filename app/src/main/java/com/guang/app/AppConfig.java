@@ -28,7 +28,10 @@ public class AppConfig {
         //预留3给新fragment
         public static final int DRCOM = 10;      //drcomActivity
     }
+    public static class Const {
+        public static final String DocumentCodeXiaoli = "xiaoli";
 
+    }
     public static class Url {
         public static final String index = "index.php?r=";
         public static final String getScore = index + "jw/get-grade";
@@ -54,6 +57,7 @@ public class AppConfig {
         public static final String updateURL = index + "work/check-app-update";
         public static final String appTips = index + "work/get-app-tips";
         public static final String allLogout = index + "work/all-logout";
+        public static final String getDocument = index + "work/get-document";
 
     }
 
