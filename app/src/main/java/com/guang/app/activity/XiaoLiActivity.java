@@ -3,8 +3,12 @@ package com.guang.app.activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.guang.app.R;
+import com.guang.app.util.FileUtils;
+import com.guang.app.util.TimeUtils;
 import com.guang.app.widget.PinchImageView;
 
 import butterknife.Bind;
@@ -30,7 +34,14 @@ public class XiaoLiActivity extends QueryActivity {
 
         super.addTitleBackBtn();
         setContentView(R.layout.xiaoli);
-
+        zoomImageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                String path = FileUtils.saveImageFile(XiaoLiActivity.this,mCurBitmap, TimeUtils.getCurrentDateString()+".jpg",false);
+                Toast.makeText(XiaoLiActivity.this, "已保存图片到"+path, Toast.LENGTH_LONG).show();
+                return false;
+            }
+        });
     }
 
     //显示校历或者排课表

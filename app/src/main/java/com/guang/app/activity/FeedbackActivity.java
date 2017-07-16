@@ -64,6 +64,8 @@ public class FeedbackActivity extends QueryActivity {
             @Override
             public void onNext(StrObjectResponse value) {
                 Toast.makeText(FeedbackActivity.this, "非常感谢", Toast.LENGTH_SHORT).show();
+                edFeedbackContent.setText("");
+                edFeedbackContact.setText("");
             }
 
             @Override

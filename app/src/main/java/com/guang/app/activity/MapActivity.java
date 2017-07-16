@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.guang.app.R;
+import com.guang.app.util.FileUtils;
+import com.guang.app.util.TimeUtils;
 import com.guang.app.widget.PinchImageView;
 
 import butterknife.Bind;
@@ -34,6 +38,15 @@ public class MapActivity extends QueryActivity {
         super.addTitleBackBtn();
         setContentView(R.layout.xiaoli);
         nowMapFlag = getIntent().getIntExtra(doWhat,doMapSanShui);
+
+        zoomImageView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                String path = FileUtils.saveImageFile(MapActivity.this,mCurBitmap, TimeUtils.getCurrentDateString()+".jpg",false);
+                Toast.makeText(MapActivity.this, "已保存图片到"+path, Toast.LENGTH_LONG).show();
+                return false;
+            }
+        });
     }
     
     @Override

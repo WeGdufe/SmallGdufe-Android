@@ -18,6 +18,7 @@
         android:inputType="textMultiLine"
         android:maxLines="5"
         android:minLines="2"
+        android:hint="有问题，先尝试更新到最新版本"
         android:ems="10"
         android:id="@+id/ed_feedback_content"/>
     <TextView

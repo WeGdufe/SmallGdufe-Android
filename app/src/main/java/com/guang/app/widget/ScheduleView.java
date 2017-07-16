@@ -329,7 +329,7 @@ public class ScheduleView extends LinearLayout {
         mListTimeTable.clear();
         mCurrentWeek = currentWeek;
         int size = list.size();
-        //去时间、地点不同 但其他同的重 （去掉 不是当前周的那个 ）虽然代码允许老师不同 如
+        //单双周不同课或者同课不同地点的情况，去掉不是本周的那个
         //{"name":"电子商务及Web开发","teacher":"张婧炜讲师（高校）","period":"3,5,7,9,11,13,14,15,16(周)","location":"拓新楼(SS1)203","dayInWeek":1,"startSec":1,"endSec":2},
         //{"name":"电子商务及Web开发","teacher":"张婧炜讲师（高校）","period":"1,2,4,6,8,10,12(周)","location":"拓新楼(SS1)320","dayInWeek":1,"startSec":1,"endSec":2},
         for(int i = 0; i <size; i++){
@@ -341,7 +341,7 @@ public class ScheduleView extends LinearLayout {
                 if(item.getDayInWeek() == sc.getDayInWeek()
                         && item.getEndSec() ==  sc.getEndSec()
                         && item.getStartSec() ==  sc.getStartSec()
-                        && item.getName().equals(sc.getName())){
+                        ){
                     hasSame = true;
                 }
             }

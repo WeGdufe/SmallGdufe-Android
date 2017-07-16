@@ -146,12 +146,25 @@ public class FileUtils {
      * 保存图片文件（头像）
      * @param bmp Bitmap
      */
-    public static void saveImage(Context context,Bitmap bmp) {
+    public static void saveAvatarImage(Context context,Bitmap bmp) {
+        String fileName = AVATAR_FILE_NAME;
+        saveImageFile(context,bmp,fileName,true);
+    }
+    /**
+     * 保存图片文件，返回图片的绝对路径
+     * @param context
+     * @param bmp
+     * @param fileName
+     * @return
+     */
+    public static String saveImageFile(Context context,Bitmap bmp,String fileName,boolean isTemp) {
         File appDir = new File(getDiskCacheDir(context));
+        if(!isTemp){
+            appDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        }
         if (!appDir.exists()) {
             appDir.mkdir();
         }
-        String fileName = AVATAR_FILE_NAME;
         File file = new File(appDir, fileName);
         try {
             FileOutputStream fos = new FileOutputStream(file);
@@ -163,7 +176,9 @@ public class FileUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return file.getAbsolutePath();
     }
+
 
     /**
      * 读取main/assets目录文件
