@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="29dp"
-            android:text="Author：13信院小光/韩裕光"
+            android:text="Author：13信院韩裕光-792875586"
             android:layout_below="@+id/tv_about_version"
             android:layout_centerHorizontal="true" />
 
@@ -53,7 +53,7 @@
             android:layout_centerHorizontal="true"
             android:autoLink="all"
             android:paddingTop="10dp"
-            android:text="官网：http://www.wintercoder.com:8080" />
+            android:text="官网：http://www.wegdufe.com \n备用： http://www.wintercoder.com:8080" />
             <!--\n商务邮箱：movinggdufe@163.com-->
             <TextView
                 android:id="@+id/tv_qgroup"
@@ -81,12 +81,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autoLink="all"
-            android:layout_centerHorizontal="true"
             android:paddingTop="10dp"
             android:textAlignment="center"
             android:gravity="center_horizontal"
-            android:text="无薪招聘帮忙学生开发者，造福广财人"
-            android:layout_below="@+id/tv_qgroup" />
+            android:text="无薪招聘学生开发者，造福广财人"
+            android:layout_below="@+id/tv_qgroup"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

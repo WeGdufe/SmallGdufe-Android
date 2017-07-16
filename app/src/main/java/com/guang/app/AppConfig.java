@@ -12,9 +12,8 @@ public class AppConfig {
     public static String netAesSeed = "netdsad238139dsad";       //网络密约，未用到
 
     //千万记得这个URL要/结尾！！！
-//    public static final String BASE_URL = "http://172.25.155.14:82/";
-//    public static final String BASE_URL = "http://192.168.137.1:82/";
-    public static final String BASE_URL = "http://app.wintercoder.com:82/";
+    public static final String BASE_URL = "http://app.wegdufe.com:82/";
+    public static final String BASE_URL_BACKUP = "http://app.wintercoder.com:82/";
 
     //在线头像获取
     public static final String Avator_URL_BASE = "https://www.94cb.com/";

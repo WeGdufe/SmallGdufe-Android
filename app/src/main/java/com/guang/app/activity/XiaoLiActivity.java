@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.apkfuns.logutils.LogUtils;
 import com.guang.app.AppConfig;
 import com.guang.app.R;
 import com.guang.app.api.WorkApiFactory;
@@ -63,7 +62,6 @@ public class XiaoLiActivity extends QueryActivity {
                 workApiFactory.getDocumentFile(AppConfig.Const.DocumentCodeXiaoli, new Observer<ResponseBody>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        LogUtils.e("~~~~~~");
                     }
                     @Override
                     public void onNext(ResponseBody value) {
@@ -73,7 +71,6 @@ public class XiaoLiActivity extends QueryActivity {
                     }
                     @Override
                     public void onError(Throwable e) {
-                        LogUtils.e("图片获取失败，加载本地缓存文件");
                         mCurBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.xiaoli);
                     }
                     @Override
@@ -82,12 +79,12 @@ public class XiaoLiActivity extends QueryActivity {
                 });
                 break;
             case XiaoLiActivity.doTimeTable:
+                getSupportActionBar().setSubtitle("可在课表主页右上角 添加到周日一列");
                 mCurBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.time_table);
                 zoomImageView.setImageBitmap(mCurBitmap);
                 stopLoadingProgess();
                 break;
         }
-        getSupportActionBar().setSubtitle("可在课表主页右上角 添加到周日一列");
     }
     @Override
     protected boolean shouldHideLoadingIcon() {
