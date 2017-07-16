@@ -32,9 +32,9 @@ public class JwApiFactory extends ApiUtils {
         private static final JwApiFactory INSTANCE = new JwApiFactory();
     }
 
-    //stu_time格式：2013-2014-1，或者为空字符串表示查询整个大学的成绩
-    public void  getScore(String stu_time,Observer< List<Score> > sub ) {
-        ApiUtils.getApi(AppConfig.jwPwd).create(JwApi.class).getScore(stu_time)
+    //stu_time格式：2013-2014-1，或者为空字符串表示查询整个大学的成绩，minor查主修为0，辅修为1
+    public void  getScore(String stu_time,int minor,Observer< List<Score> > sub ) {
+        ApiUtils.getApi(AppConfig.jwPwd).create(JwApi.class).getScore(stu_time,minor)
         .map(new HttpResultFunc< List<Score> >())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribeOn(Schedulers.io())

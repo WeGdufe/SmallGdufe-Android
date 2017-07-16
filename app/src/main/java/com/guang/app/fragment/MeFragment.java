@@ -159,7 +159,7 @@ public class MeFragment extends Fragment {
                 @Override
                 public void onNext(ResponseBody value) {
                     Bitmap bitmap = BitmapFactory.decodeStream(value.byteStream());
-                    FileUtils.saveImage(getActivity(),bitmap);
+                    FileUtils.saveAvatarImage(getActivity(),bitmap);
                     tvMeIcon.setImageBitmap(bitmap);
                 }
                 @Override

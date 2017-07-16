@@ -42,6 +42,9 @@ public class FileUtils {
     private static final String SP_CURRENT_DAY = "currentDay";
     public static final int SP_WEEK_NOT_SET = -1;
 
+    private static final String SP_JW_SETTINGS_FILE = "jw_settings";
+    private static final String SP_SCORE_TARGET = "scoreQueryTarget";
+
     /**
      * 获取存储在本地的账号信息，返回是否有存储(有登陆过)
      * @param context
@@ -143,12 +146,25 @@ public class FileUtils {
      * 保存图片文件（头像）
      * @param bmp Bitmap
      */
-    public static void saveImage(Context context,Bitmap bmp) {
+    public static void saveAvatarImage(Context context,Bitmap bmp) {
+        String fileName = AVATAR_FILE_NAME;
+        saveImageFile(context,bmp,fileName,true);
+    }
+    /**
+     * 保存图片文件，返回图片的绝对路径
+     * @param context
+     * @param bmp
+     * @param fileName
+     * @return
+     */
+    public static String saveImageFile(Context context,Bitmap bmp,String fileName,boolean isTemp) {
         File appDir = new File(getDiskCacheDir(context));
+        if(!isTemp){
+            appDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        }
         if (!appDir.exists()) {
             appDir.mkdir();
         }
-        String fileName = AVATAR_FILE_NAME;
         File file = new File(appDir, fileName);
         try {
             FileOutputStream fos = new FileOutputStream(file);
@@ -160,7 +176,9 @@ public class FileUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return file.getAbsolutePath();
     }
+
 
     /**
      * 读取main/assets目录文件
@@ -251,5 +269,18 @@ public class FileUtils {
         SharedPreferences sp = context.getSharedPreferences(SP_WEEK_FILE,0);
         String today = TimeUtils.getDateStringWithFormat("yyyy-MM-dd");
         return sp.getString(SP_CURRENT_DAY,today);
+    }
+
+
+
+    //查成绩，查主修还是辅修
+    public static int getScoreQueryTarget(Context context){
+        SharedPreferences sp = context.getSharedPreferences(SP_JW_SETTINGS_FILE,0);
+        return sp.getInt(SP_SCORE_TARGET,0);
+    }
+    public static void setScoreQueryTarget(Context context,int target){
+        SharedPreferences.Editor edit = context.getSharedPreferences(SP_JW_SETTINGS_FILE,0).edit();
+        edit.putInt(SP_SCORE_TARGET,target);
+        edit.apply();
     }
 }

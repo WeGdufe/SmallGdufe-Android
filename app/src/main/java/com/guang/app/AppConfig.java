@@ -12,9 +12,8 @@ public class AppConfig {
     public static String netAesSeed = "netdsad238139dsad";       //网络密约，未用到
 
     //千万记得这个URL要/结尾！！！
-//    public static final String BASE_URL = "http://172.25.155.14:82/";
-//    public static final String BASE_URL = "http://192.168.137.1:82/";
-    public static final String BASE_URL = "http://app.wintercoder.com:82/";
+    public static final String BASE_URL = "http://app.wegdufe.com:82/";
+    public static final String BASE_URL_BACKUP = "http://app.wintercoder.com:82/";
 
     //在线头像获取
     public static final String Avator_URL_BASE = "https://www.94cb.com/";
@@ -28,7 +27,10 @@ public class AppConfig {
         //预留3给新fragment
         public static final int DRCOM = 10;      //drcomActivity
     }
+    public static class Const {
+        public static final String DocumentCodeXiaoli = "xiaoli";
 
+    }
     public static class Url {
         public static final String index = "index.php?r=";
         public static final String getScore = index + "jw/get-grade";
@@ -54,6 +56,7 @@ public class AppConfig {
         public static final String updateURL = index + "work/check-app-update";
         public static final String appTips = index + "work/get-app-tips";
         public static final String allLogout = index + "work/all-logout";
+        public static final String getDocument = index + "work/get-document";
 
     }
 

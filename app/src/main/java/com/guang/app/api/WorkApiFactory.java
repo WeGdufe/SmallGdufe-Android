@@ -67,4 +67,11 @@ public class WorkApiFactory extends ApiUtils {
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
     }
+
+    public void getDocumentFile(String fileCode, Observer<ResponseBody> sub ) {
+        ApiUtils.getApi("").create(WorkApi.class).getDocumentFile(fileCode)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
 }

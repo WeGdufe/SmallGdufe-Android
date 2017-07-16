@@ -26,7 +26,7 @@ public interface OpacApi {
     Observable<HttpResult< List<Book> >> getBorrowedBook();
     //搜书（未登录搜索）
     @GET(AppConfig.Url.searchBook)
-    Observable<HttpResult< List<SearchBook> >> searchBook(@Query("bookName") String bookName);
+    Observable<HttpResult< List<SearchBook> >> searchBook(@Query("bookName") String bookName,@Query("page") int page );
 
     //获取图书续借的验证码
     @GET(AppConfig.Url.getRenewBookVerify)

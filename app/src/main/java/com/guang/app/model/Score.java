@@ -10,7 +10,7 @@ public class Score {
      * time : 2014-2015-1
      * name : 现代空间信息技术导论
      * score : 77
-     * credit : 1
+     * credit : 1  / 0.5
      * classCode : 160381
      * dailyScore : 85
      * expScore : 0
@@ -20,7 +20,7 @@ public class Score {
     private String time;
     private String name;
     private int score;
-    private int credit;
+    private double credit;
     private String classCode;  //课程编号
     private int dailyScore;   //平时成绩
     private int expScore;     //实验成绩
@@ -50,11 +50,11 @@ public class Score {
         this.score = score;
     }
 
-    public int getCredit() {
+    public double getCredit() {
         return credit;
     }
 
-    public void setCredit(int credit) {
+    public void setCredit(double credit) {
         this.credit = credit;
     }
 

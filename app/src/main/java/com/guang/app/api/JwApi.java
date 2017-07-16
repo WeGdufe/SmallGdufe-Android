@@ -18,9 +18,9 @@ import retrofit2.http.Query;
  */
 public interface JwApi {
 
-    //查分 stu_time格式：2013-2014-1，或者为空字符串表示查询整个大学的成绩
+    //查分 stu_time格式：2013-2014-1，或者为空字符串表示查询整个大学的成绩，minor查主修为0，辅修为1
     @GET(AppConfig.Url.getScore)
-    Observable<HttpResult< List<Score> >> getScore(@Query("stu_time") String stu_time);
+    Observable<HttpResult< List<Score> >> getScore(@Query("stu_time") String stu_time,@Query("minor") int minor);
 
     //获取课程表 stu_time为空表示当前学期，split为1代表拆开连堂课为多个item，默认为0，合并成一个
     @GET(AppConfig.Url.getSchedule)

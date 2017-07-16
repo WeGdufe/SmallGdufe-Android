@@ -28,8 +28,8 @@ public class OpacApiFactory extends ApiUtils {
     private static class SingletonHolder {
         private static final OpacApiFactory INSTANCE = new OpacApiFactory();
     }
-    public void  searchBook(String bookName,Observer<List<SearchBook>> sub) {
-        ApiUtils.getApi(AppConfig.idsPwd).create(OpacApi.class).searchBook(bookName)
+    public void  searchBook(String bookName,int page,Observer<List<SearchBook>> sub) {
+        ApiUtils.getApi(AppConfig.idsPwd).create(OpacApi.class).searchBook(bookName,page)
                 .map(new HttpResultFunc<List<SearchBook>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
