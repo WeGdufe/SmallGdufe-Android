@@ -42,6 +42,9 @@ public class FileUtils {
     private static final String SP_CURRENT_DAY = "currentDay";
     public static final int SP_WEEK_NOT_SET = -1;
 
+    private static final String SP_JW_SETTINGS_FILE = "jw_settings";
+    private static final String SP_SCORE_TARGET = "scoreQueryTarget";
+
     /**
      * 获取存储在本地的账号信息，返回是否有存储(有登陆过)
      * @param context
@@ -251,5 +254,18 @@ public class FileUtils {
         SharedPreferences sp = context.getSharedPreferences(SP_WEEK_FILE,0);
         String today = TimeUtils.getDateStringWithFormat("yyyy-MM-dd");
         return sp.getString(SP_CURRENT_DAY,today);
+    }
+
+
+
+    //查成绩，查主修还是辅修
+    public static int getScoreQueryTarget(Context context){
+        SharedPreferences sp = context.getSharedPreferences(SP_JW_SETTINGS_FILE,0);
+        return sp.getInt(SP_SCORE_TARGET,0);
+    }
+    public static void setScoreQueryTarget(Context context,int target){
+        SharedPreferences.Editor edit = context.getSharedPreferences(SP_JW_SETTINGS_FILE,0).edit();
+        edit.putInt(SP_SCORE_TARGET,target);
+        edit.apply();
     }
 }

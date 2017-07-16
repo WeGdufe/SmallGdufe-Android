@@ -2,11 +2,20 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <item
+        android:id="@+id/menu_change_socre_target"
+        android:title="切换主辅修"
+        app:showAsAction="collapseActionView"
+        />
     <item
         android:id="@+id/menu_change_socre_time"
         android:title="更换学期"
-        android:showAsAction="ifRoom"
+        app:showAsAction="collapseActionView"
+        />
+    <item
+        android:id="@+id/menu_change_calc_help"
+        android:title="绩点计算说明"
+        app:showAsAction="collapseActionView"
         />
     <!--其他学期-->
 </menu>

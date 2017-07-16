@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +21,7 @@ import com.guang.app.adapter.ScoreAdapter;
 import com.guang.app.api.JwApiFactory;
 import com.guang.app.model.Score;
 import com.guang.app.util.CalcUtils;
+import com.guang.app.util.FileUtils;
 import com.guang.app.widget.PickerView;
 
 import java.text.DecimalFormat;
@@ -36,6 +38,8 @@ import io.reactivex.disposables.Disposable;
  */
 public class ScoreActivity extends QueryActivity {
     private static JwApiFactory factory = JwApiFactory.getInstance();
+    private static final int SCORE_QUERY_MAJOR = 0;
+    private static final int SCORE_QUERY_MINOR = 1;
 
     @Bind(R.id.common_recycleView) RecyclerView mRecyclerView;
     private ScoreAdapter mAdapter;
@@ -76,6 +80,20 @@ public class ScoreActivity extends QueryActivity {
             case R.id.menu_change_socre_time:
                 showXueQiPickerDialog(this);
                 return true;
+            case R.id.menu_change_calc_help:
+                Toast.makeText(this, "挂科的不计算学分和GPA，补考通过按补考分算，如补考90则为4.0", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.menu_change_socre_target:
+                int target = FileUtils.getScoreQueryTarget(this);
+                target = 1 - target;
+                FileUtils.setScoreQueryTarget(this,target);
+                if(target == SCORE_QUERY_MAJOR){
+                    Toast.makeText(this, "切换至主修查询，请重修查一次", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this, "切换至辅修查询，请重修查一次", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -84,13 +102,17 @@ public class ScoreActivity extends QueryActivity {
     private String getGpaSubTitle(List<Score> scores){
         double gpa = 0.0,total_credit = 0.0;
         for (Score score:scores) {
-            total_credit += score.getCredit();
             double point = Double.parseDouble(CalcUtils.calcScore2Gpa(score.getScore()));
-            gpa += point*score.getCredit();
+            if( Math.abs(point-0.0) < 1e-3){    //挂科的point为0，不能算入学分
+                continue;
+            }
+            double dCredit = score.getCredit();
+            total_credit += dCredit ;
+            gpa += point * dCredit;
         }
-        gpa/=total_credit;
+        gpa /= total_credit;
         DecimalFormat df1 = new DecimalFormat("#.00");
-        DecimalFormat df2 = new DecimalFormat("#");
+        DecimalFormat df2 = new DecimalFormat("#.0");
         return "平均："+df1.format(gpa)+"  学分："+df2.format(total_credit);
     }
 
@@ -99,6 +121,7 @@ public class ScoreActivity extends QueryActivity {
     String selectedXueqi;
     AlertDialog.Builder pickerBuilder = null;
     public void showXueQiPickerDialog(final Activity act) {
+        final String allYear = "整个学年";
         pickerBuilder = new AlertDialog.Builder(act);
         LayoutInflater layoutInflater = act.getLayoutInflater();
         View customLayout = layoutInflater.inflate(R.layout.xueqi_picker, null);
@@ -117,6 +140,7 @@ public class ScoreActivity extends QueryActivity {
             xuenianArr.add("20" + (firstYear + i) + "-20" + (firstYear + i + 1) + "(大" + level.charAt(i) + ")");
         }
         pickerViewXuenian.setData(xuenianArr);
+        xueqiArr.add(allYear);
         xueqiArr.add("第1学期");
         xueqiArr.add("第2学期");
         pickerViewXueqi.setData(xueqiArr);
@@ -124,8 +148,13 @@ public class ScoreActivity extends QueryActivity {
         pickerViewXuenian.setSelected(0);
         pickerViewXueqi.setSelected(0);
         selectedXuenian = xuenianArr.get(0).substring(0, 9);
-        selectedXueqi = "1";
+        selectedXueqi = "";
 
+        final int queryTarget = FileUtils.getScoreQueryTarget(act);
+        String allContent = "整个大学(主修)";
+        if(queryTarget == SCORE_QUERY_MINOR){
+            allContent = "整个大学(辅修)";
+        }
         pickerViewXuenian.setOnSelectListener(new PickerView.onSelectListener() {
             @Override
             public void onSelect(String text) {
@@ -137,13 +166,19 @@ public class ScoreActivity extends QueryActivity {
             @Override
             public void onSelect(String text) {
                 //第1学期 转成1
-                selectedXueqi = text.substring(1, 2);
+                if(text.equals(allYear)){
+                    selectedXueqi = "";
+                }else {
+                    selectedXueqi = text.substring(1, 2);
+                }
+                LogUtils.e(selectedXueqi+"===");
+
             }
         });
-        pickerBuilder.setNeutralButton("整个大学", new DialogInterface.OnClickListener() {
+        pickerBuilder.setNeutralButton(allContent, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                realQueryGrade("");
+                realQueryGrade("",queryTarget);
             }
         });
         //对话框的确定按钮
@@ -151,7 +186,11 @@ public class ScoreActivity extends QueryActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String studyTime = selectedXuenian + "-" + selectedXueqi;
-                realQueryGrade(studyTime);//studyTime:2013-2014-1
+                if(TextUtils.isEmpty(selectedXueqi)){
+                    studyTime  = selectedXuenian ;
+                }
+                LogUtils.e(studyTime);
+                realQueryGrade(studyTime,queryTarget);//studyTime:2013-2014-1
             }
         });
         pickerBuilder.setNegativeButton("取消", null);
@@ -161,8 +200,8 @@ public class ScoreActivity extends QueryActivity {
     /**
      * 实际发请求查询
      */
-    private void realQueryGrade(String studyTime){
-        factory.getScore(studyTime,new Observer<List<Score>>() {
+    private void realQueryGrade(String studyTime,int minor){
+        factory.getScore(studyTime,minor,new Observer<List<Score>>() {
             @Override
             public void onSubscribe(Disposable d) {
                 startLoadingProgess();
@@ -172,7 +211,8 @@ public class ScoreActivity extends QueryActivity {
                 if(value.size() == 0){
                     Toast.makeText(ScoreActivity.this, "别闹", Toast.LENGTH_SHORT).show();
                     return;
-                }
+                }                LogUtils.e(value.size()+"个");
+
                 mAdapter.cleanData();
                 mAdapter.addData(value);
                 mAdapter.notifyDataSetChanged();
