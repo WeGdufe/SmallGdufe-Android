@@ -17,6 +17,7 @@ import com.guang.app.fragment.FeatureFragment;
 import com.guang.app.fragment.HomeFragment;
 import com.guang.app.fragment.MeFragment;
 import com.guang.app.model.AppTips;
+import com.guang.app.util.CalcUtils;
 import com.guang.app.util.FileUtils;
 import com.guang.app.util.FragmentUtil;
 import com.guang.app.util.TimeUtils;
@@ -46,6 +47,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        AppConfig.appVer = CalcUtils.getVersionName(this);
 
         //未登录跳转登陆页
         if(!FileUtils.getStoredAccountAndSetApp(this) || TextUtils.isEmpty(AppConfig.sno) || TextUtils.isEmpty(AppConfig.idsPwd)){

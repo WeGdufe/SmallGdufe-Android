@@ -10,6 +10,7 @@ public class AppConfig {
     public static int defaultPage = 0;                              //app启动后的默认页面
     public static String localAesSeed = "local";                   //本地存密码的加密key
     public static String netAesSeed = "netdsad238139dsad";       //网络密约，未用到
+    public static String appVer = "";                               //ApiUtils.java没有Context，故全局变量实现
 
     //千万记得这个URL要/结尾！！！
     public static final String BASE_URL = "http://app.wegdufe.com:82/";

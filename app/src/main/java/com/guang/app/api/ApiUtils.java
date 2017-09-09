@@ -49,6 +49,8 @@ public class ApiUtils {
                 new BasicParamsInterceptor.Builder()
                         .addParam("sno", AppConfig.sno)
                         .addParam("pwd",password)
+                        .addParam("from","android")
+                        .addParam("app_ver",AppConfig.appVer)
                         .build();
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder()
                 .addInterceptor(basicParamsInterceptor)

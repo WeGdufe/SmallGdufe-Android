@@ -76,8 +76,7 @@ public class CalcUtils {
         try {
             PackageManager manager = context.getPackageManager();
             PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
-            String version = info.versionName;
-            return version;
+            return info.versionName;
         } catch (Exception e) {
             e.printStackTrace();
             return "0.0.1";

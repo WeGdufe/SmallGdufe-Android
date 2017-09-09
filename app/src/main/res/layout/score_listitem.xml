@@ -15,7 +15,7 @@
             android:background="@color/socre_item_name_default_color"
             android:textColor="@color/normal_item_passed_text_color"
             android:paddingLeft="@dimen/listitem_title_padding_left"/>
-    <!---->
+
 
     <TableLayout
         android:id="@+id/layout_score_item_content"
