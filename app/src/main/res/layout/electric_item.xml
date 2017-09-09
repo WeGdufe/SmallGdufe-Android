@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/layout_search_book_item"
+              android:clickable="true"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_electric_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/socre_item_name_default_color"
+        android:clickable="true"
+        android:paddingLeft="@dimen/listitem_title_padding_left"
+        android:text="时间"
+        android:textColor="@color/normal_item_passed_text_color"
+        android:textSize="@dimen/listitem_textSize"/>
+
+    <TableLayout
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/listitem_padding"
+        android:paddingLeft="@dimen/listitem_title_padding_left"
+        android:paddingRight="@dimen/listitem_title_padding_left"
+        android:paddingTop="@dimen/listitem_padding"
+        android:shrinkColumns="0,2"
+        android:stretchColumns="1,3">
+
+        <TableRow>
+            <TextView
+                android:textSize="@dimen/listitem_textSize"
+                android:clickable="true"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_label_electric_electric" />
+            <TextView
+                android:textSize="@dimen/listitem_textSize"
+                android:clickable="true"
+                android:id="@+id/tv_electric_electric"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:textSize="@dimen/listitem_textSize"
+                android:clickable="true"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_label_electric_money" />
+            <TextView
+                android:textSize="@dimen/listitem_textSize"
+                android:paddingTop="5dp"
+                android:clickable="true"
+                android:id="@+id/tv_electric_money"
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+
+
+    </TableLayout>
+</LinearLayout>

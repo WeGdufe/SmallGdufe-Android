@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/background_normal"
+              >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <TextView
+            android:paddingLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="#1b1b1b"
+            android:paddingRight="32dp"
+            android:text=" 楼号" />
+
+        <EditText
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:textColorHint="#8E8E8E"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="限本部23,26,27,29,30,32 直接输入数字"
+            android:id="@+id/ed_electric_building"
+            android:background="@null"/>
+    </LinearLayout>
+    <View style="@style/edit_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="20dp"
+        android:text=" 房间号"
+        android:layout_gravity="center"
+        android:textColor="#1b1b1b"/>
+
+        <EditText
+            android:id="@+id/ed_electric_room"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:layout_gravity="center"
+            android:hint="输入房间号，如605"
+            android:textColorHint="#8E8E8E"
+            android:textSize="14sp"/>
+        <View style="@style/edit_divider_horizontal" />
+
+        <TextView
+            android:id="@+id/btn_electric_query"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="#f7f6f6"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="查询"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="#00CD00"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <View style="@style/edit_divider" />
+    <include layout="@layout/common_listview" />
+
+</LinearLayout>

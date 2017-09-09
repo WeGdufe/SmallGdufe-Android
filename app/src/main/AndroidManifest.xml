@@ -43,7 +43,7 @@
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.CardHistoryActivity" />
         <activity android:name=".activity.SearchBookStoreActivity" />
-        <!--<activity android:name=".wxapi.WXEntryActivity1" android:exported="true"/>-->
+        <activity android:name=".activity.ElectricActivity" />
         <activity android:name=".activity.DrcomActivity" android:launchMode="singleTask"/>
         <service
             android:name=".util.drcom.DrcomService"

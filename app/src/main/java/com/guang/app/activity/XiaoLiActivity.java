@@ -19,17 +19,15 @@ import io.reactivex.disposables.Disposable;
 import okhttp3.ResponseBody;
 
 /**
- * 校历、排课表
+ * 校历、 排课表(于v1.3.2删除)
  * Created by xiaoguang on 2017/2/18.
  */
 public class XiaoLiActivity extends QueryActivity {
     @Bind(R.id.xiaoli_zoom_image_view)
     PinchImageView zoomImageView;
-//    private static JwcApiFactory factory = JwcApiFactory.getInstance();
     private static WorkApiFactory workApiFactory = WorkApiFactory.getInstance();
 
     public static final String doWhat = "what";
-    public static final int doTimeTable = 0;
     public static final int doXiaoLi = 1;
     Bitmap mCurBitmap;
     int doFrom; //当前做啥
@@ -51,7 +49,7 @@ public class XiaoLiActivity extends QueryActivity {
         });
     }
 
-    //显示校历或者排课表
+    //显示校历
     @Override
     protected void loadData() {
         startLoadingProgess();
@@ -77,12 +75,6 @@ public class XiaoLiActivity extends QueryActivity {
                     public void onComplete() {
                     }
                 });
-                break;
-            case XiaoLiActivity.doTimeTable:
-                getSupportActionBar().setSubtitle("可在课表主页右上角 添加到周日一列");
-                mCurBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.time_table);
-                zoomImageView.setImageBitmap(mCurBitmap);
-                stopLoadingProgess();
                 break;
         }
     }

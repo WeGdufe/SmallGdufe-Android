@@ -64,10 +64,12 @@
     <color name="red">#ff0307</color>
     <color name="pink">#ffb6c1</color>
     <color name="blue">#0056f5</color>
+    <color name="green">#00CD00</color>
 
     <!--登陆界面的文本框-->
     <color name="bg_login_edittext">#67cdf9</color>
     <color name="bg_drcom_login_edittext">#ff0ebf</color>
 
+    <!--<color name="gray">#FF4081</color>-->
 
 </resources>

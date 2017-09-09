@@ -288,6 +288,23 @@
                         android:layout_height="wrap_content">
 
                         <ImageButton
+                            android:id="@+id/menu_electric"
+                            style="@style/menu_item_icon"
+                            android:src="@drawable/icon_electric_selector" />
+
+                        <TextView
+                            style="@style/menu_item_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/menu_electric" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        style="@style/menu_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
                             android:id="@+id/menu_calendar"
                             style="@style/menu_item_icon"
                             android:src="@drawable/icon_calendar_selector" />
@@ -300,23 +317,6 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        style="@style/menu_item"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <ImageButton
-                            android:id="@+id/menu_timeTable"
-                            style="@style/menu_item_icon"
-                            android:src="@drawable/icon_arrange_class_selector" />
-
-                        <TextView
-                            style="@style/menu_item_label"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/menu_notice" />
-
-                    </LinearLayout>
 
                     <LinearLayout
                         style="@style/menu_item"

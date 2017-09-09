@@ -53,6 +53,7 @@ public class AppConfig {
 
         public static final String getCurrentCash = index + "card/current-cash";
         public static final String cardConsumeToday = index + "card/consume-today";
+        public static final String getElectric = index + "card/get-electric";
 
         public static final String feedback = index + "work/feedback";
         public static final String updateURL = index + "work/check-app-update";

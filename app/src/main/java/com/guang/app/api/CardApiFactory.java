@@ -3,6 +3,7 @@ package com.guang.app.api;
 import com.guang.app.AppConfig;
 import com.guang.app.model.CardBasic;
 import com.guang.app.model.CardConsumeItem;
+import com.guang.app.model.Electric;
 
 import java.util.List;
 
@@ -36,6 +37,13 @@ public class CardApiFactory extends ApiUtils {
     public void  getCardConsumeToday(String cardNum,Observer<List<CardConsumeItem>> sub) {
         ApiUtils.getApi(AppConfig.idsPwd).create(CardApi.class).getCardConsumeToday(cardNum)
                 .map(new HttpResultFunc<List<CardConsumeItem>>())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
+    public void  getElectric(String building,String room,Observer<List<Electric>> sub) {
+        ApiUtils.getApi(AppConfig.idsPwd).create(CardApi.class).getElectric(building,room)
+                .map(new HttpResultFunc<List<Electric>>())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);

@@ -12,6 +12,7 @@ import com.guang.app.R;
 import com.guang.app.activity.BookActivity;
 import com.guang.app.activity.CetActivity;
 import com.guang.app.activity.DrcomActivity;
+import com.guang.app.activity.ElectricActivity;
 import com.guang.app.activity.FewSztzActivity;
 import com.guang.app.activity.MapActivity;
 import com.guang.app.activity.ScoreActivity;
@@ -71,9 +72,8 @@ public class FeatureFragment extends Fragment {
 		intent.putExtra(XiaoLiActivity.doWhat,XiaoLiActivity.doXiaoLi);
 		startActivity(intent);
 	}
-	@OnClick(R.id.menu_timeTable) void queryTimeTable() {
-		Intent intent = new Intent(getActivity(), XiaoLiActivity.class);
-		intent.putExtra(XiaoLiActivity.doWhat,XiaoLiActivity.doTimeTable);
+	@OnClick(R.id.menu_electric) void queryElectric() {
+		Intent intent = new Intent(getActivity(), ElectricActivity.class);
 		startActivity(intent);
 	}
 	@OnClick(R.id.menu_map) void queryMap() {

@@ -23,7 +23,7 @@
     <string name="menu_busandtelphone">充值时间</string>
     <string name="menu_calendar">校历</string>
     <string name="menu_refresh_classtable">更新课表</string>
-    <string name="menu_notice">排课表</string>
+    <string name="menu_electric">电控查询</string>
     <string name="menu_drcom">Dr.com</string>
     <string name="menu_load_classtable_with_params">智能显示课程</string>
     <string name="menu_load_classtable_with_all">显示全部课程</string>
@@ -34,19 +34,7 @@
     <string name="menu_about">关于</string>
     <string name="menu_back">返回</string>
     <string name="title_menu">功能</string>
-    <!--<string name="menu_automate_refresh">自动刷新</string>-->
-    <!--<string name="menu_automate_refresh_close">关闭刷新</string>-->
     <string name="menu_exit">退出</string>
-    <!--<string name="menu_gettoday">今天记录</string>-->
-    <!--<string name="menu_gethistory">历史查询</string>-->
-    <!--<string name="menu_add_class">+</string>-->
-    <!--<string name="menu_account">账号设置</string>-->
-    <!--<string name="menu_update">检查更新</string>-->
-    <!--<string name="menu_configuration">软件设置</string>-->
-    <!--<string name="menu_home">功能菜单</string>-->
-    <!--<string name="menu_profile">个人资料</string>-->
-    <!--<string name="menu_settings">软件设置</string>-->
-    <!--<string name="menu_course_comments">选课评论</string>-->
 
     <!--查成绩-->
     <string name="listitem_label_goal">总评：</string>
@@ -76,6 +64,7 @@
     <string name="listitem_label_returnTime">归还时间：</string>
     <string name="listitem_label_location">馆藏位置：</string>
 
+    <string name="title_query_electric">电控查询</string>
 
     <!--搜索书-->
     <string name="title_searchBook">馆藏搜索</string>
@@ -85,6 +74,10 @@
     <string name="listitem_label_publisher">出版社：</string>
     <string name="listitem_label_volume">年卷期：</string>
     <string name="listitem_label_state">书刊状态：</string>
+
+    <!--宿舍电控-->
+    <string name="listitem_label_electric_electric">剩余电量：</string>
+    <string name="listitem_label_electric_money">剩余金额：</string>
 
     <!--大图页-->
     <string name="title_likeXiaoli">双指缩放</string>
