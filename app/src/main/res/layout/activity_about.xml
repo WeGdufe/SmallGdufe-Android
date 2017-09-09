@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="29dp"
-            android:text="Author：13信院韩裕光-792875586"
+            android:text="Author：13信院韩裕光 "
             android:layout_below="@+id/tv_about_version"
             android:layout_centerHorizontal="true" />
 
@@ -53,7 +53,7 @@
             android:layout_centerHorizontal="true"
             android:autoLink="all"
             android:paddingTop="10dp"
-            android:text="官网：http://www.wegdufe.com \n备用： http://www.wintercoder.com:8080" />
+            android:text="官网：http://www.wegdufe.com" />
             <!--\n商务邮箱：movinggdufe@163.com-->
             <TextView
                 android:id="@+id/tv_qgroup"

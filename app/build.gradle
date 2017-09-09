@@ -69,4 +69,7 @@ dependencies {
     compile "org.lzh.nonview.updateplugin:UpdatePlugin:2.0"
     //搜书页面的浮动按钮
     compile 'com.android.support:design:25.3.1'
+
+    //微信分享
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }

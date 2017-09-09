@@ -55,7 +55,7 @@
                 android:layout_height="50dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:drawableLeft="@mipmap/me_default_page"
                 android:text=" 默认首页" />
 
@@ -67,7 +67,7 @@
                 android:layout_height="50dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:drawableLeft="@mipmap/me_feedback"
                 android:text=" 反馈" />
 
@@ -80,10 +80,20 @@
                 <!--android:layout_height="50dp"-->
                 <!--android:paddingLeft="16dp"-->
                 <!--android:paddingRight="10dp"-->
-                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginTop="5dp"-->
                 <!--android:drawableLeft="@mipmap/me_update"-->
                 <!--android:text=" 检查更新" />-->
-
+            <TextView
+                android:id="@+id/tv_me_share"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@mipmap/me_share"
+                android:text=" 分享" />
             <TextView
                 android:id="@+id/tv_me_about"
                 android:textSize="16sp"
@@ -92,9 +102,10 @@
                 android:layout_height="50dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:drawableLeft="@mipmap/me_about"
                 android:text=" 关于" />
+
             <TextView
                 android:id="@+id/tv_me_exit"
                 android:textSize="16sp"
@@ -103,7 +114,7 @@
                 android:layout_height="50dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:drawableLeft="@mipmap/me_exit"
                 android:text=" 注销" />
         </LinearLayout>

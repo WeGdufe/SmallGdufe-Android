@@ -31,8 +31,10 @@ import com.guang.app.model.CardBasic;
 import com.guang.app.model.Schedule;
 import com.guang.app.model.StrObjectResponse;
 import com.guang.app.util.FileUtils;
+import com.guang.app.util.ShareUtils;
 import com.guang.app.util.TimeUtils;
 import com.guang.app.util.drcom.DrcomFileUtils;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
 import com.umeng.analytics.MobclickAgent;
 
 import org.litepal.crud.DataSupport;
@@ -70,6 +72,8 @@ public class MeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_me, container, false);
         ButterKnife.bind(this, view);
+        getActivity().setTitle(R.string.app_name);
+
         tvMeSno.setText(AppConfig.sno);
 
         BasicInfo basicInfo = DataSupport.findFirst(BasicInfo.class);
@@ -242,6 +246,25 @@ public class MeFragment extends Fragment {
         });
         builder.setNegativeButton("取消", null);
         builder.show();
+    }
+
+    @OnClick(R.id.tv_me_share) void clickShare() {
+        android.app.AlertDialog.Builder builder=new android.app.AlertDialog.Builder(getActivity());
+        builder.setIcon(R.mipmap.app_icon);
+        builder.setTitle("爱分享的人运气总不会差");
+        builder.setItems(R.array.shareList, new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int which) {
+                int scene = SendMessageToWX.Req.WXSceneSession;
+                if(which == 1) {
+                    scene = SendMessageToWX.Req.WXSceneTimeline;
+                }else if(which == 2){
+                    scene = SendMessageToWX.Req.WXSceneFavorite;
+                }
+                ShareUtils.install(getActivity());
+                ShareUtils.shareWeb(getActivity(),getResources().getString(R.string.app_name),"广财专用APP，学生开发，课表饭卡校园网，一样不少",AppConfig.WXSHARE_URL, scene);
+            }
+        });
+        builder.create().show();
     }
 
     @OnClick(R.id.tv_me_about) void clickAbout(){

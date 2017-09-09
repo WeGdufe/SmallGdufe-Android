@@ -29,6 +29,7 @@ public class FeatureFragment extends Fragment {
 			Bundle savedInstanceState) {
 //		View view = inflater.inflate(R.layout.menu, container,false);
 		View view = inflater.inflate(R.layout.menu,null,false);
+		getActivity().setTitle(R.string.app_name);
 		ButterKnife.bind(this, view);
 		return view;
 	}

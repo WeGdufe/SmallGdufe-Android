@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="shareList">
+        <item>微信聊天会话</item>
+        <item>朋友圈</item>
+        <item>微信收藏起来</item>
+    </string-array>
+</resources>

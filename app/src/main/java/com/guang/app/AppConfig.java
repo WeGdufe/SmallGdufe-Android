@@ -13,11 +13,13 @@ public class AppConfig {
 
     //千万记得这个URL要/结尾！！！
     public static final String BASE_URL = "http://app.wegdufe.com:82/";
+    public static final String WXSHARE_URL = "http://www.wegdufe.com";
     public static final String BASE_URL_BACKUP = "http://app.wintercoder.com:82/";
 
     //在线头像获取
     public static final String Avator_URL_BASE = "https://www.94cb.com/";
     public static final String Avatar_URL = Avator_URL_BASE + "Material-Design-Avatars/avatar.php";
+    public static final String WXShareAPP_ID = "wx676c0c6a46d9b86a";
 
 
     public static class DefaultPage {

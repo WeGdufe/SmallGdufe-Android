@@ -41,7 +41,7 @@ import io.reactivex.disposables.Disposable;
 public class HomeFragment extends Fragment {
     private static JwApiFactory factory = JwApiFactory.getInstance();
 
-    private String selectedWeek = "9";
+    private String selectedWeek ;   //按周查看的当前选择周数
 
     @Bind(R.id.scheduleView)
     ScheduleView mScheduleView;
@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         ButterKnife.bind(this, view);
-        getActivity().setTitle("APP");
+        getActivity().setTitle(R.string.app_name);
         initViewByDb();
 
         mScheduleView.setOnClickScheduleListener(new ScheduleView.onClickScheduleListener() {
@@ -234,6 +234,7 @@ public class HomeFragment extends Fragment {
 
     //周数选择
     private void showSelectWeekDialog(final Activity context){
+        selectedWeek = "9";
         AlertDialog.Builder pickerBuilder = new AlertDialog.Builder(context);
         LayoutInflater layoutInflater = context.getLayoutInflater();
         View customLayout = layoutInflater.inflate(R.layout.week_picker, null);

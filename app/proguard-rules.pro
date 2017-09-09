@@ -38,6 +38,17 @@
 }
 ###############   友盟 End  ###############
 
+###############   微信分享 Begin  ###############
+-keep class com.tencent.mm.opensdk.** {
+   *;
+}
+-keep class com.tencent.wxop.** {
+   *;
+}
+-keep class com.tencent.mm.sdk.** {
+   *;
+}
+###############   微信分享 End  ###############
 
 ###############   butterknife Begin ###############
 #-keep public class * implements butterknife.Unbinder { public <init>(**, android.view.View); }

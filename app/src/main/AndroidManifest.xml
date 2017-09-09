@@ -22,8 +22,9 @@
         android:supportsRtl="true"
         android:name=".AppContext"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".activity.MainActivity">
+        <!--exported 微信分享用，screenOrientation禁止横屏-->
+        <activity android:name=".activity.MainActivity" android:exported="true"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -42,6 +43,7 @@
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.CardHistoryActivity" />
         <activity android:name=".activity.SearchBookStoreActivity" />
+        <!--<activity android:name=".wxapi.WXEntryActivity1" android:exported="true"/>-->
         <activity android:name=".activity.DrcomActivity" android:launchMode="singleTask"/>
         <service
             android:name=".util.drcom.DrcomService"
