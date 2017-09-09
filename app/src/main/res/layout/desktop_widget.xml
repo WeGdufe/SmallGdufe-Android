@@ -13,11 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="#20000000"
+        android:background="#76161616"
         android:orientation="horizontal"
         android:paddingTop="6dp">
 
         <TextView
+            android:layout_marginLeft="5dp"
             android:id="@+id/widget_tv_department"
             style="@style/desktop_widget_tab_text_style"
             android:layout_width="wrap_content"
@@ -60,23 +61,25 @@
             />
 
     </RelativeLayout>
-    <FrameLayout
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
 
-    <!--<FrameLayout-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#89fdfdfd">
+
+        <!--<FrameLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="190dp">-->
 
 
         <!--android:layout_height="match_parent">-->
         <ListView
-            android:scrollbars="vertical"
-            android:scrollbarSize="10dp"
             android:id="@+id/desktop_widget_list"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:scrollbarSize="10dp"
+            android:scrollbars="vertical"
             tools:listitem="@layout/desktop_widget_item"/>
 
         <TextView

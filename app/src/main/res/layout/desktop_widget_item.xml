@@ -20,7 +20,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:textColor="#c9c8c8"
+            android:textColor="#636363"
             android:textSize="@dimen/widget_item_text_size"
             android:layout_marginLeft="5dp"
             android:text="9-10"/>
@@ -32,6 +32,7 @@
             android:layout_toEndOf="@id/widget_item_time"
             android:id="@+id/widget_item_name"
             android:textSize="@dimen/widget_item_text_size"
+            android:textColor="#101010"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="课程名，太长会变省略号" />
@@ -41,7 +42,7 @@
             android:layout_toRightOf="@id/widget_item_time"
             android:layout_below="@id/widget_item_name"
             android:id="@+id/widget_item_location"
-            android:textColor="#5d95fd"
+            android:textColor="#0f62fc"
             android:textSize="@dimen/widget_item_text_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

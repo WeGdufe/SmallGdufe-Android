@@ -261,7 +261,7 @@ public class MeFragment extends Fragment {
                     scene = SendMessageToWX.Req.WXSceneFavorite;
                 }
                 ShareUtils.install(getActivity());
-                ShareUtils.shareWeb(getActivity(),getResources().getString(R.string.app_name),"广财专用APP，学生开发，课表饭卡校园网，一样不少",AppConfig.WXSHARE_URL, scene);
+                ShareUtils.shareWeb(getActivity(),getResources().getString(R.string.app_name)+"，你的掌上校园伴侣","广财专用APP，学生开发，课表饭卡校园网，一样不少",AppConfig.WXSHARE_URL, scene);
             }
         });
         builder.create().show();
