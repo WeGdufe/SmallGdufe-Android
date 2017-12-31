@@ -26,7 +26,8 @@ public class AppConfig {
     public static class DefaultPage {
         public static final int HOME = 0;        //homeFragment
         public static final int FEATURE = 1;    //featureFragment
-        public static final int ME = 2;          //meFragment
+        public static final int SOCIAL = 2;    //socialFragment
+        public static final int ME = 3;          //meFragment
         //预留3给新fragment
         public static final int DRCOM = 10;      //drcomActivity
     }

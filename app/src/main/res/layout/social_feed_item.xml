@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+<ImageView
+    android:src="@mipmap/app_icon"
+    android:id="@+id/social_item_avatar"
+    android:layout_width="32dp"
+    android:layout_height="32dp"
+    android:contentDescription="233"/>
+
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+
+    <!-- 课程名称 -->
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="昵称"
+            android:id="@+id/tv_course_name"
+            android:textSize="@dimen/listitem_textSize"
+            android:background="@color/socre_item_name_default_color"
+            android:textColor="@color/normal_item_passed_text_color"
+            android:paddingLeft="@dimen/listitem_title_padding_left"/>
+
+
+    <TableLayout
+        android:id="@+id/layout_score_item_content"
+
+        android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/listitem_padding"
+            android:paddingBottom="@dimen/listitem_padding"
+            android:paddingLeft="@dimen/listitem_title_padding_left"
+            android:paddingRight="@dimen/listitem_title_padding_left"
+            android:shrinkColumns="0,2"
+            android:stretchColumns="1,3">
+
+        <TableRow>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/listitem_label_time"
+                    android:id="@+id/textView"/>
+
+            <!-- 学年 -->
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_time"/>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/listitem_label_credit"
+                    android:id="@+id/textView1"/>
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_credit"/>
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/listitem_label_goal"
+                    android:id="@+id/tv_label_goal"/>
+
+            <!-- 所得成绩 -->
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_score" />
+
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_label_grade_point"/>
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_grade_point"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"/>-->
+
+            <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:clickable="true"
+                     android:layout_height="wrap_content">
+
+                <ToggleButton
+                        style="@style/expand_button"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/score_btn_expandable_toggle"
+                        android:checked="false"/>
+
+            </RelativeLayout>
+
+        </TableRow>
+    </TableLayout>
+
+    <!--android:visibility="gone"-->
+    <ImageView
+            android:id="@+id/score_item_separator"
+            style="@style/listitem_separator"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription=""/>
+
+    <!-- this is the expandable view that is initially hidden and will slide out when the more button is pressed -->
+
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/score_expandable"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:paddingLeft="@dimen/listitem_title_padding_left"
+            android:paddingRight="@dimen/listitem_goal_title_padding_right"
+            android:shrinkColumns="0,2"
+            android:stretchColumns="1,3">
+
+        <TableRow>
+
+            <TextView
+                style="@style/normal_item_sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/listitem_label_classcode"/>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_classcode"/>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/listitem_label_score_experimental"/>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_score_exp"/>
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/listitem_label_score_daily"/>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_score_daily"/>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/listitem_label_score_paper"/>
+
+            <TextView
+                    style="@style/normal_item_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_score_paper"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>

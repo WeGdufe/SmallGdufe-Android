@@ -16,6 +16,7 @@ import com.guang.app.api.WorkApiFactory;
 import com.guang.app.fragment.FeatureFragment;
 import com.guang.app.fragment.HomeFragment;
 import com.guang.app.fragment.MeFragment;
+import com.guang.app.fragment.SocialFragment;
 import com.guang.app.model.AppTips;
 import com.guang.app.util.CalcUtils;
 import com.guang.app.util.FileUtils;
@@ -39,6 +40,7 @@ public class MainActivity extends BaseActivity {
     @Bind(R.id.tab_radioGroup) RadioGroup mTabGroup;
     @Bind(R.id.rd_home) RadioButton radioHome;
     @Bind(R.id.rd_features) RadioButton radioFeature;   //用于默认首页时的radiobutton选择情况（颜色高亮）
+    @Bind(R.id.rd_social) RadioButton radioSocial;
     @Bind(R.id.rd_me) RadioButton radioMe;
 
     private FragmentUtil fUtil;
@@ -74,7 +76,7 @@ public class MainActivity extends BaseActivity {
         mFragments = new ArrayList<>();
         mFragments.add(new HomeFragment());
         mFragments.add(new FeatureFragment());
-//        mFragments.add(new ShareFragment());  //备用
+        mFragments.add(new SocialFragment());
         mFragments.add(new MeFragment());
 
         fUtil = FragmentUtil.init(this);
@@ -90,8 +92,10 @@ public class MainActivity extends BaseActivity {
                         fUtil.show(mFragments.get(0));break;
                     case R.id.rd_features:
                         fUtil.show(mFragments.get(1));break;
-                    case R.id.rd_me:
+                    case R.id.rd_social:
                         fUtil.show(mFragments.get(2));break;
+                    case R.id.rd_me:
+                        fUtil.show(mFragments.get(3));break;
                 }
             }
         });
@@ -103,6 +107,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case AppConfig.DefaultPage.FEATURE:
                 radioFeature.setChecked(true);
+                break;
+            case AppConfig.DefaultPage.SOCIAL:
+                radioSocial.setChecked(true);
                 break;
             case AppConfig.DefaultPage.ME:
                 radioMe.setChecked(true);
@@ -124,9 +131,13 @@ public class MainActivity extends BaseActivity {
                 if (checked) {
                     fUtil.show(mFragments.get(1));break;
                 }
-            case R.id.rd_me:
+            case R.id.rd_social:
                 if (checked) {
                     fUtil.show(mFragments.get(2));break;
+                }
+            case R.id.rd_me:
+                if (checked) {
+                    fUtil.show(mFragments.get(3));break;
                 }
         }
     }
