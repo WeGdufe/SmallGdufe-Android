@@ -17,6 +17,8 @@ allprojects {
         maven {
             url "https://jitpack.io"
         }
+        maven { url "https://maven.google.com"} //Glide need
+        maven { url "https://dl.google.com/dl/android/maven2/"}
     }
 }
 

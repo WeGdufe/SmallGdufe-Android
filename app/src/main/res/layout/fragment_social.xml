@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchMatch.Vertical">
 
-    <TextView
-        android:id="@+id/textView1"
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:gravity="center_vertical">
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_moment_list_add"-->
+            <!--android:text="添加朋友圈"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_moment_list_system"-->
+            <!--android:layout_height="wrap_content"-->
+
+            <!--android:text="测试系统相册"-->
+            <!--android:layout_width="wrap_content"/>-->
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/social_feed_listview"
+        style="@style/MatchMatch"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:src="@mipmap/search_book_pre"
+        app:backgroundTint="#ff87ffeb"
+        app:rippleColor="#33728dff"
+        app:fabSize="mini"
+        android:id="@+id/btn_social_feed_write"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="fea" />
-
-</LinearLayout>
+        android:layout_height="wrap_content" />
+</RelativeLayout>

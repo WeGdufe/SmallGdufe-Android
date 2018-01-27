@@ -55,8 +55,8 @@ public class CardHistoryActivity extends QueryActivity {
     }
 
     /**
-     * 访问
-     * @param cardNum
+     * 当日消费记录
+     * @param cardNum string
      */
     private void getCardConsumeToday(String cardNum){
         factory.getCardConsumeToday(cardNum,new Observer<List<CardConsumeItem>>() {
