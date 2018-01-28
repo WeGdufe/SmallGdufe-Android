@@ -100,13 +100,13 @@ public class FeedAddActivity extends QueryActivity implements EasyPermissions.Pe
 //    }
 
     //选图
-    @OnClick(R.id.tv_moment_add_choice_photo) void choosePic() {
-        choicePhotoWrapper();
-    }
-    //发布 废弃
-    @OnClick(R.id.tv_moment_add_publish) void publishFeed() {
+//    @OnClick(R.id.tv_moment_add_choice_photo) void choosePic() {
+//        choicePhotoWrapper();
+//    }
+//    //发布 废弃
+//    @OnClick(R.id.tv_moment_add_publish) void publishFeed() {
 
-    }
+//    }
 
     @Override
     public void onClickAddNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, ArrayList<String> models) {

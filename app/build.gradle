@@ -5,8 +5,8 @@ apply plugin: 'com.android.application'
 //keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
     signingConfigs {
         release {
 //            storeFile file(keystoreProperties['storeFile'])
@@ -20,12 +20,18 @@ android {
     defaultConfig {
         applicationId "com.guang.app"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 27
 //        versionCode 999
 //        versionName "999.999.999"
 //      测试时用999版本号 避开被友盟报错统计混淆了真实用户的报错
         versionCode 6
         versionName "1.4.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
     }
     buildTypes {
 //        proguard测试时可以开注释，可以看到报错
@@ -44,9 +50,11 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+   compile 'com.android.support:recyclerview-v7:27.0.2'
 
+  //  compile 'com.android.support:appcompat-v7:25.3.1'
+  // compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.jakewharton:butterknife:7.0.1'
 
     //rxjava+retrofit2
@@ -68,7 +76,7 @@ dependencies {
 
     compile "org.lzh.nonview.updateplugin:UpdatePlugin:2.0"
     //搜书页面的浮动按钮
-    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:design:27.0.2'
 
     //微信分享
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
@@ -76,9 +84,9 @@ dependencies {
     // 九宫格图片控件  https://github.com/bingoogolapple/BGAPhotoPicker-Android
     // -------------------- 以下4个库是必须依赖的 ----------------------------
     compile 'cn.bingoogolapple:bga-photopicker:1.2.7@aar'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:support-v4:27.0.2'
+    compile 'com.android.support:recyclerview-v7:27.0.2'
     compile 'cn.bingoogolapple:bga-baseadapter:1.2.7@aar'
     // -------------------- 以上4个库是必须依赖的 ----------------------------
     // 目前支持常见的 4 种图片加载库，必须在下面四个图片加载库中选择一个添加依赖
