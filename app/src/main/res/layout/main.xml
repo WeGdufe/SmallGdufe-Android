@@ -40,13 +40,13 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/tab_features_selector"
             android:text="@string/tab_features" />
-        <!--<RadioButton-->
-            <!--style="@style/tab_item_style"-->
-            <!--android:id="@+id/rd_share"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:drawableTop="@drawable/tab_share_selector"-->
-            <!--android:text="@string/tab_share" />-->
+        <RadioButton
+            style="@style/tab_item_style"
+            android:id="@+id/rd_social"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/tab_share_selector"
+            android:text="@string/tab_share" />
         <RadioButton
             style="@style/tab_item_style"
             android:id="@+id/rd_me"

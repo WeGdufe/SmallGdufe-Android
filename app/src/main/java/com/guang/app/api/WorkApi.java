@@ -7,7 +7,10 @@ import com.guang.app.model.StrObjectResponse;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -31,12 +34,20 @@ public interface WorkApi {
     @GET(AppConfig.Url.appTips)
     Observable<HttpResult<AppTips>> getAppTips();
 
-    //获取每日提醒
+    //服务器版退出登陆
     @GET(AppConfig.Url.allLogout)
     Observable<HttpResult<StrObjectResponse>> allLgout();
 
     @GET(AppConfig.Url.getDocument)
     Observable<ResponseBody> getDocumentFile(@Query("fileCode") String fileCode);
 
+
+    //提速账号登陆web版drcom
+    @FormUrlEncoded
+    @POST(AppConfig.Drcom.DrcomWebLogin)
+    Observable<ResponseBody> loginDrcomWeb(@Field("DDDDD") String username, @Field("upass") String password, @Field("0MKKey") String key, @Field("Submit") String button);
+
+    @GET(AppConfig.Drcom.DrcomWebLogout)
+    Observable<ResponseBody>logoutDrcomWeb();
 
 }

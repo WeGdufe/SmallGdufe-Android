@@ -11,9 +11,11 @@ public class AppConfig {
     public static String localAesSeed = "local";                   //本地存密码的加密key
     public static String netAesSeed = "netdsad238139dsad";       //网络密约，未用到
     public static String appVer = "";                               //ApiUtils.java没有Context，故全局变量实现
+    public static String sdSaveDirName = "smallgdufe";                 //Sd卡存储空间目录名
 
     //千万记得这个URL要/结尾！！！
     public static final String BASE_URL = "http://app.wegdufe.com:82/";
+//    public static final String BASE_URL = "http://192.168.0.103:82/";
     public static final String WXSHARE_URL = "http://www.wegdufe.com";
     public static final String BASE_URL_BACKUP = "http://app.wintercoder.com:82/";
 
@@ -23,16 +25,24 @@ public class AppConfig {
     public static final String WXShareAPP_ID = "wx676c0c6a46d9b86a";
 
 
+    public static class Drcom {
+        //drcom提速版
+        public static final String DrcomWebBase = "http://58.62.247.115/";
+        public static final String DrcomWebLogin = DrcomWebBase;
+        public static final String DrcomWebLogout = DrcomWebBase + "F.htm?Submit2=%E9%80%80%E5%87%BA";
+    }
+
+
     public static class DefaultPage {
         public static final int HOME = 0;        //homeFragment
         public static final int FEATURE = 1;    //featureFragment
-        public static final int ME = 2;          //meFragment
+        public static final int SOCIAL = 2;    //socialFragment
+        public static final int ME = 3;          //meFragment
         //预留3给新fragment
         public static final int DRCOM = 10;      //drcomActivity
     }
     public static class Const {
         public static final String DocumentCodeXiaoli = "xiaoli";
-
     }
     public static class Url {
         public static final String index = "index.php?r=";
@@ -60,7 +70,15 @@ public class AppConfig {
         public static final String updateURL = index + "work/check-app-update";
         public static final String appTips = index + "work/get-app-tips";
         public static final String allLogout = index + "work/all-logout";
+
         public static final String getDocument = index + "work/get-document";
+
+        public static final String getImFeedList = index + "social/feed/list-im-feed";
+        public static final String getImFeedReplyList = index + "social/feed/list-im-feed-reply";
+        public static final String createImFeedRelay = index + "social/feed/create-im-feed-reply";
+        public static final String createImFeed = index + "social/feed/create-im-feed";
+
+
 
     }
 

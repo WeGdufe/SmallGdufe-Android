@@ -13,7 +13,7 @@ public class DrcomFileUtils {
     private static final String SP_FILE = "drcom_sp_file";
     private static final String SP_USERNAME = "username";
     private static final String SP_PASSWORD = "password";
-
+    private static final String SP_IS_SPEEDED = "is_speed";
     /**
      * 清除本地存储的账号信息
      * @param context
@@ -50,4 +50,19 @@ public class DrcomFileUtils {
         edit.apply();
     }
 
+
+    /**
+     * 存储drcom账号信息（是否提速账号）
+     */
+    public static void setStoredIsSpeed(Context context, boolean isSpeed) {
+        SharedPreferences.Editor edit = context.getSharedPreferences(SP_FILE, Context.MODE_PRIVATE).edit();
+        edit.putBoolean(SP_IS_SPEEDED, isSpeed);
+        edit.apply();
+    }
+
+
+    public static boolean getStoredIsSpeed(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(SP_FILE, Context.MODE_PRIVATE);
+        return sp.getBoolean(SP_IS_SPEEDED, false);
+    }
 }

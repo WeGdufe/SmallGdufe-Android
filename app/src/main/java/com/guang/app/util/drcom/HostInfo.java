@@ -3,7 +3,6 @@ package com.guang.app.util.drcom;
 import java.io.Serializable;
 
 /**
- * Created by lin on 2017-01-10-010.
  * Modify by guang on 2017-03-21
  * hostos 机器操作系统 随意，已写死
  * hostname 机器名，可随意，转Byte[]后长度<=32就好，故写死在DrcomTask里了

@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.guang.app.R;
 import com.guang.app.util.CalcUtils;
+import com.guang.app.util.FileUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -36,6 +37,16 @@ public class AboutActivity extends QueryActivity {
         joinQQGroup("h5e6PrDHmrbINR1ZaVcy0I-LvrKFxhIM");
     }
 
+    //内测入口
+    @OnClick(R.id.tv_about_version) void openAlphaTest(){
+        boolean isAlpha = FileUtils.getIsAlphaTest(this);
+        FileUtils.setIsAlphaTest(this,!isAlpha);
+        if(!isAlpha){
+            Toast.makeText(this, "你似乎开启了什么入口，重启看看", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "看来你选择当个普通用户", Toast.LENGTH_SHORT).show();
+        }
+    }
     /****************
      *
      * 发起添加群流程。群号：移动广财用户群(631036490) 的 key 为： h5e6PrDHmrbINR1ZaVcy0I-LvrKFxhIM

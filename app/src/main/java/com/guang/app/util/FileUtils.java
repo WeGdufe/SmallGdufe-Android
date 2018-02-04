@@ -45,6 +45,8 @@ public class FileUtils {
     private static final String SP_JW_SETTINGS_FILE = "jw_settings";
     private static final String SP_SCORE_TARGET = "scoreQueryTarget";
 
+    //内测入口
+    private static final String SP_ALPHA_TEST = "SP_ALPHA_TEST";
     /**
      * 获取存储在本地的账号信息，返回是否有存储(有登陆过)
      * @param context
@@ -283,4 +285,19 @@ public class FileUtils {
         edit.putInt(SP_SCORE_TARGET,target);
         edit.apply();
     }
+
+    //查成绩，查主修还是辅修
+    public static boolean getIsAlphaTest(Context context){
+        SharedPreferences sp = context.getSharedPreferences(SP_JW_SETTINGS_FILE,0);
+        return sp.getBoolean(SP_ALPHA_TEST,false);
+    }
+    public static void setIsAlphaTest(Context context,boolean isAlpha){
+        SharedPreferences.Editor edit = context.getSharedPreferences(SP_JW_SETTINGS_FILE,0).edit();
+        edit.putBoolean(SP_ALPHA_TEST,isAlpha);
+        edit.apply();
+    }
+
+
+
+
 }

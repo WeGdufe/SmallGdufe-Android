@@ -211,8 +211,7 @@ public class ScoreActivity extends QueryActivity {
                 if(value.size() == 0){
                     Toast.makeText(ScoreActivity.this, "别闹", Toast.LENGTH_SHORT).show();
                     return;
-                }                LogUtils.e(value.size()+"个");
-
+                }
                 mAdapter.cleanData();
                 mAdapter.addData(value);
                 mAdapter.notifyDataSetChanged();

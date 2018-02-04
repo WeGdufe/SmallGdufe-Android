@@ -240,7 +240,7 @@ public class HomeFragment extends Fragment {
         View customLayout = layoutInflater.inflate(R.layout.week_picker, null);
         pickerBuilder.setView(customLayout);
         ArrayList<String> weekArr = new ArrayList<>();
-        for (int i = 1; i <= 16; i++) {
+        for (int i = 1; i <= 25; i++) {
             weekArr.add(i+"");
         }
         PickerView WeekPicker = (PickerView) customLayout.findViewById(R.id.selected_week);

@@ -74,4 +74,29 @@ public class WorkApiFactory extends ApiUtils {
                 .subscribeOn(Schedulers.io())
                 .subscribe(sub);
     }
+
+
+    //web版登陆登出
+    public void loginDrcomWeb(String username,String pwd,Observer<ResponseBody> sub ) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(AppConfig.Drcom.DrcomWebBase)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        retrofit.create(WorkApi.class).loginDrcomWeb(username, pwd, "%25B5%25C7%25C2%25BC%2BLogin","%E7%99%BB%E9%99%86")
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
+
+    public void logoutDrcomWeb(Observer<ResponseBody> sub ) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(AppConfig.Drcom.DrcomWebBase)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        retrofit.create(WorkApi.class).logoutDrcomWeb()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(sub);
+    }
+
 }
