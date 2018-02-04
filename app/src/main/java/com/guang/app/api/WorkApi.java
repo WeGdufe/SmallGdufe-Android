@@ -31,12 +31,19 @@ public interface WorkApi {
     @GET(AppConfig.Url.appTips)
     Observable<HttpResult<AppTips>> getAppTips();
 
-    //获取每日提醒
+    //服务器版退出登陆
     @GET(AppConfig.Url.allLogout)
     Observable<HttpResult<StrObjectResponse>> allLgout();
 
     @GET(AppConfig.Url.getDocument)
     Observable<ResponseBody> getDocumentFile(@Query("fileCode") String fileCode);
 
+
+    //提速账号登陆web版drcom
+    @GET(AppConfig.Drcom.DrcomWebLogin)
+    Observable<ResponseBody> loginDrcomWeb(@Query("DDDDD") String username,@Query("upass") String password,@Query("0MKKey") String key,@Query("Submit") String button);
+
+    @GET(AppConfig.Drcom.DrcomWebLogout)
+    Observable<ResponseBody>logoutDrcomWeb();
 
 }

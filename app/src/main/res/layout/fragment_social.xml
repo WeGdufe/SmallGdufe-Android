@@ -22,18 +22,26 @@
             <!--android:text="测试系统相册"-->
             <!--android:layout_width="wrap_content"/>-->
     </LinearLayout>
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/social_feed_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/social_feed_listview"
-        style="@style/MatchMatch"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
+        <!--style="@style/MatchMatch"-->
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:src="@mipmap/search_book_pre"
-        app:backgroundTint="#ff87ffeb"
-        app:rippleColor="#33728dff"
+        android:src="@mipmap/icon_feed_add"
+        app:backgroundTint="#3cc0fd"
+        app:rippleColor="#8d1745fa"
         app:fabSize="mini"
         android:id="@+id/btn_social_feed_write"
         android:layout_alignParentBottom="true"

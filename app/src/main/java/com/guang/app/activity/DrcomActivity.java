@@ -5,26 +5,39 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.apkfuns.logutils.LogUtils;
 import com.guang.app.AppConfig;
 import com.guang.app.R;
+import com.guang.app.api.WorkApiFactory;
+import com.guang.app.model.StrObjectResponse;
 import com.guang.app.util.FileUtils;
 import com.guang.app.util.drcom.DrcomConfig;
 import com.guang.app.util.drcom.DrcomFileUtils;
 import com.guang.app.util.drcom.DrcomService;
+import com.guang.app.util.drcom.DrcomWebUtil;
 import com.guang.app.util.drcom.HostInfo;
 import com.guang.app.util.drcom.WifiUtils;
 
+import org.litepal.util.LogUtil;
+
+import java.io.IOException;
+
 import butterknife.Bind;
 import butterknife.OnClick;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import okhttp3.ResponseBody;
 
 public class DrcomActivity extends QueryActivity {
     public static String INTENT_DRCOM_TO_MAIN = "drcom2main";   // 标记是从drcom返回main的，否则main根据默认页又会继续跳回来
 
     @Bind(R.id.ed_drcom_username)  EditText edUsername;
     @Bind(R.id.ed_drcom_password)  EditText edPassword;
+    @Bind(R.id.cb_drcom_is_speed)  CheckBox cbIsSpeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +59,8 @@ public class DrcomActivity extends QueryActivity {
                 }
             }
         }
+        boolean isSpeed = DrcomFileUtils.getStoredIsSpeed(this);
+        cbIsSpeed.setChecked(isSpeed);
     }
 
     @OnClick(R.id.btn_drcom_login) void drcomLogin() {
@@ -71,16 +86,50 @@ public class DrcomActivity extends QueryActivity {
             Toast.makeText(this, "未连接学校wifi", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        //获取现在的mac地址并且启动service
+        //获取现在的mac地址
         String mac = wifiUtils.getMacAddress();
         HostInfo info = new HostInfo(username,password, mac);
-        Intent startIntent = new Intent(this, DrcomService.class);
-        startIntent.putExtra(DrcomService.INTENT_INFO,info);
-        startService(startIntent);
-
-        //存储信息（不含mac）
         DrcomFileUtils.setStoredAccount(this,info);
+
+        //存储提速信息
+        DrcomFileUtils.setStoredIsSpeed(this,cbIsSpeed.isChecked());
+
+
+        if( cbIsSpeed.isChecked() ){
+            //提速账号 走web版
+            WorkApiFactory factory = WorkApiFactory.getInstance();
+            factory.loginDrcomWeb(username, password, new Observer<ResponseBody>() {
+
+                @Override
+                public void onSubscribe(Disposable disposable) {
+                }
+                @Override
+                public void onNext(ResponseBody responseBody) {
+                    try {
+                        LogUtils.i(responseBody.string());
+                        String result = DrcomWebUtil.translateWebReturn(responseBody.string());
+                        Toast.makeText(DrcomActivity.this, result, Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    Toast.makeText(DrcomActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onComplete() {
+                }
+            });
+
+        }else{
+            //普通账号 普通drcom
+            Intent startIntent = new Intent(this, DrcomService.class);
+            startIntent.putExtra(DrcomService.INTENT_INFO,info);
+            startService(startIntent);
+        }
+
     }
 
 
@@ -89,7 +138,37 @@ public class DrcomActivity extends QueryActivity {
             Toast.makeText(this, "校友/外校生禁用该功能", Toast.LENGTH_SHORT).show();
             return;
         }
-        stopService(new Intent(this, DrcomService.class));
+        if( cbIsSpeed.isChecked() ) {
+            //提速账号 走web版
+            WorkApiFactory factory = WorkApiFactory.getInstance();
+
+            factory.logoutDrcomWeb( new Observer<ResponseBody>() {
+                @Override
+                public void onSubscribe(Disposable disposable) {
+                }
+                @Override
+                public void onNext(ResponseBody responseBody) {
+
+                    try {
+                        LogUtils.i(responseBody.string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    Toast.makeText(DrcomActivity.this, "注销成功", Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onError(Throwable throwable) {
+                    Toast.makeText(DrcomActivity.this, "网络原因注销失败", Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onComplete() {
+                }
+            });
+
+        }else{
+            stopService(new Intent(this, DrcomService.class));
+        }
     }
 
     //网络自助平台，启动自带浏览器去打开

@@ -185,7 +185,7 @@ public class MeFragment extends Fragment {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage( " 生日快乐 (๑•̀ㅂ•́)و✧");
             builder.setTitle(value.getName());
-            builder.setPositiveButton("哈哈",new DialogInterface.OnClickListener(){
+            builder.setPositiveButton("蟹蟹",new DialogInterface.OnClickListener(){
                 @Override
                 public void onClick(DialogInterface dialogInterface, int which) {
                 }

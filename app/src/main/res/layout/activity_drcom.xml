@@ -92,11 +92,18 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="不能和电脑同时登陆\n建议开启通知栏权限\n华为荣耀6P可能频繁断线"
+            android:text="不能和电脑同时登陆\n建议开启通知栏权限\n"
             android:textColor="#4381f1"
             android:gravity="center"
             android:layout_marginTop="20dp"/>
-
+        <CheckBox
+            android:text="电信提速账号打勾"
+            android:textColor="#4381f1"
+            android:id="@+id/cb_drcom_is_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
     </LinearLayout>
 
 </LinearLayout>

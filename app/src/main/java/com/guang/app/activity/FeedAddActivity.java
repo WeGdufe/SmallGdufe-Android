@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import com.guang.app.AppConfig;
 import com.guang.app.R;
+import com.guang.app.api.SocialApiFactory;
 import com.guang.app.model.Feed;
+import com.guang.app.model.StrObjectResponse;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -25,6 +27,8 @@ import butterknife.OnClick;
 import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerActivity;
 import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerPreviewActivity;
 import cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -35,7 +39,7 @@ public class FeedAddActivity extends QueryActivity implements EasyPermissions.Pe
     private static final int RC_CHOOSE_PHOTO = 1;
     private static final int RC_PHOTO_PREVIEW = 2;
     private static final String EXTRA_MOMENT = "EXTRA_MOMENT";
-
+    private static SocialApiFactory socialApiFactory = SocialApiFactory.getInstance();
     /**
      * 拖拽排序九宫格控件
      */
@@ -72,7 +76,32 @@ public class FeedAddActivity extends QueryActivity implements EasyPermissions.Pe
                     Toast.makeText(this, "留空怎么行呢", Toast.LENGTH_SHORT).show();
                     return true;
                 }
-                Toast.makeText(this, "发布", Toast.LENGTH_SHORT).show();
+
+                Feed fd = new Feed();
+                fd.setContent(content);
+                fd.setPhotos(new ArrayList<String>());
+                socialApiFactory.createImFeedList(fd, new Observer<StrObjectResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable disposable) {
+
+                    }
+
+                    @Override
+                    public void onNext(StrObjectResponse strObjectResponse) {
+                        Toast.makeText(FeedAddActivity.this, "发布成功", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        Toast.makeText(FeedAddActivity.this, "发布成功", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
 
                 Intent intent = new Intent();
                 intent.putExtra(EXTRA_MOMENT, new Feed(mContentEt.getText().toString().trim(), mPhotosSnpl.getData()));
@@ -110,7 +139,9 @@ public class FeedAddActivity extends QueryActivity implements EasyPermissions.Pe
 
     @Override
     public void onClickAddNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, ArrayList<String> models) {
-        choicePhotoWrapper();
+        Toast.makeText(this, "虽然选图功能有了，但还没做存储，图片功能不可用", Toast.LENGTH_SHORT).show();
+        //TODO 图片功能，缺CDN，上传服务器等，选图功能已有
+//        choicePhotoWrapper();
     }
 
     @Override

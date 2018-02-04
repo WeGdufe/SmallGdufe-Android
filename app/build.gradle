@@ -95,5 +95,8 @@ dependencies {
 //    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 //    compile 'org.xutils:xutils:3.5.0'
 
+    //上拉加载
+    implementation 'cn.bingoogolapple:bga-refreshlayout:1.1.8@aar'
+
     compile 'pub.devrel:easypermissions:1.0.1'
 }

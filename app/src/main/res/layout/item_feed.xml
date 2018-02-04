@@ -19,7 +19,7 @@
         android:layout_toRightOf="@id/iv_item_feed_avatar"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="bingoogolapple"
+        android:text="内测"
         android:textColor="#707EA3"
         android:textSize="14sp"/>
 

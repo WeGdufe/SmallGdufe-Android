@@ -11,7 +11,23 @@ import java.util.ArrayList;
  */
 public class Feed implements Parcelable {
     public String content;
-    public ArrayList<String> photos;
+    private ArrayList<String> photos;
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public ArrayList<String> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(ArrayList<String> photos) {
+        this.photos = photos;
+    }
 
     @Override
     public int describeContents() {
