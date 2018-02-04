@@ -25,12 +25,16 @@ import com.guang.app.util.drcom.WifiUtils;
 import org.litepal.util.LogUtil;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import okhttp3.MediaType;
 import okhttp3.ResponseBody;
+import okio.Buffer;
+import okio.BufferedSource;
 
 public class DrcomActivity extends QueryActivity {
     public static String INTENT_DRCOM_TO_MAIN = "drcom2main";   // 标记是从drcom返回main的，否则main根据默认页又会继续跳回来
@@ -68,8 +72,8 @@ public class DrcomActivity extends QueryActivity {
             Toast.makeText(this, "校友/外校生禁用该功能", Toast.LENGTH_SHORT).show();
             return;
         }
-        String username = edUsername.getText().toString();
-        String password = edPassword.getText().toString();
+        String username = edUsername.getText().toString().trim();
+        String password = edPassword.getText().toString().trim();
         if(TextUtils.isEmpty(username)||TextUtils.isEmpty(password)){
             Toast.makeText(this, "别闹，学号密码呢", Toast.LENGTH_SHORT).show();
             return;
@@ -81,10 +85,11 @@ public class DrcomActivity extends QueryActivity {
             Toast.makeText(this, "wifi未打开", Toast.LENGTH_SHORT).show();
             return;
         }
+        //非学校官方WIFI也允许
         boolean isSchoolWifi = currentIsSchoolWifi(wifiUtils);
         if(!isSchoolWifi){
-            Toast.makeText(this, "未连接学校wifi", Toast.LENGTH_SHORT).show();
-            return;
+//            Toast.makeText(this, "温馨提示，你连的可能不是学校WIFI", Toast.LENGTH_SHORT).show();
+//            return;
         }
         //获取现在的mac地址
         String mac = wifiUtils.getMacAddress();
@@ -106,8 +111,9 @@ public class DrcomActivity extends QueryActivity {
                 @Override
                 public void onNext(ResponseBody responseBody) {
                     try {
-                        LogUtils.i(responseBody.string());
-                        String result = DrcomWebUtil.translateWebReturn(responseBody.string());
+                        String response = new String(responseBody.bytes());
+                        LogUtils.i(response);
+                        String result = DrcomWebUtil.translateWebReturn(response);
                         Toast.makeText(DrcomActivity.this, result, Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -116,7 +122,7 @@ public class DrcomActivity extends QueryActivity {
 
                 @Override
                 public void onError(Throwable throwable) {
-                    Toast.makeText(DrcomActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DrcomActivity.this, "网络错误: "+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 }
                 @Override
                 public void onComplete() {

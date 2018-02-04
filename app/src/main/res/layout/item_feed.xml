@@ -10,7 +10,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="8dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/app_icon"
         app:bga_iv_circle="true"/>
 
     <TextView

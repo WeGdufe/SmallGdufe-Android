@@ -56,7 +56,7 @@ public class SocialFragment extends Fragment  implements BGARefreshLayout.BGARef
 
     @Bind(R.id.social_feed_refresh)
     BGARefreshLayout mRefreshLayout;    //上拉刷新
-    private static final int PAGE_NUM = 2;  //一次分页的大小
+    private static final int PAGE_NUM = 20;  //一次分页的大小
     List<Feed> mFeeds = new ArrayList<>();
     int mPageNo = 0;
 

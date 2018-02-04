@@ -116,7 +116,7 @@ public class LoginActivity extends QueryActivity {
                     return;
                 }
                 LogUtils.e(e.getMessage());
-                Toast.makeText(LoginActivity.this, "教务系统" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -146,7 +146,7 @@ public class LoginActivity extends QueryActivity {
             @Override
             public void onError(Throwable e) {
                 LogUtils.e(e.getMessage());
-                Toast.makeText(LoginActivity.this, "信息门户" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 stopLoadingProgess();
             }
 

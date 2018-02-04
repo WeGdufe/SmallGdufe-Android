@@ -7,7 +7,10 @@ import com.guang.app.model.StrObjectResponse;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -40,8 +43,9 @@ public interface WorkApi {
 
 
     //提速账号登陆web版drcom
-    @GET(AppConfig.Drcom.DrcomWebLogin)
-    Observable<ResponseBody> loginDrcomWeb(@Query("DDDDD") String username,@Query("upass") String password,@Query("0MKKey") String key,@Query("Submit") String button);
+    @FormUrlEncoded
+    @POST(AppConfig.Drcom.DrcomWebLogin)
+    Observable<ResponseBody> loginDrcomWeb(@Field("DDDDD") String username, @Field("upass") String password, @Field("0MKKey") String key, @Field("Submit") String button);
 
     @GET(AppConfig.Drcom.DrcomWebLogout)
     Observable<ResponseBody>logoutDrcomWeb();

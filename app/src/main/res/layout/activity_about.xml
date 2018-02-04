@@ -41,8 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="29dp"
-            android:text="Author：13信院韩裕光 - 创始人"
-            android:layout_below="@+id/tv_about_version"
+            android:text="Author：13信院韩裕光 - 最初的开发者"
+            android:layout_below="@id/tv_about_version"
             android:layout_centerHorizontal="true" />
 
         <TextView

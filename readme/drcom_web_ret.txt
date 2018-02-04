@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
+<title>信息返回窗</title>
+<!--  哆点下载开始  -->
+<script type="text/javascript" src="a52.js"></script>
+<script type="text/javascript" src="a51.js"></script>
+<link rel="stylesheet" href="a50.css" type="text/css" media="screen" />
+<!--  哆点下载结束  -->
+<SCRIPT language=javascript>
+<!--     		
+Msg=01;time='1234567890';flow='1234567890';fsele=0;fee='1234567890';xsele=0;xip='000.000.000.000.';mac='00-00-00-00-00-00';va=00;vb=00;vc=00;vd=0000;ve=0000;vf=0000;
+ipm="3a3ef773";ss1="000d482a95a8";ss2="0000";ss3="ac196053";ss4="000000000000";msga='密码错误';                                                                        
+pp="<br>";
+flow0=flow%1024;flow1=flow-flow0;flow0=flow0*1000;flow0=flow0-flow0%1024;fee1=fee-fee%100;
+flow3='.';
+if(flow0/1024<10)flow3='.00';
+else{if(flow0/1024<100)flow3='.0';}
+UT="已使用时间 : "+time +" Min"+pp;
+UF="已使用流量 : "+flow1/1024+flow3+flow0/1024+" MByte"+pp;
+if(fsele==1)UM="本账号余额 : "+"RMB"+fee1/10000;
+else UM="";
+function DispTFM(){
+	switch(Msg){
+		case 0:
+		case 1:
+			if((Msg==1)&&(msga!="")){
+			switch(msga){
+			case 'error0':
+				document.write("本IP不允许Web方式登录");
+				break;
+			case 'error1':
+				document.write("本账号不允许Web方式登录");
+				break;
+			case 'error2':
+				document.write("本账号不允许修改密码");
+				break;				
+			default:
+				document.write(msga);
+				break;}
+			}
+			else document.write("账号或密码不对，请重新输入");
+		break;      		
+	case 2:
+		document.write("该账号正在使用中，请您与网管联系"+pp+xip+pp+mac);
+		break;      		
+	case 3:
+		document.write("本账号只能在指定地址使用<br>This account can be used on the appointed address only."+pp+xip);
+		break;
+	case 4:
+		document.write("本账号费用超支或时长流量超过限制");
+		break;
+	case 5:
+		document.write("本账号暂停使用");
+		break;
+	case 6:
+		document.write("System buffer full");
+		break;      		
+	case 8:
+		document.write("本账号正在使用,不能修改");
+		break;
+	case 9:
+		document.write("新密码与确认新密码不匹配,不能修改");
+		break;
+	case 10:
+		document.write("密码修改成功");
+		break;
+	case 11:
+		document.write("本账号只能在指定地址使用 :"+pp+mac);
+		break;      	
+		case 7:
+	      	document.write(UT+UF+UM);
+		break;
+	case 14:
+		document.write("注销成功"+pp+UT+UF+UM);
+		break;
+	case 15:
+		document.write("登录成功"+pp+UT+UF+UM);
+		break;
+		}}
+		
+function checkphone(){
+if((navigator.userAgent.indexOf('iPad') > 0) || (navigator.userAgent.indexOf('Windows NT') > 0))return;
+if((navigator.userAgent.indexOf('Mobile') > 0) ){}
+else return;
+PostForm.RET.value=32;
+PostForm.INFO.value="Msg="+Msg+";time="+time+";flow="+flow+";fsele="+fsele+";fee="+fee+";xsele="+xsele+";va="+va+";vb="+vb+";vc="+vc+";vd="+vd+";ve="+ve+";vf="+vf
+	+";xip='"+xip+"';mac='"+mac	+"';ipm='"+ipm+"';ss1='"+ss1+"';ss2='"+ss2+"';ss3='"+ss3+"';ss4='"+ss4+"';msga='"+msga+"';";
+document.PostForm.submit();
+}
+		
+// -->
+</SCRIPT>
+<style>
+<!--
+a {
+	text-decoration: none;
+	color:#2365AF;
+}
+body {
+	margin:0;
+	padding:0;
+	text-align:center;
+	background:#ffffff url(a05.jpg) repeat-x top;
+}/*20151211背景色*/
+img { border:0}/*20151211图片无边*/
+
+.font1 {
+	font-size:13px;
+	font-family:Microsoft YaHei;
+	line-height:24px;
+	color:#606060;
+}
+.font2 {
+	font-size:12px;
+	font-family:Microsoft YaHei;
+	line-height:24px;
+	color:#719CB3;
+}
+.con {
+	width: 1000px;
+	height:600px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.bg {
+	background-image: url('a01.jpg');
+	background-repeat: no-repeat;
+	width: 1000px;
+	height:600px;
+}
+#submit {
+	background-color: #ffb94b;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fddb6f), to(#ffb94b));
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #d69e31 #e3a037 #d5982d #e3a037;
+	float: left;
+	height: 28px;
+	padding: 0;
+	width: 109px;
+	cursor: pointer;
+	font: 14px Microsoft YaHei, Helvetica;
+	color: #8f5a0a;
+}
+#submit:hover, #submit:focus {
+	background-color: #fddb6f;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ffb94b), to(#fddb6f));
+}
+#submit:active {
+	outline: none;
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+}
+-->
+</style>
+</head>
+<!--Dr.COMWebLoginID_2.htm-->
+<body onload="checkphone()">
+<div class="con">
+<div class="bg">
+<div id="left" style="float:left; width:320px; margin-top: 175px; margin-left:140px;">
+<div id="welcome" style="float:top; height:160px; text-align:left;" class="font1">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+<!--  哆点下载开始
+<div id="download" style="float:top; margin-top: 60px;"> <a href="a55.png" class="lightbox_a" title="扫描二维码去下载哆点APP"><img src="a53.png" border="0" align="absmiddle" /></a> <a href="http://www.doctorcom.com/duodian/" target="_blank"><img src="a56.png" border="0" align="absmiddle" /></a></div>
+<!--  哆点下载结束  -->
+<div id="foot" style="float:top; height:20px; margin-top: 60px;" class="font2"></div>
+</div>
+<div id="login" style="float:left; width:300px; height:245px; margin-top: 133px; margin-left:52px">
+<div style="background:url(a58.png) no-repeat center; width:300px; height:75px; margin-bottom:10px;"></div>
+<form name="f1" method="post" action="">
+<div id="info" style="height:100px; padding-top:12px;" class="font1">
+<script language=javascript>DispTFM()</script>
+</div>
+<div id="btn" style="height:30px; margin-top:22px;">
+<input id="submit" type="button" value="返　回" onClick="location='/                           '" style="margin-left:95px;">
+</div>
+</form>
+</div>
+</div>
+</div>
+<FORM NAME="PostForm" action="/" method=post>
+<INPUT TYPE="hidden" NAME="RET" value=""  >
+<INPUT TYPE="hidden" NAME="INFO" value=""  >
+<INPUT TYPE="hidden" NAME="INFO1" value=""  >
+</FORM>
+</body>
+</html>
+<script language="javascript">
+$(function(){//哆点下载
+$('a[class="lightbox_a"]').lightBox();//哆点下载
+})//哆点下载
+</script>
