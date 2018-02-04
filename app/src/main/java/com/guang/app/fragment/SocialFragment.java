@@ -196,12 +196,12 @@ public class SocialFragment extends Fragment  implements BGARefreshLayout.BGARef
     
     @Override
     public void onRVItemClick(ViewGroup parent, View itemView, int position) {
-        Toast.makeText(getActivity(), "点击了item " + position, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "点击了item " + position, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public boolean onRVItemLongClick(ViewGroup parent, View itemView, int position) {
-        Toast.makeText(getActivity(), "长按了item " + position, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), "长按了item " + position, Toast.LENGTH_SHORT).show();
         return false;
     }
 
