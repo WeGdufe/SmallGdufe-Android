@@ -2,7 +2,7 @@
 源于毕设，基于开源。产品截图见 [官网](http://www.wegdufe.com/)
 
 App对接了广财的教务、信息门户、一卡通、图书馆等系统，包含 Dr.com 功能，数据均为爬取获取，无学校官方接口。
-这个项目是客户端源码，服务端代码不开源，但开放[Api接口](http://www.wegdufe.com/apidoc/)  。
+这个项目是客户端源码，服务端代码 [戳这](https://github.com/WeGdufe/SmallGdufe-Server)，[服务端Api接口](http://www.wegdufe.com/apidoc/)  。
 
 ![](readme/function.png)
 图为v1.0.0的功能，很久没更新了。图中蓝色部分为入口较深的功能，启动通知为打开App时，服务端发送的通知；生日祝福是在公历生日当日打开App有弹窗祝福。
