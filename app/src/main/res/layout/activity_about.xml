@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="29dp"
-            android:text="Author：13信院韩裕光 - 最初的开发者"
+            android:text="Author：13信院韩裕光"
             android:layout_below="@id/tv_about_version"
             android:layout_centerHorizontal="true" />
 
@@ -88,6 +88,19 @@
             android:layout_below="@+id/tv_qgroup"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/tv_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:paddingTop="10dp"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:text="1.6.0应该是最后个版本了，2018.10.03"
+                android:layout_below="@+id/tv_thanks"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

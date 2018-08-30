@@ -2,6 +2,9 @@ package com.guang.app;
 
 public class AppConfig {
 
+    public static String APPID = "smallAndroid";
+    public static String SECRET_KEY_SAFE = "d2ludGVy";      //暂时没时间封到.so里，加上本身不是很重要的数据 + 学校里会搞破解的应该不会搞这项目
+
     public static String sno = "";                                  //用户学号
     public static String idsPwd = "";                               //信息门户密码
     public static String jwPwd = "";                                //教务系统密码

@@ -18,6 +18,8 @@ import javax.crypto.spec.SecretKeySpec;
  * Created by xiaoguang on 2017/2/20.
  */
 public class AESUtils {
+
+
     public static String encryptLocal(String cleartext)  {
         if(TextUtils.isEmpty(cleartext)){
             return "";

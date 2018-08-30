@@ -1,11 +1,19 @@
 package com.guang.app.util;
 
+import android.util.Log;
+
+import com.apkfuns.logutils.LogUtils;
+
+import org.litepal.util.LogUtil;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import okhttp3.FormBody;
 import okhttp3.Headers;
@@ -86,6 +94,35 @@ public class BasicParamsInterceptor implements Interceptor {
         } else {    // can't inject into body, then inject into url
             injectParamsIntoUrl(request, requestBuilder, paramsMap);
         }
+        request = requestBuilder.build();   //把注入的参数都保存一下，等会才能获取
+
+
+        //https://blog.csdn.net/spinchao/article/details/52932145
+        //获取全部参数并排序
+        HttpUrl httpUrl = request.url();
+        Set<String> nameSet = httpUrl.queryParameterNames();
+        ArrayList<String> nameList = new ArrayList<>();
+        nameList.addAll(nameSet);
+        Collections.sort(nameList);
+
+        LogUtils.e(nameList);
+        StringBuilder buffer = new StringBuilder();
+        for (int i = 0; i < nameList.size(); i++) {
+            if ( nameList.get(i).equals("r") ){
+                continue;
+            }
+            if(i != 0){
+                buffer.append("&");
+            }
+            buffer.append(nameList.get(i)).append("=").append(httpUrl.queryParameterValues(nameList.get(i)) != null &&
+                    httpUrl.queryParameterValues(nameList.get(i)).size() > 0 ? httpUrl.queryParameterValues(nameList.get(i)).get(0) : "");
+        }
+//        LogUtils.e(buffer.toString());
+
+        //注入到url
+        Map<String,String> signMap = new HashMap<>();
+        signMap.put("sign", MD5Util.MD5(buffer.toString() ) );
+        injectParamsIntoUrl(request, requestBuilder, signMap);
 
         request = requestBuilder.build();
         return chain.proceed(request);

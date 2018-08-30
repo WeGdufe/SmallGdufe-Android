@@ -1,10 +1,16 @@
 package com.guang.app.api;
 
+import android.util.Base64;
+import android.util.Log;
+
 import com.apkfuns.logutils.LogUtils;
 import com.guang.app.AppConfig;
 import com.guang.app.model.HttpResult;
 import com.guang.app.util.BasicParamsInterceptor;
+import com.guang.app.util.ApiAESUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.functions.Function;
@@ -44,11 +50,26 @@ public class ApiUtils {
 //                .build();
     }
     public static Retrofit getApi(String password){
+        long timestamp = System.currentTimeMillis() / 1000;
+
+        String privateContent =  "sno=" + AppConfig.sno + "&pwd=" +  password;
+        String secret = new String(Base64.decode(AppConfig.SECRET_KEY_SAFE,Base64.DEFAULT));
+        String key = secret + String.valueOf(timestamp);
+
+        String token = ApiAESUtils.encrypt(privateContent, key );
+        token = URLEncoder.encode(token);
+
+//        LogUtils.e(token);
 
         BasicParamsInterceptor basicParamsInterceptor =
                 new BasicParamsInterceptor.Builder()
-                        .addParam("sno", AppConfig.sno)
-                        .addParam("pwd",password)
+                        .addParam("appid",AppConfig.APPID)
+                        .addParam("timestamp",String.valueOf(timestamp))
+                        .addParam("token",token)
+//                        .addParam("sign","111")
+
+//                        .addParam("sno", AppConfig.sno)
+//                        .addParam("pwd",password)
                         .addParam("from","android")
                         .addParam("app_ver",AppConfig.appVer)
                         .build();

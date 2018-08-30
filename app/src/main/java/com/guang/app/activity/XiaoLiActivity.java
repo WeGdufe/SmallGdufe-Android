@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.apkfuns.logutils.LogUtils;
 import com.guang.app.AppConfig;
 import com.guang.app.R;
 import com.guang.app.api.WorkApiFactory;
@@ -56,13 +57,14 @@ public class XiaoLiActivity extends QueryActivity {
         doFrom = getIntent().getIntExtra(doWhat,0);
         switch (doFrom){
             case XiaoLiActivity.doXiaoLi:
-                getSupportActionBar().setSubtitle("以后将制作成日历表格式，非图片");
+//                getSupportActionBar().setSubtitle("以后将制作成日历表格式，非图片");
                 workApiFactory.getDocumentFile(AppConfig.Const.DocumentCodeXiaoli, new Observer<ResponseBody>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                     }
                     @Override
                     public void onNext(ResponseBody value) {
+
                         mCurBitmap = BitmapFactory.decodeStream(value.byteStream());
                         zoomImageView.setImageBitmap(mCurBitmap);
                         stopLoadingProgess();
